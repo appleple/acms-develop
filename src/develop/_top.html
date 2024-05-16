@@ -1,0 +1,13 @@
+@extends("/_layouts/base.html")
+
+@section("main")
+<section class="bg-gray-100 flex items-center justify-center h-screen">
+  <div x-data="counter" class="bg-white p-6 rounded shadow-lg text-center">
+    <h1 class="text-2xl font-bold mb-4">Counter: <span x-text="$store.counter.count" class="text-blue-500"></span></h1>
+    <div class="space-x-4">
+      <button @click="$store.counter.increment()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Increment</button>
+      <button @click="$store.counter.decrement()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Decrement</button>
+    </div>
+  </div>
+</section>
+@endsection
