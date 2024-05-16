@@ -1,6 +1,6 @@
 {
-  "name": "acms-develop",
-  "version": "1.0.0",
+  "name": "develop",
+  "version": "0.0.0",
   "description": "Webサイト制作プロジェクト",
   "type": "module",
   "main": "index.js",
