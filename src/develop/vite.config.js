@@ -9,7 +9,7 @@ const themeName = basename(__dirname);
 export default defineConfig(({ command, mode }) => {
   return mergeConfig(
     {
-      base: command === 'serve' ? `/themes/${themeName}` : './',
+      base: './',
       define: {
         'THEME_NAME': JSON.stringify(themeName),
       },
