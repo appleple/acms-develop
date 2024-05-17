@@ -11,6 +11,10 @@ const config = {
   showBtnClass: 'acms-admin-block', // PDFのページ送りボタンがある場合につくクラス名
 };
 
+/**
+ * Pdf Preview
+ * @param {HTMLElement} target
+ */
 export default async (target) => {
   const elm = target.querySelector(config.previewMark);
   if (!elm) {

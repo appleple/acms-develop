@@ -1,6 +1,11 @@
 import ModalVideo from 'modal-video';
 import 'modal-video/css/modal-video.min.css';
 
+/**
+ * Modal video
+ * @param {HTMLElement} context - context
+ * @param {object} options - options
+ */
 export default (context, options = {}) => {
   const defaultOptions = {
     channel: 'youtube',

@@ -1,6 +1,11 @@
 import ScrollHint from 'scroll-hint';
 import 'scroll-hint/css/scroll-hint.css';
 
+/**
+ * Scroll hint
+ * @param {Document | Element} context
+ * @param {object} options
+ */
 export default (context, options = {}) => {
   const defaultOptions = {
     suggestClass: 'is-active',

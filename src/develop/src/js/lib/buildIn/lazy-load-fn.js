@@ -1,5 +1,12 @@
 import lozad from 'lozad';
 
+/**
+ * Lazy loading function
+ * @param {string} selector - selector
+ * @param {function} isLazy - lazy loading condition
+ * @param {function} run - run function
+ * @return {void}
+ */
 export default (selector, isLazy, run) => {
   const observer = lozad(selector, {
     loaded: (el) => {

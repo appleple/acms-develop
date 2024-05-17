@@ -1,6 +1,12 @@
 import lozad from 'lozad';
 import './lazy-load.css';
 
+/**
+ * Lazy load
+ * @param {string} selector - selector
+ * @param {object} options - options
+ * @return {void}
+ */
 export default (selector, options) => {
   const defaultOptions = {
     rootMargin: '10px 0px', // syntax similar to that of CSS Margin

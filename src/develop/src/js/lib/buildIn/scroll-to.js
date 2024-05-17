@@ -1,5 +1,10 @@
 import scrollToElement from 'scroll-to-element';
 
+/**
+ * ScrollTo
+ * @param {Document | Element} context
+ * @param {string} selector
+ */
 export default (context, selector) => {
   const targets = context.querySelectorAll(selector);
 

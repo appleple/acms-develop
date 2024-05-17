@@ -1,11 +1,22 @@
 const stayClass = 'stay';
 
+/**
+ * matches
+ * @param {HTMLElement} el
+ * @param {string} selector
+ * @return {boolean}
+ */
 // eslint-disable-next-line no-constant-binary-expression
 const matches = (el, selector) => (0
     || el.matches || el.matchesSelector || el.msMatchesSelector
     || el.mozMatchesSelector || el.webkitMatchesSelector
     || el.oMatchesSelector).call(el, selector);
 
+/**
+ *
+ * @param {HTMLElement} elm
+ * @return {string | false}
+ */
 const getHref = (elm) => {
   if (matches(elm, 'a')) {
     return elm.getAttribute('href');
@@ -17,6 +28,10 @@ const getHref = (elm) => {
   return a[0].getAttribute('href');
 };
 
+/**
+ * @param {HTMLElement} elm
+ * @param {'part' | 'full'} mode
+ */
 const match = (elm, mode) => {
   let href = getHref(elm);
   let locationHref = document.location.href;
@@ -36,6 +51,10 @@ const match = (elm, mode) => {
   }
 };
 
+/**
+ * @param {Document | Element} context
+ * @param {string} selector
+ */
 const linkMatch = (context, selector) => {
   const links = context.querySelectorAll(selector);
   if (links.length > 0) {
@@ -45,6 +64,10 @@ const linkMatch = (context, selector) => {
   }
 };
 
+/**
+ * @param {Document | Element} context
+ * @param {string} selector
+ */
 const linkMatchFull = (context, selector) => {
   const links = context.querySelectorAll(selector);
   if (links.length > 0) {
@@ -54,6 +77,10 @@ const linkMatchFull = (context, selector) => {
   }
 };
 
+/**
+ * @param {Document | Element} context
+ * @param {string} selector
+ */
 const linkMatchContain = (context, selector) => {
   const links = context.querySelectorAll(selector);
   if (links.length > 0) {

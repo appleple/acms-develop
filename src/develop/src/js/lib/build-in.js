@@ -8,8 +8,8 @@ import { linkMatch, linkMatchFull, linkMatchContain } from './buildIn/link-match
 
 /**
  * Validator
- * @param context
- * @param selector
+ * @param {Document | Element} context
+ * @param {string} selector
  */
 const validator = (context, selector) => {
   domContentLoaded(async () => {
@@ -26,7 +26,7 @@ const validator = (context, selector) => {
 
 /**
  * LinkMatchLocation
- * @param context
+ * @param {Document | Element} context
  */
 const linkMatchLocation = (context) => {
   domContentLoaded(() => {
@@ -39,7 +39,7 @@ const linkMatchLocation = (context) => {
 
 /**
  * ExternalLinks
- * @param context
+ * @param {Document | Element} context
  */
 const externalLinks = (context) => {
   const selector = 'a:not([target]):not([href^="javascript"]):not([href^="tel"])';
@@ -60,8 +60,8 @@ const externalLinks = (context) => {
 
 /**
  * ScrollTo
- * @param context
- * @param selector
+ * @param {Document | Element} context
+ * @param {string} selector
  */
 const scrollTo = (context, selector) => {
   domContentLoaded(async () => {
@@ -75,8 +75,8 @@ const scrollTo = (context, selector) => {
 
 /**
  * AlertUnload
- * @param context
- * @param selector
+ * @param {Document | Element} context
+ * @param {string} selector
  */
 const alertUnload = (context, selector = '', force = false) => {
   domContentLoaded(async () => {
@@ -107,9 +107,9 @@ const alertUnload = (context, selector = '', force = false) => {
 
 /**
  * SmartPhoto
- * @param context
- * @param selector
- * @param options
+ * @param {Document | Element} context
+ * @param {string} selector
+ * @param {object} options
  */
 const smartPhoto = (context, selector = '', options = {}) => {
   domContentLoaded(async () => {
@@ -124,9 +124,9 @@ const smartPhoto = (context, selector = '', options = {}) => {
 
 /**
  * LazyLoad
- * @param context
- * @param selector
- * @param options
+ * @param {Document | Element} context
+ * @param {string} selector
+ * @param {object} options
  */
 const lazyLoad = (context, selector = '', options = {}) => {
   domContentLoaded(() => {
@@ -139,6 +139,8 @@ const lazyLoad = (context, selector = '', options = {}) => {
 
 /**
  * InView
+ * @param {Document | Element} context
+ * @param {string} selector
  */
 const inView = (context, selector) => {
   domContentLoaded(() => {
@@ -166,9 +168,9 @@ const inView = (context, selector) => {
 
 /**
  * ModalVideo
- * @param context
- * @param selector
- * @param options
+ * @param {Document | Element} context
+ * @param {string} selector
+ * @param {object} options
  */
 const modalVideo = (context, selector = '', options = {}) => {
   domContentLoaded(async () => {
@@ -183,7 +185,7 @@ const modalVideo = (context, selector = '', options = {}) => {
 
 /**
  * ScrollHint
- * @param context
+ * @param {Document | Element} context
  */
 const scrollHint = (context) => {
   domContentLoaded(async () => {
@@ -197,8 +199,8 @@ const scrollHint = (context) => {
 
 /**
  * GoogleMap
- * @param context
- * @param selector
+ * @param {Document | Element} context
+ * @param {string} selector
  */
 const googleMap = (context, selector = '') => {
   domContentLoaded(async () => {
@@ -219,8 +221,8 @@ const googleMap = (context, selector = '') => {
 
 /**
  * OpenStreetMap
- * @param context
- * @param selector
+ * @param {Document | Element} context
+ * @param {string} selector
  */
 const openStreetMap = (context, selector = '') => {
   domContentLoaded(async () => {
@@ -241,8 +243,8 @@ const openStreetMap = (context, selector = '') => {
 
 /**
  * DatePicker
- * @param context
- * @param selector
+ * @param {Document | Element} context
+ * @param {string} selector
  */
 const datePicker = (context, selector = '') => {
   domContentLoaded(async () => {
@@ -263,8 +265,8 @@ const datePicker = (context, selector = '') => {
 
 /**
  * PdfPreview
- * @param context
- * @param selector
+ * @param {Document | Element} context
+ * @param {string} selector
  */
 const pdfPreview = (context, selector = '') => {
   domContentLoaded(async () => {
@@ -285,8 +287,8 @@ const pdfPreview = (context, selector = '') => {
 
 /**
  * FocusedImage
- * @param context
- * @param selector
+ * @param {Document | Element} context
+ * @param {string} selector
  */
 const focusedImage = (context, selector = '') => {
   domContentLoaded(async () => {
@@ -306,8 +308,27 @@ const focusedImage = (context, selector = '') => {
 };
 
 /**
+ * DocumentOutliner
+ * @param {Element | Document} context
+ * @param {string} selector
+ * @param {object} options
+ */
+const documentOutliner = (context, selector = '.js-outline', options = {}) => {
+  domContentLoaded(async () => {
+    const targets = context.querySelectorAll(selector);
+    if (targets.length > 0) {
+      const { default: run } = await import(/* webpackChunkName: "document-outlier" */ './buildIn/document-outliner');
+      targets.forEach((target) => {
+        run(target, options);
+        scrollTo(target);
+      });
+    }
+  });
+};
+
+/**
  * UnitGroupAlign
- * @param context
+ * @param {Document | Element} context
  */
 const unitGroupAlign = (context) => {
   let timer;
@@ -359,5 +380,6 @@ export {
   datePicker,
   pdfPreview,
   focusedImage,
+  documentOutliner,
   unitGroupAlign,
 };

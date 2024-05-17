@@ -1,3 +1,8 @@
+/**
+ * フォームが変更された際にアラートを表示する
+ * @param {NodeList} targets - フォーム要素
+ * @return {void}
+ */
 export default (targets) => {
   const onBeforeunloadHandler = (e) => {
     e.returnValue = '入力途中のデータがあります';

@@ -2,6 +2,10 @@ import flatPicker from 'flatpickr';
 import flatPickerLangJa from 'flatpickr/dist/l10n/ja';
 import 'flatpickr/dist/flatpickr.min.css';
 
+/**
+ * Date picker
+ * @param {HTMLElement} target - Target element
+ */
 export default (target) => {
   const options = {
     allowInput: true,

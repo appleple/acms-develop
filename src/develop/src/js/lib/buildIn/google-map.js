@@ -3,6 +3,11 @@ import queryString from 'query-string';
 
 let googlePromise;
 
+/**
+ *
+ * @param {string} key
+ * @return {Promise<google>}
+ */
 const loadGoogleMap = (key) => {
   if (googlePromise) {
     return googlePromise;
@@ -13,6 +18,10 @@ const loadGoogleMap = (key) => {
   return googlePromise;
 };
 
+/**
+ * Google Map
+ * @param {HTMLElement} elm
+ */
 export default async (elm) => {
   const query = queryString.parse(elm.src.replace(/^[^?]*\?/, ''));
   const msgs = elm.alt.split('[[:split:]]');

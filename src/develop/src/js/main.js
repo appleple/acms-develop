@@ -21,6 +21,7 @@ import {
   datePicker,
   pdfPreview,
   focusedImage,
+  documentOutliner,
   unitGroupAlign,
 } from './lib/build-in'; // ToDo: いらないものはコメントアウト
 
@@ -37,6 +38,44 @@ fonts();
 async function loadAlpineModules() {
   // enable code splitting
   await import('./alpinejs');
+}
+
+/**
+ * BuildInJs Dispatcher
+ * acms.js が読み込まれている場合は ACMS.Dispatch を返します。
+ * 読み込まれていない場合は、独自のDispatcherを返します。
+ * @returns {function(Document | Element): void}
+ */
+function createBuildInJsDispatcher() {
+  if (window.ACMS !== undefined) {
+    return ACMS.Dispatch
+  }
+
+  /**
+   * BuildInJs Dispatcher
+   * ToDo: 使わない組み込みJSはコメントアウト
+   * @param {Document | Element} context
+   * @return {void}
+   */
+  return function (context) {
+    validator(context);
+    linkMatchLocation(context);
+    externalLinks(context);
+    scrollTo(context);
+    alertUnload(context);
+    smartPhoto(context);
+    lazyLoad(context);
+    inView(context);
+    modalVideo(context);
+    scrollHint(context);
+    googleMap(context);
+    openStreetMap(context);
+    datePicker(context);
+    pdfPreview(context);
+    focusedImage(context);
+    documentOutliner(context);
+    unitGroupAlign(context);
+  };
 }
 
 async function main() {
@@ -58,28 +97,10 @@ async function main() {
   window.root = '/';
 
   /**
-   * BuildInJs
-   * ToDo: 使わない組み込みJSはコメントアウト
+   * Setup BuildInJs
    */
+  window.dispatch = createBuildInJsDispatcher();
   if (window.ACMS === undefined) {
-    window.dispatch = (context) => {
-      validator(context);
-      linkMatchLocation(context);
-      externalLinks(context);
-      scrollTo(context);
-      alertUnload(context);
-      smartPhoto(context);
-      lazyLoad(context);
-      inView(context);
-      modalVideo(context);
-      scrollHint(context);
-      googleMap(context);
-      openStreetMap(context);
-      datePicker(context);
-      pdfPreview(context);
-      focusedImage(context);
-      unitGroupAlign(context);
-    };
     window.dispatch(document);
   }
 

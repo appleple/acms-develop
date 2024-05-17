@@ -1,7 +1,12 @@
 import SmartPhoto from 'smartphoto';
 import 'smartphoto/css/smartphoto.min.css';
 
-export default (context, options = {}) => {
+/**
+ * Smart photo
+ * @param {NodeListOf<Element>} elements
+ * @param {object} options
+ */
+export default (elements, options = {}) => {
   const defaultOptions = {
     classNames: {
       smartPhoto: 'smartphoto',
@@ -49,5 +54,5 @@ export default (context, options = {}) => {
     lazyAttribute: 'data-src',
   };
 
-  new SmartPhoto(context, Object.assign(defaultOptions, options)); // eslint-disable-line no-new
+  new SmartPhoto(elements, Object.assign(defaultOptions, options)); // eslint-disable-line no-new
 };
