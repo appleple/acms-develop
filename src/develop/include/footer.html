@@ -1,0 +1,38 @@
+<section class="bg-white">
+  <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+
+    @include("/include/links/textlink.html")
+
+    <!-- BEGIN_MODULE Blog_Field ctx="bid/1" -->
+    <!-- BEGIN sns:veil -->
+    <div class="flex justify-center mt-8 space-x-6">
+      <!-- BEGIN facebook_account:veil -->
+      <a href="https://www.facebook.com/{facebook_account}" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">Facebook</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+          <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+        </svg>
+      </a>
+      <!-- END facebook_account:veil -->
+      <!-- BEGIN twitter_account:veil -->
+      <a href="https://x.com/{twitter_account}" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">X</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 512 512"><!-- !Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+      </a>
+      <!-- END twitter_account:veil -->
+      <!-- BEGIN youtube_account:veil -->
+      <a href="https://www.youtube.com/{youtube_account}" class="text-gray-400 hover:text-gray-500">
+        <span class="sr-only">YouTube</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 576 512"><!-- !Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+        <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/></svg>
+      </a>
+      <!-- END youtube_account:veil -->
+    </div>
+    <!-- END sns:veil -->
+
+    <small class="block mt-8 text-base leading-6 text-center text-gray-400">
+      {site_footer}
+    </small>
+    <!-- END_MODULE Blog_Field -->
+  </div>
+</section>
