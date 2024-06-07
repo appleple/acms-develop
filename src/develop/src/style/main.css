@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 独自カスタマイズ */
+.custom-outline .custom-outline {
+  padding-left: 1em;
+}
+
+.custom-outline .custom-outline .custom-outline-item {
+  display: inline-flex;
+  gap: .5em;
+}
+
+.custom-outline .custom-outline .custom-outline-item::before {
+  display: block;
+  width: 1em;
+  content: "";
+  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>') no-repeat center center;
+}

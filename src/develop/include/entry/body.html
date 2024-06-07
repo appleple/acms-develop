@@ -1,0 +1,72 @@
+<!-- BEGIN_MODULE Entry_Body id="{{module_id}}" -->
+<div>
+  <!-- BEGIN notFound -->
+  <p>ただいまページを準備しております。もうしばらくお待ちください。</p>
+  <!-- END notFound -->
+
+  <!-- BEGIN entry:loop -->
+  @include("/admin/entry/revision-info.html")
+
+  <header>
+    <!-- BEGIN pageHeader:veil -->
+    <!-- BEGIN title:veil -->
+    <h1 class="font-bold text-3xl sm:text-4xl lg:text-5xl entry-title"><a href="{titleUrl}">{title}</a></h1>
+    <!-- END title:veil -->
+    <div class="flex flex-wrap font-medium mt-6">
+      <!-- BEGIN date:veil -->
+      <p><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}/{date#m}/{date#d}（{date#l}[weekEN2JP]）</time></p>
+      <!-- END date:veil -->
+      <!-- BEGIN category:loop -->
+      <p><span><a href="{url}">{name}</a></span></p>
+      <!-- END category:loop -->
+    </div>
+    <!-- BEGIN tag:veil -->
+    <ul class="flex flex-wrap gap-2 mt-2">
+      <!-- BEGIN tag:loop -->
+      <li><a href="{url}">#{name}</a></li>
+      <!-- END tag:loop -->
+    </ul>
+    <!-- END tag:veil -->
+    <!-- END pageHeader:veil -->
+  </header>
+
+  <div class="mt-10">
+    <!-- BEGIN unit:veil -->
+      <div class="acms-entry entry-column">
+        <div class="relative w-full rounded-lg border border-transparent bg-blue-50 p-4 [&>svg]:absolute [&>svg]:text-foreground [&>svg]:left-4 [&>svg]:top-4 [&>svg+div]:translate-y-[-3px] [&:has(svg)]:pl-11 text-blue-600">
+          <svg class="w-5 h-5 -translate-y-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>
+          <h4 class="mb-1 font-medium leading-none tracking-tight">この記事は公開日より5年以上経過しています</h4>
+          <div class="text-sm opacity-80">情報が古くなっている可能性がありますのでご注意ください。</div>
+      </div>
+
+      <div class="acms-grid prose max-w-none js-outline"
+        data-target=".js-outline-yield"
+        data-link="true"
+        data-listType="ol"
+        data-listClassName="custom-outline"
+        data-itemClassName="mt-2 custom-outline-item"
+        data-linkClassName="scrollTo"
+        data-anchorName="heading-$1"
+        data-levelLimit="2"
+        data-exceptClass="js-except">
+        <!-- BEGIN_SetRendered id="entry-outline" -->
+        <div class="js-outline-yield"></div>
+        <!-- END_SetRendered -->
+        @include("/include/unit.html")
+      </div>
+    </div>
+    <hr class="clearHidden">
+    <!-- END unit:veil -->
+
+    <!-- BEGIN continueLink:veil -->
+    <p><a href="{continueUrl}" class="acms-btn-flat"><span class="acms-icon-arrow-right"></span>「{continueName}」の続きを読む</a>
+    </p>
+    <!-- END continueLink:veil -->
+
+    @include("/admin/entry/edit-%{IS_ADMIN}.html")
+
+    @include("/admin/entry/action.html")
+  </div>
+  <!-- END entry:loop -->
+</div>
+<!-- END_MODULE Entry_Body -->

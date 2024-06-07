@@ -1,0 +1,38 @@
+<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
+<div>
+  @include("/admin/module/setting.html")
+  <ul>
+    <!-- BEGIN unit:loop --><!-- BEGIN entry:loop -->
+    <li class="mb-5">
+      <a href="{url}" class="flex">
+        <div class="w-1/3 aspect-square overflow-hidden rounded">
+          <!-- BEGIN_IF [{path}/nem] -->
+          <img
+            src="%{ROOT_DIR}{path}[resizeImg({x}, {y})]"
+            alt="{alt}"
+            width="{x}"
+            height="{y}"
+            class="object-cover w-full h-full"
+          >
+          <!-- ELSE -->
+          <!-- BEGIN noimage -->
+          <img
+            src="/images/default/noimage.gif"
+            alt=""
+            width="{noImgX}"
+            height="{noImgY}"
+            class="object-cover w-full h-full"
+          >
+          <!-- END noimage -->
+          <!-- END_IF -->
+        </div>
+        <div class="flex flex-col items-start justify-center w-2/3 p-2">
+          <h3 class="mb-2 text-gray-900">{title}</h3>
+          <time datetime="{date#Y}-{date#m}-{date#d}" class="block text-xs text-gray-800">{date#Y}/{date#m}/{date#d}（{date#l}[weekEN2JP]）</time>
+        </div>
+      </a>
+    </li>
+    <!-- END entry:loop --><!-- END unit:loop -->
+  </ul>
+</div>
+<!-- END_MODULE Entry_Summary -->

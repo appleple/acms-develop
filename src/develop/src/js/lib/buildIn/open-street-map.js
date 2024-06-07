@@ -23,7 +23,7 @@ export default (item) => {
   const messages = item.getAttribute('data-messages');
   const map = Leaflet.map(item).setView([lat, lng], zoom);
 
-  delete Leaflet.Icon.Default.prototype._getIconUrl; // eslint-disable-line no-underscore-dangle
+  delete Leaflet.Icon.Default.prototype._getIconUrl;  
   Leaflet.Icon.Default.mergeOptions({
     iconUrl: icon,
     iconRetinaUrl: icon2x,

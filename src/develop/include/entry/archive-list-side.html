@@ -1,0 +1,17 @@
+<!-- BEGIN_MODULE Entry_ArchiveList id="{module_id}" -->
+<div>
+  @include("/admin/module/setting.html")
+  <ul class="acms-list-group">
+    <!-- BEGIN archive:loop -->
+    <li>
+      <a href="{url}" class="flex items-center">
+        <span class="flex-1 block py-2 text-gray-900">{date#Y}年 {date#n}月</span>
+        <!-- BEGIN amount:veil -->
+        <span class="block w-10 py-1 rounded-md text-sm text-center text-gray-700 bg-slate-100">{amount}</span>
+        <!-- END amount:veil -->
+      </a>
+    </li>
+    <!-- END archive:loop -->
+  </ul>
+</div>
+<!-- END_MODULE Entry_ArchiveList -->
