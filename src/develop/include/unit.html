@@ -1,8 +1,15 @@
 @extends("/_layouts/unit.html")
 
-@section(text-unit)
-<!-- テキスト -->
-<div class="entry-text-unit">
+@section(media-unit)
+<!-- media -->
+<div class="not-prose text-gray-700 text-sm text-center">
+  @parent
+</div>
+@endsection
+
+@section(quote-unit)
+<!-- 引用 -->
+<div class="not-prose">
   @parent
 </div>
 @endsection

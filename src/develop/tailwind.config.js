@@ -12,7 +12,18 @@ module.exports = {
     // `../*@${path.basename(__dirname)}/**/*.html`,
   ],
   theme: {
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            hr: false,
+            blockquote: {
+              'font-style': 'normal',
+            }
+          },
+        },
+      },
+    }
   },
   future: {
     hoverOnlyWhenSupported: true,

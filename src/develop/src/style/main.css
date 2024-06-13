@@ -2,7 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 独自カスタマイズ */
+/* ------------------------------ 
+  独自カスタマイズ
+ ------------------------------ */
+
+/* エントリー本文
+=============================== */
+.clearHidden { /* stylelint-disable-line */
+  display: block;
+  height: 0;
+  margin: 0;
+  clear: both;
+  visibility: hidden;
+  border: none;
+}
+
+/* テーブル */
+.custom-entry-body .acms-cell-text-left {
+  text-align: left;
+}
+
+.custom-entry-body .acms-cell-text-center {
+  text-align: center;
+}
+
+.custom-entry-body .acms-cell-text-right {
+  text-align: right;
+}
+
+/* メディアユニット */
+[class*='column-media-'] {
+  margin-block: 2rem;
+}
+
+[class*='column-media-'] .columnIcon { /* stylelint-disable-line */
+  margin: 0 auto;
+}
+
+[class*='column-media-'] .caption {
+  margin-top: 1rem;
+}
+
+/* 引用ユニット */
+[class*='column-quote'] blockquote {
+  padding: 20px 10px 20px 20px;
+  border-inline-start-color: var(--tw-prose-quote-borders);
+  border-inline-start-width: 0.25rem;
+}
+
+.quoteImageContainer { /* stylelint-disable-line */
+  position: relative;
+  float: left;
+  max-width: 154px;
+  margin-right: 25px;
+}
+
+.quoteImage { /* stylelint-disable-line */
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.quoteTitle { /* stylelint-disable-line */
+  padding: 0;
+  margin: 0 0 5px;
+  line-height: 1.4;
+}
+
+.quoteSiteName { /* stylelint-disable-line */
+  padding: 0;
+  margin: 0 0 10px;
+  font-size: .75rem;
+}
+
+.quoteDescription { /* stylelint-disable-line */
+  padding: 0;
+  margin: 0;
+  font-size: .75rem;
+  line-height: 1.6;
+}
+
+/* 地図ユニット */
+[class*='column-map-auto'] .js-open-street-map {
+  max-width: 100%;
+}
+
+
+/* 目次
+=============================== */
 .custom-outline .custom-outline {
   padding-left: 1em;
 }
