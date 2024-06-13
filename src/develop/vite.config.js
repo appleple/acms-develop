@@ -52,6 +52,7 @@ export default defineConfig(({ command, mode }) => {
         rollupOptions: {
           input: {
             bundle: resolve(__dirname, 'src/js/main.js'),
+            admin: resolve(__dirname, 'src/js/admin.js'),
           },
         },
         assetsInlineLimit: 4096, // 4kbより小さいアセットをインライン化

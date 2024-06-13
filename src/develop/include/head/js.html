@@ -8,9 +8,17 @@
 <!-- BEGIN_MODULE Vite -->
 <!-- BEGIN_IF [{useDevServer}/eq/1] -->
 <script type="module" src="{devServerUrl}/@vite/client"></script>
+<!-- BEGIN_MODULE Touch_Admin -->
+<script type="module" src="{devServerUrl}/src/js/admin.js" async></script>
+<!-- END_MODULE Touch_Admin -->
 <script type="module" src="{devServerUrl}/src/js/main.js" async></script>
 <!-- ELSE -->
 <!-- BEGIN manifest -->
+<!-- BEGIN_MODULE Touch_Admin -->
+<!-- BEGIN src/js/admin.js -->
+<script type="module" src="/dist/{file}" async></script>
+<!-- END src/js/admin.js -->
+<!-- END_MODULE Touch_Admin -->
 <!-- BEGIN src/js/main.js -->
 <script type="module" src="/dist/{file}" async></script>
 <!-- END src/js/main.js -->

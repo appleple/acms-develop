@@ -4,6 +4,7 @@ import htmx from 'htmx.org';
 import domContentLoaded from 'dom-content-loaded';
 // import Dispatcher from 'a-dispatcher';
 import './lib/polyfill';
+import edit from './edit';
 import fonts from './fonts';
 import {
   validator,
@@ -29,6 +30,11 @@ import {
  * スタイルの読み込み
  */
 import '../style/main.css';
+
+/**
+ * エントリー編集画面
+ */
+edit();
 
 /**
  * FontAwesome
