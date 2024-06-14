@@ -31,16 +31,15 @@
 @include("/admin/switch-user.html")
 @endsection
 
-<div class="container">
-  <main>
-    @section("main")
-    <p>継承してメインコンテンツを設定してください</p>
+<main>
+  @section("main")
+  <p>継承してメインコンテンツを設定してください</p>
 
-    <!-- 確認用テンプレート -->
-    @include("/include/check-seo.html")
-    @endsection
-  </main>
-</div>
+  <!-- 確認用テンプレート -->
+  @include("/include/check-seo.html")
+  @endsection
+</main>
+
 <!-- CTAセクション -->
 @section("cta")
 @include("/include/parts/cta.html")
