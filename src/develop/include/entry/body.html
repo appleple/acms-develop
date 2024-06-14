@@ -70,7 +70,17 @@
     <!-- BEGIN udate:veil -->
     <p class="mt-8 text-gray-700">更新 <time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}/{date#m}/{date#d} {date#H}:{date#i}</time></p>
     <!-- END udate:veil -->
+
+    <!-- BEGIN_IF [{{sns_share}}/eq/true] -->
+    @include("/include/parts/sns-share.html")
+    <!-- END_IF -->
   </div>
   <!-- END entry:loop -->
+  
+  <!-- BEGIN pager:veil -->
+  <div class="mt-10">
+  @include("/include/parts/serial-navi.html")
+  </div>
+  <!-- END pager:veil -->
 </div>
 <!-- END_MODULE Entry_Body -->
