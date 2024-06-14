@@ -16,6 +16,11 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            a: {
+              '&:hover': {
+                'text-decoration': 'none',
+              }
+            },
             hr: false,
             blockquote: {
               'font-style': 'normal',
