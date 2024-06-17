@@ -3,16 +3,9 @@
 @section("admin-js")
 @parent
 <!-- カスタムJSを記述 -->
-<!-- BEGIN_MODULE Vite -->
-<!-- BEGIN_IF [{useDevServer}/eq/1] -->
-<script type="module" src="{devServerUrl}/@vite/client"></script>
-<script type="module" src="{devServerUrl}/src/js/admin.js" async></script>
-<!-- ELSE -->
-<!-- BEGIN manifest -->
-<!-- BEGIN src/js/admin.js -->
-<script type="module" src="/dist/{file}" async></script>
-<!-- END src/js/admin.js -->
-<!-- END manifest -->
-<!-- END_IF -->
-<!-- END_MODULE Vite -->
+@vite("src/js/admin.js", {
+  "scriptTagAttributes": {
+    "async": true
+  }
+})
 @endsection

@@ -5,25 +5,20 @@
 <script src="/acms.js{arguments}" charset="UTF-8" id="acms-js"></script><!-- END_MODULE Js -->
 <!-- END_MODULE Touch_SessionWithContribution -->
 
-<!-- BEGIN_MODULE Vite -->
-<!-- BEGIN_IF [{useDevServer}/eq/1] -->
-<script type="module" src="{devServerUrl}/@vite/client"></script>
+<!-- BEGIN_MODULE Touch_NotAdmin -->
+@vite("src/js/main.js", {
+  "scriptTagAttributes": {
+    "async": true
+  }
+})
+<!-- END_MODULE Touch_NotAdmin -->
+
 <!-- BEGIN_MODULE Touch_Admin -->
-<script type="module" src="{devServerUrl}/src/js/admin.js" async></script>
+@vite(["src/js/main.js", "src/js/admin.js"], {
+  "scriptTagAttributes": {
+    "async": true
+  }
+})
 <!-- END_MODULE Touch_Admin -->
-<script type="module" src="{devServerUrl}/src/js/main.js" async></script>
-<!-- ELSE -->
-<!-- BEGIN manifest -->
-<!-- BEGIN_MODULE Touch_Admin -->
-<!-- BEGIN src/js/admin.js -->
-<script type="module" src="/dist/{file}" async></script>
-<!-- END src/js/admin.js -->
-<!-- END_MODULE Touch_Admin -->
-<!-- BEGIN src/js/main.js -->
-<script type="module" src="/dist/{file}" async></script>
-<!-- END src/js/main.js -->
-<!-- END manifest -->
-<!-- END_IF -->
-<!-- END_MODULE Vite -->
 
 <!--BEGIN_MODULE Touch_Unlogin --><!-- BEGIN_MODULE Blog_Field id="BF_root" -->{google_analytics}[raw|allow_dangerous_tag]<!-- END_MODULE Blog_Field --><!-- END_MODULE Touch_Unlogin -->
