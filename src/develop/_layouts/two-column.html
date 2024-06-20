@@ -37,6 +37,12 @@
 @endsection
 
 <div class="container mx-auto px-4 py-20">
+  @section("topicpath")
+  <div class="mb-10">
+  @include("/include/topicpath.html")
+  </div>
+  @endsection
+
   <div class="grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-[minmax(0,_1fr)_180px] lg:grid-cols-[minmax(0,_1fr)_288px] lg:gap-x-20">
     <main>
       @section("main")

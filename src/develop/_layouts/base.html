@@ -25,13 +25,24 @@
 @include("/include/header.html")
 @endsection
 
+<!-- ページタイトル -->
+@section("page-title")
+@include("/include/parts/page-title.html")
+@endsection
+
 <!-- ※管理用パーツ -->
 @section("admin-part")
 @include("/admin/action.html")
 @include("/admin/switch-user.html")
 @endsection
 
-<main>
+<main class="container mx-auto px-4 py-20">
+  @section("topicpath")
+  <div class="mb-10">
+    @include("/include/topicpath.html")
+  </div>
+  @endsection
+
   @section("main")
   <p>継承してメインコンテンツを設定してください</p>
 

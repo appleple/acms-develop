@@ -1,28 +1,23 @@
-<!-- BEGIN_MODULE Entry_TagRelational id="{{module_id}}" -->
+<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
 <div>
   @include("/admin/module/setting.html")
-
-  <div class="max-w-7xl mx-auto py-8 sm:py-16 sm:text-center">
-    <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">関連記事</h2>
-    <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl first-letter:uppercase">Recommendations</p>
-  </div>
 
   <!-- BEGIN unit:loop -->
   <div class="flex grid grid-cols-12 pb-10 gap-x-8 gap-y-16">
     <!-- BEGIN entry:loop -->
-    <div class="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-3">
+    <div class="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6">
       <a href="{url}" class="block w-full">
         <!-- BEGIN_IF [{path}/nem] -->
         <img
           src="%{ROOT_DIR}{path}"
           alt="{alt}"
-          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-32"
+          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56"
         >
         <!-- ELSE -->
         <img
           src="/images/default/noimage.gif"
           alt=""
-          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-32"
+          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56"
         >
         <!-- END_IF -->
         <h2 class="mt-4 text-lg font-bold">{title}</h2>
@@ -34,4 +29,4 @@
   </div>
   <!-- END unit:loop -->
 </div>
-<!-- END_MODULE Entry_TagRelational -->
+<!-- END_MODULE Entry_Summary -->
