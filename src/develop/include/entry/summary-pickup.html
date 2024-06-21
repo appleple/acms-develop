@@ -1,0 +1,33 @@
+<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
+<div>
+  @include("/admin/module/setting.html")
+
+  <div class="mb-8">
+    <!-- BEGIN unit:loop --><!-- BEGIN entry:loop -->
+    <a class="flex flex-col items-center md:flex-row">
+      <div class="w-full md:w-1/2">
+        <!-- BEGIN_IF [{path}/nem] -->
+        <img
+          src="%{ROOT_DIR}{path}"
+          alt="{alt}"
+          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-64 sm:max-h-96"
+        >
+        <!-- ELSE -->
+        <img
+          src="/images/default/noimage.gif"
+          alt=""
+          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-64 sm:max-h-96"
+        >
+        <!-- END_IF -->
+      </div>
+      <div class="flex flex-col items-start justify-center w-full h-full py-6 mb-6 md:mb-0 md:w-1/2">
+        <div class="flex flex-col items-start justify-center h-full space-y-3 transform md:pl-10 lg:pl-16 md:space-y-5">
+          <h1 class="text-4xl font-bold lg:text-5xl xl:text-6xl leading-snug">{title}</h1>
+          <p class="pt-2 text-xs font-medium"><time datetime="{date#}[date('Y-m-d')]">{date#}[date('Y/m/d')]</time></p>
+        </div>
+      </div>
+    </a>
+    <!-- END entry:loop --><!-- END unit:loop -->
+  </div>
+</div>
+<!-- END_MODULE Entry_Summary -->
