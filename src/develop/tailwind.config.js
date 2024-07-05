@@ -6,13 +6,18 @@ module.exports = {
   content: [
     // node_modules を除外するため個別指定
     './*.html',
-    './(_layouts|admin|include)/**/*.html',
+    './(_layouts|admin|include|contact)/**/*.html',
     './src/**/*.{js,ts,jsx,tsx,vue}',
     // 継承テーマでtailwindcssを使う場合は以下をコメントアウトしてください
     // `../*@${path.basename(__dirname)}/**/*.html`,
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'circle': 'url("/themes/develop/images/fa-circle-solid.svg")',
+        'check': 'url("/themes/develop/images/fa-check-solid.svg")',
+        'select': 'url("/themes/develop/images/fa-chevron-down-solid.svg")',
+      },
       typography: {
         DEFAULT: {
           css: {

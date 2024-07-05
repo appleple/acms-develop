@@ -1,0 +1,96 @@
+<!-- BEGIN_MODULE Form -->
+
+<!-- BEGIN error -->
+<!-- フォームID : {formID} エラー項目 : {errorKey} -->
+<p class="text-gray-900 mb-10">入力内容をもう一度ご確認ください。</p>
+<!-- END error -->
+
+<!-- BEGIN step -->
+<!-- フォームステップ：初期 -->
+<form action="?step=reapply#orderForm" method="post" enctype="multipart/form-data">
+  @include("/contact/form/input.html")
+  <div class="mt-12 pt-10 text-right border-t border-solid border-slate-300">
+    <input type="hidden" name="step" value="confirm">
+    <input type="hidden" name="error" value="reapply">
+    <input type="hidden" name="id" value="contactForm">
+
+    <input type="submit" name="ACMS_POST_Form_Confirm" value="送信内容の確認へ" id="btnSubmit"
+      class="inline-block px-8 py-3 text-sm font-semibold text-center text-white transition duration-100 bg-indigo-600 rounded-md outline-none hover:bg-indigo-500 active:bg-indigo-700 ring-blue-300 md:text-base">
+  </div>
+</form>
+<!-- END step -->
+
+<!-- BEGIN step#reapply -->
+<!-- フォームステップ：修正・エラー -->
+<form action="?step=reapply#orderForm" method="post" enctype="multipart/form-data">
+  @include("/contact/form/input.html")
+  <div class="mt-12 pt-10 text-right border-t border-solid border-slate-300">
+    <input type="hidden" name="step" value="confirm">
+    <input type="hidden" name="error" value="reapply">
+    <input type="hidden" name="id" value="contactForm">
+
+    <input type="submit" name="ACMS_POST_Form_Confirm" value="送信内容の確認へ" id="btnSubmit"
+      class="inline-block px-8 py-3 text-sm font-semibold text-center text-white transition duration-100 bg-indigo-600 rounded-md outline-none hover:bg-indigo-500 active:bg-indigo-700 ring-blue-300 md:text-base">
+  </div>
+</form>
+<!-- END step#reapply -->
+
+
+<!-- BEGIN step#confirm -->
+<!-- フォームステップ：確認画面 -->
+<p class="text-gray-900 mb-10">以下の内容で送信します。内容に誤りがないかよくご確認ください。</p>
+
+@include("/contact/form/confirm.html")
+<div class="flex justify-end items-center gap-6 mt-12 pt-10 border-t border-solid border-slate-300">
+  <form action="" method="post">
+    <input type="hidden" name="step" value="reapply">
+    <input type="hidden" name="takeover" value="{takeover}">
+    <input type="submit" name="ACMS_POST_Form_Chain" value="入力内容を修正する" id="btnToInput"
+      class="inline-block px-8 py-3 text-sm font-semibold text-center md:text-base transition duration-100 bg-neutral-50 rounded-md outline-none hover:text-neutral-600 hover:bg-neutral-100 ring-blue-300 focus:ring-neutral-100">
+  </form>
+
+  <form action="thanks.html#orderForm" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="To[]" value="{email}">
+    <input type="hidden" name="AdminReply-To[]" value="{email}">
+    <input type="hidden" name="AdminFrom[]" value="{email}">
+    <input type="hidden" name="step" value="result">
+    <input type="hidden" name="takeover" value="{takeover}">
+    <input type="hidden" name="id" value="contactForm">
+    <input type="submit" name="ACMS_POST_Form_Submit" value="送信する" id="btnSubmit"
+      class="inline-block px-8 py-3 text-sm font-semibold text-center text-white transition duration-100 bg-indigo-600 rounded-md outline-none hover:bg-indigo-500 active:bg-indigo-700 ring-blue-300 md:text-base">
+  </form>
+</div>
+<!-- END step#confirm -->
+
+<!-- BEGIN step#result -->
+<!-- フォームステップ：完了画面 -->
+<p class="md:text-center mb-10">入力内容を送信しました。お問い合わせいただきありがとうございました。</p>
+
+<p class="mt-8 text-center">
+  <a href="%{HOME_URL}" class="inline-flex items-center justify-center px-6 py-4 font-medium tracking-wide text-white transition-colors duration-200 rounded-md bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none">
+    トップページへ
+  </a>
+</p>
+<!-- END step#result -->
+
+<!-- BEGIN step#forbidden -->
+<p class="md:text-center mb-10"><b class="font-bold">不正なアクセスです</b><br>お手数ですがはじめからご入力ください。</p>
+
+<p class="mt-8 text-center">
+  <a href="%{HOME_URL}contact/" class="inline-flex items-center justify-center px-6 py-4 font-medium tracking-wide text-white transition-colors duration-200 rounded-md bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none">
+    お問い合わせフォームへ戻る
+  </a>
+</p>
+<!-- END step#forbidden -->
+
+<!-- BEGIN step#repeated -->
+<p class="md:text-center mb-10"><b class="font-bold">連続投稿は禁止されています。</b><br>入力された内容は正常に送信されました。<br>送信内容は、登録されたメールアドレス宛にお送りした確認メールからご確認ください。</p>
+
+<p class="mt-8 text-center">
+  <a href="%{HOME_URL}" class="inline-flex items-center justify-center px-6 py-4 font-medium tracking-wide text-white transition-colors duration-200 rounded-md bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none">
+    トップページへ
+  </a>
+</p>
+<!-- END step#repeated -->
+
+<!-- END_MODULE Form -->

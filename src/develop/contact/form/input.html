@@ -1,0 +1,181 @@
+<div>
+  <h2 class="mb-2">
+    <label for="name" class="inline-block text-sm font-medium sm:text-base">お名前</label>
+    <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
+  </h2>
+  <div>
+    <input name="name" type="text" value="{name}" placeholder="例）山田 太郎" autocomplete="name" id="name"
+      class="w-full md:w-6/12 px-3 py-2 text-gray-800 transition duration-100 border rounded-md outline-none bg-gray-50 focus:ring ring-blue-300">
+    <input type="hidden" name="field[]" value="name">
+    <input type="hidden" name="name:v#required">
+    <input type="hidden" name="name:c" value="KV">
+  </div>
+  <!-- BEGIN name:v#required -->
+  <div role="alert"
+    class="flex w-full mt-2 text-red-600 [&>svg]:text-foreground">
+    <span aria-hidden="true">
+      <svg class="w-5 h-5 -translate-y-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+    </span>
+    <p class="ml-2 mb-1 font-medium leading-none tracking-tight">お名前を入力してください</p>
+  </div>
+  <!-- END name:v#required -->
+</div>
+
+<div class="mt-8">
+  <h2 class="mb-2">
+    <label for="email" class="inline-block text-sm font-medium sm:text-base">メールアドレス</label>
+    <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
+  </h2>
+  <div class="mt-2">
+    <input name="email" type="email" value="{email}" autocomplete="email" placeholder="例）yamada@example.com" id="email"
+      class="w-full px-3 py-2 text-gray-800 transition duration-100 border rounded-md outline-none bg-gray-50 focus:ring ring-blue-300">
+
+    <input type="hidden" name="field[]" value="email">
+    <input type="hidden" name="email:v#required">
+    <input type="hidden" name="email:v#email">
+  </div>
+
+  <!-- BEGIN email:v#required -->
+  <div role="alert"
+    class="flex w-full mt-2 text-red-600 [&>svg]:text-foreground">
+    <span aria-hidden="true">
+      <svg class="w-5 h-5 -translate-y-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+    </span>
+    <p class="ml-2 mb-1 font-medium leading-none tracking-tight">メールアドレスを入力してください</p>
+  </div>
+  <!-- END email:v#required -->
+  <!-- BEGIN email:v#email -->
+  <div role="alert"
+    class="flex w-full mt-2 text-red-600 [&>svg]:text-foreground">
+    <span aria-hidden="true">
+      <svg class="w-5 h-5 -translate-y-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+    </span>
+    <p class="ml-2 mb-1 font-medium leading-none tracking-tight">正しいメールアドレスを入力してください</p>
+  </div>
+  <!-- END email:v#email -->
+</div>
+
+<div class="mt-8">
+  <h2 class="mb-2">
+    <label for="description" class="inline-block text-sm font-medium sm:text-base">お問い合わせ種別</label>
+    <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
+  </h2>
+  <div class="mt-2">
+    <select id="description" name="description"
+      class="appearance-none block w-full md:w-6/12 pl-3 pr-10 py-2 text-gray-800 transition duration-100 border rounded-md outline-none focus:ring ring-blue-300 bg-select bg-[right_1rem_center] bg-no-repeat bg-[length:1rem_auto]">
+      <option>選択してください</option>
+      <option value="お仕事のご依頼・ご相談" {description:selected#お仕事のご依頼・ご相談}>お仕事のご依頼・ご相談</option>
+      <option value="記事内容について" {description:selected#記事内容について}>記事内容について</option>
+      <option value="その他のお問い合わせ" {description:selected#その他のお問い合わせ}>その他のお問い合わせ</option>
+    </select>
+    <input type="hidden" name="field[]" value="description">
+    <input type="hidden" name="description:v#required">
+  </div>
+
+  <!-- BEGIN description:v#required -->
+  <div role="alert"
+    class="flex w-full mt-2 text-red-600 [&>svg]:text-foreground">
+    <span aria-hidden="true">
+      <svg class="w-5 h-5 -translate-y-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+    </span>
+    <p class="ml-2 mb-1 font-medium leading-none tracking-tight">お問い合わせ種別を選択してください</p>
+  </div>
+  <!-- END description:v#required -->
+</div>
+
+<div class="mt-8">
+  <h2 class="mb-2">
+    <label for="inquiry" class="inline-block text-sm font-medium sm:text-base">お問い合わせ内容</label>
+    <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
+  </h2>
+  <div>
+    <textarea name="inquiry" id="inquiry" rows="4"
+      class="w-full px-3 py-2 text-gray-800 transition duration-100 border rounded-md outline-none bg-gray-50 focus:ring ring-blue-300">{inquiry}</textarea>
+    <input type="hidden" name="field[]" value="inquiry">
+    <input type="hidden" name="inquiry:v#required">
+  </div>
+
+  <!-- BEGIN inquiry:v#required -->
+  <div role="alert"
+    class="flex w-full mt-2 text-red-600 [&>svg]:text-foreground">
+    <span aria-hidden="true">
+      <svg class="w-5 h-5 -translate-y-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+    </span>
+    <p class="ml-2 mb-1 font-medium leading-none tracking-tight">お問い合わせ内容を入力してください</p>
+  </div>
+  <!-- END inquiry:v#required -->
+</div>
+
+<div class="mt-8">
+  <h2 class="mb-2">
+    <span class="inline-block text-sm font-medium sm:text-base">このサイトを何で知りましたか？</span>
+    <span class="bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">任意</span>
+  </h2>
+  <div>
+    <div class="flex items-center gap-x-3">
+      <input type="radio" name="cue" value="SNS" {cue:checked#SNS} id="cue-sns"
+        class="appearance-none h-4 w-4 border border-gray-300 rounded-full text-indigo-600 focus:ring-indigo-600 bg-no-repeat bg-[length:.5rem_auto] bg-center checked:border-transparent checked:bg-current checked:bg-circle">
+      <label for="cue-sns" class="font-medium cursor-pointer">SNS</label>
+    </div>
+    <div class="flex items-center gap-x-3 mt-1">
+      <input type="radio" name="cue" value="ウェブ検索" {cue:checked#ウェブ検索} id="cue-search"
+        class="appearance-none h-4 w-4 border border-gray-300 rounded-full text-indigo-600 focus:ring-indigo-600 bg-no-repeat bg-[length:.5rem_auto] bg-center checked:border-transparent checked:bg-current checked:bg-circle">
+      <label for="cue-search" class="font-medium cursor-pointer">ウェブ検索</label>
+    </div>
+    <div class="flex items-center gap-x-3 mt-1">
+      <input type="radio" name="cue" value="イベント" {cue:checked#イベント} id="cue-event"
+        class="appearance-none h-4 w-4 border border-gray-300 rounded-full text-indigo-600 focus:ring-indigo-600 bg-no-repeat bg-[length:.5rem_auto] bg-center checked:border-transparent checked:bg-current checked:bg-circle">
+      <label for="cue-event" class="font-medium cursor-pointer">イベント</label>
+    </div>
+    <div class="flex items-center gap-x-3 mt-1">
+      <input type="radio" name="cue" value="その他" {cue:checked#その他} id="cue-others"
+        class="appearance-none h-4 w-4 border border-gray-300 rounded-full text-indigo-600 focus:ring-indigo-600 bg-no-repeat bg-[length:.5rem_auto] bg-center checked:border-transparent checked:bg-current checked:bg-circle">
+      <label for="cue-others" class="font-medium cursor-pointer">その他</label>
+    </div>
+    <input type="hidden" name="field[]" value="cue">
+  </div>
+</div>
+
+<div class="mt-8">
+  <h2 class="mb-2">
+    <span class="inline-block text-sm font-medium sm:text-base">プライバシーポリシー</span>
+    <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
+  </h2>
+  <div>
+    <!-- BEGIN_MODULE Category_Field -->
+    <!-- BEGIN privacy_policy:veil -->
+    <div class="mb-3">
+      @include("/include/edit/category-custom.html")
+      <div class="overflow-auto h-60 p-6 border rounded-md">
+        <p>{privacy_policy}[nl2br4html]</p>
+      </div>
+    </div>
+    <!-- END privacy_policy:veil -->
+    <!-- END_MODULE Category_Field -->
+    <div class="relative flex gap-x-3">
+      <div class="flex h-6 items-center">
+        <input type="checkbox" name="privacy[]" value="1" {privacy:checked#1} id="privacy"
+          class="appearance-none h-4 w-4 border border-gray-300 rounded text-indigo-600 focus:ring-indigo-600 bg-[length:.75rem_auto] bg-center bg-no-repeat checked:border-transparent checked:bg-current checked:bg-check">
+      </div>
+      <div class="leading-6">
+        <label for="privacy" class="font-medium cursor-pointer">上記のプライバシーポリシーに同意する</label>
+      </div>
+    </div>
+    <input type="hidden" name="field[]" value="privacy">
+    <input type="hidden" name="privacy:v#required">
+  </div>
+
+  <!-- BEGIN privacy:v#required -->
+  <div role="alert"
+    class="flex w-full mt-2 text-red-600 [&>svg]:text-foreground">
+    <span aria-hidden="true">
+      <svg class="w-5 h-5 -translate-y-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+    </span>
+    <p class="ml-2 mb-1 font-medium leading-none tracking-tight">プライバシーポリシーに同意してください</p>
+  </div>
+  <!-- END privacy:v#required -->
+</div>
+
+<!-- お問い合わせNo（件名用） -->
+<input type="hidden" name="contactNo" value="%{Y}%{n}%{j}%{H}%{i}%{s}">
+<input type="hidden" name="field[]" value="contactNo">
