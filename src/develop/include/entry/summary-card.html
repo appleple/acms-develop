@@ -2,6 +2,14 @@
 <div>
   @include("/admin/module/setting.html")
 
+  <!-- BEGIN notFound -->
+  <p class="text-lg text-center">記事が見つかりませんでした。</p>
+  <!-- END notFound -->
+
+  <!-- BEGIN_MODULE Touch_Keyword -->
+  <p class="text-lg font-bold mb-8">%{KEYWORD} の検索結果{itemsAmount}件</p>
+  <!-- END_MODULE Touch_Keyword -->
+
   <!-- BEGIN unit:loop -->
   <div class="flex grid grid-cols-12 pb-10 gap-x-8 gap-y-16">
     <!-- BEGIN entry:loop -->
