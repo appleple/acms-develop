@@ -57,12 +57,12 @@
     </main>
 
     <aside class="lg:block" :class="{'block': showSideMenu, 'hidden': !showSideMenu }">
-      <div class="fixed inset-0 bg-black bg-opacity-10"
+      <div class="fixed inset-0 bg-black bg-opacity-30"
         x-show="showSideMenu"
-        x-transition.opacity.duration.600ms
+        x-transition
         @click="showSideMenu = false"
       ></div>
-      <div class="max-lg:fixed top-0 right-0 bottom-0 max-lg:p-6 bg-white transition-transform" :class="{'max-lg:translate-x-0': showSideMenu, 'max-lg:translate-x-full': !showSideMenu }">
+      <div class="max-lg:fixed top-0 right-0 bottom-0 max-lg:p-6 bg-white transition-transform" :class="{'max-lg:translate-x-0': showSideMenu, : !showSideMenu }">
         <div class="max-lg:max-h-full max-lg:overflow-auto">
           @section("aside")
           @endsection
