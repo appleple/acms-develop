@@ -43,7 +43,10 @@
   </div>
   @endsection
 
-  <div class="grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-[minmax(0,_1fr)_180px] lg:grid-cols-[minmax(0,_1fr)_288px] lg:gap-x-20">
+  <div
+    x-data="{ showSideMenu: false }"
+    class="grid grid-cols-1 gap-x-10 gap-y-20 lg:grid-cols-[minmax(0,_1fr)_288px] lg:gap-x-20"
+  >
     <main>
       @section("main")
       <p>継承してメインコンテンツを設定してください</p>
@@ -53,10 +56,25 @@
       @endsection
     </main>
 
-    <aside>
-      @section("aside")
-      @endsection
+    <aside class="lg:block" :class="{'block': showSideMenu, 'hidden': !showSideMenu }">
+      <div class="fixed inset-0 bg-black bg-opacity-10"
+        x-show="showSideMenu"
+        x-transition.opacity.duration.600ms
+        @click="showSideMenu = false"
+      ></div>
+      <div class="max-lg:fixed top-0 right-0 bottom-0 max-lg:p-6 bg-white transition-transform" :class="{'max-lg:translate-x-0': showSideMenu, 'max-lg:translate-x-full': !showSideMenu }">
+        <div class="max-lg:max-h-full max-lg:overflow-auto">
+          @section("aside")
+          @endsection
+        </div>
+      </div>
     </aside>
+
+    <button class="fixed right-6 bottom-6 inline-flex items-center justify-center lg:hidden px-2 py-2 text-sm font-medium tracking-wide transition-colors duration-200 bg-white border rounded-md text-gray-900 hover:text-neutral-700 border-neutral-200/70 hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline" @click="showSideMenu = !showSideMenu" aria-label="サイドメニュー表示切替">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
+        <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clip-rule="evenodd" />
+      </svg>
+    </button>
   </div>
 </div>
 <!-- CTAセクション -->
