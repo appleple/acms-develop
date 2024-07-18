@@ -11,6 +11,9 @@ module.exports = {
     // 継承テーマでtailwindcssを使う場合は以下をコメントアウトしてください
     // `../*@${path.basename(__dirname)}/**/*.html`,
   ],
+  corePlugins: {
+    preflight: false,
+  },
   theme: {
     extend: {
       backgroundImage: {
