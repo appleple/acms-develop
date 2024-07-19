@@ -402,13 +402,18 @@
 
 /* エントリー本文
 =============================== */
-.clearHidden { /* stylelint-disable-line */
+.custom-entry-body .clearHidden { /* stylelint-disable-line */
   display: block;
   height: 0;
   margin: 0;
   clear: both;
   visibility: hidden;
   border: none;
+}
+
+.custom-entry-body .entry-container {
+  margin-right: 0;
+  margin-left: 0;
 }
 
 /* テーブル */
