@@ -14,12 +14,7 @@
     <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl first-letter:uppercase">Blogs</p>
   </div>
 
-  @include("/include/entry/summary-pickup.html", {
-    "module_id": "summary_latest_first"
-  })
-
   @include("/include/entry/summary-card.html", {
-    "module_id": "summary_latest_offset",
     "column_class": "sm:col-span-4"
   })
 

@@ -1,4 +1,4 @@
-<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
+<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" ctx="{{ctx}}" -->
 <div>
   @include("/admin/module/setting.html")
 
@@ -28,6 +28,12 @@
           class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56"
         >
         <!-- END_IF -->
+        <!-- BEGIN category:veil -->
+        <div
+          class="bg-gray-500 inline-block mt-2 px-3 py-1.5 leading-none rounded-full text-xs font-medium uppercase text-white inline-block">
+          <span>{categoryName}</span>
+        </div>
+        <!-- END category:veil -->
         <h2 class="mt-4 text-lg font-bold">{title}</h2>
         <p class="mt-2 text-sm text-gray-500">{summary}</p>
         <p class="pt-2 text-xs font-medium"><time datetime="{date#}[date('Y-m-d')]">{date#}[date('Y/m/d')]</time></p>

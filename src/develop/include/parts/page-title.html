@@ -1,10 +1,15 @@
 <div class="h-auto border-y-2 border-slate-100 border-solid bg-white">
   <div class="max-w-7xl mx-auto py-16 px-10 sm:py-24 sm:px-6 lg:px-8 sm:text-center">
-    <!-- BEGIN_IF [%{CID}/nem]-->
+    <!-- BEGIN_MODULE Touch_Category -->
     <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">%{CATEGORY_NAME}</h2>
     <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl first-letter:uppercase">%{CCD}</p>
-    <!-- ELSE -->
+    <!-- BEGIN_MODULE Touch_Entry -->
     <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl first-letter:uppercase">%{ENTRY_TITLE}</h2>
-    <!-- END_IF -->
+    <!-- END_MODULE Touch_Entry -->
+    <!-- END_MODULE Touch_Category -->
+    <!-- BEGIN_MODULE Touch_NotCategory -->
+    <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">ブログ</h2>
+    <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl first-letter:uppercase">Blogs</p>
+    <!-- END_MODULE Touch_NotCategory -->
   </div>
 </div>

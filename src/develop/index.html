@@ -2,8 +2,7 @@
 
 @section("main")
 @include("/include/tag/filter.html")
-
 @include("/include/entry/summary-card.html", {
-  "module_id": "summary_index"
+  "ctx": "cid/%{CID}/page/%{PAGE}/%{DATE_YEAR}/%{DATE_MONTH}/keyword/%{KEYWORD}/tag/%{TAG}/"
 })
 @endsection
