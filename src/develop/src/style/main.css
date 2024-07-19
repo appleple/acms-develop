@@ -504,3 +504,22 @@
   content: "";
   background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>') no-repeat center center;
 }
+
+
+/* フォームバリデーター
+=============================== */
+/* stylelint-disable */
+.validator-result-,
+.validator-result-1,
+.v-result-,
+.v-result-1 {
+  display: none;
+}
+
+.validator-result-error,
+.validator-result-0,
+.v-result-error,
+.v-result-0 {
+  display: block;
+}
+/* stylelint-enable */

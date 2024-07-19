@@ -7,7 +7,7 @@
 
 <!-- BEGIN step -->
 <!-- フォームステップ：初期 -->
-<form action="?step=reapply#orderForm" method="post" enctype="multipart/form-data">
+<form action="?step=reapply#orderForm" method="post" enctype="multipart/form-data" class="js-validator">
   @include("/contact/form/input.html")
   <div class="mt-12 pt-10 text-right border-t border-solid border-slate-300">
     <input type="hidden" name="step" value="confirm">
@@ -22,7 +22,7 @@
 
 <!-- BEGIN step#reapply -->
 <!-- フォームステップ：修正・エラー -->
-<form action="?step=reapply#orderForm" method="post" enctype="multipart/form-data">
+<form action="?step=reapply#orderForm" method="post" enctype="multipart/form-data" class="js-validator">
   @include("/contact/form/input.html")
   <div class="mt-12 pt-10 text-right border-t border-solid border-slate-300">
     <input type="hidden" name="step" value="confirm">
