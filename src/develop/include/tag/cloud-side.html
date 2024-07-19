@@ -3,7 +3,7 @@
   @include("/admin/module/setting.html")
   <ul class="flex gap-3">
     <!-- BEGIN tag:loop -->
-    <li><span class="tagSize{level}"><a href="{url}" title="{amount}件">#{name}</a></span></li>
+    <li><span class="tagSize{level}"><a href="%{CATEGORY_URL}tag/{name}/" title="{amount}件">#{name}</a></span></li>
     <!-- END tag:loop -->
   </ul>
 </div>
