@@ -3,11 +3,11 @@
   @include("/admin/module/setting.html")
 
   <!-- BEGIN notFound -->
-  <p class="text-lg text-center">記事が見つかりませんでした。</p>
+  <p class="text-gray-800 text-lg text-center">記事が見つかりませんでした。</p>
   <!-- END notFound -->
 
   <!-- BEGIN_MODULE Touch_Keyword -->
-  <p class="text-xl font-bold mb-8">%{KEYWORD} の検索結果：{itemsAmount}件</p>
+  <p class="text-gray-800 text-xl font-bold mb-8">%{KEYWORD} の検索結果：{itemsAmount}件</p>
   <!-- END_MODULE Touch_Keyword -->
 
   <!-- BEGIN unit:loop -->
@@ -34,9 +34,9 @@
           <span>{categoryName}</span>
         </div>
         <!-- END category:veil -->
-        <h2 class="mt-4 text-lg font-bold">{title}</h2>
-        <p class="mt-2 text-sm text-gray-500">{summary}</p>
-        <p class="pt-2 text-xs font-medium"><time datetime="{date#}[date('Y-m-d')]">{date#}[date('Y/m/d')]</time></p>
+        <h2 class="mt-4 text-gray-800 text-lg font-bold">{title}</h2>
+        <p class="mt-2 text-gray-500 text-sm">{summary}</p>
+        <p class="pt-2 text-gray-800 text-xs font-medium"><time datetime="{date#}[date('Y-m-d')]">{date#}[date('Y/m/d')]</time></p>
       </a>
     </div>
     <!-- END entry:loop -->
