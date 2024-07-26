@@ -506,9 +506,9 @@
 }
 
 
+/* stylelint-disable */
 /* フォームバリデーター
 =============================== */
-/* stylelint-disable */
 .validator-result-,
 .validator-result-1,
 .v-result-,
@@ -522,4 +522,34 @@
 .v-result-0 {
   display: block;
 }
+
+
+/* テーブルユニット
+=============================== */
+@media (max-width: 1023px) {
+  [class*=column-table-] table:not([class]) th,
+  [class*=column-table-] table:not([class]) td {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  [class*=column-table-] table:not([class]) th {
+    padding-bottom: 0;
+    text-align: left;
+  }
+
+  [class*=column-table-] table:not([class]) td {
+    padding-top: 3px;
+  }
+}
+
+[class*=column-table-] .entry-container {
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  overflow-y: visible !important;
+}
+
 /* stylelint-enable */
