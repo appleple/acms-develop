@@ -3,8 +3,9 @@ import Alpine from 'alpinejs';
 import htmx from 'htmx.org';
 import domContentLoaded from 'dom-content-loaded';
 // import Dispatcher from 'a-dispatcher';
-import './lib/polyfill';
 import fonts from './fonts';
+import scrollToInvalid from './scrollToInvalid';
+import './lib/polyfill';
 import {
   validator,
   linkMatchLocation,
@@ -48,6 +49,15 @@ async function loadAlpineModules() {
  */
 function createBuildInJsDispatcher() {
   if (window.ACMS !== undefined) {
+    // フォームエラー時、エラーのある項目までスクロールする
+    ACMS.Ready(() => {
+      ACMS.addListener('acmsValidateFailed', (event) => {
+        const formElm = event.target.querySelector('.js-validator');
+        const parentClass = '.js-form-item';
+        scrollToInvalid(formElm, parentClass);
+      });
+    });
+
     return ACMS.Dispatch
   }
 

@@ -1,11 +1,11 @@
-<div>
+<div class="js-form-item">
   <h2 class="mb-2">
     <label for="name" class="inline-block text-sm font-medium sm:text-base">お名前</label>
     <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
   </h2>
   <div>
-    <input name="name" type="text" value="{name}" placeholder="例）山田 太郎" autocomplete="name" id="name"
-      class="w-full md:w-6/12 px-3 py-2 text-gray-800 transition duration-100 border rounded-md outline-none bg-gray-50 focus:ring ring-blue-300">
+    <input name="name" type="text" value="{name}" placeholder="例）山田 太郎" autocomplete="name" id="name" data-validator="name"
+      class="w-full md:w-6/12 px-3 py-2 text-gray-800 transition duration-100 border rounded-md outline-none bg-gray-50 [&.invalid]:border-red-500 [&.invalid]:bg-red-100 focus:ring ring-blue-300">
     <input type="hidden" name="field[]" value="name">
     <input type="hidden" name="name:v#required" id="name-v-required">
     <input type="hidden" name="name:c" value="KV">
@@ -21,14 +21,14 @@
   </label>
 </div>
 
-<div class="mt-8">
+<div class="mt-8 js-form-item">
   <h2 class="mb-2">
     <label for="email" class="inline-block text-sm font-medium sm:text-base">メールアドレス</label>
     <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
   </h2>
   <div class="mt-2">
-    <input name="email" type="email" value="{email}" autocomplete="email" placeholder="例）yamada@example.com" id="email"
-      class="w-full px-3 py-2 text-gray-800 transition duration-100 border rounded-md outline-none bg-gray-50 focus:ring ring-blue-300">
+    <input name="email" type="email" value="{email}" autocomplete="email" placeholder="例）yamada@example.com" id="email" data-validator="email"
+      class="w-full px-3 py-2 text-gray-800 transition duration-100 border rounded-md outline-none bg-gray-50 [&.invalid]:border-red-500 [&.invalid]:bg-red-100 focus:ring ring-blue-300">
 
     <input type="hidden" name="field[]" value="email">
     <input type="hidden" name="email:v#required" id="email-v-required">
@@ -57,14 +57,14 @@
   </label>
 </div>
 
-<div class="mt-8">
+<div class="mt-8 js-form-item">
   <h2 class="mb-2">
     <label for="description" class="inline-block text-sm font-medium sm:text-base">お問い合わせ種別</label>
     <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
   </h2>
   <div class="mt-2">
-    <select id="description" name="description"
-      class="appearance-none block w-full md:w-6/12 pl-3 pr-10 py-2 text-gray-800 transition duration-100 border rounded-md outline-none focus:ring ring-blue-300 bg-select bg-[right_1rem_center] bg-no-repeat bg-[length:1rem_auto]">
+    <select id="description" name="description" data-validator="description"
+      class="appearance-none block w-full md:w-6/12 pl-3 pr-10 py-2 text-gray-800 transition duration-100 border rounded-md outline-none focus:ring ring-blue-300 bg-select bg-[right_1rem_center] bg-no-repeat bg-[length:1rem_auto] [&.invalid]:border-red-500 [&.invalid]:bg-red-100">
       <option value="">選択してください</option>
       <option value="お仕事のご依頼・ご相談" {description:selected#お仕事のご依頼・ご相談}>お仕事のご依頼・ご相談</option>
       <option value="記事内容について" {description:selected#記事内容について}>記事内容について</option>
@@ -85,14 +85,14 @@
   </label>
 </div>
 
-<div class="mt-8">
+<div class="mt-8 js-form-item">
   <h2 class="mb-2">
     <label for="inquiry" class="inline-block text-sm font-medium sm:text-base">お問い合わせ内容</label>
     <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
   </h2>
   <div>
-    <textarea name="inquiry" id="inquiry" rows="4"
-      class="w-full px-3 py-2 text-gray-800 transition duration-100 border rounded-md outline-none bg-gray-50 focus:ring ring-blue-300">{inquiry}</textarea>
+    <textarea name="inquiry" id="inquiry" rows="4" data-validator="inquiry"
+      class="w-full px-3 py-2 text-gray-800 transition duration-100 border rounded-md outline-none bg-gray-50 [&.invalid]:border-red-500 [&.invalid]:bg-red-100 focus:ring ring-blue-300">{inquiry}</textarea>
     <input type="hidden" name="field[]" value="inquiry">
     <input type="hidden" name="inquiry:v#required" id="inquiry-v-required">
   </div>
@@ -108,7 +108,7 @@
   </label>
 </div>
 
-<div class="mt-8">
+<div class="mt-8 js-form-item">
   <h2 class="mb-2">
     <span class="inline-block text-sm font-medium sm:text-base">このサイトを何で知りましたか？</span>
     <span class="bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">任意</span>
@@ -138,7 +138,7 @@
   </div>
 </div>
 
-<div class="mt-8">
+<div class="mt-8 js-form-item">
   <h2 class="mb-2">
     <span class="inline-block text-sm font-medium sm:text-base">プライバシーポリシー</span>
     <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
@@ -156,8 +156,8 @@
     <!-- END_MODULE Category_Field -->
     <div class="relative flex gap-x-3">
       <div class="flex h-6 items-center">
-        <input type="checkbox" name="privacy[]" value="1" {privacy:checked#1} id="privacy"
-          class="appearance-none h-4 w-4 border border-gray-300 rounded text-indigo-600 focus:ring-indigo-600 bg-[length:.75rem_auto] bg-center bg-no-repeat checked:border-transparent checked:bg-current checked:bg-check">
+        <input type="checkbox" name="privacy[]" value="1" {privacy:checked#1} id="privacy" data-validator="privacy"
+          class="appearance-none h-4 w-4 border border-gray-300 [&.invalid]:border-red-500 rounded text-indigo-600 focus:ring-indigo-600 bg-[length:.75rem_auto] bg-center bg-no-repeat checked:border-transparent checked:bg-current checked:bg-check">
       </div>
       <div class="leading-6">
         <label for="privacy" class="font-medium cursor-pointer">上記のプライバシーポリシーに同意する</label>
