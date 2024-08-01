@@ -19,13 +19,13 @@
         <img
           src="%{ROOT_DIR}{path}"
           alt="{alt}"
-          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56"
+          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm h-56"
         >
         <!-- ELSE -->
         <img
           src="/images/default/noimage.gif"
           alt=""
-          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm max-h-56"
+          class="object-cover w-full mb-2 overflow-hidden rounded-lg shadow-sm h-56"
         >
         <!-- END_IF -->
         <!-- BEGIN category:veil -->
@@ -36,7 +36,12 @@
         <!-- END category:veil -->
         <h2 class="mt-4 text-gray-800 text-lg font-bold">{title}</h2>
         <p class="mt-2 text-gray-500 text-sm">{summary}</p>
-        <p class="pt-2 text-gray-900 text-xs"><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年 {date#n}月 {date#j}日</time></p>
+        <div class="flex items-center mt-2 text-xs">
+          <p class="text-gray-900"><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年 {date#n}月 {date#j}日</time></p>
+          <!-- BEGIN new -->
+          <p class="ml-3 text-indigo-600 font-bold">NEW</p>
+          <!-- END new -->
+        </div>
       </a>
     </div>
     <!-- END entry:loop -->
