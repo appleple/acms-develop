@@ -28,7 +28,7 @@
         </div>
         <div class="flex flex-col items-start justify-center w-2/3 p-2">
           <h3 class="mb-2 text-gray-900">{title}</h3>
-          <time datetime="{date#Y}-{date#m}-{date#d}" class="block text-xs text-gray-800">{date#Y}/{date#m}/{date#d}（{date#l}[weekEN2JP]）</time>
+          <p class="text-gray-900 text-xs"><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年 {date#n}月 {date#j}日</time></p>
         </div>
       </a>
     </li>

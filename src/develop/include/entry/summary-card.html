@@ -36,7 +36,7 @@
         <!-- END category:veil -->
         <h2 class="mt-4 text-gray-800 text-lg font-bold">{title}</h2>
         <p class="mt-2 text-gray-500 text-sm">{summary}</p>
-        <p class="pt-2 text-gray-800 text-xs font-medium"><time datetime="{date#}[date('Y-m-d')]">{date#}[date('Y/m/d')]</time></p>
+        <p class="pt-2 text-gray-900 text-xs"><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}年 {date#n}月 {date#j}日</time></p>
       </a>
     </div>
     <!-- END entry:loop -->

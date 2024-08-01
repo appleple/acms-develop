@@ -12,9 +12,9 @@
     <!-- BEGIN title:veil -->
     <h1 class="font-bold text-3xl sm:text-4xl lg:text-5xl entry-title"><a href="{titleUrl}">{title}</a></h1>
     <!-- END title:veil -->
-    <div class="flex flex-wrap font-medium mt-6">
+    <div class="flex flex-wrap mt-6">
       <!-- BEGIN date:veil -->
-      <p><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}/{date#m}/{date#d}（{date#l}[weekEN2JP]）</time></p>
+      <p><time datetime="{udate#Y}-{udate#m}-{udate#d}">{udate#Y}年 {udate#n}月 {udate#j}日 更新</time></p>
       <!-- END date:veil -->
       <!-- BEGIN category:loop -->
       <p><span><a href="{url}">{name}</a></span></p>

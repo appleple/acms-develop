@@ -23,7 +23,7 @@
       <div class="flex flex-col items-start justify-center w-full h-full py-6 mb-6 md:mb-0 md:w-1/2">
         <div class="flex flex-col items-start justify-center h-full space-y-3 transform md:pl-10 lg:pl-16 md:space-y-5">
           <h1 class="text-4xl font-bold lg:text-5xl xl:text-6xl leading-snug">{title}</h1>
-          <p class="pt-2 text-xs font-medium"><time datetime="{date#}[date('Y-m-d')]">{date#}[date('Y/m/d')]</time></p>
+          <p class="pt-2 text-gray-900 text-xs"><time datetime="{date#Y}-{date#m}-{date#d}">{udate#Y}年 {udate#n}月 {udate#j}日</time></p>
         </div>
       </div>
     </a>
