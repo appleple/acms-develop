@@ -3,7 +3,12 @@
 <div class="mb-8">
   <p class="flex flex-wrap gap-2 text-xl font-bold"><!-- BEGIN selected:loop -->
     <span class="inline-flex items-start">#{name}
-      <a href="{omitUrl}" class="text-gray-500 hover:opacity-70">
+      <a href="{omitUrl}" class="text-gray-500 hover:opacity-70"
+        hx-push-url="{omitUrl}"
+        hx-get="{omitUrl}tpl/include/htmx/swap-index.html"
+        hx-target="#swap-htmx"
+        hx-swap="innerHTML"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
           <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
         </svg>
@@ -16,7 +21,14 @@
     <h2 class="text-gray-500">さらに絞り込む</h2>
     <ul class="flex flex-wrap gap-4 font-bold mt-2">
       <!-- BEGIN choice:loop -->
-      <li><a href="{url}" class="hover:opacity-70">#{name}</a></li>
+      <li>
+        <a href="{url}" class="hover:opacity-70"
+            hx-push-url="{url}"
+          hx-get="{url}tpl/include/htmx/swap-index.html"
+          hx-target="#swap-htmx"
+          hx-swap="innerHTML"
+        >#{name}</a>
+      </li>
       <!-- END choice:loop -->
     </ul>
   </div>

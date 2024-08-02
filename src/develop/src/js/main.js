@@ -89,12 +89,32 @@ function createBuildInJsDispatcher() {
 }
 
 async function main() {
+  /**
+   * Alpine.js
+   */
   await loadAlpineModules();
 
   window.Alpine = Alpine;
   Alpine.start();
 
+  /**
+   * htmx
+   */
   window.htmx = htmx;
+
+  addEventListener('htmx:beforeHistoryUpdate', function (event) {
+    const proposedUrl = event.detail.history.path;
+    let customUrl = proposedUrl;
+    if (proposedUrl.includes('/include/htmx/')) {
+      customUrl = proposedUrl.replace(/\/include\/htmx\/.*\.html/, '');
+    }
+    event.detail.history.path = customUrl;
+  });
+
+  addEventListener('htmx:afterSwap', function (event) {
+    ACMS.Dispatch(event.target);
+  });
+
 
   /**
    * FontAwesome

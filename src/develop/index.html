@@ -1,8 +1,7 @@
 @extends("/_layouts/two-column.html")
 
 @section("main")
-@include("/include/tag/filter.html")
-@include("/include/entry/summary-card.html", {
-  "ctx": "cid/%{CID}/page/%{PAGE}/%{DATE_YEAR}/%{DATE_MONTH}/keyword/%{KEYWORD}/tag/%{TAG}/"
-})
+<div id="swap-htmx">
+@include("/include/htmx/swap-index.html")
+</div>
 @endsection
