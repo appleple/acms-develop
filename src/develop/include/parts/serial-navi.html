@@ -3,7 +3,7 @@
   <ul class="grid md:grid-cols-3 gap-4 md:gap-2">
     <li>
       <!-- BEGIN prevLink -->
-      <a href="{url}">
+      <a href="{url}" class="text-gray-900">
         <span class="flex items-center gap-2">
           <span class="p-1 rounded-2xl bg-slate-400 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
@@ -12,14 +12,16 @@
           </span>
           <span class="text-lg font-bold">前のページ</span>
         </span>
-        <span class="block">{name}</span>
+        <span class="block mt-2">{name}</span>
       </a>
       <!-- END prevLink -->
     </li>
-    <li class="hidden md:block self-center font-bold text-center"><a href="{upperUrl}">一覧へ</a></li>
+    <li class="hidden md:block self-center font-bold text-center">
+      <a href="{upperUrl}" class="text-gray-900">一覧へ</a>
+    </li>
     <li class="text-right">
       <!-- BEGIN nextLink -->
-      <a href="{url}">
+      <a href="{url}" class="text-gray-900">
         <span class="flex justify-end items-center gap-2">
           <span class="text-lg font-bold">次のページ</span>
           <span class="p-1 rounded-2xl bg-slate-400 text-white">
@@ -33,6 +35,8 @@
       <!-- END nextLink -->
     </li>
   </ul>
-  <p class="md:hidden mt-4 font-bold text-center underline hover:no-underline"><a href="{upperUrl}">一覧へ</a></p>
+  <p class="md:hidden mt-4 font-bold text-center underline hover:no-underline">
+    <a href="{upperUrl}" class="text-gray-900">一覧へ</a>
+  </p>
 </nav>
 <!-- END serialNavi:veil -->
