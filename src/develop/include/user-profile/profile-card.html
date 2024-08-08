@@ -1,0 +1,37 @@
+<!-- BEGIN_MODULE User_Profile id="" -->
+<!-- BEGIN user:loop -->
+<div class="w-full mt-3 border border-gray-200 rounded-lg shadow-sm">
+  <div class="flex flex-col items-center justify-center p-5">
+    <!-- BEGIN_IF [{image@path}/nem] -->
+    <img class="w-32 h-32 mb-6 rounded-full" src="%{MEDIA_ARCHIVES_DIR}{image@path}" alt="{image@alt}">
+    <!-- ELSE_IF [{icon}/nem] -->
+    <img class="w-32 h-32 mb-6 rounded-full" src="%{ARCHIVES_DIR}{icon}" alt="">
+    <!-- END_IF -->
+
+    <h2 class="text-indigo-500 text-lg font-bold">{name}</h2><!-- BEGIN position:veil -->
+    <p class="text-gray-800">{position}</p><!-- END position:veil --><!-- BEGIN title:veil -->
+    <p class="text-gray-800">{user_title}</p><!-- END title:veil -->
+  </div>
+
+  <!-- BEGIN sns:veil -->
+  <div class="flex border-t border-gray-200 divide-x divide-gray-200">
+    <!-- BEGIN x_twitter:veil -->
+    <a href="{x_twitter}" class="flex-1 block p-5 text-center text-gray-300 transition duration-200 ease-out hover:bg-gray-100 hover:text-gray-500">
+      <img src="/images/icons/x.svg" alt="" class="w-6 h-6 mx-auto">
+    </a>
+    <!-- END x_twitter:veil -->
+    <!-- BEGIN facebook:veil -->
+    <a href="{facebook}" class="flex-1 block p-5 text-center text-gray-300 transition duration-200 ease-out hover:bg-gray-100 hover:text-gray-500">
+      <img src="/images/icons/facebook.svg" alt="" class="w-6 h-6 mx-auto">
+    </a>
+    <!-- END facebook:veil -->
+    <!-- BEGIN github:veil -->
+    <a href="{github}" class="flex-1 block p-5 text-center text-gray-300 transition duration-200 ease-out hover:bg-gray-100 hover:text-gray-500">
+      <img src="/images/icons/github.svg" alt="" class="w-6 h-6 mx-auto">
+    </a>
+    <!-- END github:veil -->
+  </div>
+  <!-- END sns:veil -->
+</div>
+<!-- END user:loop -->
+<!-- END_MODULE User_Profile -->
