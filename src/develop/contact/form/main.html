@@ -9,7 +9,7 @@
 <!-- フォームステップ：初期 -->
 <form action="?step=reapply#orderForm" method="post" enctype="multipart/form-data" class="text-gray-800 js-validator">
   @include("/contact/form/input.html")
-  <div class="mt-12 pt-10 text-right border-t border-solid border-slate-300">
+  <div class="mt-12 pt-10 text-right border-t border-solid border-gray-200">
     <input type="hidden" name="step" value="confirm">
     <input type="hidden" name="error" value="reapply">
     <input type="hidden" name="id" value="contactForm">
@@ -24,7 +24,7 @@
 <!-- フォームステップ：修正・エラー -->
 <form action="?step=reapply#orderForm" method="post" enctype="multipart/form-data" class="text-gray-800 js-validator">
   @include("/contact/form/input.html")
-  <div class="mt-12 pt-10 text-right border-t border-solid border-slate-300">
+  <div class="mt-12 pt-10 text-right border-t border-solid border-gray-200">
     <input type="hidden" name="step" value="confirm">
     <input type="hidden" name="error" value="reapply">
     <input type="hidden" name="id" value="contactForm">
@@ -41,7 +41,7 @@
 <p class="text-gray-900 mb-10">以下の内容で送信します。内容に誤りがないかよくご確認ください。</p>
 
 @include("/contact/form/confirm.html")
-<div class="flex justify-end items-center gap-6 mt-12 pt-10 border-t border-solid border-slate-300">
+<div class="flex justify-end items-center gap-6 mt-12 pt-10 border-t border-solid border-gray-200">
   <form action="" method="post">
     <input type="hidden" name="step" value="reapply">
     <input type="hidden" name="takeover" value="{takeover}">
