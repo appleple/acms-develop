@@ -1,7 +1,7 @@
 <!-- BEGIN_MODULE User_Profile id="" -->
 <!-- BEGIN user:loop -->
 <div class="w-full mt-3 border border-gray-200 rounded-lg shadow-sm">
-  <div class="flex flex-col items-center justify-center p-5">
+  <a href="%{BASE_URL}profile.html" class="flex flex-col items-center justify-center p-5 transition duration-200 ease-out hover:bg-gray-100">
     <!-- BEGIN_IF [{image@path}/nem] -->
     <img class="w-32 h-32 mb-6 rounded-full" src="%{MEDIA_ARCHIVES_DIR}{image@path}" alt="{image@alt}">
     <!-- ELSE_IF [{icon}/nem] -->
@@ -11,7 +11,7 @@
     <h2 class="text-indigo-500 text-lg font-bold">{name}</h2><!-- BEGIN position:veil -->
     <p class="text-gray-800">{position}</p><!-- END position:veil --><!-- BEGIN title:veil -->
     <p class="text-gray-800">{user_title}</p><!-- END title:veil -->
-  </div>
+  </a>
 
   <!-- BEGIN sns:veil -->
   <div class="flex border-t border-gray-200 divide-x divide-gray-200">

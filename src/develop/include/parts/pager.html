@@ -1,31 +1,31 @@
 <!-- BEGIN pager:veil -->
 <nav class="text-center">
-  <ul class="inline-flex items-center text-sm leading-tight bg-white border border-neutral-200/70 rounded h-[34px] text-neutral-500">
+  <ul class="inline-flex items-center overflow-hidden text-sm leading-tight bg-white border border-gray-200 rounded h-[34px] text-neutral-500">
     <!-- BEGIN backLink -->
     <li class="h-full">
-      <a href="{url}" class="relative inline-flex items-center h-full px-3 rounded-l group hover:bg-blue-600 hover:text-white">
+      <a href="{url}" class="relative inline-flex items-center h-full px-3 group hover:bg-indigo-600 hover:text-white">
         <span>前へ</span>
       </a>
     </li>
     <!-- END backLink -->
 
     <!-- BEGIN page:loop -->
-    <li class="hidden h-full md:block<!-- BEGIN_IF [{pageCurAttr}/nem] --> relative md:inline-flex items-center px-3 text-white bg-blue-600<!-- END_IF -->">
-      <!-- BEGIN link#front --><a href="{url}" class="relative inline-flex items-center h-full px-3 group hover:bg-blue-600 hover:text-white"><!-- END link#front --><span>{page}</span><!-- BEGIN link#rear --></a><!-- END link#rear -->
+    <li class="hidden h-full md:block<!-- BEGIN_IF [{pageCurAttr}/nem] --> relative md:inline-flex items-center px-3 text-white bg-indigo-600<!-- END_IF -->">
+      <!-- BEGIN link#front --><a href="{url}" class="relative inline-flex items-center h-full px-3 group hover:bg-indigo-600 hover:text-white"><!-- END link#front --><span>{page}</span><!-- BEGIN link#rear --></a><!-- END link#rear -->
     </li><!-- END page:loop -->
 
     <!-- BEGIN lastPage:veil -->
     <li class="hidden h-full md:block">
-      <span class="relative inline-flex items-center h-full px-2.5 bg-neutral-100 group"><span>...</span></span>
+      <span class="relative inline-flex items-center h-full px-2.5 bg-gray-200 group"><span>...</span></span>
     </li>
-    <li class="hidden h-full md:block<!-- BEGIN_IF [{pageCurAttr}/nem] --> relative inline-flex items-center px-3 text-white bg-blue-600<!-- END_IF -->">
-      <a href="{lastPageUrl}" class="relative inline-flex items-center h-full px-3 group hover:bg-blue-600 hover:text-white"><span>{lastPage}</span></a>
+    <li class="hidden h-full md:block<!-- BEGIN_IF [{pageCurAttr}/nem] --> relative inline-flex items-center px-3 text-white bg-indigo-600<!-- END_IF -->">
+      <a href="{lastPageUrl}" class="relative inline-flex items-center h-full px-3 group hover:bg-indigo-600 hover:text-white"><span>{lastPage}</span></a>
     </li>
     <!-- END lastPage:veil -->
 
     <!-- BEGIN forwardLink -->
     <li class="h-full">
-      <a href="{url}" class="relative inline-flex items-center h-full px-3 rounded-r group hover:bg-blue-600 hover:text-white">
+      <a href="{url}" class="relative inline-flex items-center h-full px-3 group hover:bg-indigo-600 hover:text-white">
         <span>次へ</span>
       </a>
     </li>
