@@ -17,14 +17,15 @@ function component() {
 
         const target = eventTarget.getAttribute('href');
         const targetElement = document.querySelector(target);
-        const offset = window.matchMedia('(min-width: 1024px)').matches ? 0 : 80;
+        const isMediaMatches = window.matchMedia('(min-width: 1024px)').matches;
+        const offset = isMediaMatches ? 0 : 80;
 
         window.scrollTo({
           top: targetElement.offsetTop - offset,
           behavior: 'smooth'
         });
 
-        this.toggleSideMenu();
+        !isMediaMatches && this.toggleSideMenu();
       }
     },
   }
