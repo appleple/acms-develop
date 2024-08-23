@@ -1,5 +1,6 @@
 import 'vite/modulepreload-polyfill'
 import Alpine from 'alpinejs';
+import collapse from '@alpinejs/collapse';
 import htmx from 'htmx.org';
 import domContentLoaded from 'dom-content-loaded';
 // import Dispatcher from 'a-dispatcher';
@@ -39,6 +40,7 @@ fonts();
 async function loadAlpineModules() {
   // enable code splitting
   await import('./alpinejs');
+  Alpine.plugin(collapse);
 }
 
 /**
