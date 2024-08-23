@@ -114,7 +114,9 @@ async function main() {
   });
 
   addEventListener('htmx:afterSwap', function (event) {
-    ACMS.Dispatch(event.target);
+    if (window.ACMS !== undefined) {
+      ACMS.Dispatch(event.target);
+    }
   });
 
 
