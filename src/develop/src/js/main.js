@@ -104,6 +104,11 @@ async function main() {
    */
   window.htmx = htmx;
 
+  addEventListener("htmx:configRequest", function(event) {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    event.detail.headers['X-CSRF-Token'] = csrfToken;
+  });
+
   addEventListener('htmx:beforeHistoryUpdate', function (event) {
     const proposedUrl = event.detail.history.path;
     let customUrl = proposedUrl;
