@@ -1,7 +1,7 @@
 <!-- BEGIN_MODULE Tag_Cloud id="{{module_id}}" -->
 <div>
   @include("/admin/module/setting.html")
-  <ul class="flex gap-3">
+  <ul class="flex flex-wrap gap-3">
     <!-- BEGIN tag:loop -->
     <li><span class="tagSize{level}"><a href="%{CATEGORY_URL}tag/{name}/" title="{amount}件" class="hover:opacity-70">#{name}</a></span></li>
     <!-- END tag:loop -->
