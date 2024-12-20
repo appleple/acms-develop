@@ -15,7 +15,7 @@
   @include("/include/head/js.html")
   @endsection
 </head>
-<body>
+<body class="text-gray-700">
 @section("body-start")
 @include("/include/body-start.html")
 @endsection
@@ -25,18 +25,13 @@
 @include("/include/header.html")
 @endsection
 
-<!-- ページタイトル -->
-@section("page-title")
-@include("/include/parts/page-title.html")
-@endsection
-
 <!-- ※管理用パーツ -->
 @section("admin-part")
 @include("/admin/action.html")
 @include("/admin/switch-user.html")
 @endsection
 
-<div class="container mx-auto px-4 py-20">
+<div class="container py-20">
   @section("topicpath")
   <!-- BEGIN_MODULE Touch_NotTop -->
   <div class="mb-10">
@@ -59,65 +54,32 @@
     </main>
 
     <aside class="lg:block z-20">
-      <div class="fixed inset-0 bg-black bg-opacity-30"
-        x-show="isShowSideMenu"
-        x-transition
-        @click="toggleSideMenu()"
-      ></div>
-      <div class="max-lg:fixed top-0 right-0 bottom-0 box-border max-lg:w-72 max-lg:px-4 max-lg:py-6 bg-white transition-transform" 
-        :class="{'max-lg:translate-x-0': isShowSideMenu, 'max-lg:translate-x-full': !isShowSideMenu }"
-      >
-        <div class="max-lg:max-h-full max-lg:overflow-auto">
-          @section("aside")
-          <section>
-            <h2 class="mb-4 text-gray-800 font-bold">カテゴリー</h2>
-            @include("/include/category/list-side.html",)
-          </section>
-          
-          <section class="mt-8">
-            <h2 class="mb-4 text-gray-800 font-bold">アーカイブ</h2>
-            @include("/include/entry/archive-list-side.html")
-          </section>
-          
-          <section class="mt-8">
-            <h2 class="mb-5 text-gray-800 font-bold">ハッシュタグ</h2>
-            @include("/include/tag/cloud-side.html")
-          </section>
-          
-          <section class="mt-8">
-            <h2 class="sr-only">キーワード検索</h2>
-            @include("/include/parts/search-keyword.html")
-          </section>
-          
-          <section class="mt-8">
-            <h2 class="mb-5 text-gray-800 font-bold">プロフィール</h2>
-            @include("/include/user-profile/profile-card.html")
-          </section>
-          @endsection
-        </div>
+      <div class="max-lg:max-h-full max-lg:overflow-auto">
+        @section("aside")
+        <section>
+          <h2 class="mb-4 text-gray-900 font-bold">カテゴリー</h2>
+          @include("/include/category/list-side.html",)
+        </section>
+        
+        <section class="mt-8">
+          <h2 class="mb-4 text-gray-900 font-bold">アーカイブ</h2>
+          @include("/include/entry/archive-list-side.html")
+        </section>
+        
+        <section class="mt-8">
+          <h2 class="mb-5 text-gray-900 font-bold">ハッシュタグ</h2>
+          @include("/include/tag/cloud-side.html")
+        </section>
+        
+        <section class="mt-8">
+          <h2 class="sr-only">キーワード検索</h2>
+          @include("/include/parts/search-keyword.html")
+        </section>
+        @endsection
       </div>
     </aside>
-
-    <button aria-label="サイドメニュー表示切替" class="fixed bottom-6 z-20 inline-flex items-center justify-center lg:hidden px-2 py-2 text-sm font-medium tracking-wide transition-colors duration-200 bg-white border border-r- rounded-full text-gray-800 hover:text-neutral-700 border-neutral-200/70 hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline"
-      :class="{'right-80': isShowSideMenu, 'right-0 rounded-r-none': !isShowSideMenu }"
-      @click="toggleSideMenu()">
-      <template x-if="!isShowSideMenu">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
-          <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
-        </svg>
-      </template>
-      <template x-if="isShowSideMenu">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
-          <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
-        </svg>
-      </template>
-    </button>
   </div>
 </div>
-<!-- CTAセクション -->
-@section("cta")
-@include("/include/parts/cta.html")
-@endsection
 
 <!-- フッター -->
 @section("footer")

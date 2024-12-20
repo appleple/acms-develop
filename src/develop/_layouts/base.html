@@ -25,18 +25,13 @@
 @include("/include/header.html")
 @endsection
 
-<!-- ページタイトル -->
-@section("page-title")
-@include("/include/parts/page-title.html")
-@endsection
-
 <!-- ※管理用パーツ -->
 @section("admin-part")
 @include("/admin/action.html")
 @include("/admin/switch-user.html")
 @endsection
 
-<main class="container mx-auto px-4 py-20">
+<main class="container py-20">
   @section("topicpath")
   <!-- BEGIN_MODULE Touch_NotTop -->
   <div class="mb-10">
@@ -52,11 +47,6 @@
   @include("/include/check-seo.html")
   @endsection
 </main>
-
-<!-- CTAセクション -->
-@section("cta")
-@include("/include/parts/cta.html")
-@endsection
 
 <!-- フッター -->
 @section("footer")
