@@ -21,6 +21,19 @@ module.exports = {
         'check': 'url("/themes/develop/images/fa-check-solid.svg")',
         'select': 'url("/themes/develop/images/fa-chevron-down-solid.svg")',
       },
+      fontFamily: {
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Helvetica Neue"',
+          '"Segoe UI"',
+          '"Hiragino Kaku Gothic ProN"',
+          '"Hiragino Sans"',
+          'Arial',
+          'Meiryo',
+          'sans-serif'
+        ],
+      },
       typography: {
         DEFAULT: {
           css: {
