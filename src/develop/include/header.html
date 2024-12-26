@@ -1,4 +1,4 @@
-<header class="max-lg:sticky top-0 left-0 z-10 w-full bg-white" x-data="{ showMenu: false }">
+<header class="max-lg:sticky top-0 left-0 z-10 w-full bg-white">
   <div class="container">
     <div class="flex items-center justify-between gap-x-4 w-full h-14 leading-6 text-gray-900">
       <!-- BEGIN_MODULE Blog_Field ctx="bid/1" -->
@@ -12,10 +12,11 @@
       </div>
       <!-- END_MODULE Blog_Field -->
 
-      @include("/include/links/navigation.html")
+      <div class="max-lg:hidden">
+        @include("/include/links/navigation.html")
+      </div>
 
-      <div
-        class="flex flex-col items-center items-end justify-center w-10 h-10 -mt-1 rounded-full cursor-pointer lg:hidden hover:bg-gray-100">
+      <div class="flex flex-col items-center items-end justify-center w-10 h-10 -mt-1 rounded-full cursor-pointer lg:hidden hover:bg-gray-100">
         <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round"
           stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" x-cloak>
           <path d="M4 6h16M4 12h16M4 18h16"></path>

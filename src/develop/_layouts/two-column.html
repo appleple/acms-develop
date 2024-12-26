@@ -31,7 +31,7 @@
 @include("/admin/switch-user.html")
 @endsection
 
-<div class="container py-20">
+<div class="container py-16 md:py-20">
   @section("topicpath")
   <!-- BEGIN_MODULE Touch_NotTop -->
   <div class="mb-10">
@@ -40,10 +40,7 @@
   <!-- END_MODULE Touch_NotTop -->
   @endsection
 
-  <div
-    x-data="sideMenu"
-    class="grid grid-cols-1 gap-x-10 gap-y-20 lg:grid-cols-[minmax(0,_1fr)_288px] lg:gap-x-20"
-  >
+  <div class="grid grid-cols-1 gap-x-10 gap-y-20 lg:grid-cols-[minmax(0,_1fr)_288px] lg:gap-x-20">
     <main>
       @section("main")
       <p>継承してメインコンテンツを設定してください</p>
@@ -57,21 +54,29 @@
       <div class="max-lg:max-h-full max-lg:overflow-auto">
         @section("aside")
         <section>
-          <h2 class="mb-4 text-gray-900 font-bold">カテゴリー</h2>
+          <h2 class="mb-4 text-lg text-gray-900 font-bold">カテゴリー</h2>
           @include("/include/category/list-side.html",)
         </section>
-        
+
         <section class="mt-8">
-          <h2 class="mb-4 text-gray-900 font-bold">アーカイブ</h2>
-          @include("/include/entry/archive-list-side.html")
-        </section>
-        
-        <section class="mt-8">
-          <h2 class="mb-5 text-gray-900 font-bold">ハッシュタグ</h2>
+          <h2 class="mb-5 text-lg text-gray-900 font-bold">ハッシュタグ</h2>
           @include("/include/tag/cloud-side.html")
         </section>
-        
+
         <section class="mt-8">
+          <h2 class="mb-4 text-lg text-gray-900 font-bold">アーカイブ</h2>
+          @include("/include/entry/archive-list-side.html")
+          <div class="mt-8">
+            @include("/include/entry/calendar-side.html")
+          </div>
+        </section>
+
+        <section class="mt-8">
+          <h2 class="mb-4 text-lg text-gray-900 font-bold">新着記事</h2>
+          @include("/include/entry/summary-side.html")
+        </section>
+
+        <section class="mt-10">
           <h2 class="sr-only">キーワード検索</h2>
           @include("/include/parts/search-keyword.html")
         </section>
