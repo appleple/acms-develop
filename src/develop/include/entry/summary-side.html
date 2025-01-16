@@ -1,9 +1,9 @@
 <!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
 <div>
   @include("/admin/module/setting.html")
-  <ul>
+  <ul class="md:grid md:grid-cols-2 md:gap-4 lg:block">
     <!-- BEGIN unit:loop --><!-- BEGIN entry:loop -->
-    <li class="mb-5">
+    <li class="mb-4">
       <a href="{url}" class="flex items-start gap-2 hover:opacity-70">
         <div class="w-1/3 aspect-square overflow-hidden rounded">
           <!-- BEGIN_IF [{path}/nem] -->

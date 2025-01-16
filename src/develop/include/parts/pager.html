@@ -1,32 +1,47 @@
 <!-- BEGIN pager:veil -->
 <nav class="text-center">
-  <ul class="inline-flex items-center overflow-hidden text-sm leading-tight bg-white border border-gray-200 rounded h-[34px] text-neutral-500">
+  <ul class="overflow-hidden inline-flex items-center text-sm leading-tight bg-white border border-gray-200 rounded h-9 text-neutral-500">
     <!-- BEGIN backLink -->
-    <li class="h-full">
-      <a href="{url}" class="relative inline-flex items-center h-full px-3 group hover:bg-indigo-600 hover:text-white">
-        <span>前へ</span>
+    <li class="h-full border-r border-gray-200">
+      <a href="{url}" class="relative flex justify-center items-center w-9 h-full px-2 group text-gray-900 hover:bg-indigo-600 hover:text-white" aria-label="前の{backNum}件を見る">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </span>
       </a>
     </li>
     <!-- END backLink -->
 
+    <!-- BEGIN firstPage:veil -->
+    <li class="w-9 h-full border-r border-gray-200<!-- BEGIN_IF [{pageCurAttr}/nem] --> relative flex justify-center items-center text-white bg-indigo-600<!-- END_IF -->">
+      <a href="{firstPageUrl}" class="relative flex justify-center items-center w-9 h-full group hover:bg-indigo-600 hover:text-white"><span>{firstPage}</span></a>
+    </li>
+    <li class="w-9 h-full border-r border-gray-200">
+      <span class="relative flex justify-center items-center w-full h-full px-2.5 bg-gray-50 group"><span>…</span></span>
+    </li>
+    <!-- END firstPage:veil -->
+
     <!-- BEGIN page:loop -->
-    <li class="hidden h-full md:block<!-- BEGIN_IF [{pageCurAttr}/nem] --> relative md:inline-flex items-center px-3 text-white bg-indigo-600<!-- END_IF -->">
-      <!-- BEGIN link#front --><a href="{url}" class="relative inline-flex items-center h-full px-3 group hover:bg-indigo-600 hover:text-white"><!-- END link#front --><span>{page}</span><!-- BEGIN link#rear --></a><!-- END link#rear -->
+    <li class="w-9 h-full border-r border-gray-200<!-- BEGIN_IF [{pageCurAttr}/nem] --> relative flex justify-center items-center text-white bg-indigo-600<!-- END_IF -->">
+      <!-- BEGIN link#front --><a href="{url}" class="relative flex justify-center items-center w-9 h-full group hover:bg-indigo-600 hover:text-white"><!-- END link#front --><span>{page}</span><!-- BEGIN link#rear --></a><!-- END link#rear -->
     </li><!-- END page:loop -->
 
     <!-- BEGIN lastPage:veil -->
-    <li class="hidden h-full md:block">
-      <span class="relative inline-flex items-center h-full px-2.5 bg-gray-200 group"><span>...</span></span>
+    <li class="w-9 h-full border-r border-gray-200">
+      <span class="relative flex justify-center items-center w-full h-full px-2.5 bg-gray-50 group"><span>…</span></span>
     </li>
-    <li class="hidden h-full md:block<!-- BEGIN_IF [{pageCurAttr}/nem] --> relative inline-flex items-center px-3 text-white bg-indigo-600<!-- END_IF -->">
-      <a href="{lastPageUrl}" class="relative inline-flex items-center h-full px-3 group hover:bg-indigo-600 hover:text-white"><span>{lastPage}</span></a>
+    <li class="w-9 h-full<!-- BEGIN_IF [{pageCurAttr}/nem] --> relative flex justify-center items-center text-white bg-indigo-600<!-- END_IF -->">
+      <a href="{lastPageUrl}" class="relative flex justify-center items-center w-9 h-full group hover:bg-indigo-600 hover:text-white"><span>{lastPage}</span></a>
     </li>
     <!-- END lastPage:veil -->
 
     <!-- BEGIN forwardLink -->
-    <li class="h-full">
-      <a href="{url}" class="relative inline-flex items-center h-full px-3 group hover:bg-indigo-600 hover:text-white">
-        <span>次へ</span>
+    <li class="w-9 h-full md:border-l border-gray-200">
+      <a href="{url}" class="relative flex justify-center items-center w-full h-full group text-gray-900 hover:bg-indigo-600 hover:text-white" aria-label="次の{forwardNum}件を見る">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
       </a>
     </li>
     <!-- END forwardLink -->

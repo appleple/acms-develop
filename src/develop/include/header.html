@@ -12,21 +12,27 @@
       </div>
       <!-- END_MODULE Blog_Field -->
 
-      <div class="max-lg:hidden">
-        @include("/include/links/navigation.html")
-      </div>
+      <nav>
+        <!-- PCメニュー -->
+        <div class="max-lg:hidden">
+          @include("/include/parts/navigation-pc.html")
+        </div>
 
-      <div class="flex flex-col items-center items-end justify-center w-10 h-10 -mt-1 rounded-full cursor-pointer lg:hidden hover:bg-gray-100">
-        <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round"
-          stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" x-cloak>
+        <!-- スマホメニュー -->
+        <div class="js-menu lg:hidden transition-opacity opacity-0 pointer-events-none [&.is-active]:opacity-100 [&.is-active]:pointer-events-auto">
+          @include("/include/parts/navigation-sp.html")
+        </div>
+      </nav>
+
+      <button class="js-menu-toggle flex flex-col items-center items-end justify-center w-10 h-10 -mt-1 text-indigo-600 cursor-pointer lg:hidden hover:bg-gray-100">
+        <svg class="w-6 h-6 [.is-active_&]:hidden" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
           <path d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
         
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
+        <svg class="hidden w-6 h-6 [.is-active_&]:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
-      </div>
+      </button>
     </div>
   </div>
 </header>

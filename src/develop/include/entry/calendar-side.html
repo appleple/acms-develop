@@ -12,15 +12,15 @@
   <div class="grid grid-cols-7">
     <!-- BEGIN day:loop -->
     <!-- BEGIN spacer -->
-    <div class="px-0.5 mb-1 aspect-square [&:nth-child(n+6)]:text-red-600" aria-hidden="true"></div>
+    <div class="px-0.5 mb-1 py-1.5 [&:nth-child(n+6)]:text-red-600" aria-hidden="true"></div>
     <!-- END spacer -->
     <!-- BEGIN none -->
-    <div class="flex items-center justify-center px-0.5 aspect-square text-sm text-center [&:nth-child(n+6)]:text-red-600">
-      <span <!-- BEGIN_IF [{day}/eq/%{d}] --> class="text-indigo-600 font-bold"<!-- END_IF -->>{day}</span>
+    <div class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:nth-child(n+6)]:text-red-600">
+      <span class="flex items-center justify-center w-7 h-7<!-- BEGIN_IF [{day}/eq/%{d}] -->text-indigo-600 font-bold<!-- END_IF -->">{day}</span>
     </div>
     <!-- END none -->
     <!-- BEGIN link -->
-    <div class="flex items-center justify-center px-0.5 aspect-square text-sm text-center [&:nth-child(n+6)]:text-red-600">
+    <div class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:nth-child(n+6)]:text-red-600">
       <a href="{url}" class="flex items-center justify-center w-7 h-7 rounded-full cursor-pointer bg-gray-100 hover:bg-gray-200" aria-label="{day}日の記事一覧を表示する">
         <span<!-- BEGIN_IF [{day}/eq/%{d}] --> class="text-indigo-600 font-bold"<!-- END_IF -->>{day}</span>
       </a>

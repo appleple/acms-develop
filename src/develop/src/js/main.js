@@ -1,6 +1,6 @@
 import 'vite/modulepreload-polyfill'
-import Alpine from 'alpinejs';
-import collapse from '@alpinejs/collapse';
+// import Alpine from 'alpinejs';
+// import collapse from '@alpinejs/collapse';
 import htmx from 'htmx.org';
 import domContentLoaded from 'dom-content-loaded';
 // import Dispatcher from 'a-dispatcher';
@@ -37,11 +37,11 @@ import '../style/main.css';
  */
 fonts();
 
-async function loadAlpineModules() {
-  // enable code splitting
-  await import('./alpinejs');
-  Alpine.plugin(collapse);
-}
+// async function loadAlpineModules() {
+//   // enable code splitting
+//   await import('./alpinejs');
+//   Alpine.plugin(collapse);
+// }
 
 /**
  * BuildInJs Dispatcher
@@ -94,10 +94,9 @@ async function main() {
   /**
    * Alpine.js
    */
-  await loadAlpineModules();
-
-  window.Alpine = Alpine;
-  Alpine.start();
+  // await loadAlpineModules();
+  // window.Alpine = Alpine;
+  // Alpine.start();
 
   /**
    * htmx
@@ -162,7 +161,16 @@ async function main() {
   /**
    * Content Ready
    */
-  domContentLoaded(() => {});
+  domContentLoaded(() => {
+    /* SP menu */
+    const menu = document.querySelector('.js-menu');
+    const menuToggle = document.querySelector('.js-menu-toggle');
+    menuToggle && menuToggle.addEventListener('click', (e) => {
+      const _self = e.currentTarget;
+      _self.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  });
 }
 
 main();

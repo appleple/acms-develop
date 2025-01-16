@@ -26,6 +26,11 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        gray: {
+          '500-75': 'rgb(107 114 120 / .75)',
+        }
+      },
       backgroundImage: {
         'circle': 'url("/themes/develop/images/fa-circle-solid.svg")',
         'check': 'url("/themes/develop/images/fa-check-solid.svg")',
