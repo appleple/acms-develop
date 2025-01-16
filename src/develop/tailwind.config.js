@@ -60,7 +60,34 @@ module.exports = {
             hr: false,
             blockquote: {
               'font-style': 'normal',
-            }
+            },
+            table: {
+              'overflow': 'hidden',
+              'margin-top': '0',
+              'margin-bottom': '0',
+              'border': '1px solid var(--tw-prose-td-borders)',
+              'border-collapse': 'separate',
+              'border-spacing': '0',
+              'border-radius': '0.375rem',
+              'font-size': '1rem',
+            },
+            th: {
+              'padding': '1rem',
+              'border-bottom': '1px solid var(--tw-prose-td-borders)',
+              'border-left': '1px solid var(--tw-prose-td-borders)',
+              'background': '#F9FAFB'
+            },
+            td: {
+              'padding': '1rem',
+              'border-bottom': '1px solid var(--tw-prose-td-borders)',
+              'border-left': '1px solid var(--tw-prose-td-borders)',
+            },
+            'th:first-child, td:first-child': {
+              'border-left': '0',
+            },
+            'tr:last-child th, tr:last-child td': {
+              'border-bottom': '0',
+            },
           },
         },
       },

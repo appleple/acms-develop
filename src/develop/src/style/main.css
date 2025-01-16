@@ -485,12 +485,8 @@
   margin: 0 auto;
 }
 
-[class*='column-media-'] .caption {
-  margin-top: 1rem;
-}
-
 /* 引用ユニット */
-[class*='column-quote'] blockquote {
+[class*='column-quote'] blockquote:not([class]) {
   padding: 20px 10px 20px 20px;
   border-inline-start-color: var(--tw-prose-quote-borders);
   border-inline-start-width: 0.25rem;
@@ -536,16 +532,20 @@
 
 /* 目次
 =============================== */
-.custom-outline .custom-outline {
+.level-1 {
+  padding-left: 0;
+}
+
+.level-2 {
   padding-left: 1em;
 }
 
-.custom-outline .custom-outline .custom-outline-item {
-  display: inline-flex;
+.level-2 li {
+  display: flex;
   gap: .5em;
 }
 
-.custom-outline .custom-outline .custom-outline-item::before {
+.level-2 li::before {
   display: block;
   width: 1em;
   content: "";

@@ -6,8 +6,15 @@
     "sns_share": "true"
   })
 
-  <section class="mt-10">
+  <section class="mt-16 md:mt-20">
+    <!-- 関連記事 -->
     @include("/include/entry/tag-relational-card.html")
+    <div class="mt-10">
+      <!-- 新着記事 -->
+      @include("/include/entry/summary-tiny.html", {
+        "wrapper_class": "md:grid md:grid-cols-2 md:gap-8"
+      })
+    </div>
   </section>
 </article>
 @endsection

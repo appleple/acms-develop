@@ -170,6 +170,20 @@ async function main() {
       _self.classList.toggle('is-active');
       menu.classList.toggle('is-active');
     });
+
+    /* dialog */
+    const dialog = document.querySelector('.js-dialog');
+    const dialogToggle = document.querySelectorAll('.js-dialog-toggle');
+    dialogToggle && dialogToggle.forEach((toggle) => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (dialog.open) {
+          dialog.close();
+          return;
+        }
+        dialog.showModal();
+      });
+    });
   });
 }
 

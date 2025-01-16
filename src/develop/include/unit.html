@@ -1,36 +1,67 @@
 @extends("/_layouts/unit.html")
 
+<!-- メディアユニット -->
 @section(media-unit)
 <!-- media -->
-<div class="not-prose text-sm text-center [&_a]:hover:opacity-70">
-  @parent
+<div class="column-media-{align}{display_size_class}"{display_size}[raw]><!-- BEGIN type#image --><!-- BEGIN link#front -->
+  <a href="{url}" {viewer}[raw] data-group="{link_eid}"><!-- END link#front -->
+    <img
+      class="js-lazy-load columnImage rounded-lg"
+      data-src="%{HTTP_ROOT}{path}[resizeImg({resizeWidth})]"
+      width="{x}"
+      height="{y}"
+      alt="{alt}"
+    >
+    <!-- BEGIN link#rear -->
+  </a><!-- END link#rear --><!-- BEGIN_IF [{caption}[delnl]/nem] -->
+  <p class="mt-1 text-gray-500 text-sm text-center">{caption}[raw|nl2br]</p><!-- END_IF -->
+
+  <!-- END type#image --><!-- BEGIN type#svg --><!-- BEGIN link#front -->
+  <a href="{url}" {viewer}[raw] data-group="{link_eid}"><!-- END link#front -->
+    <img
+      class="js-lazy-load columnImage rounded-lg"
+      data-src="%{HTTP_ROOT}{path}"
+      alt="{alt}"
+      width="{x}"
+      height="{y}"
+    ><!-- BEGIN link#rear -->
+  </a><!-- END link#rear --><!-- BEGIN_IF [{caption}[delnl]/nem] -->
+  <p class="mt-1 text-gray-500 text-sm text-center">{caption}[raw|nl2br]</p><!-- END_IF -->
+
+  <!-- END type#svg --><!-- BEGIN type#file -->
+  <a href="{url}" target="_blank" class="js-link_no_rewrite"><!-- BEGIN_IF [{thumbnail}/nem/_and_/{use_icon}/neq/yes] -->
+    <img class="column-pdf-image" src="%{MEDIA_ARCHIVES_DIR}{thumbnail}" alt="{alt}">
+    <!-- ELSE -->
+    <img class="columnIcon" src="%{HTTP_ROOT}{icon}" alt="{alt}" width="{x}" height="{y}">
+    <!-- END_IF -->
+  </a> <!-- BEGIN_IF [{caption}[delnl]/nem] -->
+  <p class="mt-1 text-gray-500 text-sm text-center">{caption}[raw|nl2br]</p><!-- END_IF --><!-- END type#file -->
 </div>
 @endsection
 
+<!-- 引用ユニット -->
 @section(quote-unit)
-<!-- 引用 -->
-<div class="not-prose [&_a]:hover:opacity-70">
-  @parent
+<div class="column-quote-{align}"{display_size}[raw]><!-- BEGIN html:veil -->
+  {quote_html}[raw]<!-- END html:veil --><!-- BEGIN_IF [{quote_title}/nem/] -->
+  <blockquote class="not-prose !p-0">
+    <a href="{quote_url}" class="overflow-hidden block border border-gray-200 rounded md:flex md:transition-opacity hover:opacity-70"><!-- BEGIN image:veil -->
+    <div class="md:w-1/3 flex-none">
+      <img src="{quote_image}" width="{x}" height="{y}" alt="" class="md:h-full md:object-cover">
+    </div><!-- END image:veil -->
+    <div class="p-4"><!-- BEGIN site_name:veil -->
+      <p class="text-xs line-clamp-1">{quote_site_name}</p><!-- END site_name:veil -->
+      <p class="mt-1 leading-6 line-clamp-2">{quote_title}</p><!-- BEGIN description:veil -->
+      <p class="mt-1 mt-1 text-gray-500 text-xs line-clamp-2">{quote_description}[raw|trim(180, '...')]</p><!-- END description:veil -->
+    </div>
+    </a>
+  </blockquote><!-- END_IF -->
 </div>
 @endsection
 
-@section(osmap-unit)
-<!-- 地図 -->
-<div class="relative z-0">
-  @parent
-</div>
-@endsection
-
+<!-- osmap -->
 @section(osmap-unit)
 <!-- Open Street Map -->
-<div class="relative z-0">
-  @parent
-</div>
-@endsection
-
-@section(map-unit)
-<!-- GoogleMap -->
-<div class="relative z-0">
-@parent
+<div class="column-map-{align}{display_size_class} overflow-hidden rounded-md"{display_size}[raw]>
+  <div class="js-open-street-map" data-lazy="true" data-lat="{lat}" data-lng="{lng}" data-zoom="{zoom}" data-msg="{msgRaw}" style="width: {x}px; height: {y}px;"></div>
 </div>
 @endsection
