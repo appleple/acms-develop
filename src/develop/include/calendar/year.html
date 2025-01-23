@@ -1,0 +1,64 @@
+<!-- BEGIN_MODULE Calendar_Year id="{{module_id}}" -->
+<div>
+  @include("/admin/module/setting.html")
+
+  <div class="flex items-center mb-10">
+    <h2 class="text-gray-900 font-bold text-2xl"><!-- BEGIN_IF [%{DATE_YEAR}/nem] -->%{DATE_YEAR}<!-- ELSE -->%{Y}<!-- END_IF -->年</h2>
+
+    <ul class="flex items-center gap-x-2 ml-4 text-indigo-600">
+      <!-- BEGIN prevLink --><li>
+        <a href="{url}" class="flex items-center justify-center w-5 h-5" title="前年へ">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </a>
+      </li><!-- END prevLink -->
+      <!-- BEGIN nextLink --><li>
+        <a href="{url}" class="flex items-center justify-center w-5 h-5" title="翌年へ">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </a>
+      </li><!-- END nextLink -->
+    </ul>
+  </div>
+  <div class="text-gray-900">
+  <!-- BEGIN unit:loop -->
+  <div class="grid gap-8 grid-cols-[repeat(auto-fill,minmax(308px,1fr))]">
+    <!-- BEGIN month:loop -->
+    <div>
+      <h3 class="text-gray-900 text-lg font-bold">{month}月</h3>
+      <div class="grid grid-cols-7 mt-4" aria-hidden="true">
+        <!-- BEGIN weekLabel:loop -->
+        <div class="text-xs font-medium text-center [&:nth-child(n+6)]:text-red-600">{label}</div>
+        <!-- END weekLabel:loop -->
+      </div>
+      <div class="mt-4">
+        <!-- BEGIN week:loop -->
+        <div class="grid grid-cols-7">
+          <!-- BEGIN day:loop -->
+          <!-- BEGIN spacer -->
+          <div class="px-0.5 mb-1 py-1.5 [&:nth-child(n+6)]:text-red-600" aria-hidden="true"></div>
+          <!-- END spacer -->
+          <!-- BEGIN none -->
+          <div class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:nth-child(n+6)]:text-red-600">
+            <span class="flex items-center justify-center w-7 h-7">{day}</span>
+          </div>
+          <!-- END none -->
+          <!-- BEGIN link -->
+          <div class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:nth-child(n+6)]:text-red-600">
+            <a href="{url}" class="flex items-center justify-center w-7 h-7 rounded-full cursor-pointer bg-gray-100 hover:bg-gray-200" aria-label="{day}日の記事一覧を表示する">
+              <span>{day}</span>
+            </a>
+          </div>
+          <!-- END link -->
+          <!-- END day:loop -->
+        </div>
+        <!-- END week:loop -->
+      </div>
+    </div>
+    <!-- END month:loop -->
+  </div>
+  <!-- END unit:loop -->
+</div>
+<!-- END_MODULE Calendar_Year -->
