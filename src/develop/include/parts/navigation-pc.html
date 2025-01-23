@@ -1,6 +1,6 @@
-<ul class="flex flex-wrap items-center list-none leading-6">
-  <li class="py-2.5 font-medium text-center group">
-    <a href="%{HOME_URL}" class="inline-flex items-center gap-2 px-5 py-2 hover:opacity-70">
+<ul class="flex flex-wrap items-center list-none leading-6 [&>li>a.stay]:border-b-2 [&>li>a.stay]:border-solid [&>li>a.stay]:border-indigo-600">
+  <li class="mx-5 font-medium text-center group">
+    <a href="%{HOME_URL}" class="<!-- BEGIN_IF [%{CCD}/neq/contact/_and_/%{ECD}/neq/profile.html] -->stay<!-- END_IF --> flex items-center gap-2 py-4 hover:opacity-70">
       <span>Blogs</span>
       <span class="text-gray-400 transition-transform group-hover:-rotate-180">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3">
@@ -22,13 +22,13 @@
       </div>
     </div>
   </li>
-  <li class=" my-3 font-medium text-center">
-    <a href="%{HOME_URL}profile.html" class="px-5 py-2 no-underline bg-transparent rounded-full cursor-pointer hover:opacity-70">
+  <li class="mx-5 font-medium text-center">
+    <a href="%{HOME_URL}profile.html" class="js-link_match_location-full block py-4 no-underline hover:opacity-70">
       <span>Profile</span>
     </a>
   </li>
-  <li class=" my-3 font-medium text-center">
-    <a href="%{HOME_URL}contact.html" class="pl-5 py-2 no-underline bg-transparent rounded-full cursor-pointer hover:opacity-70">
+  <li class="ml-5 font-medium text-center">
+    <a href="%{HOME_URL}contact/" class="js-link_match_location-category block py-4 no-underline hover:opacity-70">
       <span>Contact</span>
     </a>
   </li>
