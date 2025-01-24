@@ -1,13 +1,13 @@
 <!-- BEGIN_MODULE Entry_ArchiveList id="{module_id}" -->
 <div>
   @include("/admin/module/setting.html")
-  <ul class="border-b border-solid border-gray-200">
+  <ul class="border-b border-solid border-gray-200 text-sm text-gray-900">
     <!-- BEGIN archive:loop -->
     <li class="py-2 border-t border-solid border-gray-200">
       <a href="{url}" class="flex items-center gap-3 py-2 hover:opacity-70">
         <span class="flex-1 block">{date#Y}年 {date#n}月</span>
         <!-- BEGIN amount:veil -->
-        <span class="block min-w-10 py-1 rounded-full text-sm text-center font-medium bg-slate-100">{amount}</span>
+        <span class="block min-w-10 py-1 rounded-full text-xs text-center bg-slate-100">{amount}</span>
         <!-- END amount:veil -->
       </a>
     </li>
