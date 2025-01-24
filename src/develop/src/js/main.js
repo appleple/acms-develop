@@ -3,8 +3,9 @@ import 'vite/modulepreload-polyfill'
 // import collapse from '@alpinejs/collapse';
 import htmx from 'htmx.org';
 import domContentLoaded from 'dom-content-loaded';
-// import Dispatcher from 'a-dispatcher';
+import Dispatcher from 'a-dispatcher';
 import fonts from './fonts';
+import entryOutdated from './entryOutdated';
 import scrollToInvalid from './scrollToInvalid';
 import './lib/polyfill';
 import {
@@ -145,7 +146,7 @@ async function main() {
   /**
    * Dispatcher
    */
-  // const dispatcher = new Dispatcher();
+  const dispatcher = new Dispatcher();
 
   // ダイナミックインポート
   // dispatcher.addRoute('^/app.html$', async () => {
@@ -155,8 +156,9 @@ async function main() {
 
   // 通常のバンドル
   // dispatcher.addRoute('^/example/$', examplePage);
+  dispatcher.addRoute('.html$', entryOutdated);
 
-  // dispatcher.run(window.location.pathname);
+  dispatcher.run(window.location.pathname);
 
   /**
    * Content Ready
@@ -165,9 +167,9 @@ async function main() {
     /* PC nav */
     const childToggle = document.querySelectorAll('.js-child-toggle');
     childToggle && childToggle.forEach((toggle) => {
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        const _self = e.currentTarget;
+      toggle.addEventListener('click', (event) => {
+        event.preventDefault();
+        const _self = event.currentTarget;
         _self.classList.toggle('is-active');
       });
     });
@@ -175,8 +177,8 @@ async function main() {
     /* SP menu */
     const menu = document.querySelector('.js-menu');
     const menuToggle = document.querySelector('.js-menu-toggle');
-    menuToggle && menuToggle.addEventListener('click', (e) => {
-      const _self = e.currentTarget;
+    menuToggle && menuToggle.addEventListener('click', (event) => {
+      const _self = event.currentTarget;
       _self.classList.toggle('is-active');
       menu.classList.toggle('is-active');
     });

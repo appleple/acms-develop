@@ -9,13 +9,13 @@
 
   <!-- BEGIN pageHeader:veil -->
   <header class="text-gray-900">
-    <p x-show="isOldEntry" class="flex items-center gap-3 w-full mb-8 p-4 rounded-md bg-yellow-50 text-yellow-700 text-sm">
+    <p id="js-outdated-alert" class="hidden items-center gap-3 w-full mb-8 p-4 rounded-md bg-yellow-50 text-yellow-700 text-sm" data-updated-at="{date#}[date('Y-m-d')]">
       <span class="text-yellow-400">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
           <path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
         </svg>
       </span>
-      <span>この記事は最終更新日から<span x-text="elapsedYears"></span>年以上経過しています。</span>
+      <span>この記事は最終更新日から<span id="js-outdated-year"></span>年以上経過しています。</span>
     </p>
     <!-- BEGIN title:veil -->
     <h1 class="font-bold text-2xl entry-title"><a href="{titleUrl}">{title}</a></h1>
@@ -54,21 +54,6 @@
         data-anchorName="heading-$1"
         data-levelLimit="2"
         data-exceptClass="js-except">
-        <details class=" p-4 rounded-md bg-gray-50 [&:not(:has(li))]:hidden [&_svg]:open:-rotate-180" open>
-          <summary class="flex items-center gap-x-4">
-            <p class="not-prose font-bold">目次</p>
-            <p class="not-prose text-indigo-600 cursor-pointer">
-              <span class="inline-flex items-center gap-x-2">
-                <span class="label-close inline">非表示</span>
-                <span class="label-open hidden">表示</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColo</svg>r" class="size-3">
-                  <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
-                </svg>
-              </span>
-            </p>
-          </summary>
-          <div class="js-outline-yield text-sm"></div>
-        </details>
         @include("/include/unit.html")
       </div>
     </div>
@@ -90,7 +75,7 @@
     <!-- END_IF -->
   </div>
   <!-- END entry:loop -->
-  
+
   <!-- BEGIN pager:veil -->
   <div class="mt-10">
   @include("/include/parts/serial-navi.html")
