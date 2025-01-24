@@ -28,9 +28,9 @@
     <!-- BEGIN month:loop -->
     <div>
       <h3 class="text-gray-900 text-lg font-bold">{month}月</h3>
-      <div class="grid grid-cols-7 mt-4" aria-hidden="true">
+      <div class="grid grid-cols-7 mt-4 text-sm" aria-hidden="true">
         <!-- BEGIN weekLabel:loop -->
-        <div class="text-xs font-medium text-center [&:nth-child(n+6)]:text-red-600">{label}</div>
+        <div class="font-medium text-center [&:nth-child(n+6)]:text-red-600">{label}</div>
         <!-- END weekLabel:loop -->
       </div>
       <div class="mt-4">
@@ -41,12 +41,12 @@
           <div class="px-0.5 mb-1 py-1.5 [&:nth-child(n+6)]:text-red-600" aria-hidden="true"></div>
           <!-- END spacer -->
           <!-- BEGIN none -->
-          <div class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:nth-child(n+6)]:text-red-600">
+          <div class="flex items-center justify-center px-0.5 py-1.5 text-center [&:nth-child(n+6)]:text-red-600">
             <span class="flex items-center justify-center w-7 h-7">{day}</span>
           </div>
           <!-- END none -->
           <!-- BEGIN link -->
-          <div class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:nth-child(n+6)]:text-red-600">
+          <div class="flex items-center justify-center px-0.5 py-1.5 text-center [&:nth-child(n+6)]:text-red-600">
             <a href="{url}" class="flex items-center justify-center w-7 h-7 rounded-full cursor-pointer bg-gray-100 hover:bg-gray-200" aria-label="{day}日の記事一覧を表示する">
               <span>{day}</span>
             </a>

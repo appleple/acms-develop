@@ -162,6 +162,16 @@ async function main() {
    * Content Ready
    */
   domContentLoaded(() => {
+    /* PC nav */
+    const childToggle = document.querySelectorAll('.js-child-toggle');
+    childToggle && childToggle.forEach((toggle) => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const _self = e.currentTarget;
+        _self.classList.toggle('is-active');
+      });
+    });
+
     /* SP menu */
     const menu = document.querySelector('.js-menu');
     const menuToggle = document.querySelector('.js-menu-toggle');
