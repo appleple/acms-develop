@@ -19,7 +19,7 @@
       <span>この記事は最終更新日から<span id="js-outdated-year"></span>年以上経過しています。</span>
     </p>
     <!-- BEGIN title:veil -->
-    <h1 class="font-bold text-2xl entry-title"><a href="{titleUrl}">{title}</a></h1>
+    <h1 class="font-bold text-2xl entry-title">{title}</h1>
     <!-- END title:veil -->
     <div class="md:flex items-center flex-wrap gap-4 mt-4 text-gray-500 text-sm">
       <!-- BEGIN pdate:veil -->
@@ -30,10 +30,10 @@
       <!-- END udate:veil -->
     </div>
     <!-- BEGIN_IF [%{CID}/nem] -->
-    <p class="mt-4"><a href="{url}" class="text-indigo-600 font-bold">%{CATEGORY_NAME}</a></p>
+    <p class="mt-4 break-words"><a href="{url}" class="text-indigo-600 font-bold">%{CATEGORY_NAME}</a></p>
     <!-- END_IF -->
     <!-- BEGIN tag:veil -->
-    <ul class="flex flex-wrap gap-3 mt-4 text-gray-900">
+    <ul class="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-gray-900">
       <!-- BEGIN tag:loop -->
       <li><a href="{url}" class="hover:opacity-70">#{name}</a></li>
       <!-- END tag:loop -->

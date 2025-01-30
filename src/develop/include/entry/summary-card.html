@@ -7,11 +7,11 @@
   <!-- END notFound -->
 
   <!-- BEGIN_MODULE Touch_Keyword -->
-  <p class="text-gray-900 text-xl font-bold mb-8">%{KEYWORD} の検索結果：{itemsAmount}件</p>
+  <p class="text-gray-900 text-2xl font-bold mb-8">%{KEYWORD} の検索結果：{itemsAmount}件</p>
   <!-- END_MODULE Touch_Keyword -->
 
   <!-- BEGIN unit:loop -->
-  <div class="grid grid-cols-12 pb-10 gap-8">
+  <div class="grid grid-cols-12 pb-10 gap-y-8 gap-x-4 sm:gap-8">
     <!-- BEGIN entry:loop -->
     <div class="flex flex-col items-start space-y-3 col-span-12 {{column_class|default('sm:col-span-6')}}">
       <a href="{url}" class="block w-full text-sm hover:opacity-70">

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* stylelint-disable */
-/* ------------------------------ 
+/* ------------------------------
   Preflight - v3.4.3
  ------------------------------ */
 @layer base {
@@ -397,7 +397,7 @@
 /* stylelint-enable */
 
 /* stylelint-disable */
-/* ------------------------------ 
+/* ------------------------------
   独自カスタマイズ
  ------------------------------ */
 @layer utility {
@@ -534,10 +534,12 @@
 =============================== */
 .level-1 {
   padding-left: 0;
+  margin: .75rem 0 -.25rem;
 }
 
 .level-2 {
   padding-left: 1em;
+  margin-bottom: 0;
 }
 
 .level-2 li {

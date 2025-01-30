@@ -1,12 +1,12 @@
 <!-- BEGIN_MODULE Topicpath id="{{module_id}}" -->
 <nav aria-label="現在のページ">
-<ol class="inline-flex items-center flex-wrap text-sm text-neutral-500 [&_.active-breadcrumb]:text-neutral-500/80">
-  <!-- BEGIN blog:loop -->
-  <li class="flex items-center h-full"><!-- BEGIN blog:glue --><span class="mx-2 text-gray-400">/</span><!-- END blog:glue --><a href="{url}" class="py-1 hover:text-neutral-900">{name}</a></li>
-  <!-- END blog:loop --><!-- BEGIN category:loop -->
-  <li><span class="mx-2 text-gray-400">/</span><a href="{url}" class="inline-flex items-center py-1 font-normal hover:text-neutral-900 focus:outline-none">{name}</a></li>
-  <!-- END category:loop --><!-- BEGIN entry -->
-  <li><span class="mx-2 text-gray-400">/</span><a href="{url}" class="inline-flex items-center py-1 font-normal hover:text-neutral-900 focus:outline-none">{title}</a></li><!-- END entry -->
-</ol>
+  <ol class="flex items-center flex-wrap text-sm text-gray-500 [&_a]:text-gray-900 [&_a:hover]:opacity-70 [&_li:last-child_a]:text-gray-500">
+    <!-- BEGIN blog:loop -->
+    <li class="flex items-center h-full"><!-- BEGIN blog:glue --><span class="mx-2 text-gray-400">/</span><!-- END blog:glue --><a href="{url}" class="py-1">{name}</a></li>
+    <!-- END blog:loop --><!-- BEGIN category:loop -->
+    <li><span class="mx-2 text-gray-400">/</span><a href="{url}" class=" py-1">{name}</a></li>
+    <!-- END category:loop --><!-- BEGIN entry -->
+    <li><span class="mx-2 text-gray-400">/</span><a href="{url}" class=" py-1">{title}</a></li><!-- END entry -->
+  </ol>
 </nav>
 <!-- END_MODULE Topicpath -->
