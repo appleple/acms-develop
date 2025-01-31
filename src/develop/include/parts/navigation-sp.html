@@ -28,29 +28,37 @@
       <li class="box-border w-full border-b border-gray-200">
         <a href="%{HOME_URL}profile.html" class="block px-5 py-4">Profile</a>
       </li>
-      <li class="box-border w-full border-b border-gray-200">
+      <li class="box-border w-full border-gray-200">
         <a href="%{HOME_URL}contact/" class="block px-5 py-4">Contact</a>
       </li>
     </ul>
 
     <!-- BEGIN_MODULE Blog_Field ctx="bid/1" -->
-    <ul class="flex items-center gap-x-8 p-4">
+    <!-- BEGIN account:veil -->
+    <ul class="flex items-center gap-x-8 p-4 border-t">
+      <!-- BEGIN x_account:veil -->
       <li>
         <a href="https://x.com/{x_account}" class="block">
           <img src="/images/icons/x.svg" width="24" height="24" alt="Xアカウント">
         </a>
       </li>
+      <!-- END x_account:veil -->
+      <!-- BEGIN facebook_account:veil -->
       <li>
         <a href="https://www.facebook.com/{facebook_account}" class="block">
           <img src="/images/icons/facebook.svg" width="24" height="24" alt="Facebookアカウント">
         </a>
       </li>
+      <!-- END facebook_account:veil -->
+      <!-- BEGIN github_account:veil -->
       <li>
         <a href="https://github.com/{github_account}" class="block">
           <img src="/images/icons/github.svg" width="24" height="24" alt="Githubアカウント">
         </a>
       </li>
+      <!-- END github_account:veil -->
     </ul>
+    <!-- END account:veil -->
     <!-- END_MODULE Blog_Field -->
   </div>
 </div>
