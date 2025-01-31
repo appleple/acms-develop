@@ -1,6 +1,4 @@
 <!-- BEGIN_MODULE Entry_TagRelational id="{{module_id}}" -->
-<h2 class="text-lg font-bold">関連記事</h2>
-<p class="mt-3 mb-8"><span>この記事のハッシュタグ</span><!-- BEGIN_MODULE Tag_Cloud ctx="eid/%{EID}" --><span class="flex my-0.5 md:my-0 md:inline md:ml-3"><!-- BEGIN tag:loop --><span class="mr-3"><a href="{path}" class="text-gray-500 no-underline hover:opacity-70">#{name}</a></span><!-- END tag:loop --></span><!-- END_MODULE Tag_Cloud --><span>から関連する記事を表示しています。</span></p>
 <div>
   @include("/admin/module/setting.html")
 
@@ -9,9 +7,8 @@
   <!-- END notFound -->
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-    <!-- BEGIN unit:loop -->
-    <!-- BEGIN entry:loop -->
-    <div class="">
+    <!-- BEGIN unit:loop --><!-- BEGIN entry:loop -->
+    <article>
       <a href="{url}" class="block w-full hover:opacity-70">
         <!-- BEGIN_IF [{path}/nem] -->
         <img
@@ -45,9 +42,8 @@
         </ul>
         <!-- END tag:veil -->
       </a>
-    </div>
-    <!-- END entry:loop -->
-    <!-- END unit:loop -->
+    </article>
+    <!-- END entry:loop --><!-- END unit:loop -->
   </div>
 </div>
 <!-- END_MODULE Entry_TagRelational -->

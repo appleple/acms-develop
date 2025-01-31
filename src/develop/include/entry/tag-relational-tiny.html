@@ -1,7 +1,12 @@
-<!-- BEGIN_MODULE Entry_Summary id="{{module_id}}" -->
+<!-- BEGIN_MODULE Entry_TagRelational id="{{module_id}}" -->
 <div>
+  <!-- BEGIN notFound -->
+  <p>関連記事はありません</p>
+  <!-- END notFound -->
+
   @include("/admin/module/setting.html")
-  <div class="{{wrapper_class|default('grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4')}}">
+
+  <div class="{{wrapper_class|default('grid grid-cols-1 md:grid-cols-2 gap-8')}}">
     <!-- BEGIN unit:loop --><!-- BEGIN entry:loop -->
     <article>
       <a href="{url}" class="flex items-start gap-2 hover:opacity-70">
@@ -38,4 +43,4 @@
     <!-- END entry:loop --><!-- END unit:loop -->
   </div>
 </div>
-<!-- END_MODULE Entry_Summary -->
+<!-- END_MODULE Entry_TagRelational -->
