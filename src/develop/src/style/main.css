@@ -477,51 +477,57 @@
 }
 
 /* メディアユニット */
-[class*='column-media-'] {
-  margin-block: 2rem;
-}
-
 [class*='column-media-'] .columnIcon { /* stylelint-disable-line */
   margin: 0 auto;
 }
 
+[class*='column-media-'] .caption {
+  @apply mt-1 text-gray-500 text-sm text-center;
+}
+
 /* 引用ユニット */
-[class*='column-quote'] blockquote:not([class]) {
-  padding: 20px 10px 20px 20px;
-  border-inline-start-color: var(--tw-prose-quote-borders);
-  border-inline-start-width: 0.25rem;
-}
+[class*='column-quote'] {
+  blockquote:not([class]) {
+    padding: 20px 10px 20px 20px;
+    border-inline-start-color: var(--tw-prose-quote-borders);
+    border-inline-start-width: 0.25rem;
+  }
 
-.quoteImageContainer { /* stylelint-disable-line */
-  position: relative;
-  float: left;
-  max-width: 154px;
-  margin-right: 25px;
-}
+  blockquote.js-biggerlink {
+    @apply overflow-hidden block md:flex p-0 border border-gray-200 rounded-md font-normal md:transition-opacity hover:opacity-70;
+  }
 
-.quoteImage { /* stylelint-disable-line */
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+  .quoteImageContainer { /* stylelint-disable-line */
+    @apply md:w-1/3 flex-none mr-0;
+  }
 
-.quoteTitle { /* stylelint-disable-line */
-  padding: 0;
-  margin: 0 0 5px;
-  line-height: 1.4;
-}
+  .quoteImage { /* stylelint-disable-line */
+    @apply block w-full m-0 md:h-full md:object-cover;
+  }
 
-.quoteSiteName { /* stylelint-disable-line */
-  padding: 0;
-  margin: 0 0 10px;
-  font-size: .75rem;
-}
+  div:not(.quoteImageContainer) { /* stylelint-disable-line */
+    @apply flex flex-col max-w-none p-4 md:w-2/3;
+  }
 
-.quoteDescription { /* stylelint-disable-line */
-  padding: 0;
-  margin: 0;
-  font-size: .75rem;
-  line-height: 1.6;
+  .quoteTitle { /* stylelint-disable-line */
+    @apply mb-1.5 text-base leading-6 line-clamp-2;
+  }
+
+  .quoteTitleLink { /* stylelint-disable-line */
+    @apply font-normal text-gray-700 no-underline;
+  }
+
+  .quoteSiteName { /* stylelint-disable-line */
+    @apply -order-1 p-0 mb-1 text-gray-700 text-sm line-clamp-1;
+  }
+
+  .quoteDescription { /* stylelint-disable-line */
+    @apply p-0 m-0 text-xs text-gray-500 leading-relaxed line-clamp-2;
+  }
+
+  .clearHidden { /* stylelint-disable-line */
+    @apply hidden;
+  }
 }
 
 /* 地図ユニット */
@@ -581,22 +587,16 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
-    padding-right: 0;
-    padding-left: 0;
+    border-bottom: 1px solid var(--tw-prose-td-borders);
   }
 
   [class*=column-table-] table:not([class]) th {
-    padding-bottom: 0;
     text-align: left;
-  }
-
-  [class*=column-table-] table:not([class]) td {
-    padding-top: 3px;
   }
 }
 
 [class*=column-table-] .entry-container {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   overflow-x: auto;
   overflow-y: visible !important;
 }

@@ -56,6 +56,7 @@ module.exports = {
               'font-size': '1.125rem',
             },
             p: {
+              'margin-bottom': '1.5rem',
               'line-height': '1.7',
             },
             a: {
@@ -67,11 +68,18 @@ module.exports = {
             blockquote: {
               'font-style': 'normal',
             },
+            ul: {
+              'margin-top': '0',
+              'margin-bottom': '1.5rem',
+            },
             'ul > li::marker': {
               'color': '#9CA3AF',
             },
             'ol > li::marker': {
               'font-weight': 'bold',
+            },
+            li: {
+              margin: '.375rem 0'
             },
             dd: {
               'margin-top': '0',
@@ -104,9 +112,29 @@ module.exports = {
             'tr:last-child th, tr:last-child td': {
               'border-bottom': '0',
             },
+            '[class*="column-media-"]': {
+              'margin-bottom': '1.5rem',
+            },
             '[class*="column-media-"] img': {
-              "margin-bottom": ".75em",
-            }
+              'margin-bottom': '.75em',
+              'border-radius': '0.375rem',
+            },
+            '[class*=column-map]': {
+              'margin-bottom': '1.5rem',
+              'border-radius': '0.375rem',
+            },
+            '[class*=column-quote]': {
+              'margin-bottom': '1.5rem',
+            },
+            '[class*=column-quote] blockquote': {
+              'font-style': 'normal',
+              'padding-left': '0',
+              'color': 'inherit',
+              'quotes': 'none',
+              '&::before, &::after': {
+                content: 'none',
+              }
+            },
           },
         },
       },
