@@ -187,14 +187,22 @@ async function main() {
     const dialog = document.querySelector('.js-dialog');
     const dialogToggle = document.querySelectorAll('.js-dialog-toggle');
     dialogToggle && dialogToggle.forEach((toggle) => {
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault();
+      toggle.addEventListener('click', (event) => {
+        event.preventDefault();
         if (dialog.open) {
           dialog.close();
           return;
         }
         dialog.showModal();
       });
+    });
+
+    // Copy URL
+    const copyButton = document.getElementById('js-copy-button');
+    const copyUrl = document.getElementById('js-copy-url');
+    copyButton && copyButton.addEventListener('click', () => {
+      const url = copyUrl.value;
+      navigator.clipboard.writeText(url);
     });
   });
 }
