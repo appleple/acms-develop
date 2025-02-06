@@ -120,6 +120,7 @@ module.exports = {
               'border-radius': '0.375rem',
             },
             '[class*=column-map]': {
+              'overflow': 'hidden',
               'margin-bottom': '1.5rem',
               'border-radius': '0.375rem',
             },
