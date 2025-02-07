@@ -17,16 +17,24 @@
       <a href="{url}" class="block w-full text-sm hover:opacity-70">
         <!-- BEGIN_IF [{path}/nem] -->
         <img
-          src="%{ROOT_DIR}{path}"
+          src="%{ROOT_DIR}{path}[resizeImg(686,386)]"
+          width="343"
+          height="193"
           alt="{alt}"
+          loading="lazy"
           class="object-cover w-full mb-4 overflow-hidden rounded-md shadow-sm aspect-video"
         >
         <!-- ELSE -->
+        <!-- BEGIN noimage -->
         <img
           src="/images/default/noimage.gif"
+          width="{noImgX}"
+          height="{noImgY}"
           alt=""
+          loading="lazy"
           class="object-cover w-full mb-4 overflow-hidden rounded-md shadow-sm aspect-video"
         >
+        <!-- END noimage -->
         <!-- END_IF -->
         <h2 class="mt-3 text-gray-900 text-lg font-bold line-clamp-2">{title}</h2>
         <p class="mt-2 line-clamp-2">{summary}</p>

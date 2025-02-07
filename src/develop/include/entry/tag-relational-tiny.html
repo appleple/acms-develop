@@ -13,8 +13,11 @@
         <div class="w-1/3 aspect-square overflow-hidden rounded-md">
           <!-- BEGIN_IF [{path}/nem] -->
           <img
-            src="%{ROOT_DIR}{path}[resizeImg(192)]"
+            src="%{ROOT_DIR}{path}[resizeImg(192,192)]"
+            width="96"
+            height="96"
             alt="{alt}"
+            loading="lazy"
             class="object-cover w-full h-full"
           >
           <!-- ELSE -->
@@ -24,6 +27,7 @@
             alt=""
             width="{noImgX}"
             height="{noImgY}"
+            loading="lazy"
             class="object-cover w-full h-full"
           >
           <!-- END noimage -->
