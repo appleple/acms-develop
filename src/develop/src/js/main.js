@@ -183,17 +183,12 @@ async function main() {
       menu.classList.toggle('is-active');
     });
 
-    /* dialog */
-    const dialog = document.querySelector('.js-dialog');
-    const dialogToggle = document.querySelectorAll('.js-dialog-toggle');
-    dialogToggle && dialogToggle.forEach((toggle) => {
-      toggle.addEventListener('click', (event) => {
+    /* SP 下層メニュー */
+    const spNavParent = document.querySelectorAll('.sp-nav-link:has(+ .sp-nav-wrap)');
+    spNavParent && spNavParent.forEach((parent) => {
+      parent.addEventListener('click', (event) => {
         event.preventDefault();
-        if (dialog.open) {
-          dialog.close();
-          return;
-        }
-        dialog.showModal();
+        parent.classList.toggle('is-active');
       });
     });
 
