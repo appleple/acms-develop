@@ -1,0 +1,141 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up environment variables
+        id: vars
+        run: |
+          echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          echo "RELEASE_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          echo "ZIP_NAME=acms-develop-${GITHUB_REF#refs/tags/}.zip" >> $GITHUB_ENV
+
+      - name: Create release zip
+        run: |
+          # Create temporary directory structure
+          mkdir -p temp/ac
+          mkdir -p temp/ac/bin
+          mkdir -p temp/ac/themes
+
+          # Copy bin/develop to bin/develop
+          cp -r bin/develop temp/ac/bin/
+
+          # Copy src/develop to themes/develop
+          cp -r src/develop temp/ac/themes/
+
+          # Create zip file
+          cd temp
+          zip -r ../${{ env.ZIP_NAME }} ac
+          cd ..
+          
+          echo "Created zip file: ${{ env.ZIP_NAME }}"
+
+      - name: Generate release notes
+        id: release_notes
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tagName = process.env.TAG_NAME;
+            const previousTag = await github.rest.git.listMatchingRefs({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'tags/'
+            }).then(response => {
+              const tags = response.data
+                .map(ref => ref.ref.replace('refs/tags/', ''))
+                .filter(tag => tag !== tagName)
+                .sort();
+              return tags.length > 0 ? tags[tags.length - 1] : null;
+            });
+            
+            let compareCommits;
+            if (previousTag) {
+              compareCommits = await github.rest.repos.compareCommits({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                base: previousTag,
+                head: tagName
+              });
+            } else {
+              // If no previous tag, get all commits
+              compareCommits = await github.rest.repos.listCommits({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                per_page: 100
+              });
+            }
+            
+            const commits = previousTag ? compareCommits.data.commits : compareCommits.data;
+            
+            // Categorize commits
+            const bugfixes = [];
+            const features = [];
+            const changes = [];
+            const other = [];
+            
+            for (const commit of commits) {
+              const message = commit.commit.message.split('\n')[0];
+              if (message.toLowerCase().includes('fix') || message.toLowerCase().includes('bug')) {
+                bugfixes.push(`- ${message} (${commit.sha.substring(0, 7)})`);
+              } else if (message.toLowerCase().includes('feat') || message.toLowerCase().includes('add')) {
+                features.push(`- ${message} (${commit.sha.substring(0, 7)})`);
+              } else if (message.toLowerCase().includes('change') || message.toLowerCase().includes('update')) {
+                changes.push(`- ${message} (${commit.sha.substring(0, 7)})`);
+              } else {
+                other.push(`- ${message} (${commit.sha.substring(0, 7)})`);
+              }
+            }
+            
+            // Create release notes
+            let releaseNotes = `# Release ${tagName}\n\n`;
+            
+            if (bugfixes.length > 0) {
+              releaseNotes += `## :hammer_and_wrench: 不具合修正\n${bugfixes.join('\n')}\n\n`;
+            }
+            
+            if (features.length > 0) {
+              releaseNotes += `## :rocket: 新機能\n${features.join('\n')}\n\n`;
+            }
+            
+            if (changes.length > 0) {
+              releaseNotes += `## :wrench: 仕様変更\n${changes.join('\n')}\n\n`;
+            }
+            
+            if (other.length > 0) {
+              releaseNotes += `## その他\n${other.join('\n')}\n\n`;
+            }
+            
+            return releaseNotes;
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: Release ${{ env.RELEASE_NAME }}
+          body: ${{ steps.release_notes.outputs.result }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ env.ZIP_NAME }}
+          asset_name: ${{ env.ZIP_NAME }}
+          asset_content_type: application/zip
