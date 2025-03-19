@@ -7,55 +7,57 @@
   <!-- BEGIN entry:loop -->
   @include("/admin/entry/revision-info.html")
 
-  <header>
-    <!-- BEGIN pageHeader:veil -->
+  <!-- BEGIN pageHeader:veil -->
+  <header class="text-gray-900">
+    <!-- Todo: twig化時には日付の比較をtwigで比較できるか検討 -->
+    <p id="js-outdated-alert" class="hidden items-center gap-3 w-full mb-8 p-4 rounded-md bg-yellow-50 text-yellow-700 text-sm" data-updated-at="{date#}[date('Y-m-d')]">
+      <span class="text-yellow-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+          <path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
+        </svg>
+      </span>
+      <span>この記事は最終更新日から<span id="js-outdated-year"></span>年以上経過しています。</span>
+    </p>
     <!-- BEGIN title:veil -->
-    <h1 class="font-bold text-3xl sm:text-4xl lg:text-5xl entry-title"><a href="{titleUrl}">{title}</a></h1>
+    <h1 class="font-bold text-2xl entry-title">{title}</h1>
     <!-- END title:veil -->
-    <div class="flex flex-wrap font-medium mt-6">
-      <!-- BEGIN date:veil -->
-      <p><time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}/{date#m}/{date#d}（{date#l}[weekEN2JP]）</time></p>
-      <!-- END date:veil -->
-      <!-- BEGIN category:loop -->
-      <p><span><a href="{url}">{name}</a></span></p>
-      <!-- END category:loop -->
+    <div class="md:flex items-center flex-wrap gap-4 mt-4 text-gray-500 text-sm">
+      <!-- BEGIN pdate:veil -->
+      <p>公開日：<time datetime="{pdate#Y}-{pdate#m}-{pdate#d}">{pdate#Y}年{pdate#n}月{pdate#j}日({date#l}[weekEN2JP])</time><!-- BEGIN new --><span class="ml-2 px-2 py-1 rounded-full bg-gray-50 text-gray-900 text-xs">NEW</span><!-- END new --></p>
+      <!-- END pdate:veil -->
+      <!-- BEGIN udate:veil -->
+      <p class="mt-1.5 md:mt-0 md:pl-4 md:border-l border-gray-200">更新日：<time datetime="{udate#Y}-{udate#m}-{udate#d}">{udate#Y}年{udate#n}月{udate#j}日({date#l}[weekEN2JP])</time></p>
+      <!-- END udate:veil -->
     </div>
+    <!-- BEGIN_IF [%{CID}/nem] -->
+    <p class="mt-4 break-words"><a href="{url}" class="text-indigo-600 font-bold">%{CATEGORY_NAME}</a></p>
+    <!-- END_IF -->
     <!-- BEGIN tag:veil -->
-    <ul class="flex flex-wrap gap-2 mt-2">
+    <ul class="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-gray-900">
       <!-- BEGIN tag:loop -->
-      <li><a href="{url}">#{name}</a></li>
+      <li><a href="{url}" class="hover:opacity-70">#{name}</a></li>
       <!-- END tag:loop -->
     </ul>
     <!-- END tag:veil -->
-    <!-- END pageHeader:veil -->
   </header>
+  <!-- END pageHeader:veil -->
 
   <div class="mt-10">
     <!-- BEGIN unit:veil -->
     <div class="acms-entry entry-column">
-      <div class="relative w-full rounded-lg border border-transparent bg-blue-50 mb-8 p-4 [&>svg]:absolute [&>svg]:text-foreground [&>svg]:left-4 [&>svg]:top-4 [&>svg+div]:translate-y-[-3px] [&:has(svg)]:pl-11 text-blue-600">
-        <svg class="w-5 h-5 -translate-y-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>
-        <h4 class="mb-1 font-medium leading-none tracking-tight">この記事は公開日より5年以上経過しています</h4>
-          <div class="text-sm opacity-80">情報が古くなっている可能性がありますのでご注意ください。</div>
-      </div>
-
       <div class="acms-grid prose max-w-none custom-entry-body js-outline"
         data-target=".js-outline-yield"
         data-link="true"
         data-listType="ol"
-        data-listClassName="custom-outline"
-        data-itemClassName="mt-2 custom-outline-item"
-        data-linkClassName="scrollTo"
+        data-listClassName="list-none"
+        data-itemClassName="mt-2"
+        data-linkClassName="js-scroll no-underline hover:opacity-70"
         data-anchorName="heading-$1"
         data-levelLimit="2"
         data-exceptClass="js-except">
-        <!-- BEGIN_SetRendered id="entry-outline" -->
-        <div class="js-outline-yield"></div>
-        <!-- END_SetRendered -->
         @include("/include/unit.html")
       </div>
     </div>
-    <hr class="clearHidden">
     <!-- END unit:veil -->
 
     <!-- BEGIN continueLink:veil -->
@@ -67,16 +69,14 @@
 
     @include("/admin/entry/action.html")
 
-    <!-- BEGIN udate:veil -->
-    <p class="mt-8 text-gray-700">更新 <time datetime="{date#Y}-{date#m}-{date#d}">{date#Y}/{date#m}/{date#d} {date#H}:{date#i}</time></p>
-    <!-- END udate:veil -->
-
     <!-- BEGIN_IF [{{sns_share}}/eq/true] -->
+    <div class="mt-10">
     @include("/include/parts/sns-share.html")
+    </div>
     <!-- END_IF -->
   </div>
   <!-- END entry:loop -->
-  
+
   <!-- BEGIN pager:veil -->
   <div class="mt-10">
   @include("/include/parts/serial-navi.html")

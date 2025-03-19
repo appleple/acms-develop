@@ -15,7 +15,7 @@
   @include("/include/head/js.html")
   @endsection
 </head>
-<body>
+<body class="text-gray-700">
 @section("body-start")
 @include("/include/body-start.html")
 @endsection
@@ -25,19 +25,22 @@
 @include("/include/header.html")
 @endsection
 
-<!-- ページタイトル -->
-@section("page-title")
-@include("/include/parts/page-title.html")
-@endsection
-
 <!-- ※管理用パーツ -->
 @section("admin-part")
 @include("/admin/action.html")
 @include("/admin/switch-user.html")
 @endsection
 
-<div class="container mx-auto px-4 py-20">
-  <div class="grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-[minmax(0,_1fr)_180px] lg:grid-cols-[minmax(0,_1fr)_288px] lg:gap-x-20">
+<div class="container py-16 md:py-20">
+  @section("topicpath")
+  <!-- BEGIN_MODULE Touch_NotTop -->
+  <div class="mb-4">
+    @include("/include/topicpath.html")
+  </div>
+  <!-- END_MODULE Touch_NotTop -->
+  @endsection
+
+  <div class="grid grid-cols-1 gap-x-10 gap-y-20 lg:grid-cols-[minmax(0,_1fr)_288px] lg:gap-x-20">
     <main>
       @section("main")
       <p>継承してメインコンテンツを設定してください</p>
@@ -48,15 +51,40 @@
     </main>
 
     <aside>
-      @section("aside")
-      @endsection
+      <div>
+        @section("aside")
+        <section>
+          <h2 class="mb-3 text-lg text-gray-900 font-bold">カテゴリー</h2>
+          @include("/include/category/list-side.html",)
+        </section>
+
+        <section class="mt-8">
+          <h2 class="mb-3 text-lg text-gray-900 font-bold">ハッシュタグ</h2>
+          @include("/include/tag/cloud-side.html")
+        </section>
+
+        <section class="mt-8">
+          <h2 class="mb-3 text-lg text-gray-900 font-bold">アーカイブ</h2>
+          @include("/include/entry/archive-list-side.html")
+          <div class="mt-8">
+            @include("/include/calendar/month-side.html")
+          </div>
+        </section>
+
+        <section class="mt-8">
+          <h2 class="mb-3 text-lg text-gray-900 font-bold">新着記事</h2>
+          @include("/include/entry/summary-tiny.html")
+        </section>
+
+        <section class="mt-10">
+          <h2 class="sr-only">キーワード検索</h2>
+          @include("/include/parts/search-keyword.html")
+        </section>
+        @endsection
+      </div>
     </aside>
   </div>
 </div>
-<!-- CTAセクション -->
-@section("cta")
-@include("/include/parts/cta.html")
-@endsection
 
 <!-- フッター -->
 @section("footer")

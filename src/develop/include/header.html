@@ -1,44 +1,38 @@
-<header class="w-full bg-white" x-data="{ showMenu: false }">
-  <nav
-  class="box-border flex items-center justify-between w-full h-20 px-6 mx-auto my-0 leading-6 text-gray-800 max-w-7xl">
-    <!-- BEGIN_MODULE Blog_Field ctx="bid/1" -->
+<header class="max-lg:sticky top-0 left-0 z-10 w-full shadow bg-white">
+  <div class="container">
+    <div class="flex items-center justify-between gap-x-4 w-full leading-6 text-gray-900 min-h-14">
+      <!-- BEGIN_MODULE Blog_Field ctx="bid/1" -->
 
-    <div class="font-extrabold text-gray-800 lg:w-auto title-font md:mb-0">
-      <!-- BEGIN_MODULE Touch_Top -->
-      <h1>
-      <!-- END_MODULE Touch_Top -->
-      <!-- BEGIN_MODULE Touch_NotTop -->
-      <p>
-      <!-- END_MODULE Touch_NotTop -->
-        <a href="%{BLOG_URL}">
-          <!-- BEGIN_IF [{site_logo@path}/nem] -->
-          <img src="%{MEDIA_ARCHIVES_DIR}{site_logo@path}" alt="{site_logo@alt}" class="w-auto h-10 lg:h-16 hover:opacity-70">
-          <!-- ELSE -->
-          <span>%{BLOG_NAME}</span>
-          <!-- END_IF -->
-        </a>
-      <!-- BEGIN_MODULE Touch_Top -->
-      </h1>
-      <!-- END_MODULE Touch_Top -->
-      <!-- BEGIN_MODULE Touch_NotTop -->
-      </p>
-      <!-- END_MODULE Touch_NotTop -->
+      <div class="font-extrabold lg:w-auto text-2xl md:mb-0">
+        <p>
+          <a href="%{BLOG_URL}">
+            <span>%{BLOG_NAME}</span>
+          </a>
+        </p>
+      </div>
+      <!-- END_MODULE Blog_Field -->
+
+      <nav>
+        <!-- PCメニュー -->
+        <div class="max-lg:hidden">
+          @include("/include/parts/navigation-pc.html")
+        </div>
+
+        <!-- スマホメニュー -->
+        <div class="js-menu lg:hidden transition-opacity opacity-0 pointer-events-none [&.is-active]:opacity-100 [&.is-active]:pointer-events-auto">
+          @include("/include/parts/navigation-sp.html")
+        </div>
+      </nav>
+
+      <button class="js-menu-toggle flex flex-col items-center -mr-4 justify-center w-14 h-14 -mt-1 text-indigo-600 cursor-pointer lg:hidden hover:bg-gray-100">
+        <svg class="w-6 h-6 [.is-active_&]:hidden" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+
+        <svg class="hidden w-6 h-6 [.is-active_&]:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
-    <!-- END_MODULE Blog_Field -->
-
-    @include("/include/links/navigation.html")
-
-    <div @click="showMenu = !showMenu"
-      class="absolute right-0 flex flex-col items-center items-end justify-center w-10 h-10 mr-5 -mt-1 rounded-full cursor-pointer lg:hidden hover:bg-gray-100">
-      <svg class="w-6 h-6 text-gray-700" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round"
-        stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" x-cloak>
-        <path d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-      
-      <svg class="w-6 h-6 text-gray-700" x-show="showMenu" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg" x-cloak>
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </div>
-  </nav>
+  </div>
 </header>

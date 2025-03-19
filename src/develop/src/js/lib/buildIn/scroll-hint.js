@@ -28,5 +28,5 @@ export default (context, options = {}) => {
     },
   };
 
-  new ScrollHint(context, Object.assign(defaultOptions, options)); // eslint-disable-line no-new
+  new ScrollHint(context, Object.assign(defaultOptions, options));  
 };

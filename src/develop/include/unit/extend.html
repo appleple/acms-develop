@@ -6,5 +6,23 @@
 <hr class="my-8">
 <!-- END unit#custom_hr -->
 
+<!-- BEGIN unit#custom_outline -->
+<details class="p-4 rounded-md bg-gray-50 [&:not(:has(li))]:hidden [&_span.label-open]:open:hidden [&:not([open])_span.label-close]:hidden [&_svg]:open:-rotate-180" open>
+  <summary class="flex items-center gap-x-4">
+    <p class="not-prose font-bold">目次</p>
+    <p class="not-prose text-indigo-600 cursor-pointer">
+      <span class="inline-flex items-center gap-x-1 text-sm">
+        <span class="label-close">非表示</span>
+        <span class="label-open">表示</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-3 transition-transform">
+          <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
+        </svg>
+      </span>
+    </p>
+  </summary>
+  <div class="js-outline-yield text-sm"></div>
+</details>
+<!-- END unit#custom_outline -->
+
 <!-- BEGIN unit#custom_sample -->
 <!-- END unit#custom_sample -->

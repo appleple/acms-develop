@@ -3,48 +3,18 @@
 @section("main")
 <article>
   @include("/include/entry/body.html", {
-    "module_id": "body",
     "sns_share": "true"
   })
 
+  <section class="mt-16 md:mt-20 grid gap-y-8">
+    <div>
+      <h2 class="text-lg font-bold">関連記事</h2>
+      <p class="mt-3"><span>この記事のハッシュタグ</span><!-- BEGIN_MODULE Tag_Cloud ctx="eid/%{EID}" --><span class="flex my-0.5 md:my-0 md:inline md:ml-3"><!-- BEGIN tag:loop --><span class="mr-3"><a href="{path}" class="text-gray-900 no-underline hover:opacity-70">#{name}</a></span><!-- END tag:loop --></span><!-- END_MODULE Tag_Cloud --><span>から関連する記事を表示しています。</span></p>
+    </div>
+
+    @include("/include/entry/tag-relational-card.html")
+
+    @include("/include/entry/tag-relational-tiny.html")
+  </section>
 </article>
-@endsection
-
-@section("aside")
-<section>
-  <h2 class="mb-5 text-xl font-bold">目次</h2>
-  <!-- 参照元：Entry_Body -->
-  <!-- GET_Rendered id="entry-outline" -->
-</section>
-
-<section class="mt-12">
-  <h2 class="mb-5 text-xl font-bold">カテゴリー</h2>
-  @include("/include/category/list-side.html", {
-    "module_id": "category_list"
-  })
-</section>
-
-<section class="mt-12">
-  <h2 class="mb-5 text-xl font-bold">アーカイブ</h2>
-  @include("/include/entry/archive-list-side.html", {
-    "module_id": "archive_list"
-  })
-</section>
-
-<section class="mt-12">
-  <h2 class="mb-5 text-xl font-bold">ハッシュタグ</h2>
-  @include("/include/tag-cloud/side.html", {
-    "module_id": "tag_cloud"
-  })
-</section>
-
-<section class="mt-8">
-  <h2 class="sr-only">キーワード検索</h2>
-  @include("/include/parts/search-keyword.html")
-</section>
-
-<section class="mt-12">
-  <h2 class="text-xl font-bold">プロフィール</h2>
-  @include("/include/parts/profile-card.html")
-</section>
 @endsection

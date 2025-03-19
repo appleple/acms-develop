@@ -1,5 +1,5 @@
 export default () => {
-  ACMS.Ready(function(){
+  ACMS.Ready(() => {
     ACMS.Config.LiteEditorFieldConf.btnPosition = 'bottom';
     ACMS.Config.LiteEditorFieldConf.classNames = {
       LiteEditor: 'entryFormLiteEditor',

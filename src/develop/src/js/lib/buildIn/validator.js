@@ -1,4 +1,5 @@
 import operator from './validator-operator';
+import scrollToInvalid from '../../scrollToInvalid';
 
 class Validator {
   constructor(elm) {
@@ -200,6 +201,9 @@ export default (elm) => {
   elm.addEventListener('submit', (e) => {
     if (!validator.all(elm)) {
       e.preventDefault();
-    }
+      const formElm = e.target;
+      const parentClass = '.js-form-item';
+      scrollToInvalid(formElm, parentClass);
+  }
   });
 };

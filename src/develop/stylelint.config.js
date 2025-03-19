@@ -6,6 +6,7 @@ export default {
     'stylelint-config-recess-order',
   ],
   rules: {
+    'no-descending-specificity': null,
     'at-rule-no-unknown': [
       true,
       {
