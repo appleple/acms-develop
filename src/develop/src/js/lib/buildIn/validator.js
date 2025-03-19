@@ -61,7 +61,7 @@ class Validator {
         Validator.toggleClass(name, success);
       };
 
-      input.addEventListener('blur', event);
+      input.addEventListener('blur-sm', event);
       input.addEventListener('input', event);
       input.addEventListener('change', event);
     });

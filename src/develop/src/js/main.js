@@ -4,7 +4,6 @@ import 'vite/modulepreload-polyfill'
 import htmx from 'htmx.org';
 import domContentLoaded from 'dom-content-loaded';
 import Dispatcher from 'a-dispatcher';
-import fonts from './fonts';
 import entryOutdated from './entryOutdated';
 import scrollToInvalid from './scrollToInvalid';
 import './lib/polyfill';
@@ -32,11 +31,6 @@ import {
  * スタイルの読み込み
  */
 import '../style/main.css';
-
-/**
- * FontAwesome
- */
-fonts();
 
 // async function loadAlpineModules() {
 //   // enable code splitting
@@ -123,12 +117,6 @@ async function main() {
       ACMS.Dispatch(event.target);
     }
   });
-
-
-  /**
-   * FontAwesome
-   */
-  fonts();
 
   /**
    * Root

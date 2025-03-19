@@ -1,6 +1,7 @@
 import path, { resolve, basename } from 'path';
 import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
+import tailwindcss from '@tailwindcss/vite'
 import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 import { viteStaticCopy } from 'vite-plugin-static-copy'
@@ -12,6 +13,7 @@ export default defineConfig(({ command, mode }) => ({
     'THEME_NAME': JSON.stringify(themeName),
   },
   plugins: [
+    tailwindcss(),
     eslint({
       include: ['src/js/**/*.{js,jsx,ts,tsx,vue,svelte}'],
       emitError: true,

@@ -1,6 +1,5 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
-import pluginTailwind from "eslint-plugin-tailwindcss";
 
 export default [
   {
@@ -14,5 +13,4 @@ export default [
     ignores: ['dist/']
   },
   pluginJs.configs.recommended,
-  ...pluginTailwind.configs['flat/recommended'],
 ];
