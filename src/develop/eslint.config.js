@@ -1,6 +1,6 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
-import pluginTw from "eslint-plugin-tailwindcss"
+import pluginTailwind from "eslint-plugin-tailwindcss";
 
 export default [
   {
@@ -11,10 +11,8 @@ export default [
         ACMS: 'writable',
       }
     },
-    plugins: {
-      pluginTw,
-    },
     ignores: ['dist/']
   },
   pluginJs.configs.recommended,
+  ...pluginTailwind.configs['flat/recommended'],
 ];
