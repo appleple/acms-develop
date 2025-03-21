@@ -116,6 +116,7 @@ async function main() {
   domContentLoaded(() => {
     /**
      * htmx
+     * scriptをasyncで読み込むため、domContentLoaded内で import('htmx.org') を実行
      */
     (async () => {
       const { default: htmx } = await import('htmx.org');
