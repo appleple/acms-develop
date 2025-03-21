@@ -73,7 +73,7 @@ async function main() {
 
     await systemCmd(`git add -A`);
     await systemCmd(`git commit -m "chore(workspace): update versions" --no-verify`);
-    await systemCmd(`git push --follow-tags`);
+    await systemCmd(`git push --tags`);
 
     console.log('✅ Version update completed');
   } catch (error) {
