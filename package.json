@@ -1,6 +1,6 @@
 {
   "name": "acms-develop",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "description": "フロントエンドの開発環境が整備された a-blog cms の公式テーマです。",
   "type": "module",
