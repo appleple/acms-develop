@@ -9,7 +9,10 @@
 
   <!-- BEGIN pageHeader:veil -->
   <header class="text-gray-900">
-    <!-- Todo: twig化時には日付の比較をtwigで比較できるか検討 -->
+    <!--
+      Todo: twig化時には日付の比較をtwigで比較できるか検討
+      twigで実装できたら、src/js/entryOutdated.jsを削除すること
+    -->
     <p id="js-outdated-alert" class="hidden items-center gap-3 w-full mb-8 p-4 rounded-md bg-yellow-50 text-yellow-700 text-sm" data-updated-at="{date#}[date('Y-m-d')]">
       <span class="text-yellow-400">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">

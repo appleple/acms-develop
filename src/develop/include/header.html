@@ -12,27 +12,42 @@
       </div>
       <!-- END_MODULE Blog_Field -->
 
-      <nav>
-        <!-- PCメニュー -->
-        <div class="max-lg:hidden">
-          @include("/include/parts/navigation-pc.html")
-        </div>
+      <div x-data="{ isOffcanvasOpen: false }">
+        <nav>
+          <!-- PCメニュー -->
+          <div class="max-lg:hidden">
+            @include("/include/parts/navigation-pc.html", {
+              "module_id": "navigation_global"
+            })
+          </div>
 
-        <!-- スマホメニュー -->
-        <div class="js-menu lg:hidden transition-opacity opacity-0 pointer-events-none [&.is-active]:opacity-100 [&.is-active]:pointer-events-auto">
-          @include("/include/parts/navigation-sp.html")
-        </div>
-      </nav>
+          <!-- スマホメニュー -->
+          <div
+            x-show="isOffcanvasOpen"
+            x-transition:enter="ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in duration-300"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="lg:hidden"
+          >
+            @include("/include/parts/navigation-sp.html", {
+              "module_id": "navigation_global"
+            })
+          </div>
+        </nav>
 
-      <button class="js-menu-toggle flex flex-col items-center -mr-4 justify-center w-14 h-14 -mt-1 text-indigo-600 cursor-pointer lg:hidden hover:bg-gray-100">
-        <svg class="w-6 h-6 [.is-active_&]:hidden" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+        <button @click="isOffcanvasOpen = !isOffcanvasOpen" class="flex flex-col items-center -mr-4 justify-center w-14 h-14 -mt-1 text-indigo-600 cursor-pointer lg:hidden hover:bg-gray-100">
+          <svg x-show="!isOffcanvasOpen" class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
 
-        <svg class="hidden w-6 h-6 [.is-active_&]:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
+          <svg x-show="isOffcanvasOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </header>

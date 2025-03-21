@@ -1,11 +1,14 @@
 @import 'tailwindcss';
+
 @plugin "@tailwindcss/typography";
+
+@config "../../tailwind.config.js";
 
 @theme {
   /*
    フォント
   */
-  --font-sans: --apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Arial, Meiryo, sans-serif;
+  --font-sans: --apple-system, blinkmacsystemfont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", arial, meiryo, sans-serif;
 
   /*
    背景画像
@@ -16,56 +19,26 @@
 }
 
 @utility container {
-  margin-inline: auto;
   padding-inline: 1rem;
-  width: 100%;
+  margin-inline: auto;
 }
 
 /* stylelint-disable */
 /* ------------------------------
   独自カスタマイズ
  ------------------------------ */
-/* Navigation - Header */
-.custom-navigation > .custom-navigation-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.custom-navigation-parent {
-  padding-right: 1rem;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right center / 14px 14px;
-}
-
-.custom-navigation-list .custom-navigation-list {
-  display: flex;
-  position: absolute;
-  top: 56px;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  padding: 1.5rem calc(50vw - 512px) !important;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
-}
-
-.custom-navigation-list .custom-navigation-list::before {
-  display: block;
-  content: data('heading');
-}
-
 /* Tag_Cloud */
 .tagSize1, .tagSize2, .tagSize3 {
   @apply text-xs;
 }
 .tagSize4, .tagSize5, .tagSize6, .tagSize7, .tagSize8, .tagSize9, .tagSize10 {
-    @apply text-sm;
+  @apply text-sm;
 }
 .tagSize11, .tagSize12, .tagSize13, .tagSize14, .tagSize15, .tagSize16, .tagSize17 {
-    @apply text-base;
+  @apply text-base;
 }
 .tagSize18, .tagSize19, .tagSize20, .tagSize21, .tagSize22, .tagSize23, .tagSize24, .tagSize25 {
-    @apply text-lg;
+  @apply text-lg;
 }
 /* stylelint-enable */
 
@@ -174,11 +147,11 @@
 /* エントリー本文
 =============================== */
 .custom-entry-body .clearHidden { /* stylelint-disable-line */
+  clear: both;
   display: block;
+  visibility: hidden;
   height: 0;
   margin: 0;
-  clear: both;
-  visibility: hidden;
   border: none;
 }
 

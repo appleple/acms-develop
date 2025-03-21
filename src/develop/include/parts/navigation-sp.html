@@ -1,20 +1,42 @@
-<div class="overflow-y-auto absolute top-14 left-0 right-0 border-box h-[calc(100dvh-3.5rem)] bg-gray-500-75">
+<!--
+  Todo: twig実装で下層メニューが存在する場合にaタグをbuttonタグに変更できるか検討
+-->
+<div class="overflow-y-auto absolute top-14 left-0 right-0 border-box h-[calc(100dvh-3.5rem)] bg-gray-500/75">
   <div class="container max-h-100 mx-auto my-4">
     <div class="border border-gray-200 rounded-md bg-white font-bold js-menu">
       <!-- BEGIN_MODULE Navigation id="{{module_id}}" -->
       @include("/admin/module/setting.html")
       <!-- BEGIN navigation:loop -->
         <!-- BEGIN ul#front --><div class="sp-nav-wrap"><ul class="sp-nav-list"><!-- END ul#front -->
-          <!-- BEGIN li#front --><li class="sp-nav-item {attr}"><!-- END li#front -->
-            <!-- BEGIN link#front --><a href="{url}[buildGlobalVars]" class="sp-nav-link {attr}" target="{target}"><!-- END link#front -->
-              <!-- BEGIN label:veil -->
+          <!-- BEGIN li#front -->
+            <li
+              class="sp-nav-item {attr}"
+              x-data="\{
+                isOpen: false,
+                hasSubmenu: false,
+                init() {
+                  this.hasSubmenu = this.$el.querySelector(':scope > a + .sp-nav-wrap') !== null;
+                }
+              \}"
+            >
+            <!-- END li#front -->
+            <!-- BEGIN link#front -->
+              <a
+                href="{url}[buildGlobalVars]"
+                class="sp-nav-link {attr}"
+                :class="\{ 'is-active': isOpen \}"
+                @click="hasSubmenu ? ($event.preventDefault(), isOpen = !isOpen) : null"
+                target="{target}"
+              >
+            <!-- END link#front -->
+            <!-- BEGIN label:veil -->
               <span>{label}[raw]</span>
-              <span class="sp-nav-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3">
+              <span class="sp-nav-icon" x-show="hasSubmenu">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3" :class="\{ 'rotate-180': isOpen \}" style="transition: transform 0.2s ease-in-out;">
                   <path stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               </span>
-              <!-- END label:veil -->
+            <!-- END label:veil -->
             <!-- BEGIN link#rear --></a><!-- END link#rear -->
           <!-- BEGIN li#rear --></li><!-- END li#rear -->
         <!-- BEGIN ul#rear --></ul></div><!-- END ul#rear -->

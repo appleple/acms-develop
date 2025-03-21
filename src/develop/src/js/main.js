@@ -1,11 +1,8 @@
 import 'vite/modulepreload-polyfill'
-// import Alpine from 'alpinejs';
-// import collapse from '@alpinejs/collapse';
-import htmx from 'htmx.org';
+import Alpine from 'alpinejs';
 import domContentLoaded from 'dom-content-loaded';
 import Dispatcher from 'a-dispatcher';
 import entryOutdated from './entryOutdated';
-import scrollToInvalid from './scrollToInvalid';
 import './lib/polyfill';
 import {
   validator,
@@ -32,11 +29,10 @@ import {
  */
 import '../style/main.css';
 
-// async function loadAlpineModules() {
-//   // enable code splitting
-//   await import('./alpinejs');
-//   Alpine.plugin(collapse);
-// }
+async function loadAlpineModules() {
+  // enable code splitting
+  await import('./alpinejs');
+}
 
 /**
  * BuildInJs Dispatcher
@@ -46,15 +42,6 @@ import '../style/main.css';
  */
 function createBuildInJsDispatcher() {
   if (window.ACMS !== undefined) {
-    // フォームエラー時、エラーのある項目までスクロールする
-    ACMS.Ready(() => {
-      ACMS.addListener('acmsValidateFailed', (event) => {
-        const formElm = event.target.querySelector('.js-validator');
-        const parentClass = '.js-form-item';
-        scrollToInvalid(formElm, parentClass);
-      });
-    });
-
     return ACMS.Dispatch
   }
 
@@ -89,34 +76,9 @@ async function main() {
   /**
    * Alpine.js
    */
-  // await loadAlpineModules();
-  // window.Alpine = Alpine;
-  // Alpine.start();
-
-  /**
-   * htmx
-   */
-  window.htmx = htmx;
-
-  addEventListener("htmx:configRequest", function(event) {
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-    event.detail.headers['X-CSRF-Token'] = csrfToken;
-  });
-
-  addEventListener('htmx:beforeHistoryUpdate', function (event) {
-    const proposedUrl = event.detail.history.path;
-    let customUrl = proposedUrl;
-    if (proposedUrl.includes('/include/htmx/')) {
-      customUrl = proposedUrl.replace(/\/include\/htmx\/.*\.html/, '');
-    }
-    event.detail.history.path = customUrl;
-  });
-
-  addEventListener('htmx:afterSwap', function (event) {
-    if (window.ACMS !== undefined) {
-      ACMS.Dispatch(event.target);
-    }
-  });
+  await loadAlpineModules();
+  window.Alpine = Alpine;
+  Alpine.start();
 
   /**
    * Root
@@ -152,41 +114,31 @@ async function main() {
    * Content Ready
    */
   domContentLoaded(() => {
-    /* PC nav */
-    const childToggle = document.querySelectorAll('.js-child-toggle');
-    childToggle && childToggle.forEach((toggle) => {
-      toggle.addEventListener('click', (event) => {
-        event.preventDefault();
-        const _self = event.currentTarget;
-        _self.classList.toggle('is-active');
+    /**
+     * htmx
+     */
+    (async () => {
+      const { default: htmx } = await import('htmx.org');
+      window.htmx = htmx;
+      window.addEventListener("htmx:configRequest", function(event) {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+        event.detail.headers['X-CSRF-Token'] = csrfToken;
       });
-    });
 
-    /* SP menu */
-    const menu = document.querySelector('.js-menu');
-    const menuToggle = document.querySelector('.js-menu-toggle');
-    menuToggle && menuToggle.addEventListener('click', (event) => {
-      const _self = event.currentTarget;
-      _self.classList.toggle('is-active');
-      menu.classList.toggle('is-active');
-    });
-
-    /* SP 下層メニュー */
-    const spNavParent = document.querySelectorAll('.sp-nav-link:has(+ .sp-nav-wrap)');
-    spNavParent && spNavParent.forEach((parent) => {
-      parent.addEventListener('click', (event) => {
-        event.preventDefault();
-        parent.classList.toggle('is-active');
+      window.addEventListener('htmx:beforeHistoryUpdate', function (event) {
+        const proposedUrl = event.detail.history.path;
+        let customUrl = proposedUrl;
+        if (proposedUrl.includes('/include/htmx/')) {
+          customUrl = proposedUrl.replace(/\/include\/htmx\/.*\.html/, '');
+        }
+        event.detail.history.path = customUrl;
       });
-    });
 
-    // Copy URL
-    const copyButton = document.getElementById('js-copy-button');
-    const copyUrl = document.getElementById('js-copy-url');
-    copyButton && copyButton.addEventListener('click', () => {
-      const url = copyUrl.value;
-      navigator.clipboard.writeText(url);
-    });
+      window.addEventListener('htmx:afterSwap', function (event) {
+        window.dispatch(event.target);
+      });
+    })();
+
   });
 }
 

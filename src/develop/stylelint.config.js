@@ -2,19 +2,40 @@
 export default {
   extends: [
     'stylelint-config-standard',
-    // 'stylelint-config-standard-sass', sassを使う場合はコメントアウトを外して、stylelint-config-standardをコメントアウトしてください。
     'stylelint-config-recess-order',
   ],
   rules: {
     'no-descending-specificity': null,
+    'import-notation': null,
     'at-rule-no-unknown': [
       true,
       {
         ignoreAtRules: [
+          /** tailwindcss v4 */
+          'theme',
+          'source',
+          'utility',
+          'variant',
+          'custom-variant',
+          'plugin',
           'apply',
-          'layer',
-          'tailwind',
-          'config'
+          'config',
+        ],
+      },
+    ],
+    'at-rule-no-deprecated': [
+      true,
+      {
+        ignoreAtRules: [
+          /** tailwindcss v4 */
+          'theme',
+          'source',
+          'utility',
+          'variant',
+          'custom-variant',
+          'plugin',
+          'apply',
+          'config',
         ],
       },
     ],

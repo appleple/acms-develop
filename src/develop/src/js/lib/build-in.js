@@ -3,22 +3,23 @@ import lazyLoadJs from './buildIn/lazy-load';
 import lazyLoadFn from './buildIn/lazy-load-fn';
 import alertUnloadFn from './buildIn/alert-unload';
 import scrollToFn from './buildIn/scroll-to';
-import validatorFn from './buildIn/validator';
+import validatorFn from './buildIn/validator-fn';
 import { linkMatch, linkMatchFull, linkMatchContain } from './buildIn/link-match-location';
 
 /**
  * Validator
  * @param {Document | Element} context
  * @param {string} selector
+ * @param {import("./buildIn/validator/types").ValidatorOptions} options
  */
-const validator = (context, selector) => {
+const validator = (context, selector, options = {}) => {
   domContentLoaded(async () => {
     const querySelector = selector || 'form.js-validator';
     const targets = context.querySelectorAll(querySelector);
 
     if (targets.length > 0) {
       [].forEach.call(targets, (target) => {
-        validatorFn(target);
+        validatorFn(target, options);
       });
     }
   });

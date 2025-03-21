@@ -41,7 +41,6 @@
     "vite-plugin-stylelint": "^6.0.0"
   },
   "dependencies": {
-    "@alpinejs/collapse": "^3.14.9",
     "a-dispatcher": "^1.0.1",
     "alpinejs": "^3.14.9",
     "document-outliner": "^1.1.3",

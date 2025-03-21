@@ -6,11 +6,10 @@ import eslint from 'vite-plugin-eslint2';
 import stylelint from 'vite-plugin-stylelint';
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
-const themeName = basename(__dirname);
 export default defineConfig(({ command, mode }) => ({
   base: './',
   define: {
-    'THEME_NAME': JSON.stringify(themeName),
+    'THEME_NAME': JSON.stringify(basename(__dirname)),
   },
   plugins: [
     tailwindcss(),
@@ -27,7 +26,7 @@ export default defineConfig(({ command, mode }) => ({
     (command === 'build' && viteStaticCopy({
       targets: [
         {
-          src: 'node_modules/pdfjs-dist/build/pdf.worker.min.js',
+          src: 'node_modules/pdfjs-dist/legacy/build/pdf.worker.min.mjs',
           dest: 'pdfjs'
         },
         {
@@ -66,4 +65,7 @@ export default defineConfig(({ command, mode }) => ({
     },
     assetsInlineLimit: 4096, // 4kbより小さいアセットをインライン化
   },
+  server: {
+    cors: true,
+  }
 }));

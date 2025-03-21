@@ -12,7 +12,7 @@ export default class Pdf2Image {
     this.currentPage = 1;
     this.numPages = -1;
     this.document = null;
-    pdfjs.GlobalWorkerOptions.workerSrc = `${this.baseUrl}pdf.worker.min.js`;
+    pdfjs.GlobalWorkerOptions.workerSrc = `${this.baseUrl}pdf.worker.min.mjs`;
   }
 
   async hasPrevPage() {
