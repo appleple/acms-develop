@@ -7,7 +7,7 @@
       <span>{month}月</span>
     </h3>
 
-    <ul class="flex items-center gap-x-2 text-indigo-600">
+    <ul class="flex items-center gap-x-2 text-indigo-600 check-csrf-token">
       <li>
         <a href="{prevUrl}" class="flex items-center justify-center w-5 h-5" title="前年へ"
           hx-get="{prevUrl}tpl/include/calendar/month-side.html"

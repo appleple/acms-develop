@@ -131,6 +131,9 @@ async function main() {
         if (proposedUrl.includes('/include/htmx/')) {
           customUrl = proposedUrl.replace(/\/include\/htmx\/.*\.html/, '');
         }
+        if (!customUrl.endsWith('/')) {
+          customUrl = customUrl + '/'; // 末尾にスラッシュを追加
+        }
         event.detail.history.path = customUrl;
       });
 

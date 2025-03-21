@@ -19,6 +19,7 @@
 }
 
 @utility container {
+  max-width: 64rem;
   padding-inline: 1rem;
   margin-inline: auto;
 }
@@ -160,19 +161,6 @@
   margin-left: 0;
 }
 
-/* テーブル */
-.custom-entry-body .acms-cell-text-left {
-  text-align: left;
-}
-
-.custom-entry-body .acms-cell-text-center {
-  text-align: center;
-}
-
-.custom-entry-body .acms-cell-text-right {
-  text-align: right;
-}
-
 /* メディアユニット */
 [class*='column-media-'] .columnIcon { /* stylelint-disable-line */
   margin: 0 auto;
@@ -235,22 +223,22 @@
 
 /* 目次
 =============================== */
-.level-1 {
+.toc .level-1 {
   padding-left: 0;
   margin: .75rem 0 -.25rem;
 }
 
-.level-2 {
+.toc .level-2 {
   padding-left: 1em;
   margin-bottom: 0;
 }
 
-.level-2 li {
+.toc .level-2 li {
   display: flex;
   gap: .5em;
 }
 
-.level-2 li::before {
+.toc .level-2 li::before {
   display: block;
   width: 1em;
   content: "";
@@ -259,22 +247,6 @@
 
 
 /* stylelint-disable */
-/* フォームバリデーター
-=============================== */
-.validator-result-,
-.validator-result-1,
-.v-result-,
-.v-result-1 {
-  display: none;
-}
-
-.validator-result-error,
-.validator-result-0,
-.v-result-error,
-.v-result-0 {
-  display: block;
-}
-
 
 /* テーブルユニット
 =============================== */
@@ -296,6 +268,65 @@
   margin-bottom: 1.5rem;
   overflow-x: auto;
   overflow-y: visible !important;
+}
+
+/* stylelint-enable */
+
+/* stylelint-disable */
+
+/* 機能に関わるスタイル
+=============================== */
+
+/* フォームバリデーター */
+.validator-result-,
+.validator-result-1,
+.v-result-,
+.v-result-1 {
+  display: none;
+}
+
+.validator-result-error,
+.validator-result-0,
+.v-result-error,
+.v-result-0 {
+  display: block;
+}
+
+/* テーブル */
+.acms-cell-text-left {
+  @apply text-left!;
+}
+
+.acms-cell-text-center {
+  @apply text-center!;
+}
+
+.acms-cell-text-right {
+  @apply text-right!;
+}
+
+.acms-cell-text-nowrap {
+  @apply whitespace-nowrap!;
+}
+
+.acms-cell-text-bold {
+  @apply font-bold!;
+}
+
+.acms-cell-text-normal {
+  @apply font-normal!;
+}
+
+.acms-cell-text-top {
+  @apply align-top!;
+}
+
+.acms-cell-text-middle {
+  @apply align-middle!;
+}
+
+.acms-cell-text-bottom {
+  @apply align-bottom!;
 }
 
 /* stylelint-enable */
