@@ -11,9 +11,10 @@
     "build": "node scripts/build.js",
     "prepackage": "npm run build --workspaces --if-present",
     "package": "rm -rf build && npm run build && ",
-    "release:patch": "npm version patch --workspaces",
-    "release:minor": "npm version minor --workspaces",
-    "release:major": "npm version major --workspaces",
+    "release:commit": "node scripts/commit.js",
+    "release:patch": "npm version patch --workspaces && npm run release:commit",
+    "release:minor": "npm version minor --workspaces && npm run release:commit",
+    "release:major": "npm version major --workspaces && npm run release:commit",
     "check-update": "npx -p npm-check-updates -c ncu",
     "prepare": "husky"
   },

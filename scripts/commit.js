@@ -43,11 +43,6 @@ async function commitPackageJson(filepath, packageName) {
 
 async function main() {
   try {
-    // ルートのpackage.jsonをコミット
-    const rootPath = path.resolve(__dirname, '../package.json');
-    const rootPackage = await commitPackageJson(rootPath);
-    await createTag(rootPackage);
-
     // ワークスペースのpackage.jsonをコミット
     const workspaces = await getWorkspaces();
     for (const workspace of workspaces) {
