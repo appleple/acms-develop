@@ -13,12 +13,12 @@ async function getWorkspaces() {
   return rootPackage.workspaces || [];
 }
 
-function createTag(packageJson, isWorkspace = false) {
+async function createTag(packageJson, isWorkspace = false) {
   const version = packageJson.version;
   const tagName = isWorkspace ? `${packageJson.name}@${version}` : `v${version}`;
 
   try {
-    systemCmd(`git tag ${tagName}`);
+    await systemCmd(`git tag ${tagName}`);
     console.log(`Created tag: ${tagName}`);
   } catch (error) {
     console.error(`Failed to create tag ${tagName}:`, error.message);
@@ -27,13 +27,12 @@ function createTag(packageJson, isWorkspace = false) {
 
 async function commitPackageJson(filepath, packageName) {
   try {
-    systemCmd(`git add ${filepath}`);
-    console.log(systemCmd(`git status`));
+    await systemCmd(`git add ${filepath}`);
     const packageJson = JSON.parse(await fs.promises.readFile(filepath, 'utf8'));
     const message = packageName
       ? `chore(${packageName}): update version to ${packageJson.version}`
       : `chore: update version to ${packageJson.version}`;
-    systemCmd(`git commit -m "${message}" --no-verify`);
+    await systemCmd(`git commit -m "${message}" --no-verify`);
     console.log(`Committed changes for ${packageName || 'root'}`);
     return packageJson;
   } catch (error) {
@@ -47,7 +46,7 @@ async function main() {
     // ルートのpackage.jsonをコミット
     const rootPath = path.resolve(__dirname, '../package.json');
     const rootPackage = await commitPackageJson(rootPath);
-    createTag(rootPackage);
+    await createTag(rootPackage);
 
     // ワークスペースのpackage.jsonをコミット
     const workspaces = await getWorkspaces();
@@ -60,7 +59,7 @@ async function main() {
         const packagePath = path.resolve(basePath, dir, 'package.json');
         if (fs.existsSync(packagePath)) {
           const packageJson = await commitPackageJson(packagePath, dir);
-          createTag(packageJson, true);
+          await createTag(packageJson, true);
         }
       }
     }
