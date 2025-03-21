@@ -22,7 +22,7 @@ export const systemCmd = async (cmdString) => {
     return stdout;
   } catch (error) {
     console.error('Command failed:', error);
-    return '';
+    throw error;
   }
 };
 
