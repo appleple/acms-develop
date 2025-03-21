@@ -8,6 +8,7 @@ export default class Pdf2Image {
    */
   constructor(url) {
     this.url = url;
+    // eslint-disable-next-line no-undef
     this.baseUrl = `${window.root}themes/${THEME_NAME}/dist/pdfjs/`;
     this.currentPage = 1;
     this.numPages = -1;

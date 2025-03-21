@@ -82,6 +82,7 @@ async function main() {
 
   /**
    * Root
+   * a-blog cmsをサブディレクトリに配置している場合は、パスを変更してください。
    */
   window.root = '/';
 
