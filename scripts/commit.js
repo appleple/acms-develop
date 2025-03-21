@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
+import { systemCmd } from './lib/index.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -18,7 +18,7 @@ function createTag(packageJson, isWorkspace = false) {
   const tagName = isWorkspace ? `${packageJson.name}@${version}` : `v${version}`;
 
   try {
-    execSync(`git tag ${tagName}`);
+    systemCmd(`git tag ${tagName}`);
     console.log(`Created tag: ${tagName}`);
   } catch (error) {
     console.error(`Failed to create tag ${tagName}:`, error.message);
@@ -27,13 +27,13 @@ function createTag(packageJson, isWorkspace = false) {
 
 async function commitPackageJson(filepath, packageName) {
   try {
-    execSync(`git add ${filepath}`);
-    console.log(execSync(`git status`));
+    systemCmd(`git add ${filepath}`);
+    console.log(systemCmd(`git status`));
     const packageJson = JSON.parse(await fs.promises.readFile(filepath, 'utf8'));
     const message = packageName
       ? `chore(${packageName}): update version to ${packageJson.version}`
       : `chore: update version to ${packageJson.version}`;
-    execSync(`git commit -m "${message}" --no-verify`);
+    systemCmd(`git commit -m "${message}" --no-verify`);
     console.log(`Committed changes for ${packageName || 'root'}`);
     return packageJson;
   } catch (error) {
