@@ -28,6 +28,7 @@ function createTag(packageJson, isWorkspace = false) {
 async function commitPackageJson(filepath, packageName) {
   try {
     execSync(`git add ${filepath}`);
+    console.log(execSync(`git status`));
     const packageJson = JSON.parse(await fs.promises.readFile(filepath, 'utf8'));
     const message = packageName
       ? `chore(${packageName}): update version to ${packageJson.version}`
