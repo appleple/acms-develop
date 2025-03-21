@@ -12,9 +12,9 @@
     "build": "node scripts/build.js",
     "prepackage": "npm run build --workspaces --if-present",
     "package": "rm -rf build && npm run build && ",
-    "release:patch": "npm version patch --no-git-tag-version --workspaces --include-workspace-root",
-    "release:minor": "npm version minor --no-git-tag-version --workspaces --include-workspace-root",
-    "release:major": "npm version major --no-git-tag-version --workspaces --include-workspace-root",
+    "release:patch": "npm version patch --no-git-tag-version --workspaces --include-workspace-root && node scripts/commit.js",
+    "release:minor": "npm version minor --no-git-tag-version --workspaces --include-workspace-root && node scripts/commit.js",
+    "release:major": "npm version major --no-git-tag-version --workspaces --include-workspace-root && node scripts/commit.js",
     "check-update": "npx -p npm-check-updates -c ncu",
     "prepare": "husky"
   },
