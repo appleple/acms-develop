@@ -1,0 +1,46 @@
+{
+  "name": "acms-develop",
+  "version": "0.0.0",
+  "private": true,
+  "description": "フロントエンドの開発環境が整備された a-blog cms の公式テーマです。",
+  "type": "module",
+  "workspaces": [
+    "themes/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node scripts/build.js",
+    "prepackage": "npm run build --workspaces --if-present",
+    "package": "rm -rf build && npm run build && ",
+    "release:patch": "npm version patch --workspaces --include-workspace-root",
+    "release:minor": "npm version minor --workspaces --include-workspace-root",
+    "release:major": "npm version major --workspaces --include-workspace-root",
+    "check-update": "npx -p npm-check-updates -c ncu",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/appleple/acms-develop.git"
+  },
+  "keywords": [
+    "CMS",
+    "a-blog cms"
+  ],
+  "bugs": {
+    "url": "https://github.com/appleple/acms-develop/issues"
+  },
+  "homepage": "https://github.com/appleple/acms-develop#readme",
+  "license": "MIT",
+  "devDependencies": {
+    "archiver": "^7.0.1",
+    "fs-extra": "^11.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.3"
+  },
+  "lint-staged": {
+    "**/*.{css,js,jsx,ts,tsx}": [
+      "prettier --write"
+    ]
+  }
+}
