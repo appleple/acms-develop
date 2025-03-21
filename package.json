@@ -1,6 +1,5 @@
 {
   "name": "acms-develop",
-  "version": "0.0.9",
   "private": true,
   "description": "フロントエンドの開発環境が整備された a-blog cms の公式テーマです。",
   "type": "module",
@@ -12,10 +11,9 @@
     "build": "node scripts/build.js",
     "prepackage": "npm run build --workspaces --if-present",
     "package": "rm -rf build && npm run build && ",
-    "release:commit": "node scripts/commit.js",
-    "release:patch": "npm version patch --no-git-tag-version --workspaces --include-workspace-root && npm run release:commit",
-    "release:minor": "npm version minor --no-git-tag-version --workspaces --include-workspace-root && npm run release:commit",
-    "release:major": "npm version major --no-git-tag-version --workspaces --include-workspace-root && npm run release:commit",
+    "release:patch": "npm version patch --workspaces",
+    "release:minor": "npm version minor --workspaces",
+    "release:major": "npm version major --workspaces",
     "check-update": "npx -p npm-check-updates -c ncu",
     "prepare": "husky"
   },

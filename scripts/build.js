@@ -13,12 +13,10 @@ const ignores = [
   'themes/develop/postcss.config.cjs',
 ];
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
 async function main() {
   try {
-    // パッケージバージョンを取得
-    const pkg = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+    // developテーマ本体のパッケージバージョンを取得
+    const pkg = JSON.parse(await readFile(new URL('../themes/develop/package.json', import.meta.url), 'utf8'));
     const version = pkg.version;
 
     // tmp ディレクトリ作成
