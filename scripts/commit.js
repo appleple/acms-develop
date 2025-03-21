@@ -25,26 +25,37 @@ async function createTag(packageJson, isWorkspace = false) {
   }
 }
 
-async function commitPackageJson(filepath, packageName) {
+async function stagePackageFiles(filepath) {
+  const dirPath = path.dirname(filepath);
+  const lockFile = path.join(dirPath, 'package-lock.json');
+
+  await systemCmd(`git add ${filepath}`);
+  if (fs.existsSync(lockFile)) {
+    await systemCmd(`git add ${lockFile}`);
+  }
+
+  return JSON.parse(await fs.promises.readFile(filepath, 'utf8'));
+}
+
+async function commitWorkspaceChanges(workspacePackages) {
   try {
-    await systemCmd(`git add ${filepath}`);
-    const packageJson = JSON.parse(await fs.promises.readFile(filepath, 'utf8'));
-    const message = packageName
-      ? `chore(${packageName}): update version to ${packageJson.version}`
-      : `chore: update version to ${packageJson.version}`;
+    const versions = workspacePackages.map((pkg) => `${pkg.name}@${pkg.version}`).join(', ');
+
+    const message = `chore(workspace): update versions to ${versions}`;
     await systemCmd(`git commit -m "${message}" --no-verify`);
-    console.log(`Committed changes for ${packageName || 'root'}`);
-    return packageJson;
+    console.log('Committed workspace changes');
   } catch (error) {
-    console.error(`Failed to commit ${packageName || 'root'}:`, error.message);
+    console.error('Failed to commit workspace changes:', error.message);
     throw error;
   }
 }
 
 async function main() {
   try {
-    // ワークスペースのpackage.jsonをコミット
+    // ワークスペースのpackage.jsonをステージングしてタグを作成
     const workspaces = await getWorkspaces();
+    const workspacePackages = [];
+
     for (const workspace of workspaces) {
       const pattern = workspace.replace(/\/\*$/, '');
       const basePath = path.resolve(__dirname, '..', pattern);
@@ -53,11 +64,16 @@ async function main() {
       for (const dir of dirs) {
         const packagePath = path.resolve(basePath, dir, 'package.json');
         if (fs.existsSync(packagePath)) {
-          const packageJson = await commitPackageJson(packagePath, dir);
+          const packageJson = await stagePackageFiles(packagePath);
+          workspacePackages.push(packageJson);
           await createTag(packageJson, true);
         }
       }
     }
+
+    await systemCmd(`git add -A`);
+    await systemCmd(`git commit -m "chore(workspace): update versions" --no-verify`);
+    await systemCmd(`git push --follow-tags`);
 
     console.log('✅ Version update completed');
   } catch (error) {
