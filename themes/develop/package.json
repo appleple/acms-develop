@@ -45,5 +45,8 @@
     "scroll-hint": "^1.2.9",
     "scroll-to-element": "^2.0.3",
     "smartphoto": "^1.6.5"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
   }
 }
