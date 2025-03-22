@@ -8,4 +8,25 @@ function isFunction(value) {
   return typeof value === 'function';
 }
 
-export { isFunction };
+/**
+ * フォームが紐付けられたフィールドを取得
+ * @param {HTMLFormElement} form - フォーム
+ * @returns {(HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLButtonElement)[]} フィールドの配列
+ */
+function getFormElements(form) {
+  // フォーム内のフィールドを取得
+  const internalFields = Array.from(form.elements).filter((element) => !(element instanceof HTMLFieldSetElement));
+
+  // form属性で紐付けられた外部フィールドを取得
+  const externalFields = Array.from(document.querySelectorAll(`[form="${form.id}"]`)).filter(
+    (element) =>
+      element instanceof HTMLInputElement ||
+      element instanceof HTMLSelectElement ||
+      element instanceof HTMLTextAreaElement ||
+      element instanceof HTMLButtonElement
+  );
+
+  return [...internalFields, ...externalFields];
+}
+
+export { isFunction, getFormElements };

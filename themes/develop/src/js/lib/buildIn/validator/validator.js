@@ -1,5 +1,5 @@
 import * as rules from './rules';
-import { isFunction } from './utils';
+import { getFormElements, isFunction } from './utils';
 
 /**
  * @type {import("./types").ValidatorOptions}
@@ -15,12 +15,13 @@ const defaultOptions = {
   onValidated: () => {},
   onSubmitFailed: () => {},
   shouldValidate: 'onBlur',
+  shouldValidateOnSubmit: true,
   customRules: {},
 };
 
 class Validator {
   eventMap = {
-    onBlur: ['blur'],
+    onBlur: ['focusout'],
     onChange: ['change', 'input'],
   };
 
@@ -44,18 +45,17 @@ class Validator {
    * @returns {void}
    */
   register() {
-    if (this.config.shouldValidate !== 'onSubmit') {
-      const fields = this.getFields();
+    if (this.config.shouldValidate !== false) {
       const eventNames = this.eventMap[this.config.shouldValidate];
-      fields.forEach((field) => {
-        eventNames.forEach((eventName) => {
-          field.addEventListener(eventName, this.handleChange);
-          this.eventRegistry.set(field, [{ type: eventName, listener: this.handleChange }]);
-        });
+      eventNames.forEach((eventName) => {
+        document.addEventListener(eventName, this.handleChange);
+        this.eventRegistry.set(document, [{ type: eventName, listener: this.handleChange }]);
       });
     }
-    this.form.addEventListener('submit', this.handleSubmit);
-    this.eventRegistry.set(this.form, [{ type: 'submit', listener: this.handleSubmit }]);
+    if (this.config.shouldValidateOnSubmit) {
+      this.form.addEventListener('submit', this.handleSubmit);
+      this.eventRegistry.set(this.form, [{ type: 'submit', listener: this.handleSubmit }]);
+    }
   }
 
   /**
@@ -64,8 +64,8 @@ class Validator {
    */
   unregister() {
     for (const [element, listeners] of this.eventRegistry) {
-      listeners.forEach(({ type, listener, options }) => {
-        element.removeEventListener(type, listener, options);
+      listeners.forEach(({ type, listener }) => {
+        element.removeEventListener(type, listener);
       });
     }
     this.eventRegistry.clear();
@@ -111,7 +111,15 @@ class Validator {
     ) {
       return;
     }
+    if (this.config.shouldValidate === false) {
+      return;
+    }
+
     if (this.form.noValidate) {
+      return;
+    }
+
+    if (!this.getFields().includes(event.target)) {
       return;
     }
     this.checkValidity(event.target);
@@ -124,6 +132,9 @@ class Validator {
    */
   handleSubmit(event) {
     if (this.form.noValidate) {
+      return;
+    }
+    if (!this.config.shouldValidateOnSubmit) {
       return;
     }
     if (!this.checkFormValidity()) {
@@ -162,7 +173,7 @@ class Validator {
       .filter((validation) => validation.rule.substring(0, 4) === 'all_');
     const validationResults = [];
     allValidations.forEach((validation) => {
-      const checkboxes = Array.from(this.fields).filter(
+      const checkboxes = Array.from(fields).filter(
         (field) => field.name === validation.field || field.name === `${validation.field}[]`
       );
       const ok = this.rules[validation.rule]('', validation.arg, checkboxes, validation);
@@ -313,7 +324,7 @@ class Validator {
    * @returns {(HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLButtonElement)[]} - The fields
    */
   getFields() {
-    const fields = Array.from(this.form.elements).filter((element) => !(element instanceof HTMLFieldSetElement));
+    const fields = getFormElements(this.form);
     return fields;
   }
 

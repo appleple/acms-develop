@@ -166,6 +166,7 @@
 
 /* エントリー本文
 =============================== */
+/* stylelint-disable selector-class-pattern */
 .custom-entry-body .clearHidden {
   /* stylelint-disable-line */
   clear: both;
@@ -274,15 +275,13 @@
     no-repeat center center;
 }
 
-/* stylelint-disable */
-
 /* テーブルユニット
 =============================== */
-@media (max-width: 1023px) {
+@media (width <= 1023px) {
   [class*='column-table-'] table:not([class]) th,
   [class*='column-table-'] table:not([class]) td {
-    display: block;
     box-sizing: border-box;
+    display: block;
     width: 100%;
     border-bottom: 1px solid var(--tw-prose-td-borders);
   }

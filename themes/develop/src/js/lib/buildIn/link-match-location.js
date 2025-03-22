@@ -6,10 +6,9 @@ const stayClass = 'stay';
  * @param {string} selector
  * @return {boolean}
  */
-// eslint-disable-next-line no-constant-binary-expression
+
 const matches = (el, selector) =>
   (
-    0 ||
     el.matches ||
     el.matchesSelector ||
     el.msMatchesSelector ||

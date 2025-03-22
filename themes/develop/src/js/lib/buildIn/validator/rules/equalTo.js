@@ -1,3 +1,5 @@
+import { getFormElements } from '../utils';
+
 /**
  * Validates if the value equals to another input's value
  * @type {import('../types').ValidationRule}
@@ -11,7 +13,7 @@ export const equalTo = (val, name, input) => {
     return true;
   }
 
-  const input2 = input.form.elements.namedItem(name);
+  const input2 = getFormElements(input.form).find((element) => element.name === name);
 
   if (input2 === null) {
     // バリデーション対象の要素がフォームの要素ではない場合は無効なルールとしてtrueを返す

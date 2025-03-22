@@ -59,6 +59,18 @@ export default defineConfig(({ command, mode }) => ({
       },
       output: {
         manualChunks(id) {
+          if (id.includes('pdfjs-dist')) {
+            return 'pdfjs-dist';
+          }
+          if (id.includes('leaflet')) {
+            return 'leaflet';
+          }
+          if (id.includes('htmx.org')) {
+            return 'htmx.org';
+          }
+          if (id.includes('alpinejs')) {
+            return 'alpinejs';
+          }
           if (id.includes('node_modules')) {
             return 'vendor';
           }
