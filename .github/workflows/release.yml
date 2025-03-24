@@ -26,9 +26,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Rebuild
-        run: npm rebuild
-
       - name: Create release package
         run: npm run package
 
