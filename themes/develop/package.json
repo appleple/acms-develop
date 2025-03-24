@@ -1,6 +1,6 @@
 {
   "name": "develop",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Webサイト制作プロジェクト",
   "type": "module",
   "main": "index.js",
