@@ -15,6 +15,7 @@ const defaultOptions = {
   onValidated: () => {},
   onSubmitFailed: () => {},
   shouldValidate: 'onBlur',
+  shouldRevalidate: 'onChange',
   shouldValidateOnSubmit: true,
   customRules: {},
 };
@@ -35,8 +36,10 @@ class Validator {
     this.config = { ...defaultOptions, ...option };
     this.rules = { ...rules, ...this.config.customRules };
     this.eventRegistry = new Map();
+    this.invalidFields = new Set();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRevalidate = this.handleRevalidate.bind(this);
     this.register();
   }
 
@@ -49,7 +52,21 @@ class Validator {
       const eventNames = this.eventMap[this.config.shouldValidate];
       eventNames.forEach((eventName) => {
         document.addEventListener(eventName, this.handleChange);
-        this.eventRegistry.set(document, [{ type: eventName, listener: this.handleChange }]);
+        this.eventRegistry.set(document, [
+          ...(this.eventRegistry.get(document) || []),
+          { type: eventName, listener: this.handleChange },
+        ]);
+      });
+    }
+    // 失敗したフィールドの再バリデーション用のイベントリスナーを登録
+    if (this.config.shouldRevalidate !== false) {
+      const revalidateEventNames = this.eventMap[this.config.shouldRevalidate];
+      revalidateEventNames.forEach((eventName) => {
+        document.addEventListener(eventName, this.handleRevalidate);
+        this.eventRegistry.set(document, [
+          ...(this.eventRegistry.get(document) || []),
+          { type: eventName, listener: this.handleRevalidate },
+        ]);
       });
     }
     if (this.config.shouldValidateOnSubmit) {
@@ -123,6 +140,38 @@ class Validator {
       return;
     }
     this.checkValidity(event.target);
+  }
+
+  /**
+   * handleRevalidate
+   * @param {Event} event - The event to handle
+   * @returns {void}
+   */
+  handleRevalidate(event) {
+    if (
+      !(event.target instanceof HTMLInputElement) &&
+      !(event.target instanceof HTMLSelectElement) &&
+      !(event.target instanceof HTMLTextAreaElement)
+    ) {
+      return;
+    }
+
+    if (this.config.shouldRevalidate === false) {
+      return;
+    }
+
+    if (this.form.noValidate) {
+      return;
+    }
+
+    if (!this.getFields().includes(event.target)) {
+      return;
+    }
+
+    // 失敗したフィールドの場合のみ再バリデーション
+    if (this.invalidFields.has(event.target.name)) {
+      this.checkValidity(event.target);
+    }
   }
 
   /**
@@ -255,9 +304,21 @@ class Validator {
       if (Array.isArray(result.element)) {
         result.element.forEach((element) => {
           this.toggleAriaInvalid(element, result.ok);
+          // 失敗フィールドを管理
+          if (!result.ok) {
+            this.invalidFields.add(element.name);
+          } else {
+            this.invalidFields.delete(element.name);
+          }
         });
       } else {
         this.toggleAriaInvalid(result.element, result.ok);
+        // 失敗フィールドを管理
+        if (!result.ok) {
+          this.invalidFields.add(result.element.name);
+        } else {
+          this.invalidFields.delete(result.element.name);
+        }
       }
     });
     if (!ok) {
@@ -278,8 +339,10 @@ class Validator {
     this.toggleClass(input.name, ok);
     this.toggleAriaInvalid(input, ok);
     if (ok) {
+      this.invalidFields.delete(input.name);
       this.config.onValid(results, input);
     } else {
+      this.invalidFields.add(input.name);
       this.config.onInvalid(results, input);
     }
     this.config.onValidated(results, input);

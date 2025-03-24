@@ -13,6 +13,7 @@ import * as rules from './rules';
  * @property {function(ValidationResult[], HTMLElement): void} onInvalid - バリデーション失敗時のコールバック関数
  * @property {function(ValidationResult[], HTMLElement): void} onValidated - バリデーション後に実行されるコールバック関数
  * @property {'onBlur' | 'onChange' | false} shouldValidate - バリデーションのタイミング
+ * @property {'onBlur' | 'onChange' | false} shouldRevalidate - 再バリデーションのタイミング
  * @property {boolean} shouldValidateOnSubmit - 送信時にバリデーションを実行するかどうか
  * @property {Record<string, ValidationRule>} customRules - カスタムバリデーションルール
  */
