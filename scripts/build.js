@@ -41,7 +41,7 @@ async function main() {
     fs.mkdirsSync('build');
 
     // zip 化
-    await zipPromise(`${zipDir}/`, `./build/${zipDir}-${version}.zip`);
+    await zipPromise(`${zipDir}/`, `./build/${zipDir}-v${version}.zip`);
   } catch (err) {
     console.error(err);
   } finally {
