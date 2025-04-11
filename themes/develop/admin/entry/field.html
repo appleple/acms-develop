@@ -5,31 +5,3 @@
 @include("/admin/entry/bcd/%{BCD}.html")
 @include("/admin/entry/rccd/%{RCCD}.html")
 @include("/admin/entry/ccd/%{CCD}.html")
-
-<div class="acms-admin-grid-edit-table">
-  <div class="acms-admin-flex acms-admin-flex-col-max-md acms-admin-flex-row-min-md">
-    <label class="acms-admin-grid-edit-table-heading">
-      <span>画像</span>
-    </label>
-    <div class="acms-admin-flex-1">
-      <div class="js-img_resize_cf">
-        <!-- BEGIN_IF [{img@path}/nem] -->
-        <img src="%{ARCHIVES_DIR}{img@path}" class="acms-admin-img-responsive js-img_resize_preview" alt="{img@alt}" />
-        <input type="hidden" name="img@old" value="{img@path}" />
-        <div class="acms-admin-form-checkbox">
-          <label>
-            <input type="checkbox" name="img@edit" value="delete" />
-            <i class="acms-admin-ico-checkbox"></i>削除</label>
-        </div>
-        <!-- ELSE -->
-        <img alt="" src="%{ARCHIVES_DIR}{img@path}" class="acms-admin-img-responsive js-img_resize_preview" style="display:none" />
-        <!-- END_IF -->
-        <input type="file" name="img" size="20" class="js-img_resize_input" />
-        <br/>
-        <input type="hidden" name="field[]" value="img" />
-        <input type="hidden" name="img:extension" value="image" />
-        <input type="hidden" name="img@filename" value="" />
-      </div>
-    </div>
-  </div>
-</div>
