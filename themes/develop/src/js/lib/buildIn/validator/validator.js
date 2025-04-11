@@ -8,7 +8,7 @@ const defaultOptions = {
   resultClassName: 'validator-result-',
   okClassName: 'valid',
   ngClassName: 'invalid',
-  shouldScrollOnSubmitFailed: false,
+  shouldScrollOnSubmitFailed: true,
   shouldFocusOnSubmitFailed: true,
   onInvalid: () => {},
   onValid: () => {},
@@ -89,21 +89,21 @@ class Validator {
   }
 
   /**
-   * カスタムルールを登録する
+   * バリデーションルールを登録する
    * @param {string} name - ルールの名前
    * @param {import("./types").ValidationRule} rule - ルールの関数
    * @returns {void}
    */
-  registerCustomRule(name, rule) {
+  registerRule(name, rule) {
     this.rules[name] = rule;
   }
 
   /**
-   * カスタムルールを削除する
+   * バリデーションルールを削除する
    * @param {string} name - ルールの名前
    * @returns {void}
    */
-  unregisterCustomRule(name) {
+  unregisterRule(name) {
     delete this.rules[name];
   }
 
@@ -169,18 +169,25 @@ class Validator {
     }
 
     // 失敗したフィールドの場合のみ再バリデーション
-    if (this.invalidFields.has(event.target.name)) {
-      this.checkValidity(event.target);
+    if (!this.invalidFields.has(event.target.name)) {
+      return;
     }
+    this.checkValidity(event.target);
   }
 
   /**
    * handleSubmit
-   * @param {Event} event - The event to handle
+   * @param {SubmitEvent} event - The event to handle
    * @returns {void}
    */
   handleSubmit(event) {
     if (this.form.noValidate) {
+      return;
+    }
+    if (
+      (event.submitter instanceof HTMLButtonElement || event.submitter instanceof HTMLInputElement) &&
+      event.submitter.formNoValidate
+    ) {
       return;
     }
     if (!this.config.shouldValidateOnSubmit) {
@@ -191,7 +198,7 @@ class Validator {
       event.stopPropagation();
 
       if (this.config.shouldScrollOnSubmitFailed) {
-        this.scrollToInvalidElement(() => {
+        this.scrollToInvalidElement().then(() => {
           if (this.config.shouldFocusOnSubmitFailed) {
             this.focusInvalidElement();
           }
@@ -472,27 +479,26 @@ class Validator {
 
   /**
    * 無効な要素までスクロールする
-   * @param {() => void} [onScrollend] - スクロールが完了したときに呼び出される関数
-   * @returns {void}
+   * @returns {Promise<void>}
    */
-  scrollToInvalidElement(onScrollend) {
-    const element = this.getInvalidElement();
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      let isScrolling;
+  scrollToInvalidElement() {
+    return new Promise((resolve) => {
+      const element = this.getInvalidElement();
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        let isScrolling;
 
-      const onScroll = () => {
-        clearTimeout(isScrolling);
-        isScrolling = setTimeout(() => {
-          if (onScrollend) {
-            onScrollend();
-          }
-          window.removeEventListener('scroll', onScroll);
-        }, 100); // 100ms スクロールが停止したらフォーカスを移動
-      };
+        const onScroll = () => {
+          clearTimeout(isScrolling);
+          isScrolling = setTimeout(() => {
+            window.removeEventListener('scroll', onScroll);
+            resolve();
+          }, 100); // 100ms スクロールが停止したらスクロール終了と判断
+        };
 
-      window.addEventListener('scroll', onScroll);
-    }
+        window.addEventListener('scroll', onScroll);
+      }
+    });
   }
 
   /**
