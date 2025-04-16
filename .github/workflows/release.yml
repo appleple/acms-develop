@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - main
 
 permissions:
   contents: write
@@ -32,33 +32,14 @@ jobs:
           VERSION=$(node -p "require('./themes/develop/package.json').version")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Check if tag already exists
-        id: check_tag
-        run: |
-          TAG="v${{ steps.version.outputs.version }}"
-          if git rev-parse "$TAG" >/dev/null 2>&1; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Create Git tag
-        if: steps.check_tag.outputs.exists == 'false'
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git tag v${{ steps.version.outputs.version }}
-          git push origin v${{ steps.version.outputs.version }}
-
       - name: Create release package
         run: npm run package
 
       - name: Create GitHub Release
-        if: steps.check_tag.outputs.exists == 'false'
         run: |
           gh release create v${{ steps.version.outputs.version }} \
             --title "v${{ steps.version.outputs.version }}" \
             --generate-notes \
-            ./build/develop.zip
+            ./build/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
