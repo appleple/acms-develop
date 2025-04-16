@@ -14,9 +14,7 @@ async function main() {
   try {
     await systemCmd('git add -A');
     await systemCmd(`git commit -m "v${version}"`);
-    await systemCmd(`git tag v${version}`);
     await systemCmd('git push');
-    await systemCmd('git push --tags');
   } catch (err) {
     console.error(err);
   }

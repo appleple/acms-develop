@@ -2,14 +2,14 @@ name: Release
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - master
 
 permissions:
   contents: write
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -26,13 +26,39 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Get version from package.json
+        id: version
+        run: |
+          VERSION=$(node -p "require('./themes/develop/package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if tag already exists
+        id: check_tag
+        run: |
+          TAG="v${{ steps.version.outputs.version }}"
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Git tag
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag v${{ steps.version.outputs.version }}
+          git push origin v${{ steps.version.outputs.version }}
+
       - name: Create release package
         run: npm run package
 
-      - name: Create Release
+      - name: Create GitHub Release
+        if: steps.check_tag.outputs.exists == 'false'
         run: |
-          gh release create ${{github.ref_name}} \
+          gh release create v${{ steps.version.outputs.version }} \
+            --title "v${{ steps.version.outputs.version }}" \
             --generate-notes \
-            ./build/develop-${{github.ref_name}}.zip
+            ./build/develop.zip
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -14,10 +14,6 @@ const ignores = [
 
 async function main() {
   try {
-    // developテーマ本体のパッケージバージョンを取得
-    const pkg = JSON.parse(await readFile(new URL('../themes/develop/package.json', import.meta.url), 'utf8'));
-    const version = pkg.version;
-
     // tmp ディレクトリ作成
     console.log('Create tmp directory.');
     fs.mkdirsSync(zipDir);
@@ -41,7 +37,7 @@ async function main() {
     fs.mkdirsSync('build');
 
     // zip 化
-    await zipPromise(`${zipDir}/`, `./build/${zipDir}-v${version}.zip`);
+    await zipPromise(`${zipDir}/`, `./build/${zipDir}.zip`);
   } catch (err) {
     console.error(err);
   } finally {
