@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="has-[dialog:open]:overflow-hidden" lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  @section("head-meta")
+  @include("/include/head/meta.html")
+  @endsection
+
+  @section("head-link")
+  @include("/include/head/link.html")
+  @endsection
+
+  @section("head-js")
+  @include("/include/head/js.html")
+  @endsection
+</head>
+<body>
+@section("body-start")
+@include("/include/body-start.html")
+@endsection
+
+<!-- ヘッダー -->
+@section("header")
+@include("/include/header.html")
+@endsection
+
+<!-- ※管理用パーツ -->
+@section("admin-part")
+@include("/admin/action.html")
+@include("/admin/switch-user.html")
+@endsection
+
+<main class="container py-20">
+  @section("topicpath")
+  <!-- BEGIN_MODULE Touch_NotTop -->
+  <div class="mb-10">
+    @include("/include/topicpath.html")
+  </div>
+  <!-- END_MODULE Touch_NotTop -->
+  @endsection
+
+  @section("main")
+  <p>継承してメインコンテンツを設定してください</p>
+
+  <!-- 確認用テンプレート -->
+  @include("/include/check-seo.html")
+  @endsection
+</main>
+
+<!-- フッター -->
+@section("footer")
+@include("/include/footer.html")
+@endsection
+
+@section("body-end")
+@include("/include/body-end.html")
+@endsection
+</body>
+</html>

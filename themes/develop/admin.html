@@ -1,0 +1,11 @@
+@extends("/_layouts/admin.html")
+
+@section("admin-js")
+@parent
+<!-- カスタムJSを記述 -->
+@vite("src/js/admin.js", {
+  "scriptTagAttributes": {
+    "async": true
+  }
+})
+@endsection

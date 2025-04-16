@@ -1,0 +1,23 @@
+<!-- BEGIN_MODULE Category_List id="{{module_id}}" -->
+<div class="[&>ul>li>a>.icon]:hidden">
+  @include("/admin/module/setting.html")
+  <!-- BEGIN category:loop --><!-- BEGIN ul#front -->
+  <ul class="border-b border-solid border-gray-200 text-sm text-gray-900">
+  <!-- END ul#front --><!-- BEGIN li#front -->
+    <li class="py-2 border-t border-solid border-gray-200 [&>ul]:border-b-0 [&>ul>li]:border-t-0 [&>ul>li]:py-0 [&>ul>li]:pl-3"><!-- END li#front --><!-- BEGIN category:veil -->
+      <a href="{url}" class="flex items-center gap-1.5 py-2 hover:opacity-70">
+        <span class="icon text-gray-400 flex-none">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </span>
+        <span class="flex-1 block">{name}</span>
+        <!-- BEGIN amount:veil -->
+        <span class="block min-w-10 px-2 py-1 rounded-full text-xs text-center bg-slate-50">{amount}</span>
+        <!-- END amount:veil -->
+      </a><!-- END category:veil --><!-- BEGIN li#rear -->
+    </li><!-- END li#rear --><!-- BEGIN ul#rear -->
+  </ul>
+  <!-- END ul#rear --><!-- END category:loop -->
+</div>
+<!-- END_MODULE Category_List -->

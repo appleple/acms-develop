@@ -1,0 +1,60 @@
+<h3 class="acms-admin-admin-title2">プロフィール</h3>
+<table class="adminTable acms-admin-table-admin-edit">
+  <tr>
+    <th><label for="input-text-position">所属</label><i data-acms-tooltip="ユーザーが所属する部署などです。" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+    <td>
+      <input type="text" name="position" value="{position}" size="30" id="input-text-position">
+      <input type="hidden" name="field[]" value="position">
+    </td>
+  </tr>
+  <tr>
+    <th><label for="input-text-user_title">肩書き</label><i data-acms-tooltip="ユーザーの肩書きです。" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+    <td>
+      <input type="text" name="user_title" value="{user_title}" size="30" id="input-text-user_title">
+      <input type="hidden" name="field[]" value="user_title">
+    </td>
+  </tr>
+  <tr>
+    <th>画像
+      <i class="acms-admin-icon-tooltip js-acms-tooltip" data-acms-tooltip="ユーザーの画像です。"></i>
+    </th>
+    <td class="js-media-field">
+      <div class="js-droparea" data-thumbnail="{image@thumbnail}" data-type="image" style="width:200px"></div>
+      <p class="js-text acms-admin-text-danger" style="display:none">許可されていないファイルのため挿入できません。</p>
+      <div class="acms-admin-margin-top-mini">
+        <button type="button" class="js-insert acms-admin-btn" data-type="image">メディアを選択</button>
+      </div>
+      <input type="hidden" name="image" value="{image}" class="js-value">
+      <input type="hidden" name="field[]" value="image">
+      <input type="hidden" name="image:extension" value="media">
+    </td>
+  </tr>
+  <tr>
+    <th><label for="input-text-image-alt">代替テキスト</label><i data-acms-tooltip="ユーザーが登録した画像に代替をつけることができます。" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+    <td>
+      <input type="text" name="image@alt" value="{image@alt}" size="30" id="input-text-image-alt">
+      <input type="hidden" name="field[]" value="image@alt">
+    </td>
+  </tr>
+  <tr>
+    <th><label for="input-text-x_twitter">X（旧Twitter）</label><i data-acms-tooltip="X（旧Twitter）のユーザページのURLを設定します。" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+    <td>
+      <input type="text" name="x_twitter" value="{x_twitter}" size="50" id="input-text-x_twitter">
+      <input type="hidden" name="field[]" value="x_twitter">
+    </td>
+  </tr>
+  <tr>
+    <th><label for="input-text-facebook">Facebook</label><i data-acms-tooltip="FacebookのユーザページのURLを設定します。" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+    <td>
+      <input type="text" name="facebook" value="{facebook}" size="50" id="input-text-facebook">
+      <input type="hidden" name="field[]" value="facebook">
+    </td>
+  </tr>
+  <tr>
+    <th><label for="input-text-github">Github</label><i data-acms-tooltip="GithubのプロフィールページのURLを設定します。" class="acms-admin-icon-tooltip js-acms-tooltip-hover"></i></th>
+    <td>
+      <input type="text" name="github" value="{github}" size="50" id="input-text-github">
+      <input type="hidden" name="field[]" value="github">
+    </td>
+  </tr>
+</table>

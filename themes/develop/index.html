@@ -1,0 +1,13 @@
+@extends("/_layouts/two-column.html")
+
+@section("main")
+<!-- BEGIN_MODULE Touch_Category -->
+<h1 class="text-gray-900 font-bold text-2xl mb-10">%{CATEGORY_NAME}</h1>
+<!-- END_MODULE Touch_Category -->
+<!-- BEGIN_IF [%{DATE_MONTH}/nem] -->
+<h1 class="text-gray-900 font-bold text-2xl mb-10">%{DATE_YEAR}年%{DATE_MONTH}月<!-- BEGIN_IF [%{DATE_DAY}/nem] -->%{DATE_DAY}日<!-- END_IF --></h1>
+<!-- END_IF -->
+<div id="swap-htmx">
+@include("/include/htmx/swap-index.html")
+</div>
+@endsection

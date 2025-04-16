@@ -1,0 +1,25 @@
+<!-- BEGIN serialNavi:veil -->
+<nav aria-label="ページ送り">
+  <ul class="md:flex items-center gap-10">
+    <li class="flex-1 basis-[210px]">
+      <!-- BEGIN prevLink -->
+      <a href="{url}" class="block px-4 py-2 border border-gray-200 rounded-md hover:opacity-70">
+        <span class="block text-gray-900 text-sm font-bold">前のページへ</span>
+        <span class="block mt-1 text-gray-500 text-xs line-clamp-2">{name}</span>
+      </a>
+      <!-- END prevLink -->
+    </li>
+    <li class="flex-none my-2 md:my-0 font-bold text-center">
+      <a href="{upperUrl}" class="inline-block py-2 text-gray-900 hover:opacity-70">一覧へ</a>
+    </li>
+    <li class="flex-1 basis-[210px] text-right">
+      <!-- BEGIN nextLink -->
+      <a href="{url}" class="block px-4 py-2 border border-gray-200 rounded-md hover:opacity-70">
+        <span class="block text-gray-900 text-sm font-bold">次のページへ</span>
+        <span class="block mt-1 text-gray-500 text-xs line-clamp-2">{name}</span>
+      </a>
+      <!-- END nextLink -->
+    </li>
+  </ul>
+</nav>
+<!-- END serialNavi:veil -->
