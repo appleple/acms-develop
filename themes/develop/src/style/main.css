@@ -11,13 +11,6 @@
   --font-sans:
     --apple-system, blinkmacsystemfont, 'Helvetica Neue', 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
     arial, meiryo, sans-serif;
-
-  /*
-   背景画像
-  */
-  --bg-circle: url('/themes/develop/images/fa-circle-solid.svg');
-  --bg-check: url('/themes/develop/images/fa-check-solid.svg');
-  --bg-select: url('/themes/develop/images/fa-chevron-down-solid.svg');
 }
 
 @utility container {

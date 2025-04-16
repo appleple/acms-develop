@@ -81,12 +81,6 @@ async function main() {
   Alpine.start();
 
   /**
-   * Root
-   * a-blog cmsをサブディレクトリに配置している場合は、パスを変更してください。
-   */
-  window.root = '/';
-
-  /**
    * Setup BuildInJs
    */
   window.dispatch = createBuildInJsDispatcher();
