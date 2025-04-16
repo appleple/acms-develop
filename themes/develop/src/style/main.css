@@ -26,45 +26,9 @@
   margin-inline: auto;
 }
 
-/* stylelint-disable */
 /* ------------------------------
   独自カスタマイズ
  ------------------------------ */
-/* Tag_Cloud */
-.tagSize1,
-.tagSize2,
-.tagSize3 {
-  @apply text-xs;
-}
-.tagSize4,
-.tagSize5,
-.tagSize6,
-.tagSize7,
-.tagSize8,
-.tagSize9,
-.tagSize10 {
-  @apply text-sm;
-}
-.tagSize11,
-.tagSize12,
-.tagSize13,
-.tagSize14,
-.tagSize15,
-.tagSize16,
-.tagSize17 {
-  @apply text-base;
-}
-.tagSize18,
-.tagSize19,
-.tagSize20,
-.tagSize21,
-.tagSize22,
-.tagSize23,
-.tagSize24,
-.tagSize25 {
-  @apply text-lg;
-}
-/* stylelint-enable */
 
 /* グローバルナビゲーション - PC
 =============================== */

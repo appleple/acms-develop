@@ -2,18 +2,17 @@
   <div class="container">
     <div class="flex items-center justify-between gap-x-4 w-full leading-6 text-gray-900 min-h-14">
       <!-- BEGIN_MODULE Blog_Field ctx="bid/1" -->
-
       <div class="font-extrabold lg:w-auto text-2xl md:mb-0">
-        <p>
+        <!-- BEGIN_IF [%{BID}/eq/1/_and_/%{VIEW}/eq/top] --><h1><!-- ELSE --><p><!-- END_IF -->
           <a href="%{BLOG_URL}">
             <span>%{BLOG_NAME}</span>
           </a>
-        </p>
+        <!-- BEGIN_IF [%{BID}/eq/1/_and_/%{VIEW}/eq/top] --></h1><!-- ELSE --></p><!-- END_IF -->
       </div>
       <!-- END_MODULE Blog_Field -->
 
       <div x-data="{ isOffcanvasOpen: false }">
-        <nav>
+        <nav aria-label="グローバルナビゲーション">
           <!-- PCメニュー -->
           <div class="max-lg:hidden">
             @include("/include/parts/navigation-pc.html", {

@@ -132,10 +132,6 @@ class Validator {
       return;
     }
 
-    if (this.form.noValidate) {
-      return;
-    }
-
     if (!this.getFields().includes(event.target)) {
       return;
     }
@@ -160,10 +156,6 @@ class Validator {
       return;
     }
 
-    if (this.form.noValidate) {
-      return;
-    }
-
     if (!this.getFields().includes(event.target)) {
       return;
     }
@@ -177,19 +169,10 @@ class Validator {
 
   /**
    * handleSubmit
-   * @param {SubmitEvent} event - The event to handle
+   * @param {Event} event - The event to handle
    * @returns {void}
    */
   handleSubmit(event) {
-    if (this.form.noValidate) {
-      return;
-    }
-    if (
-      (event.submitter instanceof HTMLButtonElement || event.submitter instanceof HTMLInputElement) &&
-      event.submitter.formNoValidate
-    ) {
-      return;
-    }
     if (!this.config.shouldValidateOnSubmit) {
       return;
     }
