@@ -22,7 +22,7 @@ import {
   focusedImage,
   documentOutliner,
   unitGroupAlign,
-} from './lib/build-in'; // ToDo: いらないものはコメントアウト
+} from './lib/build-in'; // TODO: Remove or comment out unused built-in JavaScript modules
 
 /**
  * スタイルの読み込み
