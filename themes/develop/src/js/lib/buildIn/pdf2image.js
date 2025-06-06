@@ -80,6 +80,9 @@ export default class Pdf2Image {
     canvas.width = Math.floor(viewport.width * outputScale);
 
     const context = canvas.getContext('2d');
+    if (context === null) {
+      throw new Error('Failed to get 2D rendering context from canvas.');
+    }
     context.save();
     context.fillStyle = "rgb(255, 255, 255)";
     context.fillRect(0, 0, canvas.width, canvas.height);
