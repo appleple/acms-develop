@@ -178,7 +178,6 @@ class Validator {
     }
     if (!this.checkFormValidity()) {
       event.preventDefault();
-      event.stopPropagation();
 
       if (this.config.shouldScrollOnSubmitFailed) {
         this.scrollToInvalidElement().then(() => {
