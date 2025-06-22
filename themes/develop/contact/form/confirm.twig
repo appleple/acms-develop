@@ -1,0 +1,35 @@
+<div>
+  <h2 class="mb-2 text-sm font-bold text-gray-500 sm:text-base">お名前</h2>
+  <p>
+    {{ name.value }}
+  </p>
+</div>
+
+<div class="mt-8">
+  <h2 class="mb-2 text-sm font-bold text-gray-500 sm:text-base">メールアドレス</h2>
+  <p>
+    {{ email.value }}
+  </p>
+</div>
+
+<div class="mt-8">
+  <h2 class="mb-2 text-sm font-bold text-gray-500 sm:text-base">お問い合わせ種別</h2>
+  <p>
+    {{ description.value }}
+  </p>
+</div>
+
+<div class="mt-8">
+  <h2 class="mb-2 text-sm font-bold text-gray-500 sm:text-base">お問い合わせ内容</h2>
+  <p>
+    {{ inquiry.value|nl2br4html }}
+  </p>
+</div>
+{% if cue.array %}
+  <div class="mt-8">
+    <h2 class="mb-2 text-sm font-bold text-gray-500 sm:text-base">このサイトを何で知りましたか？</h2>
+    <p>
+      {{ cue.array|join(', ') }}
+    </p>
+  </div>
+{% endif %}

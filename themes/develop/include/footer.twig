@@ -1,0 +1,34 @@
+{% set blogField = module('V2_Blog_Field', null, { bid: RBID }) %}
+{% set x_account = blogField.fields.x_account.value %}
+{% set facebook_account = blogField.fields.facebook_account.value %}
+{% set github_account = blogField.fields.github_account.value %}
+
+<footer class="bg-white">
+  <div class="overflow-hidden max-w-screen-xl pt-2 px-4 pb-6 mx-auto">
+    {{ include('/include/links/textlink.twig') }}
+
+    {% if x_account or facebook_account or github_account %}
+      <div class="flex justify-center mt-6 space-x-6">
+        {% if x_account %}
+          <a href="https://x.com/{{ x_account }}" class="block hover:opacity-70">
+            <img src="/images/icons/x.svg" alt="X（旧Twitter）" class="w-6 h-6 mx-auto" />
+          </a>
+        {% endif %}
+        {% if facebook_account %}
+          <a href="https://www.facebook.com/{{ facebook_account }}" class="block hover:opacity-70">
+            <img src="/images/icons/facebook.svg" alt="Facebook" class="w-6 h-6 mx-auto" />
+          </a>
+        {% endif %}
+        {% if github_account %}
+          <a href="https://github.com/{{ github_account }}" class="block hover:opacity-70">
+            <img src="/images/icons/github.svg" alt="Github" class="w-6 h-6 mx-auto" />
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <small class="block mt-6 text-sm leading-6 text-center text-gray-500">
+      {{ blogField.fields.site_footer.value }}
+    </small>
+  </div>
+</footer>

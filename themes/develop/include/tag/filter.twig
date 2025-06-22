@@ -1,0 +1,32 @@
+{% set tagFilter = module('V2_Tag_Filter', moduleId, { bid: null, cid: null, tag: TAG, field: null }) %}
+
+{% if tagFilter.selectedTags %}
+  <div class="mb-10">
+    <h1 class="flex flex-wrap gap-3 text-gray-900 text-2xl font-bold">
+      {% for tag in tagFilter.selectedTags %}
+        <a href="{{ tag.url }}">#{{ tag.name }}</a>
+      {% endfor %}の検索結果
+    </h1>
+    {% if tagFilter.choiceTags %}
+      <div class="mt-4">
+        <h2 class="text-gray-500">さらに絞り込む</h2>
+        <ul class="flex flex-wrap gap-x-4 gap-y-1.5 mt-2">
+          {% for tag in tagFilter.choiceTags %}
+            <li>
+              <a
+                href="{{ tag.url }}"
+                class="text-gray-900 hover:opacity-70"
+                hx-push-url="{{ tag.url }}"
+                hx-get="{{ tag.url }}tpl/include/htmx/swap-index.html"
+                hx-target="#swap-htmx"
+                hx-swap="innerHTML"
+              >
+                #{{ tag.name }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

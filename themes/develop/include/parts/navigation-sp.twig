@@ -1,0 +1,104 @@
+{% set navigation = module('V2_Navigation', moduleId) %}
+{% set blogField = module('V2_Blog_Field', null, { bid: RBID }) %}
+{% set x_account = blogField.fields.x_account.value %}
+{% set facebook_account = blogField.fields.facebook_account.value %}
+{% set github_account = blogField.fields.github_account.value %}
+
+{% macro renderNavigation(navigation) %}
+  <div class="sp-nav-wrap">
+    <ul class="sp-nav-list">
+      {% for item in navigation %}
+        <li
+          class="sp-nav-item {{ item.attr|safe_html }}"
+          data-depth="c_{{ item.depth }}"
+          x-data="{
+            isOpen: false,
+            hasSubmenu: {{
+          item.children is defined
+            ? 'true'
+            : 'false'
+          }}
+          }"
+        >
+          {% if item.children is defined %}
+            <button
+              href="{{ item.url|buildGlobalVars }}"
+              class="sp-nav-link {{ item.attr2|safe_html }}"
+              :class="{ 'is-active': isOpen }"
+              @click="hasSubmenu ? ($event.preventDefault(), isOpen = !isOpen) : null"
+              target="{{ item.target }}"
+            >
+              <span>{{ item.label }}</span>
+              <span class="sp-nav-icon" x-show="hasSubmenu">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-3"
+                  :class="{ 'rotate-180': isOpen }"
+                  style="transition: transform 0.2s ease-in-out;"
+                >
+                  <path
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </span>
+            </button>
+          {% else %}
+            <a
+              href="{{ item.url|buildGlobalVars }}"
+              class="sp-nav-link {{ item.attr2|safe_html }}"
+              :class="{ 'is-active': isOpen }"
+              target="{{ item.target }}"
+            >
+              <span>{{ item.label }}</span>
+            </a>
+          {% endif %}
+          {% if item.children is defined %}
+            {{ _self.renderNavigation(item.children) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endmacro %}
+
+<div class="overflow-y-auto absolute top-14 left-0 right-0 border-box h-[calc(100dvh-3.5rem)] bg-gray-500/75">
+  <div class="container max-h-100 mx-auto my-4">
+    <div class="border border-gray-200 rounded-md bg-white font-bold js-menu">
+      {{ include('/admin/module/setting.twig', { moduleInfo: navigation.moduleInfo }) }}
+      {{ _self.renderNavigation(navigation.items) }}
+
+      {% if x_account or facebook_account or github_account %}
+        <ul class="flex items-center gap-x-8 p-4">
+          {% if x_account %}
+            <li>
+              <a href="https://x.com/{{ x_account }}" class="block">
+                <img src="/images/icons/x.svg" width="24" height="24" alt="Xアカウント" />
+              </a>
+            </li>
+          {% endif %}
+          {% if facebook_account %}
+            <li>
+              <a href="https://www.facebook.com/{{ facebook_account }}" class="block">
+                <img src="/images/icons/facebook.svg" width="24" height="24" alt="Facebookアカウント" />
+              </a>
+            </li>
+          {% endif %}
+          {% if github_account %}
+            <li>
+              <a href="https://github.com/{{ github_account }}" class="block">
+                <img src="/images/icons/github.svg" width="24" height="24" alt="Githubアカウント" />
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</div>

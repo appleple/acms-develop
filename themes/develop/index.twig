@@ -1,0 +1,21 @@
+{% extends '/_layouts/two-column.twig' %}
+
+{% block main %}
+  {% if touch('Touch_Category') %}
+    <h1 class="text-gray-900 font-bold text-2xl mb-10">%{CATEGORY_NAME}</h1>
+  {% endif %}
+
+  {% if DATE_MONTH %}
+    <h1 class="text-gray-900 font-bold text-2xl mb-10">
+      {% if DATE_DAY %}
+        {{ DATE_YEAR }}年{{ DATE_MONTH }}月{{ DATE_DAY }}日
+      {% else %}
+        {{ DATE_YEAR }}年{{ DATE_MONTH }}月
+      {% endif %}
+    </h1>
+  {% endif %}
+
+  <div id="swap-htmx">
+    {{ include('/include/htmx/swap-index.html.twig') }}
+  </div>
+{% endblock %}

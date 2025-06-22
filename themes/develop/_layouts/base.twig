@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="has-[dialog:open]:overflow-hidden" lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    {% block headMeta %}
+      {{ include('/include/head/meta.twig') }}
+    {% endblock %}
+
+    {% block headLink %}
+      {{ include('/include/head/link.twig') }}
+    {% endblock %}
+
+    {% block headJs %}
+      {{ include('/include/head/js.twig') }}
+    {% endblock %}
+  </head>
+  <body>
+    {% block bodyStart %}
+      {{ include('/include/body-start.twig') }}
+    {% endblock %}
+
+    <!-- ヘッダー -->
+    {% block header %}
+      {{ include('/include/header.twig') }}
+    {% endblock %}
+
+    <!-- ※管理用パーツ -->
+    {% block adminPart %}
+      <!-- アクションボックス -->
+      @include("/admin/action.html")
+      {{ include('/admin/switch-user.html') }}
+    {% endblock %}
+
+    <main class="container py-20">
+      {% block topicPath %}
+        <!-- トピックパス -->
+        {% if touch('Touch_NotTop') %}
+          <div class="mb-10">
+            {{ include('/include/topicpath.twig') }}
+          </div>
+        {% endif %}
+      {% endblock %}
+
+      {% block main %}
+        <p>
+          継承してメインコンテンツを設定してください
+        </p>
+      {% endblock %}
+
+      <!-- 確認用テンプレート -->
+      @include('/include/check-seo.html')
+    </main>
+
+    <!-- フッター -->
+    {% block footer %}
+      {{ include('/include/footer.twig') }}
+    {% endblock %}
+
+    {% block bodyEnd %}
+      {{ include('/include/body-end.twig') }}
+    {% endblock %}
+  </body>
+</html>

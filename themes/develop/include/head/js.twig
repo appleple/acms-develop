@@ -1,0 +1,28 @@
+{% set blogField = module('V2_Blog_Field', null, { bid: RBID }) %}
+
+{{ blogField.fields.script_head.value|raw }}
+
+<!-- 投稿者以上以上の場合だけ組み込みJSを読み込むようにする -->
+{% if touch('Touch_SessionWithContribution') %}
+  {% set js = module('V2_Js') %}
+  <script src="{{ JS_LIB_JQUERY_DIR }}jquery-{{ JS_LIB_JQUERY_DIR_VERSION }}.min.js" charset="UTF-8"></script>
+  <script src="{{ ROOT_DIR }}acms.js{{ js.arguments }}" charset="UTF-8" id="acms-js"></script>
+{% endif %}
+
+<!-- Vite -->
+{% if touch('Touch_NotAdmin') %}
+  {{ vite('src/js/main.js', { scriptTagAttributes: { async: true } }) }}
+{% endif %}
+
+{% if touch('Touch_Admin') %}
+  {{ vite(['src/js/main.js', 'src/js/admin.js'], { scriptTagAttributes: { async: true } }) }}
+{% endif %}
+
+<script>
+  window.root = '{{ ROOT_DIR }}';
+</script>
+
+<!-- Google Analytics -->
+{% if touch('Touch_Unlogin') %}
+  {{ blogField.fields.google_analytics.value|raw }}
+{% endif %}

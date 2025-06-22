@@ -365,6 +365,25 @@ const unitGroupAlign = (context) => {
   align();
 };
 
+/**
+ * HTMX
+ * @param {Document | Element} context
+ */
+const htmx = (context) => {
+  domContentLoaded(async () => {
+    const htmxMark = 'meta[name="acms-htmx"],[data-hx-get],[data-hx-post],[hx-get],[hx-post]'; // htmxを有効にする要素のセレクタ
+    const htmxConfig = {
+      historyCacheSize: -1, // ローカルストレージにHTMLをキャッシュしない（キャッシュすると戻る・進むが正常に動作しないため）
+      refreshOnHistoryMiss: true, // キャッシュがなければページを再読込
+    };
+    const existsHtmx = context.querySelector(htmxMark);
+    if (existsHtmx) {
+      const { default: dispatchHtmx } = await import(/* webpackChunkName: "htmx" */ './buildIn/htmx');
+      dispatchHtmx(htmxConfig);
+    }
+  });
+};
+
 export {
   validator,
   linkMatchLocation,
@@ -383,4 +402,5 @@ export {
   focusedImage,
   documentOutliner,
   unitGroupAlign,
+  htmx,
 };

@@ -2,7 +2,6 @@ import 'vite/modulepreload-polyfill';
 import Alpine from 'alpinejs';
 import domContentLoaded from 'dom-content-loaded';
 import Dispatcher from 'a-dispatcher';
-import entryOutdated from './entryOutdated';
 import './lib/polyfill';
 import {
   validator,
@@ -22,6 +21,7 @@ import {
   focusedImage,
   documentOutliner,
   unitGroupAlign,
+  htmx,
 } from './lib/build-in'; // ToDo: いらないものはコメントアウト
 
 /**
@@ -69,6 +69,7 @@ function createBuildInJsDispatcher() {
     focusedImage(context);
     documentOutliner(context);
     unitGroupAlign(context);
+    htmx(context);
   };
 }
 
@@ -101,43 +102,13 @@ async function main() {
 
   // 通常のバンドル
   // dispatcher.addRoute('^/example/$', examplePage);
-  dispatcher.addRoute('.html$', entryOutdated);
 
   dispatcher.run(window.location.pathname);
 
   /**
    * Content Ready
    */
-  domContentLoaded(() => {
-    /**
-     * htmx
-     * scriptをasyncで読み込むため、domContentLoaded内で import('htmx.org') を実行
-     */
-    (async () => {
-      const { default: htmx } = await import('htmx.org');
-      window.htmx = htmx;
-      window.addEventListener('htmx:configRequest', function (event) {
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-        event.detail.headers['X-CSRF-Token'] = csrfToken;
-      });
-
-      window.addEventListener('htmx:beforeHistoryUpdate', function (event) {
-        const proposedUrl = event.detail.history.path;
-        let customUrl = proposedUrl;
-        if (proposedUrl.includes('/include/htmx/')) {
-          customUrl = proposedUrl.replace(/\/include\/htmx\/.*\.html/, '');
-        }
-        if (!customUrl.endsWith('/')) {
-          customUrl = customUrl + '/'; // 末尾にスラッシュを追加
-        }
-        event.detail.history.path = customUrl;
-      });
-
-      window.addEventListener('htmx:afterSwap', function (event) {
-        window.dispatch(event.target);
-      });
-    })();
-  });
+  domContentLoaded(() => {});
 }
 
 main();

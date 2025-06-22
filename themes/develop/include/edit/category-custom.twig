@@ -1,0 +1,7 @@
+{% if touch('Touch_NotPreview') and touch('Touch_SessionWithAdministration') %}
+  <p class="acms-admin-module-edit acms-admin-module-edit">
+    <a href="/bid/{{ BID }}/cid/{{ cid }}/admin/category_edit/#acms_custom" class="js-dialog-btn js-link_no_rewrite">
+      <!-- T -->編集する<!-- /T -->
+    </a>
+  </p>
+{% endif %}

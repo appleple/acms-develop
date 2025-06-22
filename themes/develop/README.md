@@ -31,14 +31,14 @@ $ npm run dev
 
 ## 組み込みJSの読み込みについて
 
-JavaScriptは、**include/head/js.html** で読んでいます。
+JavaScriptは、**include/head/js.twig** で読んでいます。
 developテーマではパフォーマンス向上のために、**Touch_SessionWithContribution**を使って、投稿者以上以上の場合だけ読み込むようにしています。
 
-```html
-<!-- BEGIN_MODULE Touch_SessionWithContribution -->
-<script src="%{JS_LIB_JQUERY_DIR}jquery-%{JS_LIB_JQUERY_DIR_VERSION}.min.js" charset="UTF-8"></script><!-- BEGIN_MODULE Js -->
-<script src="/acms.js{arguments}" charset="UTF-8" id="acms-js"></script><!-- END_MODULE Js -->
-<!-- END_MODULE Touch_SessionWithContribution -->
+```twig
+{% if touch('Touch_SessionWithContribution') %}
+<script src="{{ JS_LIB_JQUERY_DIR }}jquery-{{JS_LIB_JQUERY_DIR_VERSION}}.min.js" charset="UTF-8"></script>
+<script src="{{ ROOT_DIR }}acms.js{{ js.arguments }}" charset="UTF-8" id="acms-js"></script>
+{% endif %}
 ```
 
 組み込みJSを読まないようにすると、スライダーや、画像ビューワーなどの組み込みJSが動作しなくなりますが、一部のよく利用する組み込みJSをsrc/js/lib/buildIn/に実装し、src/js/main.jsで読み込んでいます。

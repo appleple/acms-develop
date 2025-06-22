@@ -1,0 +1,99 @@
+{% set form = module('V2_Form') %}
+
+{% if form.error %}
+<!-- フォームID : {{ form.error.formID }} エラー項目 : {{ form.error.fields | join('|') }} -->
+<p class="text-gray-900 mb-10">入力内容をもう一度ご確認ください。</p>
+{% endif %}
+
+{% if form.step == 'step' %}
+<!-- フォームステップ：初期 -->
+<form id="contactForm" action="" method="post" enctype="multipart/form-data" class="text-gray-800 js-validator js-unload_alert">
+
+  {{ include("/contact/form/input.twig", form.fields) }}
+
+  <div class="mt-12 pt-10 text-right border-t border-solid border-gray-200">
+    <input type="hidden" name="step" value="confirm">
+    <input type="hidden" name="error" value="step">
+    <input type="hidden" name="id" value="contactForm">
+
+    <button
+      type="submit"
+      name="ACMS_POST_Form_Confirm"
+      class="inline-block px-6 py-2 text-sm font-semibold text-center text-white transition duration-100 bg-indigo-600 rounded-md outline-none hover:bg-indigo-500 active:bg-indigo-700 ring-blue-300 md:text-base cursor-pointer"
+    >
+      送信内容の確認へ
+    </button>
+  </div>
+</form>
+{% endif %}
+
+{% if form.step == 'confirm' %}
+<!-- フォームステップ：確認画面 -->
+<p class="text-gray-900 mb-10">以下の内容で送信します。内容に誤りがないかよくご確認ください。</p>
+
+{{ include("/contact/form/confirm.twig", form.fields) }}
+
+<div class="flex justify-end items-center gap-6 mt-12 pt-10 border-t border-solid border-gray-200">
+  <form action="" method="post">
+    <input type="hidden" name="step" value="step">
+    <input type="hidden" name="takeover" value="{{ form.fields.takeover }}">
+    <button
+      type="submit"
+      name="ACMS_POST_Form_Chain"
+      value="入力内容を修正する"
+      class="inline-block px-6 py-2 text-sm font-semibold text-center md:text-base transition duration-100 bg-neutral-50 rounded-md outline-none hover:text-neutral-600 hover:bg-neutral-100 ring-blue-300 focus:ring-neutral-100 cursor-pointer"
+    >
+      入力内容を修正する
+  </form>
+
+  <form action="thanks.html" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="To[]" value="{{ form.fields.email.value }}">
+    <input type="hidden" name="AdminReply-To[]" value="{{ form.fields.email.value }}">
+    <input type="hidden" name="AdminFrom[]" value="{{ form.fields.email.value }}">
+    <input type="hidden" name="step" value="result">
+    <input type="hidden" name="takeover" value="{{ form.fields.takeover }}">
+    <input type="hidden" name="id" value="contactForm">
+    <button
+      type="submit"
+      name="ACMS_POST_Form_Submit"
+      value="送信する"
+      class="inline-block px-6 py-2 text-sm font-semibold text-center text-white transition duration-100 bg-indigo-600 rounded-md outline-none hover:bg-indigo-500 active:bg-indigo-700 ring-blue-300 md:text-base cursor-pointer"
+    >
+      送信する
+    </button>
+  </form>
+</div>
+{% endif %}
+
+{% if form.step == 'result' %}
+<!-- フォームステップ：完了画面 -->
+<p class="md:text-center mb-10">入力内容を送信しました。お問い合わせいただきありがとうございました。</p>
+
+{{ include("/contact/form/confirm.twig", form.fields) }}
+
+<p class="mt-8 text-center">
+  <a href="{{ HOME_URL }}" class="inline-flex items-center justify-center px-6 py-4 font-bold tracking-wide text-white transition-colors duration-200 rounded-md bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none">
+    トップページへ
+  </a>
+</p>
+{% endif %}
+
+{% if form.step == 'forbidden' %}
+<p class="md:text-center mb-10"><b class="font-bold">不正なアクセスです</b><br>お手数ですがはじめからご入力ください。</p>
+
+<p class="mt-8 text-center">
+  <a href="{{ HOME_URL }}contact/" class="inline-flex items-center justify-center px-6 py-4 font-bold tracking-wide text-white transition-colors duration-200 rounded-md bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none">
+    お問い合わせフォームへ戻る
+  </a>
+</p>
+{% endif %}
+
+{% if form.step == 'repeated' %}
+<p class="md:text-center mb-10"><b class="font-bold">連続投稿は禁止されています。</b><br>入力された内容は正常に送信されました。<br>送信内容は、登録されたメールアドレス宛にお送りした確認メールからご確認ください。</p>
+
+<p class="mt-8 text-center">
+  <a href="{{ HOME_URL }}" class="inline-flex items-center justify-center px-6 py-4 font-bold tracking-wide text-white transition-colors duration-200 rounded-md bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none">
+    トップページへ
+  </a>
+</p>
+{% endif %}

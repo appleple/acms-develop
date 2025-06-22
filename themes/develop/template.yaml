@@ -1,7 +1,8 @@
-tpl_top         : index.html
-tpl_index       : index.html
-tpl_detail      : _entry.html
-tpl_404         : 404.html
+tpl_top         : index.twig
+tpl_index       : index.twig
+tpl_detail      : _entry.twig
+tpl_404         : 404.twig
 tpl_admin       : admin.html
-tpl_entry_edit  : _entry.html
+tpl_entry_edit  : _entry.twig
 tpl_login       : login.html
+tpl_twig        : enabled

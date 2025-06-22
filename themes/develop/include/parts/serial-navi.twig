@@ -1,0 +1,33 @@
+{% if serialNavi.prevLink or serialNavi.nextLink %}
+  <nav aria-label="ページ送り">
+    <ul class="md:flex items-center gap-10">
+      <li class="flex-1 basis-[210px]">
+        {% if serialNavi.prevLink %}
+          <a
+            href="{{ serialNavi.prevLink.url }}"
+            class="block px-4 py-2 border border-gray-200 rounded-md hover:opacity-70"
+          >
+            <span class="block text-gray-900 text-sm font-bold">前のページへ</span>
+            <span class="block mt-1 text-gray-500 text-xs line-clamp-2">{{ serialNavi.prevLink.name }}</span>
+          </a>
+        {% endif %}
+      </li>
+      <li class="flex-none my-2 md:my-0 font-bold text-center">
+        {% if indexUrl %}
+          <a href="{{ indexUrl }}" class="inline-block py-2 text-gray-900 hover:opacity-70">一覧へ</a>
+        {% endif %}
+      </li>
+      <li class="flex-1 basis-[210px] text-right">
+        {% if serialNavi.nextLink %}
+          <a
+            href="{{ serialNavi.nextLink.url }}"
+            class="block px-4 py-2 border border-gray-200 rounded-md hover:opacity-70"
+          >
+            <span class="block text-gray-900 text-sm font-bold">次のページへ</span>
+            <span class="block mt-1 text-gray-500 text-xs line-clamp-2">{{ serialNavi.nextLink.name }}</span>
+          </a>
+        {% endif %}
+      </li>
+    </ul>
+  </nav>
+{% endif %}
