@@ -1,7 +1,8 @@
 @import 'tailwindcss';
 
 @plugin "@tailwindcss/typography" {
-  classname: acms-admin-block-editor-body;
+  /* prettier-ignore */
+  className: acms-admin-block-editor-body;
 }
 
 @config "../../tailwind.config.js";
