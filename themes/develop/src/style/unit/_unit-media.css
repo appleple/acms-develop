@@ -1,0 +1,43 @@
+/* ------------------------------
+ column-** ユニット
+ メディア・画像・画像URL・ファイル・地図
+ の共通設定
+------------------------------ */
+/* 画像・メディア・画像URLの共通設定
+------------------------------ */
+[class*='column-image'],
+[class*='column-media'],
+[class*='column-eximage'] {
+  line-height: 0; /* Descender space 対策 */
+
+  .caption {
+    @apply mt-1 text-gray-500 text-sm text-center;
+  }
+
+  a {
+    display: inline-block;
+
+    /* リセット用 */
+    text-decoration: none;
+
+    /* マウスオーバー用 */
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    margin-block: 0;
+  }
+}
+
+/* メディアユニット */
+[class*='column-media-'] .columnIcon {
+  /* stylelint-disable-line */
+  margin: 0 auto;
+}

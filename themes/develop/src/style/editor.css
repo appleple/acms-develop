@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/typography" {
+  classname: acms-admin-block-editor-body;
+}
+
+@config "../../tailwind.config.js";
+
+@theme {
+  /*
+   フォント
+  */
+  --font-sans:
+    --apple-system, blinkmacsystemfont, 'Helvetica Neue', 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
+    arial, meiryo, sans-serif;
+}
+
+/* ユニット（編集画面と共通）
+=============================== */
+@import './unit/_variables.css';
+@import './unit/_unit-block-layout.css';
+@import './unit/_unit-block-media.css';
+@import './unit/_unit-blockquote.css';
+@import './unit/_unit-table.css';

@@ -1,0 +1,112 @@
+/* ------------------------------
+ ブロックエディタのメディア画像
+------------------------------ */
+
+/* 管理画面側・閲覧画面側 共通
+----------------------------- */
+:where(.media-image-block),
+:where(.acms-admin-block-editor-image) {
+  img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  /* キャプション */
+  :where(figcaption) {
+    margin-top: 4px;
+    font-size: 90%;
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+/* 閲覧画面側
+----------------------------- */
+:where(.media-image-block) {
+  line-height: 0; /* Descender space 対策 */
+
+  &.media-align-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  &.media-align-left {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &.media-align-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .media-width-25 {
+    max-width: 25%;
+
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .media-width-33 {
+    max-width: 33%;
+
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .media-width-50 {
+    max-width: 50%;
+
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .media-width-66 {
+    max-width: 66%;
+
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .media-width-75 {
+    max-width: 75%;
+
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .media-width-100 {
+    max-width: 100%;
+
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    img {
+      max-width: 100%;
+    }
+  }
+
+  a {
+    display: inline-block;
+
+    /* リセット用 */
+    text-decoration: none;
+
+    /* マウスオーバー時 */
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

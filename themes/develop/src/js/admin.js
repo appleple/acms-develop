@@ -1,3 +1,8 @@
+/**
+ * スタイルの読み込み
+ */
+import '../style/editor.css';
+
 ACMS.Ready(() => {
   ACMS.Config.LiteEditorFieldConf.btnPosition = 'bottom';
   ACMS.Config.LiteEditorFieldConf.classNames = {

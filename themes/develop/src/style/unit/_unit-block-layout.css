@@ -1,0 +1,50 @@
+/* ------------------------------
+ ブロックエディター内要素のレイアウト
+------------------------------ */
+
+/* レイアウト */
+:where(.acms-admin-block-editor-body) :where([data-type='columns']),
+:where(.custom-entry-body) :where([data-type='columns']) {
+  display: grid;
+  grid-auto-flow: column;
+  box-sizing: border-box;
+  margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
+
+  /* 2カラム */
+  &.layout-two-column {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 3カラム */
+  &.layout-three-column {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 管理画面側 */
+:where(.acms-admin-block-editor-body) :where([data-type='columns']) {
+  gap: 1rem; /* 管理画面では余白が広くなりすぎないよう固定値を指定 */
+}
+
+/* 閲覧画面側 */
+:where(.custom-entry-body) :where([data-type='columns']) {
+  gap: var(--unit-gutter);
+}
+
+/* カラム上下余白
+/* 編集画面でのブロックエディターでのカラム上下余白親要素でとるため、
+/* 子要素の最初と最後の上下マージンをリセット
+/* 上書きのため詳細度高め（0,0,2,0）
+----------------------------- */
+:where(.acms-admin-block-editor-body),
+:where(.custom-entry-body) {
+  [data-type='column'] > * {
+    &:first-child {
+      margin-block-start: 0;
+    }
+
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+}

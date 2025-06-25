@@ -1,5 +1,8 @@
 @extends("/_layouts/admin.html")
 
+@section("editor-css")
+@endsection
+
 @section("admin-js")
 @parent
 <!-- カスタムJSを記述 -->
@@ -8,4 +11,5 @@
     "async": true
   }
 })
+<!-- 編集画面用 @tailwindcss/typography Safe List : class="acms-admin-block-editor-body" -->
 @endsection

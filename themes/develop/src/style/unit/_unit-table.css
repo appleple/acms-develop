@@ -1,0 +1,36 @@
+/* ------------------------------
+ テーブル
+------------------------------ */
+:where(.custom-entry-body),
+:where(.tableWrapper) {
+  table {
+    margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
+
+    p {
+      margin-block: 0;
+    }
+  }
+}
+
+:where(.tableWrapper),
+:where([class*='column-table']) {
+  margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
+  table {
+    margin-block: 0;
+  }
+}
+
+.tableWrapper {
+  overflow-x: auto; /* 横スクロールする時用 */
+}
+
+/* スクロールするテーブル */
+.acms-table-scrollable,
+.js-table-unit-scroll-hint,
+.tableWrapper .js-table-unit-scroll-hint {
+  th,
+  td {
+    white-space: nowrap;
+    word-break: keep-all; /* 横スクロールするテーブルの時は常時テキスト折り返しなし */
+  }
+}
