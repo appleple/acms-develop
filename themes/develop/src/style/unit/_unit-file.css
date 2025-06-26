@@ -1,0 +1,43 @@
+/* ------------------------------
+ メディアファイル・ファイル
+------------------------------ */
+.media-file-block,
+:where(.acms-admin-block-editor-body) .node-fileBlock,
+[class*='column-file'],
+[class*='column-media']:has(a[href*='media-download']) {
+  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom) text-center;
+}
+
+.acms-admin-block-editor-file {
+  line-height: 0; /* Descender space 対策 */
+}
+
+/* ファイルアイコン */
+.media-file-block img,
+.acms-admin-block-editor-file img,
+[class*='column-media'] .columnIcon,
+[class*='column-file'] .columnIcon {
+  @apply inline-block max-w-full h-auto w-[70px] m-0;
+}
+
+/* キャプション */
+.acms-admin-block-editor-file-caption,
+p.acms-admin-block-editor-file-caption,
+.media-file-block .caption,
+[class*='column-file'] .caption,
+[class*='column-media']:has(a[href*='media-download']) .caption {
+  @apply m-0 mt-1 text-gray-500 text-sm text-center leading-[1.3];
+}
+
+/* リンク */
+.media-file-block a,
+[class*='column-file'] a,
+[class*='column-media'] a[href*='media-download'] {
+  @apply inline-block no-underline hover:opacity-70 transition-opacity;
+}
+
+/* PDFプレビュー
+------------------------------ */
+.column-pdf-image {
+  @apply w-full border-gray-200 border;
+}

@@ -4,6 +4,8 @@
 :where(.acms-admin-block-editor-body),
 :where(.custom-entry-body) {
   blockquote {
+    @apply not-italic;
+
     quotes: none;
 
     .media-image-block {

@@ -1,0 +1,8 @@
+@use 'global/common' as global;
+
+/* ------------------------------
+ モジュールユニット
+------------------------------ */
+[class*='column-module'] {
+  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+}

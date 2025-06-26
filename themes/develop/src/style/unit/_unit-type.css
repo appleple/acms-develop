@@ -4,25 +4,33 @@
 
 /* 見出し
 =============================== */
-:where(.custom-entry-body) h4 {
-  @apply text-lg;
+:where(.custom-entry-body),
+:where(.acms-admin-block-editor-body) {
+  h4 {
+    @apply text-lg;
+  }
 }
 
 /* 段落
 =============================== */
-:where(.custom-entry-body) p {
+:where(.custom-entry-body),
+:where(.acms-admin-block-editor-body) {
   @apply mb-6 leading-[1.7];
 }
 
 /* リンク
 =============================== */
-:where(.custom-entry-body) a {
-  @apply hover:no-underline;
+:where(.custom-entry-body),
+:where(.acms-admin-block-editor-body) {
+  a {
+    @apply hover:no-underline;
+  }
 }
 
 /* リスト
 =============================== */
-:where(.custom-entry-body) {
+:where(.custom-entry-body),
+:where(.acms-admin-block-editor-body) {
   ul,
   ol {
     @apply mt-0 mb-6;
@@ -49,16 +57,22 @@
   }
 }
 
-/* 引用
-=============================== */
-:where(.custom-entry-body) blockquote {
-  @apply not-italic;
-}
-
 /* 記述リスト
 =============================== */
-:where(.custom-entry-body) dl {
-  dd {
-    @apply mt-0 pl-4;
+:where(.custom-entry-body),
+:where(.acms-admin-block-editor-body) {
+  dl {
+    dd {
+      @apply mt-0 pl-4;
+    }
+  }
+}
+
+/* 水平罫線
+=============================== */
+[data-type='horizontalRule'] {
+  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+  hr {
+    margin: 0;
   }
 }

@@ -1,0 +1,51 @@
+/* ------------------------------
+ メディア画像・画像・画像URL
+------------------------------ */
+
+/* 管理画面側：ブロックエディターfigure要素リセット用 */
+.acms-admin-block-editor-image {
+  @apply m-0;
+}
+
+/* 上下余白 */
+:where(.media-image-block),
+:where(.acms-admin-block-editor-body) .node-imageBlock,
+[class*='column-image'],
+[class*='column-media'],
+[class*='column-eximage'] {
+  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+}
+
+/* 画像ユニット：style属性でwidth指定された場合の横はみ出し防止 */
+[class*='column-image'] {
+  &[style*='width'] {
+    @apply w-full;
+  }
+}
+
+/* 共通設定
+------------------------------ */
+:where(.media-image-block),
+:where(.acms-admin-block-editor-image),
+[class*='column-image'],
+[class*='column-media'],
+[class*='column-eximage'] {
+  @apply leading-0 text-center;
+  a {
+    @apply inline-block no-underline transition-opacity duration-200 ease-in-out;
+  }
+
+  img {
+    @apply my-0 inline-block max-w-full h-auto rounded-md;
+  }
+}
+
+/* キャプション
+------------------------------ */
+:where(.media-image-block) figcaption,
+:where(.acms-admin-block-editor-image) figcaption,
+[class*='column-image'] .caption,
+[class*='column-media'] .caption,
+[class*='column-eximage'] .caption {
+  @apply mt-1 text-gray-500 text-sm text-center;
+}
