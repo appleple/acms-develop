@@ -7,18 +7,10 @@
 
 @config "../../tailwind.config.js";
 
-@theme {
-  /*
-   フォント
-  */
-  --font-sans:
-    --apple-system, blinkmacsystemfont, 'Helvetica Neue', 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
-    arial, meiryo, sans-serif;
-}
+@import './_theme.css';
 
 /* ユニット（編集画面と共通）
 =============================== */
-@import './unit/_variables.css';
 @import './unit/_unit-block-layout.css';
 @import './unit/_unit-block-media.css';
 @import './unit/_unit-blockquote.css';

@@ -4,14 +4,7 @@
 
 @config "../../tailwind.config.js";
 
-@theme {
-  /*
-   フォント
-  */
-  --font-sans:
-    --apple-system, blinkmacsystemfont, 'Helvetica Neue', 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
-    arial, meiryo, sans-serif;
-}
+@import './_theme.css';
 
 @utility container {
   max-width: 64rem;
@@ -123,20 +116,13 @@
 
 /* エントリー本文
 =============================== */
-/* stylelint-disable selector-class-pattern */
 .custom-entry-body .clearHidden {
-  /* stylelint-disable-line */
-  clear: both;
-  display: block;
+  @apply clear-both block h-0 m-0 border-0;
   visibility: hidden;
-  height: 0;
-  margin: 0;
-  border: none;
 }
 
 /* ユニット（閲覧画面のみで使用）
 =============================== */
-@import './unit/_variables.css';
 @import './unit/_unit-block-layout.css';
 @import './unit/_unit-block-media.css';
 @import './unit/_unit-blockquote.css';
@@ -146,9 +132,7 @@
 @import './unit/_unit-media.css';
 @import './unit/_unit-table.css';
 
-/* stylelint-disable */
-
-/* 機能に関わるスタイル
+/* フォームバリデーター
 =============================== */
 
 /* フォームバリデーター */
@@ -156,51 +140,12 @@
 .validator-result-1,
 .v-result-,
 .v-result-1 {
-  display: none;
+  @apply hidden;
 }
 
 .validator-result-error,
 .validator-result-0,
 .v-result-error,
 .v-result-0 {
-  display: block;
+  @apply block;
 }
-
-/* テーブル */
-.acms-cell-text-left {
-  @apply text-left!;
-}
-
-.acms-cell-text-center {
-  @apply text-center!;
-}
-
-.acms-cell-text-right {
-  @apply text-right!;
-}
-
-.acms-cell-text-nowrap {
-  @apply whitespace-nowrap!;
-}
-
-.acms-cell-text-bold {
-  @apply font-bold!;
-}
-
-.acms-cell-text-normal {
-  @apply font-normal!;
-}
-
-.acms-cell-text-top {
-  @apply align-top!;
-}
-
-.acms-cell-text-middle {
-  @apply align-middle!;
-}
-
-.acms-cell-text-bottom {
-  @apply align-bottom!;
-}
-
-/* stylelint-enable */

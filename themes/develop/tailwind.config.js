@@ -45,7 +45,6 @@ module.exports = {
               border: '1px solid var(--tw-prose-td-borders)',
               'border-collapse': 'separate',
               'border-spacing': '0',
-              'border-radius': '0.375rem',
               'font-size': '1rem',
             },
             th: {
@@ -64,30 +63,6 @@ module.exports = {
             },
             'tr:last-child th, tr:last-child td': {
               'border-bottom': '0',
-            },
-            '[class*="column-media-"]': {
-              'margin-bottom': '1.5rem',
-            },
-            '[class*="column-media-"] img': {
-              'margin-bottom': '.75em',
-              'border-radius': '0.375rem',
-            },
-            '[class*=column-map]': {
-              overflow: 'hidden',
-              'margin-bottom': '1.5rem',
-              'border-radius': '0.375rem',
-            },
-            '[class*=column-quote]': {
-              'margin-bottom': '1.5rem',
-            },
-            '[class*=column-quote] blockquote': {
-              'font-style': 'normal',
-              'padding-left': '0',
-              color: 'inherit',
-              quotes: 'none',
-              '&::before, &::after': {
-                content: 'none',
-              },
             },
           },
         },

@@ -4,24 +4,23 @@
 :where(.custom-entry-body),
 :where(.tableWrapper) {
   table {
-    margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
-
+    @apply rounded-md mt-(--unit-margin-top) mb-(--unit-margin-bottom);
     p {
-      margin-block: 0;
+      @apply mt-0 mb-0;
     }
   }
 }
 
 :where(.tableWrapper),
 :where([class*='column-table']) {
-  margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
+  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
   table {
-    margin-block: 0;
+    @apply mt-0 mb-0;
   }
 }
 
 .tableWrapper {
-  overflow-x: auto; /* 横スクロールする時用 */
+  @apply overflow-x-auto; /* 横スクロールする時用 */
 }
 
 /* スクロールするテーブル */
@@ -30,7 +29,43 @@
 .tableWrapper .js-table-unit-scroll-hint {
   th,
   td {
-    white-space: nowrap;
-    word-break: keep-all; /* 横スクロールするテーブルの時は常時テキスト折り返しなし */
+    @apply whitespace-nowrap break-keep; /* 横スクロールするテーブルの時は常時テキスト折り返しなし */
   }
+}
+
+/* acms テーブル */
+.acms-cell-text-left {
+  @apply text-left!;
+}
+
+.acms-cell-text-center {
+  @apply text-center!;
+}
+
+.acms-cell-text-right {
+  @apply text-right!;
+}
+
+.acms-cell-text-nowrap {
+  @apply whitespace-nowrap!;
+}
+
+.acms-cell-text-bold {
+  @apply font-bold!;
+}
+
+.acms-cell-text-normal {
+  @apply font-normal!;
+}
+
+.acms-cell-text-top {
+  @apply align-top!;
+}
+
+.acms-cell-text-middle {
+  @apply align-middle!;
+}
+
+.acms-cell-text-bottom {
+  @apply align-bottom!;
 }

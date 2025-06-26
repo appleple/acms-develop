@@ -6,10 +6,7 @@
   blockquote {
     quotes: none;
 
-    figure {
-      margin: 0;
-    }
-    img {
+    .media-image-block {
       margin: 0;
     }
 
@@ -27,14 +24,18 @@
 
 /* 引用URL
 ------------------------------ */
-/* 引用ユニット */
 [class*='column-quote'] {
+  margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
   * + * {
     margin-block-start: 0;
   }
 
   blockquote {
-    @apply overflow-hidden block md:flex p-0 border border-gray-200 rounded-md font-normal md:transition-opacity hover:opacity-70;
+    @apply overflow-hidden block md:flex p-0 text-inherit border border-gray-200 rounded-md font-normal md:transition-opacity hover:opacity-70;
+    quotes: none;
+    &::before &::after {
+      content: none;
+    }
   }
 
   .quoteImageContainer {

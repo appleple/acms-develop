@@ -9,6 +9,7 @@
 [class*='column-media'],
 [class*='column-eximage'] {
   line-height: 0; /* Descender space 対策 */
+  margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
 
   .caption {
     @apply mt-1 text-gray-500 text-sm text-center;
@@ -29,6 +30,7 @@
   }
 
   img {
+    @apply rounded-md;
     display: inline-block;
     max-width: 100%;
     height: auto;

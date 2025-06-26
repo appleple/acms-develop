@@ -1,6 +1,11 @@
 /* ------------------------------
  地図
 ------------------------------ */
+[class*='column-map'] {
+  @apply rounded-md overflow-hidden;
+  margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
+}
+
 [class*='column-map-auto'] .js-open-street-map {
   max-width: 100%;
 }

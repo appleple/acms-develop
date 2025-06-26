@@ -1,8 +1,0 @@
-:root {
-  --unit-margin-top: 0;
-  --unit-margin-bottom: 1.25rem;
-  --unit-gutter: 1rem;
-  @media (width >= 520px) {
-    --unit-gutter: 2rem;
-  }
-}
