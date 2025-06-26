@@ -6,8 +6,6 @@
   className: acms-admin-block-editor-body;
 }
 
-@config "../../tailwind.config.js";
-
 @import './_theme.css';
 
 /* ユニット（編集画面と共通）
