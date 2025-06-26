@@ -1,3 +1,4 @@
+/* stylelint-disable no-invalid-position-at-import-rule */
 @import 'tailwindcss';
 
 @plugin "@tailwindcss/typography";
@@ -5,6 +6,7 @@
 @config "../../tailwind.config.js";
 
 @import './_theme.css';
+/* stylelint-enable no-invalid-position-at-import-rule */
 
 @utility container {
   max-width: 64rem;
@@ -116,13 +118,17 @@
 
 /* エントリー本文
 =============================== */
+/* stylelint-disable selector-class-pattern */
 .custom-entry-body .clearHidden {
   @apply clear-both block h-0 m-0 border-0;
+
   visibility: hidden;
 }
+/* stylelint-enable selector-class-pattern */
 
 /* ユニット（閲覧画面のみで使用）
 =============================== */
+/* stylelint-disable no-invalid-position-at-import-rule */
 @import './unit/_unit-block-layout.css';
 @import './unit/_unit-block-media.css';
 @import './unit/_unit-blockquote.css';
@@ -131,17 +137,20 @@
 @import './unit/_unit-map.css';
 @import './unit/_unit-media.css';
 @import './unit/_unit-table.css';
+/* stylelint-enable no-invalid-position-at-import-rule */
 
 /* フォームバリデーター
 =============================== */
 
 /* フォームバリデーター */
+/* stylelint-disable selector-class-pattern */
 .validator-result-,
 .validator-result-1,
 .v-result-,
 .v-result-1 {
   @apply hidden;
 }
+/* stylelint-enable selector-class-pattern */
 
 .validator-result-error,
 .validator-result-0,

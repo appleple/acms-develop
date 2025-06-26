@@ -26,18 +26,21 @@
 ------------------------------ */
 [class*='column-quote'] {
   margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
+
   * + * {
     margin-block-start: 0;
   }
 
   blockquote {
     @apply overflow-hidden block md:flex p-0 text-inherit border border-gray-200 rounded-md font-normal md:transition-opacity hover:opacity-70;
+
     quotes: none;
+
     &::before &::after {
       content: none;
     }
   }
-
+  /* stylelint-disable selector-class-pattern */
   .quoteImageContainer {
     /* stylelint-disable-line */
     @apply md:w-1/3 flex-none mr-0;
@@ -77,4 +80,5 @@
     /* stylelint-disable-line */
     @apply hidden;
   }
+  /* stylelint-enable selector-class-pattern */
 }

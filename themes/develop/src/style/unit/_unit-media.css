@@ -3,13 +3,14 @@
  メディア・画像・画像URL・ファイル・地図
  の共通設定
 ------------------------------ */
+
 /* 画像・メディア・画像URLの共通設定
 ------------------------------ */
 [class*='column-image'],
 [class*='column-media'],
 [class*='column-eximage'] {
-  line-height: 0; /* Descender space 対策 */
   margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
+  line-height: 0; /* Descender space 対策 */
 
   .caption {
     @apply mt-1 text-gray-500 text-sm text-center;
@@ -31,6 +32,7 @@
 
   img {
     @apply rounded-md;
+
     display: inline-block;
     max-width: 100%;
     height: auto;
@@ -39,7 +41,9 @@
 }
 
 /* メディアユニット */
+/* stylelint-disable selector-class-pattern */
 [class*='column-media-'] .columnIcon {
   /* stylelint-disable-line */
   margin: 0 auto;
 }
+/* stylelint-enable selector-class-pattern */

@@ -1,10 +1,12 @@
 /* ------------------------------
  テーブル
 ------------------------------ */
+/* stylelint-disable selector-class-pattern */
 :where(.custom-entry-body),
 :where(.tableWrapper) {
   table {
     @apply rounded-md mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+
     p {
       @apply mt-0 mb-0;
     }
@@ -14,6 +16,7 @@
 :where(.tableWrapper),
 :where([class*='column-table']) {
   @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+
   table {
     @apply mt-0 mb-0;
   }
@@ -32,6 +35,7 @@
     @apply whitespace-nowrap break-keep; /* 横スクロールするテーブルの時は常時テキスト折り返しなし */
   }
 }
+/* stylelint-enable selector-class-pattern */
 
 /* acms テーブル */
 .acms-cell-text-left {

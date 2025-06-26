@@ -10,6 +10,7 @@
   img {
     @apply mt-0 mb-0;
   }
+
   .media-image-block {
     @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
   }
@@ -21,6 +22,7 @@
   /* キャプション */
   :where(figcaption) {
     @apply mt-1 text-gray-500 text-[90%] text-center;
+
     line-height: 1.3;
   }
 }
@@ -45,7 +47,7 @@
   .media-width-25 {
     @apply max-w-1/4;
 
-    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。 */
     img {
       max-width: 100%;
     }
@@ -54,7 +56,7 @@
   .media-width-33 {
     @apply max-w-1/3;
 
-    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。 */
     img {
       max-width: 100%;
     }
@@ -63,7 +65,7 @@
   .media-width-50 {
     @apply max-w-1/2;
 
-    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。 */
     img {
       max-width: 100%;
     }
@@ -72,7 +74,7 @@
   .media-width-66 {
     @apply max-w-2/3;
 
-    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。 */
     img {
       max-width: 100%;
     }
@@ -81,7 +83,7 @@
   .media-width-75 {
     @apply max-w-3/4;
 
-    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。 */
     img {
       max-width: 100%;
     }
@@ -90,7 +92,7 @@
   .media-width-100 {
     @apply max-w-full;
 
-    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。*/
+    /* ToDo：media-width-** のサイズ指定が figure と img の両方に適用されているため、img の max-width を指定している。figure指定のみに変更されたらこのスタイルは削除すること。 */
     img {
       max-width: 100%;
     }

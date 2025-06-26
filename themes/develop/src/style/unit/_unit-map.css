@@ -3,6 +3,7 @@
 ------------------------------ */
 [class*='column-map'] {
   @apply rounded-md overflow-hidden;
+
   margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
 }
 
