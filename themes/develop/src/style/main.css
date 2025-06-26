@@ -3,8 +3,6 @@
 
 @plugin "@tailwindcss/typography";
 
-@config "../../tailwind.config.js";
-
 @import './_theme.css';
 /* stylelint-enable no-invalid-position-at-import-rule */
 
@@ -137,6 +135,7 @@
 @import './unit/_unit-map.css';
 @import './unit/_unit-media.css';
 @import './unit/_unit-table.css';
+@import './unit/_unit-type.css';
 /* stylelint-enable no-invalid-position-at-import-rule */
 
 /* フォームバリデーター

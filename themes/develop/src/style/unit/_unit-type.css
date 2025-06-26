@@ -1,0 +1,64 @@
+/* ------------------------------
+ タイポグラフィ
+------------------------------ */
+
+/* 見出し
+=============================== */
+:where(.custom-entry-body) h4 {
+  @apply text-lg;
+}
+
+/* 段落
+=============================== */
+:where(.custom-entry-body) p {
+  @apply mb-6 leading-[1.7];
+}
+
+/* リンク
+=============================== */
+:where(.custom-entry-body) a {
+  @apply hover:no-underline;
+}
+
+/* リスト
+=============================== */
+:where(.custom-entry-body) {
+  ul,
+  ol {
+    @apply mt-0 mb-6;
+
+    li {
+      @apply my-2.5;
+    }
+
+    li::marker {
+      @apply font-bold;
+    }
+
+    p {
+      @apply my-0;
+    }
+  }
+
+  ul li::marker {
+    @apply text-gray-400;
+  }
+
+  ol li::marker {
+    @apply text-gray-500;
+  }
+}
+
+/* 引用
+=============================== */
+:where(.custom-entry-body) blockquote {
+  @apply not-italic;
+}
+
+/* 記述リスト
+=============================== */
+:where(.custom-entry-body) dl {
+  dd {
+    @apply mt-0 pl-4;
+  }
+}

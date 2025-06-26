@@ -5,7 +5,24 @@
 :where(.custom-entry-body),
 :where(.tableWrapper) {
   table {
-    @apply rounded-md mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+    @apply overflow-hidden mt-(--unit-margin-top) mb-(--unit-margin-bottom) border border-gray-200 border-separate border-spacing-0 rounded-md text-base;
+
+    th,
+    td {
+      @apply p-4 border-b border-l border-gray-200;
+
+      &:first-child {
+        @apply border-l-0;
+      }
+
+      tr:last-child & {
+        @apply border-b-0;
+      }
+    }
+
+    th {
+      @apply bg-gray-50;
+    }
 
     p {
       @apply mt-0 mb-0;

@@ -1,3 +1,4 @@
+/* stylelint-disable no-invalid-position-at-import-rule */
 @import 'tailwindcss';
 
 @plugin "@tailwindcss/typography" {
@@ -15,3 +16,4 @@
 @import './unit/_unit-block-media.css';
 @import './unit/_unit-blockquote.css';
 @import './unit/_unit-table.css';
+/* stylelint-enable no-invalid-position-at-import-rule */
