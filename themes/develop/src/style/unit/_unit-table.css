@@ -5,7 +5,7 @@
 :where(.custom-entry-body),
 :where(.tableWrapper) {
   table {
-    @apply overflow-hidden mt-(--unit-margin-top) mb-(--unit-margin-bottom) border border-gray-200 border-separate border-spacing-0 rounded-md text-base;
+    @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom) border border-gray-200 border-separate border-spacing-0 rounded-md text-base;
 
     th,
     td {
