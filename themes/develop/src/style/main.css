@@ -127,10 +127,12 @@
 /* ユニット（閲覧画面のみで使用）
 =============================== */
 /* stylelint-disable no-invalid-position-at-import-rule */
+
 /* ベース */
 @import './unit/_unit-block-layout.css';
 @import './unit/_unit-side-space.css';
 @import './unit/_unit-type.css';
+
 /* パーツ */
 @import './unit/_unit-blockquote.css';
 @import './unit/_unit-button.css';

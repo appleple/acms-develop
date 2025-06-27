@@ -9,17 +9,17 @@
     quotes: none;
 
     .media-image-block {
-      margin: 0;
+      @apply m-0;
     }
 
     /* ブロックエディタ調整：リセット用 */
     & > * {
-      margin-block: 0;
+      @apply my-0;
     }
 
     /* ブロックエディタ調整 */
     * + * {
-      margin-block-start: 1rem;
+      @apply my-0 mt-4;
     }
   }
 }
@@ -27,10 +27,10 @@
 /* 引用URL
 ------------------------------ */
 [class*='column-quote'] {
-  margin-block: var(--unit-margin-top) var(--unit-margin-bottom);
+  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
 
   * + * {
-    margin-block-start: 0;
+    @apply mt-0;
   }
 
   blockquote {

@@ -1,6 +1,7 @@
 /* ------------------------------
  メディアファイル・ファイル
 ------------------------------ */
+/* stylelint-disable selector-class-pattern */
 .media-file-block,
 :where(.acms-admin-block-editor-body) .node-fileBlock,
 [class*='column-file'],
@@ -9,7 +10,7 @@
 }
 
 .acms-admin-block-editor-file {
-  line-height: 0; /* Descender space 対策 */
+  @apply leading-[0] /* Descender space 対策 */;
 }
 
 /* ファイルアイコン */
@@ -19,6 +20,7 @@
 [class*='column-file'] .columnIcon {
   @apply inline-block max-w-full h-auto w-[70px] m-0;
 }
+/* stylelint-enable selector-class-pattern */
 
 /* キャプション */
 .acms-admin-block-editor-file-caption,

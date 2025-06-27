@@ -4,6 +4,5 @@
 
 /* ユニットのコンテナ */
 .custom-entry-body .entry-container {
-  margin-right: 0;
-  margin-left: 0;
+  @apply mx-0;
 }

@@ -16,7 +16,9 @@
 }
 
 /* リンクボタン上下余白 */
+/* stylelint-disable selector-class-pattern */
 .link-button-block,
 :where(.acms-admin-block-editor-body) .node-linkButton {
   @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
 }
+/* stylelint-enable selector-class-pattern */

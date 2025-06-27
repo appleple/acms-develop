@@ -5,24 +5,24 @@
 /* 目次
 =============================== */
 .toc .level-1 {
-  padding-left: 0;
-  margin: 0.75rem 0 -0.25rem;
+  @apply pl-0 mt-3 -mb-1;
+
+  li {
+    @apply pl-0;
+  }
 }
 
 .toc .level-2 {
-  padding-left: 1em;
-  margin-bottom: 0;
+  @apply pl-[1em] mb-0;
 }
 
 .toc .level-2 li {
-  display: flex;
-  gap: 0.5em;
+  @apply flex gap-[0.5em];
 }
 
 .toc .level-2 li::before {
-  display: block;
-  width: 1em;
+  @apply block w-[1em] bg-no-repeat bg-center;
+
   content: '';
-  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>')
-    no-repeat center center;
+  background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' /></svg>");
 }

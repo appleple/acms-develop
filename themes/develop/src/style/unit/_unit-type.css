@@ -1,6 +1,7 @@
 /* ------------------------------
  タイポグラフィ
 ------------------------------ */
+/* stylelint-disable no-duplicate-selectors */
 
 /* 見出し
 =============================== */
@@ -72,7 +73,9 @@
 =============================== */
 [data-type='horizontalRule'] {
   @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+
   hr {
-    margin: 0;
+    @apply m-0;
   }
 }
+/* stylelint-enable no-duplicate-selectors */

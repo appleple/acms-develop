@@ -8,6 +8,7 @@
 }
 
 /* 上下余白 */
+/* stylelint-disable selector-class-pattern */
 :where(.media-image-block),
 :where(.acms-admin-block-editor-body) .node-imageBlock,
 [class*='column-image'],
@@ -15,6 +16,7 @@
 [class*='column-eximage'] {
   @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
 }
+/* stylelint-enable selector-class-pattern */
 
 /* 画像ユニット：style属性でwidth指定された場合の横はみ出し防止 */
 [class*='column-image'] {
@@ -31,6 +33,7 @@
 [class*='column-media'],
 [class*='column-eximage'] {
   @apply leading-0 text-center;
+
   a {
     @apply inline-block no-underline transition-opacity duration-200 ease-in-out;
   }
