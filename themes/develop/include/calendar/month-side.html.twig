@@ -14,7 +14,7 @@
           href="{{ calendar.date.prevUrl }}"
           class="flex items-center justify-center w-5 h-5"
           title="前月へ"
-          hx-get="{{ calendar.date.prevUrl }}tpl/include/calendar/month-side.html"
+          hx-get="{{ calendar.date.prevUrl }}tpl/include/calenda&:first-child,r/molast-side"
           hx-target="#swap-calendar"
           hx-swap="outerHTML"
           hx-boost="false"
@@ -36,7 +36,7 @@
           href="{{ calendar.date.nextUrl }}"
           class="flex items-center justify-center w-5 h-5"
           title="翌月へ"
-          hx-get="{{ calendar.date.nextUrl }}tpl/include/calendar/month-side.html"
+          hx-get="{{ calendar.date.nextUrl }}tpl/include/calenda&:first-child,r/molast-side"
           hx-target="#swap-calendar"
           hx-swap="outerHTML"
           hx-boost="false"
@@ -57,7 +57,7 @@
   </div>
   <div class="grid grid-cols-7 mt-4 text-xs text-center" aria-hidden="true">
     {% for week in calendar.weekLabels %}
-      <div class="[&:nth-child(n+6)]:text-red-600">
+      <div class="[&:first-child,&:last-child]:text-red-600">
         {{ week.label }}
       </div>
     {% endfor %}
@@ -67,11 +67,11 @@
       <div class="grid grid-cols-7">
         {% for day in week %}
           {% if day.isPadding %}
-            <div class="px-0.5 mb-1 py-1.5 [&:nth-child(n+6)]:text-red-600" aria-hidden="true"></div>
+            <div class="px-0.5 mb-1 py-1.5 [&:first-child,&:last-child]:text-red-600" aria-hidden="true"></div>
           {% else %}
             {% if day.entries %}
               <div
-                class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:nth-child(n+6)]:text-red-600"
+                class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:first-child,&:last-child]:text-red-600"
               >
                 <a
                   href="{{ day.url }}"
@@ -85,7 +85,7 @@
               </div>
             {% else %}
               <div
-                class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:nth-child(n+6)]:text-red-600"
+                class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:first-child,&:last-child]:text-red-600"
               >
                 <span
                   class="flex items-center justify-center w-7 h-7{% if day.date == NOW_DATE %} text-indigo-600 font-bold{% endif %}"
