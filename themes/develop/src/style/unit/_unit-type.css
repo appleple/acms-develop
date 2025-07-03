@@ -17,6 +17,10 @@
 :where(.custom-entry-body),
 :where(.acms-admin-block-editor-body) {
   @apply mb-6 leading-[1.7];
+
+  p {
+    @apply mb-6;
+  }
 }
 
 /* リンク
