@@ -4,7 +4,7 @@
   <div class="mb-10">
     <h1 class="flex flex-wrap gap-3 text-gray-900 text-2xl font-bold">
       {% for tag in tagFilter.selectedTags %}
-        <a href="{{ tag.url }}" class="hover:opacity-60">#{{ tag.name }}</a>
+        <a href="{{ tag.url }}" class="hover:opacity-70">#{{ tag.name }}</a>
       {% endfor %}の検索結果
     </h1>
     {% if tagFilter.choiceTags %}

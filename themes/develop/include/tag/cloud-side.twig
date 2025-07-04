@@ -23,7 +23,7 @@
         {% endif %}
         <li class="{{ levelClass }}">
           <span class="acms-label acms-label-success tagSize{{ tag.level }}">
-            <a href="{{ tag.url }}" title="{{ tag.amount }}件">#{{ tag.name }}</a>
+            <a href="{{ tag.url }}" title="{{ tag.amount }}件" class="hover:opacity-70">#{{ tag.name }}</a>
           </span>
         </li>
       {% endfor %}
