@@ -81,7 +81,7 @@
           </svg>
         </span>
         <input
-          id="js-shareUrl"
+          x-ref="shareUrl"
           type="text"
           readonly
           value="{{ CURRENT_URL }}"
@@ -103,7 +103,7 @@
                     that.copied = false;
                 }, 3000);
               } else {
-                const shareUrl = document.getElementById('js-shareUrl');
+                const shareUrl = $refs.shareUrl;
                 shareUrl.focus();
                 shareUrl.select();
                 document.execCommand('copy');
