@@ -1,5 +1,13 @@
 {% extends '/_layouts/two-column.twig' %}
 
+{% block headStructuredData %}
+  {% if touch('Touch_RootBlog') and touch('Touch_Top') %}
+    {{ include('/include/structured-data/web-site.twig') }}
+  {% else %}
+    {{ include('/include/structured-data/breadcrumb-list.twig') }}
+  {% endif %}
+{% endblock %}
+
 {% block main %}
   {% if touch('Touch_Category') %}
     <h1 class="text-gray-900 font-bold text-2xl mb-10">%{CATEGORY_NAME}</h1>

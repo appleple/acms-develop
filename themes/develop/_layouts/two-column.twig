@@ -13,6 +13,10 @@
     {% block headJs %}
       {{ include('/include/head/js.twig') }}
     {% endblock %}
+
+    {% block headStructuredData %}
+      {{ include('/include/structured-data/breadcrumb-list.twig') }}
+    {% endblock %}
   </head>
   <body class="text-gray-700">
     {% block bodyStart %}
