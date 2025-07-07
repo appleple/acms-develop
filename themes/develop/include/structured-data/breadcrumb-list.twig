@@ -1,4 +1,4 @@
-{% set topicpath = module('V2_Topicpath', 'topicpath', { bid: null, cid: null, eid: null }) %}
+{% set topicpath = module('V2_Topicpath', moduleId, { bid: BID, cid: CID, eid: EID }) %}
 
 {% if topicpath.items is not empty %}
 {# prettier-ignore #}
