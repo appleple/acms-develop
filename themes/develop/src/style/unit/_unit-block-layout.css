@@ -25,7 +25,7 @@
 
 /* 閲覧画面側 */
 :where(.custom-entry-body) :where([data-type='columns']) {
-  @apply gap-(--unit-gutter);
+  @apply gap-(--unit-gap-x);
 }
 
 /* カラム上下余白
