@@ -8,17 +8,19 @@
 
 @import './_theme.css';
 
-/* ユニット（編集画面と共通）
+/* ユニット, カスタムフィールド（編集画面と共通）
 =============================== */
 
 /* ベース */
-@import './unit/_unit-type.css';
-@import './unit/_unit-block-layout.css';
+@import './editor/elements/_type.css';
+
+/* レイアウト */
+@import './editor/_block-editor-layout.css';
 
 /* パーツ */
-@import './unit/_unit-blockquote.css';
-@import './unit/_unit-button.css';
-@import './unit/_unit-file.css';
-@import './unit/_unit-image.css';
-@import './unit/_unit-table.css';
+@import './editor/elements/_blockquote.css';
+@import './editor/elements/_button.css';
+@import './editor/elements/_file.css';
+@import './editor/elements/_image.css';
+@import './editor/elements/_table.css';
 /* stylelint-enable no-invalid-position-at-import-rule */
