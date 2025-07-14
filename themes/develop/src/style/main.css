@@ -139,12 +139,12 @@
 @import './editor/elements/_blockquote.css';
 @import './editor/elements/_button.css';
 @import './editor/elements/_custom.css';
-@import './editor/elements/_embed.css';
 @import './editor/elements/_file.css';
 @import './editor/elements/_image.css';
 @import './editor/elements/_map.css';
 @import './editor/elements/_module-unit.css';
 @import './editor/elements/_table.css';
+@import './editor/elements/_video.css';
 /* stylelint-enable no-invalid-position-at-import-rule */
 
 /* フォームバリデーター
