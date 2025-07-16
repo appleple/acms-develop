@@ -1,24 +1,36 @@
 /* ------------------------------
- リンクボタン・ブロックエディタファイルボタン
+ - リンクボタン
+ - ブロックエディタのファイル（ボタン型）
 ------------------------------ */
+
+/* 上下余白 */
+/* stylelint-disable selector-class-pattern */
+.link-button-block,
+.media-file-block:has(.media-file-block-link),
+:where(.acms-admin-block-editor-body) .node-linkButton,
+:where(.acms-admin-block-editor-body) .node-fileBlock:has(.acms-admin-block-editor-file-link) {
+  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+}
+/* stylelint-enable selector-class-pattern */
+
+/* リンク */
 .acms-admin-block-editor-link-button-link,
 .link-button-block-link,
 .acms-admin-block-editor-file-link,
 .media-file-block-link,
 .custom-entry-body .media-file-block-link {
-  @apply inline-grid place-items-center px-8 py-4 border text-gray-700 border-gray-200 rounded-md bg-indigo-50 leading-[1.3] hover:opacity-100 hover:text-gray-700 font-bold no-underline;
+  @apply inline-flex place-items-center px-3 py-2 border text-gray-900 border-gray-200 rounded-md bg-indigo-50 leading-[1.3] no-underline text-sm font-semibold gap-1.5 hover:opacity-100 hover:text-gray-900;
 }
 
+/* ブロックエディタのファイル（ボタン型）のアイコン */
+.acms-admin-block-editor-file-link img,
+.media-file-block-link img {
+  @apply w-8 h-auto my-0;
+}
+
+/* リンクスタイル（閲覧画面のみ） */
 .link-button-block-link,
 .media-file-block-link,
 .media-file-block .media-file-block-link {
-  @apply hover:bg-indigo-100 transition-colors hover:!opacity-100;
+  @apply hover:opacity-70 transition-opacity;
 }
-
-/* リンクボタン上下余白 */
-/* stylelint-disable selector-class-pattern */
-.link-button-block,
-:where(.acms-admin-block-editor-body) .node-linkButton {
-  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
-}
-/* stylelint-enable selector-class-pattern */
