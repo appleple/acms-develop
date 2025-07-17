@@ -32,7 +32,7 @@
 [class*='column-image'],
 [class*='column-media'],
 [class*='column-eximage'] {
-  @apply leading-0 text-center;
+  @apply leading-0;
 
   a {
     @apply inline-block no-underline transition-opacity duration-200 ease-in-out;
@@ -41,6 +41,11 @@
   img {
     @apply my-0 inline-block max-w-full h-auto rounded-md;
   }
+}
+
+:where(.media-image-block),
+:where(.acms-admin-block-editor-image) {
+  @apply text-center;
 }
 
 /* キャプション
