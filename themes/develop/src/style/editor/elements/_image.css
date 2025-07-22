@@ -55,5 +55,5 @@
 [class*='column-image'] .caption,
 [class*='column-media'] .caption,
 [class*='column-eximage'] .caption {
-  @apply mt-1 text-gray-500 text-sm text-center;
+  @apply mt-1 text-gray-500 text-sm;
 }
