@@ -1,5 +1,10 @@
 /* stylelint-disable no-invalid-position-at-import-rule */
-@import 'tailwindcss';
+
+/* @import 'tailwindcss'; */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import './editor/_custom-preflight.css' layer(base); /* 管理画面にまでPreflightが影響しないようカスタム */
+@import 'tailwindcss/utilities.css' layer(utilities);
 
 @plugin "@tailwindcss/typography" {
   /* prettier-ignore */
