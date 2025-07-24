@@ -4,7 +4,7 @@
 
 /* レイアウト */
 :where(.acms-admin-block-editor-body) :where([data-type='columns']),
-:where(.custom-entry-body) :where([data-type='columns']) {
+:where(.prose) :where([data-type='columns']) {
   @apply grid grid-flow-col box-border mt-(--unit-margin-top) mb-(--unit-margin-bottom);
 
   /* 2カラム */
@@ -24,7 +24,7 @@
 }
 
 /* 閲覧画面側 */
-:where(.custom-entry-body) :where([data-type='columns']) {
+:where(.prose) :where([data-type='columns']) {
   @apply gap-(--unit-gap-x);
 }
 
@@ -34,7 +34,7 @@
 /* 上書きのため詳細度高め（0,0,2,0）
 ----------------------------- */
 :where(.acms-admin-block-editor-body),
-:where(.custom-entry-body) {
+:where(.prose) {
   [data-type='column'] > * {
     &:first-child {
       @apply mt-0;
@@ -43,25 +43,6 @@
     &:last-child {
       @apply mb-0;
     }
-  }
-}
-
-/* 配置
-/* メディア・ファイル・リンクボタン
------------------------------ */
-:where(.media-image-block),
-:where(.media-file-block),
-:where(.link-button-block) {
-  &.media-align-center {
-    @apply flex justify-center;
-  }
-
-  &.media-align-left {
-    @apply flex justify-start;
-  }
-
-  &.media-align-right {
-    @apply flex justify-end;
   }
 }
 

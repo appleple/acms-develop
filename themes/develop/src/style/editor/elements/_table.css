@@ -2,7 +2,7 @@
  テーブル
 ------------------------------ */
 /* stylelint-disable selector-class-pattern */
-:where(.custom-entry-body),
+:where(.prose),
 :where(.tableWrapper) {
   table {
     @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom) border border-gray-200 border-separate border-spacing-0 rounded-md text-base;

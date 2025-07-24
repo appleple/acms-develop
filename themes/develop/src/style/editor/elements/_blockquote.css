@@ -2,7 +2,7 @@
  引用
 ------------------------------ */
 :where(.acms-admin-block-editor-body),
-:where(.custom-entry-body) {
+:where(.prose) {
   blockquote {
     @apply not-italic;
 

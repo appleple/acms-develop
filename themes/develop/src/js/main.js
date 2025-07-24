@@ -7,11 +7,8 @@ import {
   validator,
   linkMatchLocation,
   externalLinks,
-  scrollTo,
   alertUnload,
   smartPhoto,
-  lazyLoad,
-  inView,
   modalVideo,
   scrollHint,
   googleMap,
@@ -20,7 +17,6 @@ import {
   pdfPreview,
   focusedImage,
   documentOutliner,
-  unitGroupAlign,
   htmx,
 } from './lib/build-in'; // ToDo: いらないものはコメントアウト
 
@@ -55,11 +51,8 @@ function createBuildInJsDispatcher() {
     validator(context);
     linkMatchLocation(context);
     externalLinks(context);
-    scrollTo(context);
     alertUnload(context);
     smartPhoto(context);
-    lazyLoad(context);
-    inView(context);
     modalVideo(context);
     scrollHint(context);
     googleMap(context);
@@ -68,7 +61,6 @@ function createBuildInJsDispatcher() {
     pdfPreview(context);
     focusedImage(context);
     documentOutliner(context);
-    unitGroupAlign(context);
     htmx(context);
   };
 }
