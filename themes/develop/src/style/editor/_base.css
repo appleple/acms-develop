@@ -1,0 +1,9 @@
+:where(.prose) .acms-cssgrid {
+  --acms-gap: var(--unit-gap-x);
+}
+
+:where(.prose) .acms-stack,
+:where(.prose) .acms-vstack,
+:where(.prose) .acms-hstack {
+  --acms-stack-spacing: var(--unit-gap-x);
+}

@@ -1,10 +1,9 @@
-/* stylelint-disable no-invalid-position-at-import-rule */
 @import 'tailwindcss';
 
 @plugin "@tailwindcss/typography";
 
 @import './_theme.css';
-/* stylelint-enable no-invalid-position-at-import-rule */
+@import './editor.css';
 
 @utility container {
   max-width: 64rem;

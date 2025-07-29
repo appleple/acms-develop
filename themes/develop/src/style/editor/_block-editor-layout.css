@@ -3,7 +3,6 @@
 ------------------------------ */
 
 /* レイアウト */
-:where(.acms-admin-block-editor-body) :where([data-type='columns']),
 :where(.prose) :where([data-type='columns']) {
   @apply grid grid-flow-col box-border mt-(--unit-margin-top) mb-(--unit-margin-bottom);
 
@@ -19,8 +18,8 @@
 }
 
 /* 管理画面側 */
-:where(.acms-admin-block-editor-body) :where([data-type='columns']) {
-  @apply gap-4; /* 管理画面では余白が広くなりすぎないよう固定値を指定 */
+:where(.acms-admin-block-editor) :where([data-type='columns']) {
+  @apply !gap-4; /* 管理画面では余白が広くなりすぎないよう固定値を指定 */
 }
 
 /* 閲覧画面側 */
@@ -33,7 +32,6 @@
 /* 子要素の最初と最後の上下マージンをリセット
 /* 上書きのため詳細度高め（0,0,2,0）
 ----------------------------- */
-:where(.acms-admin-block-editor-body),
 :where(.prose) {
   [data-type='column'] > * {
     &:first-child {

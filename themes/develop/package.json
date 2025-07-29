@@ -45,7 +45,6 @@
     "pdfjs-dist": "^5.0.375",
     "query-string": "^9.1.1",
     "scroll-hint": "^1.2.9",
-    "scroll-to-element": "^2.0.3",
     "smartphoto": "^1.6.5"
   },
   "optionalDependencies": {

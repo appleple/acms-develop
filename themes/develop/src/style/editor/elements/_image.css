@@ -10,7 +10,7 @@
 /* 上下余白 */
 /* stylelint-disable selector-class-pattern */
 :where(.media-image-block),
-:where(.acms-admin-block-editor-body) .node-imageBlock,
+:where(.prose) .node-imageBlock,
 [class*='column-image'],
 [class*='column-media']:not(:has(a[href*='media-download'], a[href*='storage'])),
 [class*='column-eximage'] {

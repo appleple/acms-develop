@@ -5,9 +5,9 @@
 
 /* 上下余白 */
 /* stylelint-disable selector-class-pattern */
-:where(.acms-admin-block-editor-body) .node-linkButton,
+:where(.prose) .node-linkButton,
 .link-button-block,
-:where(.acms-admin-block-editor-body) .node-fileBlock:has(.acms-admin-block-editor-file-link),
+:where(.prose) .node-fileBlock:has(.acms-admin-block-editor-file-link),
 .media-file-block[data-display-type='button'] {
   @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
 }

@@ -1,38 +1,10 @@
-/* stylelint-disable no-invalid-position-at-import-rule */
-
 /* @import 'tailwindcss'; */
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
-@import './editor/_custom-preflight.css' layer(base); /* 管理画面にまでPreflightが影響しないようカスタム */
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-@plugin "@tailwindcss/typography" {
-  /* prettier-ignore */
-  className: acms-admin-block-editor-body;
-}
+@plugin "@tailwindcss/typography";
 
 @import './_theme.css';
 
-/* ユニット, カスタムフィールド（編集画面と共通）
-=============================== */
-
-/* ベース */
-@import './editor/elements/_type.css';
-
-/* レイアウト */
-@import './editor/_block-editor-layout.css';
-
-/* 配置 */
-@import './editor/_unit-align.css';
-
-/* パーツ */
-@import './editor/elements/_blockquote.css';
-@import './editor/elements/_button.css';
-@import './editor/elements/_custom.css';
-@import './editor/elements/_file.css';
-@import './editor/elements/_image.css';
-@import './editor/elements/_map.css';
-@import './editor/elements/_module-unit.css';
-@import './editor/elements/_table.css';
-@import './editor/elements/_video.css';
-/* stylelint-enable no-invalid-position-at-import-rule */
+@import './editor/index.css';

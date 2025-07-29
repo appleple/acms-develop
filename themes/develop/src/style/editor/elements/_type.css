@@ -5,8 +5,7 @@
 
 /* 見出し
 =============================== */
-:where(.prose),
-:where(.acms-admin-block-editor-body) {
+:where(.prose) {
   h4 {
     @apply text-lg;
   }
@@ -14,8 +13,7 @@
 
 /* 段落
 =============================== */
-:where(.prose),
-:where(.acms-admin-block-editor-body) {
+:where(.prose) {
   @apply mb-6 leading-[1.7];
 
   p {
@@ -25,8 +23,7 @@
 
 /* リンク
 =============================== */
-:where(.prose),
-:where(.acms-admin-block-editor-body) {
+:where(.prose) {
   a {
     @apply hover:no-underline;
   }
@@ -34,8 +31,7 @@
 
 /* リスト
 =============================== */
-:where(.prose),
-:where(.acms-admin-block-editor-body) {
+:where(.prose) {
   ul,
   ol {
     @apply mt-0 mb-6;
@@ -64,8 +60,7 @@
 
 /* 記述リスト
 =============================== */
-:where(.prose),
-:where(.acms-admin-block-editor-body) {
+:where(.prose) {
   dl {
     dd {
       @apply mt-0 pl-4;

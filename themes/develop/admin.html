@@ -5,11 +5,16 @@
 
 @section("admin-js")
 @parent
+
+<script>
+  ACMS.Ready(function() {
+    ACMS.Config.blockEditorConfig.editorProps.editorProps.attributes.class = 'prose';
+  });
+</script>
 <!-- カスタムJSを記述 -->
 @vite("src/js/admin.js", {
   "scriptTagAttributes": {
     "async": true
   }
 })
-<!-- 編集画面用 @tailwindcss/typography Safe List : class="acms-admin-block-editor-body" -->
 @endsection
