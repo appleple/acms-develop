@@ -3,12 +3,8 @@
 [class*='column-embed'] {
   @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
 
-  * + * {
-    @apply mt-0;
-  }
-
   .acms-embed-link {
-    @apply overflow-hidden block md:flex p-0 text-inherit border border-gray-200 rounded-md font-normal md:transition-opacity hover:opacity-70;
+    @apply overflow-hidden block md:flex p-0 text-inherit border border-gray-200 rounded-md font-normal md:transition-opacity hover:opacity-70 no-underline;
   }
 
   .acms-embed-link-image-container {

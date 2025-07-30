@@ -1,4 +1,5 @@
 /* @import 'tailwindcss'; */
+/* 管理画面側では、preflight を読み込まないようにする */
 @layer theme, base, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
