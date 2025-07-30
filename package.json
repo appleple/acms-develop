@@ -14,7 +14,7 @@
     "release:minor": "npm --prefix themes/develop version minor --no-git-tag-version && npm run version:sync && npm run release:commit",
     "release:major": "npm --prefix themes/develop version major --no-git-tag-version && npm run version:sync && npm run release:commit",
     "check-update": "npx -p npm-check-updates -c ncu",
-    "prepare": "husky"
+    "prepare": "husky && npm --prefix themes/develop ci"
   },
   "repository": {
     "type": "git",
