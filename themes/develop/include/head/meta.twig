@@ -6,7 +6,9 @@
   <link rel="canonical" href="{{ PERMALINK }}" />
 {% endif %}
 
-<title>{{ ogp.title }}</title>
+<title>
+  {{ ogp.title }}
+</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 {{ include('/include/head/robots.twig') }}
@@ -47,5 +49,3 @@
 {% if blogField.fields.google_site_verification %}
   <meta name="google-site-verification" content="{{ blogField.fields.google_site_verification.value }}" />
 {% endif %}
-
-<meta name="htmx-config" content='{"historyCacheSize": -1, "refreshOnHistoryMiss": true}'>

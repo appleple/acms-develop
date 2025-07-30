@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "analyze": "vite build --mode analyze",
-    "format": "prettier --write '../*@develop/**/*.{js,ts,jsx,tsx,vue,css,html}'",
+    "format": "prettier --write '../**develop**/**/*.{js,ts,jsx,tsx,vue,css,twig}'",
     "check-update": "npx -p npm-check-updates -c ncu"
   },
   "author": "com.appleple",

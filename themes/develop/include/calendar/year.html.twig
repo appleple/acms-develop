@@ -42,7 +42,7 @@
       <div class="grid gap-8 grid-cols-[repeat(auto-fill,minmax(308px,1fr))]">
       {% endif %}
         <div>
-          <h3 class="pb-3 border-b border-gray-200 text-lg font-bold">{{ month.label }}月</h3>
+          <h2 class="pb-3 border-b border-gray-200 text-lg font-bold">{{ month.label }}月</h2>
           <div class="grid grid-cols-7 mt-4 text-sm" aria-hidden="true">
             {% for week in calendar.weekLabels %}
               <div class="week-{w} [&:is(.week-0,.week-6)]:text-red-600 text-center">
@@ -88,10 +88,10 @@
               </div>
             {% endfor %}
           </div>
-        {% if loop.index0 % 3 == 2 or loop.last %}
         </div>
-        {% endif %}
+      {% if loop.index0 % 3 == 2 or loop.last %}
       </div>
+      {% endif %}
     {% endfor %}
   </div>
 </div>

@@ -10,7 +10,6 @@ const config = {
   singleQuote: true,
   endOfLine: 'lf',
   jsxSingleQuote: false,
-  twigPrintWidth: 150,
   twigAlwaysBreakObjects: false,
   plugins: ['@zackad/prettier-plugin-twig'],
 };

@@ -1,8 +1,8 @@
 {% set topicpath = module('V2_Topicpath', moduleId, { bid: BID, cid: CID, eid: EID }) %}
 
 {% if topicpath.items is not empty %}
-{# prettier-ignore #}
-<script type="application/ld+json">
+  {# prettier-ignore #}
+  <script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "BreadcrumbList",
