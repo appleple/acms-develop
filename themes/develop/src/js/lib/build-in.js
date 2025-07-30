@@ -1,6 +1,7 @@
 import domContentLoaded from 'dom-content-loaded';
 import alertUnloadFn from './buildIn/alert-unload';
 import validatorFn from './buildIn/validator-fn';
+import observeElement from './buildIn/observer-element';
 import { linkMatch, linkMatchFull, linkMatchContain } from './buildIn/link-match-location';
 
 /**
@@ -146,14 +147,16 @@ const googleMap = (context, selector = '') => {
     const querySelector = selector || '[class^="column-map-"]>img:not(.js-s2d-ready),.js-s2d-ready';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        (elm) => elm.getAttribute('data-lazy') === 'true',
-        async (item) => {
-          const { default: run } = await import('./buildIn/google-map');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/google-map');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
@@ -168,14 +171,16 @@ const openStreetMap = (context, selector = '') => {
     const querySelector = selector || '.js-open-street-map';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        (elm) => elm.getAttribute('data-lazy') === 'true',
-        async (item) => {
-          const { default: run } = await import('./buildIn/open-street-map');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/open-street-map');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
@@ -190,14 +195,16 @@ const datePicker = (context, selector = '') => {
     const querySelector = selector || '.js-datepicker2';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        () => true,
-        async (item) => {
-          const { default: run } = await import('./buildIn/date-picker');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/date-picker');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
@@ -212,14 +219,16 @@ const pdfPreview = (context, selector = '') => {
     const querySelector = selector || '.js-pdf-viewer';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        () => true,
-        async (item) => {
-          const { default: run } = await import('./buildIn/pdf-preview');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/pdf-preview');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
@@ -234,14 +243,16 @@ const focusedImage = (context, selector = '') => {
     const querySelector = selector || '.js-focused-image';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        () => true,
-        async (item) => {
-          const { default: run } = await import('./buildIn/focused-image');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/focused-image');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
