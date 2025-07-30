@@ -1,6 +1,5 @@
 import fs from 'fs-extra';
 import { zipPromise } from './lib/index.js';
-import { readFile } from 'fs/promises';
 
 const zipDir = 'develop';
 const srcDir = ['themes', 'bin'];
