@@ -1,0 +1,32 @@
+{% set tagCloud =
+  module(
+    'V2_Tag_Cloud',
+    moduleId,
+    { bid: null, cid: null, eid: null, field: null, start: '1000-01-01 00:00:00', end: '9999-12-31 23:59:59' }
+  )
+%}
+
+{% if tagCloud.items is not empty %}
+  <div>
+    {{ include('/admin/module/setting.twig', { moduleInfo: tagCloud.moduleInfo }) }}
+    <ul class="flex flex-wrap items-center gap-3 text-gray-900">
+      {% for tag in tagCloud.items %}
+        {% set levelClass = '' %}
+        {% if tag.level >= 1 and tag.level <= 3 %}
+          {% set levelClass = 'text-xs' %}
+        {% elseif tag.level >= 4 and tag.level <= 10 %}
+          {% set levelClass = 'text-sm' %}
+        {% elseif tag.level >= 11 and tag.level <= 17 %}
+          {% set levelClass = 'text-base' %}
+        {% elseif tag.level >= 18 and tag.level <= 25 %}
+          {% set levelClass = 'text-lg' %}
+        {% endif %}
+        <li class="{{ levelClass }}">
+          <span class="acms-label acms-label-success tagSize{{ tag.level }}">
+            <a href="{{ tag.url }}" title="{{ tag.amount }}件" class="hover:opacity-70">#{{ tag.name }}</a>
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

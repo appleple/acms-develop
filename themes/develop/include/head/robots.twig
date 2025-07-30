@@ -1,0 +1,14 @@
+{% set blogField = module('V2_Blog_Field', null, { bid: BID }) %}
+{% set categoryField = module('V2_Category_Field', null, { cid: CID }) %}
+{% set entryField = module('V2_Entry_Field', null, { eid: EID }) %}
+
+{% set isNoindexBlog = blogField.fields and blogField.fields.blog_meta_robots == 'noindex' %}
+{% set isNoindexCategory = categoryField.fields and categoryField.fields.category_meta_robots == 'noindex' %}
+{% set isNoindexEntry = entryField.fields and entryField.fields.entry_meta_robots == 'noindex' %}
+{% set isTagPage = TAG is not empty %}
+{% set isKeywordPage = KEYWORD is not empty %}
+{% set isDatePage = DATE is not empty %}
+
+{% if isNoindexBlog or isNoindexCategory or isNoindexEntry or isTagPage or isKeywordPage or isDatePage %}
+  <meta name="robots" content="noindex, follow" />
+{% endif %}

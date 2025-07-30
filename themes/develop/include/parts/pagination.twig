@@ -1,0 +1,112 @@
+{% if pagination and pagination.totalPages > 1 %}
+  <nav class="text-center" aria-label="ページネーション">
+    <ul
+      class="overflow-hidden inline-flex items-center text-sm leading-tight bg-white border border-gray-200 rounded-md h-9 text-gray-900 [&_li:last-child]:border-r-0"
+    >
+      <!-- 前のページ -->
+      {% if pagination.prevPage %}
+        <li class="h-full border-r border-gray-200">
+          <a
+            href="{{ pagination.prevPage.url }}"
+            class="relative flex justify-center items-center w-9 h-full px-2 group text-gray-900 hover:bg-indigo-600 hover:text-white"
+            aria-label="前の{{ pagination.prevPage.count }}件を見る"
+          >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="currentColor"
+                class="size-4"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+              </svg>
+            </span>
+          </a>
+        </li>
+      {% endif %}
+
+      <!-- 最初のページ -->
+      {% if pagination.firstPage %}
+        <li
+          class="w-9 h-full border-r border-gray-200{% if pagination.firstPage.current %} relative flex justify-center items-center text-white bg-indigo-600{% endif %}"
+        >
+          <a
+            href="{{ pagination.firstPage.url }}"
+            class="relative flex justify-center items-center w-9 h-full group hover:bg-indigo-600 hover:text-white"
+          >
+            <span>1</span>
+          </a>
+        </li>
+      {% endif %}
+      <!-- 前方省略記号 -->
+      {% if pagination.prevEllipsis %}
+        <li class="w-9 h-full border-r border-gray-200">
+          <span class="relative flex justify-center items-center w-full h-full px-2.5 bg-gray-50 group">
+            <span>…</span>
+          </span>
+        </li>
+      {% endif %}
+
+      <!-- ページループ -->
+      {% for page in pagination.pages %}
+        <li
+          class="w-9 h-full border-r border-gray-200{% if page.current %} relative flex justify-center items-center text-white bg-indigo-600{% endif %}"
+        >
+          <a
+            href="{{ page.url }}"
+            class="relative flex justify-center items-center w-9 h-full group hover:bg-indigo-600 hover:text-white"
+          >
+            <span>{{ page.page }}</span>
+          </a>
+        </li>
+      {% endfor %}
+
+      <!-- 後方省略記号 -->
+      {% if pagination.nextEllipsis %}
+        <li class="w-9 h-full border-r border-gray-200">
+          <span class="relative flex justify-center items-center w-full h-full px-2.5 bg-gray-50 group">
+            <span>…</span>
+          </span>
+        </li>
+      {% endif %}
+
+      <!-- 最後のページ -->
+      {% if pagination.lastPage %}
+        <li
+          class="w-9 h-full border-r border-gray-200{% if pagination.lastPage.current %} relative flex justify-center items-center text-white bg-indigo-600{% endif %}"
+        >
+          <a
+            href="{{ pagination.lastPage.url }}"
+            class="relative flex justify-center items-center w-9 h-full group hover:bg-indigo-600 hover:text-white"
+          >
+            <span>{{ pagination.lastPage.page }}</span>
+          </a>
+        </li>
+      {% endif %}
+
+      <!-- 次のページ -->
+      {% if pagination.nextPage %}
+        <li class="w-9 h-full border-gray-200">
+          <a
+            href="{{ pagination.nextPage.url }}"
+            class="relative flex justify-center items-center w-full h-full group text-gray-900 hover:bg-indigo-600 hover:text-white"
+            aria-label="次の{{ pagination.nextPage.count }}件を見る"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              stroke="currentColor"
+              class="size-4"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

@@ -1,0 +1,118 @@
+{% set entryBody = module('V2_Entry_Body', moduleId) %}
+
+{% if entryBody.pageType in ['entry', 'index'] %}
+  <div>
+    {% if entryBody.items is empty %}
+      <p>
+        ただいまページを準備しております。もうしばらくお待ちください。
+      </p>
+    {% endif %}
+
+    {% for entry in entryBody.items %}
+      {% if entry.editorialInfo.revisionBtn %}
+        <div class="acms-form-group">
+          {{ include('/admin/entry/revision-info.html') }}
+        </div>
+      {% endif %}
+
+      <header class="text-gray-900">
+        {% set updated = date(entry.updatedAt) %}
+        {% set diff = date('now').diff(updated) %}
+
+        {% if diff.days > 365 %}
+          <p class="flex items-center gap-3 w-full mb-8 p-4 rounded-md bg-yellow-50 text-yellow-700 text-sm">
+            <span class="text-yellow-400">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                <path
+                  fill-rule="evenodd"
+                  d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+            <span>この記事は最終更新日から<span>{{ diff.y }}</span>年以上経過しています。</span>
+          </p>
+        {% endif %}
+
+        <h1 class="font-bold text-2xl entry-title">{{ entry.title }}</h1>
+        <div class="md:flex items-center flex-wrap gap-4 mt-4 text-gray-500 text-sm">
+          <p>
+            公開日：<time datetime="{{ entry.datetime|date('Y-m-d') }}">
+              {{ entry.datetime|date('Y年m月d日') }}（{{ entry.datetime|date('l')|weekEN2JP }}）
+            </time>
+            {% if entry.isNew %}
+              <span class="ml-2 px-2 py-1 rounded-full bg-gray-50 text-gray-900 text-xs">NEW</span>
+            {% endif %}
+          </p>
+          <p class="mt-1.5 md:mt-0 md:pl-4 md:border-l border-gray-200">
+            更新日：<time datetime="{{ entry.updatedAt|date('Y-m-d') }}">{{ entry.updatedAt|date('Y年m月d日') }}（{{
+                entry.updatedAt|date('l')|weekEN2JP
+              }}）</time>
+          </p>
+        </div>
+        {% if entry.category.items %}
+          <p class="mt-4 break-words">
+            <a href="{{ entry.category.items[0].url }}" class="text-indigo-600 font-bold">
+              {{ entry.category.items[0].name }}
+            </a>
+          </p>
+        {% endif %}
+        {% if entry.tags %}
+          <ul class="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-gray-900">
+            {% for tag in entry.tags %}
+              <li><a href="{{ tag.url }}" class="hover:opacity-70">#{{ tag.name }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </header>
+
+      <div class="mt-10">
+        <div>
+          <div
+            class="prose max-w-none js-outline"
+            data-target=".js-outline-yield"
+            data-link="true"
+            data-listType="ol"
+            data-listClassName="list-none"
+            data-itemClassName="mt-2"
+            data-linkClassName="js-scroll no-underline hover:opacity-70"
+            data-anchorName="heading-$1"
+            data-levelLimit="2"
+            data-exceptClass="js-except"
+          >
+            {% if entry.body %}
+              {{ entry.body|fixBlockEditorContents|raw }}
+            {% endif %}
+          </div>
+        </div>
+
+        {% if entry.hasMoreUnits %}
+          <p>
+            <a href="{{ entry.url }}" class="acms-btn-flat">
+              <span class="acms-icon-arrow-right"></span>「{{ entry.title }}」の続きを読む
+            </a>
+          </p>
+        {% endif %}
+
+        <!-- 編集ボタン -->
+        <div class="acms-box-medium">
+          {{ include('/admin/entry/action.twig', { entry }) }}
+        </div>
+        {% if sns_share %}
+          <div class="mt-10">
+            {{ include('/include/parts/sns-share.twig') }}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <div class="mt-10">
+      {{
+        include('/include/parts/serial-navi.twig', { serialNavi: entryBody.serialNavi, indexUrl: entryBody.indexUrl })
+      }}
+    </div>
+  </div>
+{% endif %}
+
+<!-- 編集画面 -->
+{{ include('/admin/entry/edit.twig', { body: entryBody }) }}

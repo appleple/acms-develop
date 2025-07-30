@@ -1,0 +1,56 @@
+{% set categoryTree =
+  module(
+    'V2_Category_Tree',
+    moduleId,
+    {
+      bid: null,
+      cid: null,
+      keyword: null,
+      field: null,
+      order: 'id-asc',
+      start: '1000-01-01 00:00:00',
+      end: '9999-12-31 23:59:59'
+    }
+  )
+%}
+
+{% if categoryTree.items is not empty %}
+  {% macro renderCategories(categories) %}
+    <ul class="border-b border-solid border-gray-200 text-sm text-gray-900">
+      {% for category in categories %}
+        <li
+          class="py-2 border-t border-solid border-gray-200 [&>ul]:border-b-0 [&>ul>li]:border-t-0 [&>ul>li]:py-0 [&>ul>li]:pl-3"
+        >
+          <a href="{{ category.url }}" class="flex items-center gap-1.5 py-2 hover:opacity-70">
+            <span class="icon text-gray-400 flex-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-3"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+            </span>
+            <span class="flex-1 block">{{ category.name }}</span>
+            {% if category.amount %}
+              <span class="block min-w-10 px-2 py-1 rounded-full text-xs text-center bg-slate-50">
+                {{ category.amount }}
+              </span>
+            {% endif %}
+          </a>
+          {% if category.children is defined %}
+            {{ _self.renderCategories(category.children) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endmacro %}
+
+  <div class="[&>ul>li>a>.icon]:hidden">
+    {{ include('/admin/module/setting.twig', { moduleInfo: categoryTree.moduleInfo }) }}
+    {{ _self.renderCategories(categoryTree.items) }}
+  </div>
+{% endif %}

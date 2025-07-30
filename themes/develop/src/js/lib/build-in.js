@@ -1,9 +1,7 @@
 import domContentLoaded from 'dom-content-loaded';
-import lazyLoadJs from './buildIn/lazy-load';
-import lazyLoadFn from './buildIn/lazy-load-fn';
 import alertUnloadFn from './buildIn/alert-unload';
-import scrollToFn from './buildIn/scroll-to';
 import validatorFn from './buildIn/validator-fn';
+import observeElement from './buildIn/observer-element';
 import { linkMatch, linkMatchFull, linkMatchContain } from './buildIn/link-match-location';
 
 /**
@@ -60,21 +58,6 @@ const externalLinks = (context) => {
 };
 
 /**
- * ScrollTo
- * @param {Document | Element} context
- * @param {string} selector
- */
-const scrollTo = (context, selector) => {
-  domContentLoaded(async () => {
-    const querySelector = selector || '.scrollTo';
-    const target = context.querySelector(querySelector);
-    if (target) {
-      scrollToFn(context, querySelector);
-    }
-  });
-};
-
-/**
  * AlertUnload
  * @param {Document | Element} context
  * @param {string} selector
@@ -124,50 +107,6 @@ const smartPhoto = (context, selector = '', options = {}) => {
 };
 
 /**
- * LazyLoad
- * @param {Document | Element} context
- * @param {string} selector
- * @param {object} options
- */
-const lazyLoad = (context, selector = '', options = {}) => {
-  domContentLoaded(() => {
-    const querySelector = selector || '.js-lazy-load';
-    if (context.querySelector(querySelector)) {
-      lazyLoadJs(querySelector, options);
-    }
-  });
-};
-
-/**
- * InView
- * @param {Document | Element} context
- * @param {string} selector
- */
-const inView = (context, selector) => {
-  domContentLoaded(() => {
-    const querySelector = selector || '.js-lazy-contents';
-    lazyLoadFn(
-      querySelector,
-      () => true,
-      (item) => {
-        const type = item.getAttribute('data-type');
-        if (!type) {
-          return;
-        }
-        const script = document.createElement(type);
-        item.attributes.forEach((data) => {
-          const matches = data.name.match(/^data-(.*)/);
-          if (matches && matches[1] !== 'type') {
-            script[matches[1]] = data.value;
-          }
-        });
-        item.appendChild(script);
-      }
-    );
-  });
-};
-
-/**
  * ModalVideo
  * @param {Document | Element} context
  * @param {string} selector
@@ -208,14 +147,16 @@ const googleMap = (context, selector = '') => {
     const querySelector = selector || '[class^="column-map-"]>img:not(.js-s2d-ready),.js-s2d-ready';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        (elm) => elm.getAttribute('data-lazy') === 'true',
-        async (item) => {
-          const { default: run } = await import('./buildIn/google-map');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/google-map');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
@@ -230,14 +171,16 @@ const openStreetMap = (context, selector = '') => {
     const querySelector = selector || '.js-open-street-map';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        (elm) => elm.getAttribute('data-lazy') === 'true',
-        async (item) => {
-          const { default: run } = await import('./buildIn/open-street-map');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/open-street-map');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
@@ -252,14 +195,16 @@ const datePicker = (context, selector = '') => {
     const querySelector = selector || '.js-datepicker2';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        () => true,
-        async (item) => {
-          const { default: run } = await import('./buildIn/date-picker');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/date-picker');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
@@ -274,14 +219,16 @@ const pdfPreview = (context, selector = '') => {
     const querySelector = selector || '.js-pdf-viewer';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        () => true,
-        async (item) => {
-          const { default: run } = await import('./buildIn/pdf-preview');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/pdf-preview');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
@@ -296,14 +243,16 @@ const focusedImage = (context, selector = '') => {
     const querySelector = selector || '.js-focused-image';
     const targets = context.querySelectorAll(querySelector);
     if (targets.length > 0) {
-      lazyLoadFn(
-        querySelector,
-        () => true,
-        async (item) => {
-          const { default: run } = await import('./buildIn/focused-image');
-          run(item);
-        }
-      );
+      [].forEach.call(targets, (item) => {
+        observeElement(
+          item,
+          async (el) => {
+            const { default: run } = await import('./buildIn/focused-image');
+            run(el);
+          },
+          { once: true }
+        );
+      });
     }
   });
 };
@@ -328,52 +277,30 @@ const documentOutliner = (context, selector = '.js-outline', options = {}) => {
 };
 
 /**
- * UnitGroupAlign
+ * HTMX
  * @param {Document | Element} context
  */
-const unitGroupAlign = (context) => {
-  let timer;
-  const align = () => {
-    const unitGroups = context.querySelectorAll('.js-unit_group-align');
-    let currentWidth = 0;
-    let count = 0;
-
-    clearTimeout(timer);
-
-    timer = setTimeout(() => {
-      [].forEach.call(unitGroups, (unit) => {
-        const containerWidth = parseFloat(getComputedStyle(unit.parentNode, null).width.replace('px', ''));
-        const unitW = unit.offsetWidth - 1;
-        unit.style.clear = 'none';
-
-        if (!unit.previousElementSibling || !unit.previousElementSibling.classList.contains('js-unit_group-align')) {
-          currentWidth = 0;
-          count = 0;
-        }
-        if (count > 0 && containerWidth - (currentWidth + unitW) < -1) {
-          unit.style.clear = 'both';
-          currentWidth = unitW;
-          count = 1;
-        } else {
-          currentWidth += unitW;
-          count += 1;
-        }
-      });
-    }, 400);
-  };
-  window.addEventListener('resize', align);
-  align();
+const htmx = (context) => {
+  domContentLoaded(async () => {
+    const htmxMark = 'meta[name="acms-htmx"],[data-hx-get],[data-hx-post],[hx-get],[hx-post]'; // htmxを有効にする要素のセレクタ
+    const htmxConfig = {
+      historyCacheSize: -1, // ローカルストレージにHTMLをキャッシュしない（キャッシュすると戻る・進むが正常に動作しないため）
+      refreshOnHistoryMiss: true, // キャッシュがなければページを再読込
+    };
+    const existsHtmx = context.querySelector(htmxMark);
+    if (existsHtmx) {
+      const { default: dispatchHtmx } = await import(/* webpackChunkName: "htmx" */ './buildIn/htmx');
+      dispatchHtmx(htmxConfig);
+    }
+  });
 };
 
 export {
   validator,
   linkMatchLocation,
   externalLinks,
-  scrollTo,
   alertUnload,
   smartPhoto,
-  lazyLoad,
-  inView,
   modalVideo,
   scrollHint,
   googleMap,
@@ -382,5 +309,5 @@ export {
   pdfPreview,
   focusedImage,
   documentOutliner,
-  unitGroupAlign,
+  htmx,
 };

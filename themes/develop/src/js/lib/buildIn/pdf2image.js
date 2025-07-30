@@ -67,17 +67,30 @@ export default class Pdf2Image {
   async toCanvas(canvas, page, width) {
     const pdfDocument = await this.getDocument();
     const pdfPage = await pdfDocument.getPage(page);
-
     let viewport = pdfPage.getViewport({ scale: 1 });
     if (width > 0) {
-      const fixScale = width / viewport.width;
-      viewport = pdfPage.getViewport({ scale: fixScale });
+      const ratio = width / viewport.width;
+      viewport = pdfPage.getViewport({ scale: ratio });
     }
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
+
+    const IMAGE_RESOLUTION = 150; // widthが指定されていない場合の解像度
+    const outputScale = width > 0 ? 1 : IMAGE_RESOLUTION / 72.0;
+
+    canvas.height = Math.floor(viewport.height * outputScale);
+    canvas.width = Math.floor(viewport.width * outputScale);
+
+    const context = canvas.getContext('2d');
+    if (context === null) {
+      throw new Error('Failed to get 2D rendering context from canvas.');
+    }
+    context.save();
+    context.fillStyle = 'rgb(255, 255, 255)';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.restore();
 
     return pdfPage.render({
-      canvasContext: canvas.getContext('2d'),
+      canvasContext: context,
+      transform: [outputScale, 0, 0, outputScale, 0, 0],
       viewport,
     }).promise;
   }

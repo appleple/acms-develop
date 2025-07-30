@@ -1,0 +1,80 @@
+/* ------------------------------
+ タイポグラフィ
+------------------------------ */
+/* stylelint-disable no-duplicate-selectors */
+
+/* 見出し
+=============================== */
+:where(.prose) {
+  h4 {
+    @apply text-lg;
+  }
+}
+
+/* 段落
+=============================== */
+:where(.prose) {
+  @apply mb-6 leading-[1.7];
+
+  p {
+    @apply mb-6;
+  }
+}
+
+/* リンク
+=============================== */
+:where(.prose) {
+  a {
+    @apply hover:no-underline;
+  }
+}
+
+/* リスト
+=============================== */
+:where(.prose) {
+  ul,
+  ol {
+    @apply mt-0 mb-6;
+
+    li {
+      @apply my-2.5;
+    }
+
+    li::marker {
+      @apply font-bold;
+    }
+
+    p {
+      @apply my-0;
+    }
+  }
+
+  ul li::marker {
+    @apply text-gray-400;
+  }
+
+  ol li::marker {
+    @apply text-gray-500;
+  }
+}
+
+/* 記述リスト
+=============================== */
+:where(.prose) {
+  dl {
+    dd {
+      @apply mt-0 pl-4;
+    }
+  }
+}
+
+/* 水平罫線
+=============================== */
+[data-type='horizontalRule'] {
+  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+
+  hr {
+    @apply m-0;
+  }
+}
+/* stylelint-enable no-duplicate-selectors */

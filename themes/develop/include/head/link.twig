@@ -1,0 +1,14 @@
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{{ BASE_URL }}rss2.xml" />
+{% if touch('Touch_SessionWithContribution') %}
+  <link rel="stylesheet" href="/css/acms-admin.min.css" />
+{% endif %}
+<link rel="stylesheet" href="/css/acms-layout.min.css" />
+
+{# prettier-ignore #}
+<style>
+  :root {
+    --bg-circle: url('{{ CURRENT_ROOT_THEMES_DIR }}images/fa-circle-solid.svg');
+    --bg-check: url('{{ CURRENT_ROOT_THEMES_DIR }}images/fa-check-solid.svg');
+    --bg-select: url('{{ CURRENT_ROOT_THEMES_DIR }}images/fa-chevron-down-solid.svg');
+  }
+</style>

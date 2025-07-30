@@ -1,0 +1,24 @@
+/* ------------------------------
+ 引用
+------------------------------ */
+:where(.prose) {
+  blockquote {
+    @apply not-italic;
+
+    quotes: none;
+
+    .media-image-block {
+      @apply m-0;
+    }
+
+    /* ブロックエディタ調整：リセット用 */
+    & > * {
+      @apply my-0;
+    }
+
+    /* ブロックエディタ調整 */
+    * + * {
+      @apply my-0 mt-4;
+    }
+  }
+}

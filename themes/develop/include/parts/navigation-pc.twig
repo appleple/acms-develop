@@ -1,0 +1,37 @@
+{% set navigation = module('V2_Navigation', moduleId) %}
+
+{% macro renderNavigation(navigation) %}
+  <ul class="pc-nav-list">
+    {% for item in navigation %}
+      <li class="pc-nav-item {{ item.attr|safe_html }}" data-depth="c_{{ item.depth }}">
+        <a
+          href="{{ item.url|buildGlobalVars }}"
+          class="pc-nav-link {{ item.attr2|safe_html }}"
+          target="{{ item.target }}"
+        >
+          <span>{{ item.label }}</span>
+          <span class="pc-nav-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-3"
+            >
+              <path stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </span>
+        </a>
+        {% if item.children is defined %}
+          {{ _self.renderNavigation(item.children) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+<div>
+  {{ include('/admin/module/setting.twig', { moduleInfo: navigation.moduleInfo }) }}
+  {{ _self.renderNavigation(navigation.items) }}
+</div>

@@ -1,0 +1,28 @@
+/* ------------------------------
+  カスタムユニット
+ ------------------------------ */
+
+/* 目次
+=============================== */
+.toc .level-1 {
+  @apply pl-0 mt-3 -mb-1;
+
+  li {
+    @apply pl-0;
+  }
+}
+
+.toc .level-2 {
+  @apply pl-[1em] mb-0;
+}
+
+.toc .level-2 li {
+  @apply flex gap-[0.5em];
+}
+
+.toc .level-2 li::before {
+  @apply block w-[1em] bg-no-repeat bg-center;
+
+  content: '';
+  background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' /></svg>");
+}

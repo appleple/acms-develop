@@ -1,0 +1,18 @@
+{% set topicpath = module('V2_Topicpath', moduleId, { bid: BID, cid: CID, eid: EID }) %}
+
+{% if topicpath.items is not empty %}
+  <nav aria-label="現在のページ">
+    {{ include('/admin/module/setting.twig', { moduleInfo: topicpath.moduleInfo }) }}
+    <ol class="flex items-center flex-wrap text-sm text-gray-500 [&_a]:text-gray-900 [&_a:hover]:opacity-70">
+      {% for item in topicpath.items %}
+        {% set current = CURRENT_URL == item.url ? 'aria-current="page"' : '' %}
+        <li {{ current }}>
+          {% if not loop.first %}
+            <span class="mx-2 text-gray-400">/</span>
+          {% endif %}
+          <a href="{{ item.url }}" class="py-1">{{ item.name }}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

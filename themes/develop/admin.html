@@ -1,7 +1,16 @@
 @extends("/_layouts/admin.html")
 
+@section("editor-css")
+@endsection
+
 @section("admin-js")
 @parent
+
+<script>
+  ACMS.Ready(function() {
+    ACMS.Config.blockEditorConfig.editorProps.editorProps.attributes.class = 'prose';
+  });
+</script>
 <!-- カスタムJSを記述 -->
 @vite("src/js/admin.js", {
   "scriptTagAttributes": {

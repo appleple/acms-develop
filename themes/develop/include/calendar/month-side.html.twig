@@ -1,0 +1,105 @@
+{% set calendar = module('V2_Calendar', moduleId, { bid: null, cid: null, start: null }) %}
+
+<div id="swap-calendar" class="text-gray-900">
+  {{ include('/admin/module/setting.twig', { moduleInfo: calendar.moduleInfo }) }}
+  <div class="flex items-center gap-x-4">
+    <h3 class="flex gap-x-2 text-lg font-bold">
+      <span>{{ calendar.date.date|date('Y年') }}</span>
+      <span>{{ calendar.date.date|date('m月') }}</span>
+    </h3>
+
+    <ul class="flex items-center gap-x-2 text-indigo-600 check-csrf-token">
+      <li>
+        <a
+          href="{{ calendar.date.prevUrl }}"
+          class="flex items-center justify-center w-5 h-5"
+          title="前月へ"
+          hx-get="{{ calendar.date.prevUrl }}tpl/include/calendar/month-side.html"
+          hx-target="#swap-calendar"
+          hx-swap="outerHTML"
+          hx-boost="false"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="3"
+            stroke="currentColor"
+            class="size-4"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a
+          href="{{ calendar.date.nextUrl }}"
+          class="flex items-center justify-center w-5 h-5"
+          title="翌月へ"
+          hx-get="{{ calendar.date.nextUrl }}tpl/include/calendar/month-side.html"
+          hx-target="#swap-calendar"
+          hx-swap="outerHTML"
+          hx-boost="false"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="3"
+            stroke="currentColor"
+            class="size-4"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="grid grid-cols-7 mt-4 text-xs text-center" aria-hidden="true">
+    {% for week in calendar.weekLabels %}
+      <div class="[&:first-child,&:last-child]:text-red-600">
+        {{ week.label }}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="mt-4">
+    {% for week in calendar.weeks %}
+      <div class="grid grid-cols-7">
+        {% for day in week %}
+          {% if day.isPadding %}
+            <div class="px-0.5 mb-1 py-1.5 [&:first-child,&:last-child]:text-red-600" aria-hidden="true"></div>
+          {% else %}
+            {% if day.entries %}
+              <div
+                class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:first-child,&:last-child]:text-red-600"
+              >
+                <a
+                  href="{{ day.url }}"
+                  class="flex items-center justify-center w-7 h-7 rounded-full cursor-pointer bg-gray-100 hover:bg-gray-200"
+                  aria-label="{{ day.day }}日の記事一覧を表示する"
+                >
+                  <span class="day {% if day.date == calendar.date.date %} text-indigo-600 font-bold{% endif %}">
+                    {{ day.day }}
+                  </span>
+                </a>
+              </div>
+            {% else %}
+              <div
+                class="flex items-center justify-center px-0.5 py-1.5 text-sm text-center [&:first-child,&:last-child]:text-red-600"
+              >
+                <span
+                  class="flex items-center justify-center w-7 h-7{% if day.date == NOW_DATE %} text-indigo-600 font-bold{% endif %}"
+                >
+                  {{ day.day }}
+                </span>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+    <p class="text-right text-sm hover:underline">
+      <a href="{{ BASE_URL }}calendar.html" class="text-indigo-600">年間カレンダーで見る</a>
+    </p>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 {
   "name": "develop",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Webサイト制作プロジェクト",
   "type": "module",
   "main": "index.js",
@@ -9,25 +9,29 @@
     "dev": "vite",
     "build": "vite build",
     "analyze": "vite build --mode analyze",
+    "format": "prettier --write '../**develop**/**/*.{js,ts,jsx,tsx,vue,css,twig}'",
     "check-update": "npx -p npm-check-updates -c ncu"
   },
   "author": "com.appleple",
   "license": "MIT",
   "devDependencies": {
-    "@eslint/js": "^9.22.0",
+    "@eslint/js": "^9.32.0",
     "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.0.14",
-    "eslint": "^9.22.0",
-    "globals": "^16.0.0",
-    "rollup-plugin-visualizer": "^5.14.0",
-    "stylelint": "^16.16.0",
-    "stylelint-config-recess-order": "^6.0.0",
-    "stylelint-config-standard": "^37.0.0",
-    "tailwindcss": "^4.0.14",
-    "vite": "^6.2.2",
-    "vite-plugin-eslint2": "^5.0.3",
-    "vite-plugin-static-copy": "^2.3.0",
-    "vite-plugin-stylelint": "^6.0.0"
+    "@tailwindcss/vite": "^4.1.11",
+    "@zackad/prettier-plugin-twig": "^0.16.0",
+    "eslint": "^9.32.0",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "stylelint": "^16.23.0",
+    "stylelint-config-recess-order": "^7.1.0",
+    "stylelint-config-standard": "^39.0.0",
+    "stylelint-order": "^7.0.0",
+    "tailwindcss": "^4.1.11",
+    "vite": "^7.0.6",
+    "vite-plugin-eslint2": "^5.0.4",
+    "vite-plugin-static-copy": "^3.1.1",
+    "vite-plugin-stylelint": "^6.0.2"
   },
   "dependencies": {
     "a-dispatcher": "^1.0.1",
@@ -36,20 +40,19 @@
     "dom-content-loaded": "^1.0.2",
     "flatpickr": "^4.6.13",
     "google-maps": "^4.3.3",
-    "htmx.org": "^2.0.4",
+    "htmx.org": "^2.0.6",
     "image-focus": "^1.2.1",
     "leaflet": "^1.9.4",
-    "lozad": "^1.16.0",
+    "leaflet-gesture-handling": "^1.2.2",
     "modal-video": "^2.4.8",
-    "pdfjs-dist": "^5.0.375",
-    "query-string": "^9.1.1",
+    "pdfjs-dist": "^5.4.54",
+    "query-string": "^9.2.2",
     "scroll-hint": "^1.2.9",
-    "scroll-to-element": "^2.0.3",
     "smartphoto": "^1.6.5"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.6.1",
-    "@tailwindcss/oxide-linux-x64-gnu": "^4.0.1",
-    "lightningcss-linux-x64-gnu": "^1.29.3"
+    "@rollup/rollup-linux-x64-gnu": "4.46.1",
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.1.11",
+    "lightningcss-linux-x64-gnu": "^1.30.1"
   }
 }

@@ -4,23 +4,23 @@ import 'flatpickr/dist/flatpickr.min.css';
 
 /**
  * Date picker
- * @param {HTMLElement} target - Target element
+ * @param {HTMLElement} element - Target element
  */
-export default (target) => {
+export default (element) => {
   const options = {
     allowInput: true,
     dateFormat: 'Y-m-d',
     locale: flatPickerLangJa.ja,
   };
-  if (target.classList.contains('done')) {
+  if (element.flatpickr !== undefined) {
     return;
   }
-  options.defaultDate = target.value;
-  const picker = flatPicker(target, options);
-  target.setAttribute('autocomplete', 'off');
-  target.addEventListener('change', (e) => {
+  options.defaultDate = element.value;
+  const picker = flatPicker(element, options);
+  element.setAttribute('autocomplete', 'off');
+  element.addEventListener('change', (e) => {
     picker.jumpToDate(e.target.value);
     picker.setDate(e.target.value);
   });
-  target.classList.add('done');
+  element.flatpickr = picker;
 };

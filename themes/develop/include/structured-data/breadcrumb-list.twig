@@ -1,0 +1,25 @@
+{% set topicpath = module('V2_Topicpath', moduleId, { bid: BID, cid: CID, eid: EID }) %}
+
+{% if topicpath.items is not empty %}
+  {# prettier-ignore #}
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement":
+  [
+    {% for item in topicpath.items %}
+    {
+      "@type": "ListItem",
+      "position": {{ item.sNum }},
+      "item":
+      {
+        "@id": "{{ item.url }}",
+        "name": "{{ item.name }}"
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
