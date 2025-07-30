@@ -41,6 +41,7 @@
     "htmx.org": "^2.0.5",
     "image-focus": "^1.2.1",
     "leaflet": "^1.9.4",
+    "leaflet-gesture-handling": "^1.2.2",
     "modal-video": "^2.4.8",
     "pdfjs-dist": "^5.0.375",
     "query-string": "^9.1.1",

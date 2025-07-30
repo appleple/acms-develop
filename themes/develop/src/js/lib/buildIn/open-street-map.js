@@ -3,6 +3,8 @@ import icon from 'leaflet/dist/images/marker-icon.png';
 import icon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
+import { GestureHandling } from 'leaflet-gesture-handling';
 
 /**
  * Open street map
@@ -13,6 +15,7 @@ export default (item) => {
     return;
   }
   item.setAttribute('data-already', 'true');
+  Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
   const multiple = !!item.getAttribute('data-multiple');
   const lat = item.getAttribute('data-lat');
@@ -21,7 +24,9 @@ export default (item) => {
   const msg = item.getAttribute('data-msg');
   const markers = item.getAttribute('data-markers');
   const messages = item.getAttribute('data-messages');
-  const map = Leaflet.map(item).setView([lat, lng], zoom);
+  const map = Leaflet.map(item, {
+    gestureHandling: true,
+  }).setView([lat, lng], zoom);
 
   delete Leaflet.Icon.Default.prototype._getIconUrl;
   Leaflet.Icon.Default.mergeOptions({
