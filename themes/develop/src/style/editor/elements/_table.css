@@ -29,7 +29,7 @@
   }
 }
 
-:where(div:has(> table)) {
+:where(.prose div:has(> table)) {
   @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom) overflow-x-auto;
 
   table {
