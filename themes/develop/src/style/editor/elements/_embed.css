@@ -20,11 +20,7 @@
   }
 
   .acms-embed-link-title {
-    @apply mb-1.5 mt-0 text-base leading-6 line-clamp-2;
-  }
-
-  .acms-embed-link-title {
-    @apply font-normal text-gray-700 no-underline;
+    @apply mb-1.5 mt-0 text-base leading-6 line-clamp-2 font-normal text-gray-700 no-underline;
   }
 
   .acms-embed-link-site-name {

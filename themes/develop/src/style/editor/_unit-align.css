@@ -1,9 +1,11 @@
 .align-left {
   @apply flex justify-start;
 }
+
 .align-right {
   @apply flex justify-end;
 }
+
 .align-center {
   @apply flex justify-center;
 }

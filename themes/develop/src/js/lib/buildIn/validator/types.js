@@ -1,5 +1,3 @@
-import * as rules from './rules';
-
 /**
  * バリデーターの設定オプション
  * @typedef {Object} ValidatorOptions

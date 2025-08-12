@@ -67,5 +67,5 @@ export default (context, options = {}) => {
     },
   };
 
-  new ModalVideo(context, Object.assign(defaultOptions, options)); // eslint-disable-line no-new
+  new ModalVideo(context, Object.assign(defaultOptions, options));
 };

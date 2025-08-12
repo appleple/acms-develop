@@ -1,9 +1,8 @@
 @import 'tailwindcss';
-
-@plugin "@tailwindcss/typography";
-
 @import './_theme.css';
 @import './editor.css';
+
+@plugin "@tailwindcss/typography";
 
 @utility container {
   max-width: 64rem;

@@ -1,8 +1,9 @@
 :where(.prose) *:first-child,
 :where(.prose) *:first-child.column-block-editor > *:first-child, /* ブロックエディター内 */
+/* stylelint-disable-next-line selector-class-pattern */
 :where(.prose) *:first-child.js-edit_inplace > *:first-child, /*ダイレクト編集時 */
-:where(.prose) *:first-child.js-edit_inplace-hovering + .js-edit_inplace > *:first-child /*ダイレクト編集時にホバー */
-{
+/* stylelint-disable-next-line selector-class-pattern */
+:where(.prose) *:first-child.js-edit_inplace-hovering + .js-edit_inplace > *:first-child /*ダイレクト編集時にホバー */ {
   /* コンテンツの初めの要素には上余白をつけない */
   margin-block-start: 0;
 }
