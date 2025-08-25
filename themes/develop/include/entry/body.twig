@@ -81,7 +81,7 @@
             data-exceptClass="js-except"
           >
             {% if entry.body %}
-              {{ entry.body|fixBlockEditorContents|raw }}
+              {{ entry.body|safe_html }}
             {% endif %}
           </div>
         </div>
