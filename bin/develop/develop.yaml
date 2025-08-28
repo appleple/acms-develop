@@ -29,8 +29,8 @@ config:
 comment:
 config_set:
     - { config_set_id: 1, config_set_type: null, config_set_sort: 2, config_set_name: 基本設定, config_set_scope: global, config_set_description: '', config_set_blog_id: 1 }
-    - { config_set_id: 2, config_set_type: theme, config_set_sort: 3, config_set_name: 基本テーマ, config_set_scope: global, config_set_description: '', config_set_blog_id: 1 }
-    - { config_set_id: 3, config_set_type: editor, config_set_sort: 4, config_set_name: 基本編集画面, config_set_scope: global, config_set_description: '', config_set_blog_id: 1 }
+    - { config_set_id: 2, config_set_type: theme, config_set_sort: 3, config_set_name: Develop 基本テーマ, config_set_scope: local, config_set_description: '', config_set_blog_id: 1 }
+    - { config_set_id: 3, config_set_type: editor, config_set_sort: 4, config_set_name: 基本編集画面, config_set_scope: local, config_set_description: '', config_set_blog_id: 1 }
 dashboard:
 entry:
     - { entry_id: 1, entry_code: about.html, entry_status: open, entry_approval: none, entry_form_status: '', entry_sort: 1, entry_user_sort: 1, entry_category_sort: 1, entry_title: developテーマ使い方ガイド, entry_link: '', entry_datetime: '2025-07-23 12:00:00', entry_start_datetime: '2025-06-27 13:32:56', entry_end_datetime: '9999-12-31 23:59:59', entry_posted_datetime: '2025-07-23 18:18:40', entry_updated_datetime: '2025-07-23 18:59:34', entry_summary_range: null, entry_indexing: 'on', entry_members_only: 'off', entry_primary_image: null, entry_current_rev_id: 1, entry_reserve_rev_id: 0, entry_last_update_user_id: 1, entry_hash: 7d7ec7a29045505f153fe92262287183, entry_category_id: 1, entry_user_id: 1, entry_form_id: 0, entry_blog_id: 1, entry_delete_uid: null, entry_lock_datetime: '1000-01-01 00:00:00', entry_lock_uid: 0 }
@@ -54,7 +54,7 @@ tag:
 schedule:
 layout_grid:
 blog:
-    - { blog_id: 1, blog_parent: 0, blog_config_set_id: 1, blog_config_set_scope: local, blog_theme_set_id: 2, blog_theme_set_scope: local, blog_editor_set_id: 3, blog_editor_set_scope: local }
+    - { blog_id: 1, blog_parent: 0, blog_config_set_id: 1, blog_config_set_scope: global, blog_theme_set_id: 2, blog_theme_set_scope: local, blog_editor_set_id: 3, blog_editor_set_scope: local }
 media:
     - { media_id: 1, media_status: '', media_type: image, media_extension: PNG, media_path: 001/201902/582ddf4f0b1bcafe706149506e6ecd04.png, media_thumbnail: '', media_original: 001/201902/large-582ddf4f0b1bcafe706149506e6ecd04.png, media_file_name: 582ddf4f0b1bcafe706149506e6ecd04.png, media_image_size: '858 x 483', media_file_size: '2444', media_upload_date: '2019-02-24 17:22:28', media_update_date: '2019-02-24 17:22:28', media_field_1: '', media_field_2: '', media_field_3: '', media_field_4: '', media_field_5: '', media_field_6: '', media_user_id: 1, media_blog_id: 1, media_last_update_user_id: null }
     - { media_id: 2, media_status: entry, media_type: file, media_extension: PDF, media_path: 001/202507/sample.pdf, media_thumbnail: 001/202507/a1b220cb7c237374.jpg, media_original: '', media_file_name: sample.pdf, media_image_size: '', media_file_size: '10938', media_upload_date: '2025-07-23 15:28:23', media_update_date: '2025-07-23 15:28:23', media_field_1: '', media_field_2: '', media_field_3: '', media_field_4: '', media_field_5: '', media_field_6: '1', media_user_id: 1, media_blog_id: 1, media_last_update_user_id: 1 }
