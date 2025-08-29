@@ -8,10 +8,10 @@
 
     th,
     td {
-      @apply p-4 border-b border-l border-gray-200;
+      @apply border-b border-l border-gray-200;
 
       &:first-child {
-        @apply border-l-0;
+        @apply ps-[.5714em] border-l-0;
       }
 
       tr:last-child & {
@@ -20,7 +20,27 @@
     }
 
     th {
-      @apply bg-gray-50;
+      @apply p-[.5714em] bg-gray-50;
+    }
+
+    tr:first-child {
+      :is(th, td):first-child {
+        @apply rounded-tl-md;
+      }
+
+      :is(th, td):last-child {
+        @apply rounded-tr-md;
+      }
+    }
+
+    tr:last-child {
+      :is(th, td):first-child {
+        @apply rounded-bl-md;
+      }
+
+      :is(th, td):last-child {
+        @apply rounded-br-md;
+      }
     }
 
     p {

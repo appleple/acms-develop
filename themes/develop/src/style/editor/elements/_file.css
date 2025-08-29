@@ -29,7 +29,7 @@
 .media-file-block[data-display-type='icon'] .caption,
 [class*='column-media']:has(a[href*='media-download'], a[href*='storage']) .caption,
 [class*='column-file'] .caption {
-  @apply m-0 mt-3 text-gray-500 text-sm text-center leading-normal;
+  @apply m-0 mt-[.75em] text-gray-500 text-sm text-center leading-normal;
 }
 
 /* リンク（閲覧画面のみ） */
