@@ -86,7 +86,7 @@
             data-exceptClass="js-except"
           >
             {% if entry.body %}
-              {{ entry.body|safe_html }}
+              {{ entry.body|raw }}
             {% endif %}
           </div>
         </div>
