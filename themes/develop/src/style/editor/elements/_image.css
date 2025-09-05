@@ -55,7 +55,7 @@
 [class*='column-image'] .caption,
 [class*='column-media']:not(:has(a[href*='media-download'], a[href*='storage'])) .caption,
 [class*='column-eximage'] .caption {
-  @apply mt-[.25em] text-gray-500 text-sm;
+  @apply mt-3 mb-0 text-gray-500 text-sm;
 }
 
 [class*='column-image'] .caption,

@@ -8,7 +8,7 @@
 .media-file-block[data-display-type='icon'],
 [class*='column-media']:has(a[href*='media-download'], a[href*='storage']),
 [class*='column-file'] {
-  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom) text-center;
+  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom) text-center leading-0;
 }
 
 .acms-admin-block-editor-file {
