@@ -15,6 +15,11 @@
         </div>
       {% endif %}
 
+      <!-- 編集ボタン -->
+      <div class="acms-box-medium">
+        {{ include('/admin/entry/action.twig', { entry }) }}
+      </div>
+
       <header class="text-gray-900">
         {% set updated = date(entry.updatedAt) %}
         {% set diff = date('now').diff(updated) %}
