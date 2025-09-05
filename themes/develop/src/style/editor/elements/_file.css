@@ -43,5 +43,5 @@
 /* PDFプレビュー
 ------------------------------ */
 .column-pdf-image {
-  @apply w-full border-gray-200 border;
+  @apply max-w-full border-gray-200 border mb-0;
 }
