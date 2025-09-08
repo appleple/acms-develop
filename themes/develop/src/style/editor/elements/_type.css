@@ -15,7 +15,7 @@
 =============================== */
 :where(.prose) {
   code:not(pre code) {
-    @apply before:content-none after:content-none bg-gray-50 border border-gray-300 py-1 px-1.5 rounded;
+    @apply before:content-none after:content-none bg-gray-50 border border-gray-200 py-1 px-1.5 rounded;
   }
 
   pre {
