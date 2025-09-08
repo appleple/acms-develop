@@ -38,7 +38,6 @@ export default async (elm) => {
   const markerCollectionStack = [];
   const googleInfoWindow = new google.maps.InfoWindow();
   const googleMap = new google.maps.Map(output, {
-    // eslint-disable-line no-new
     center: { lat: parseFloat(centerLatLng[0]), lng: parseFloat(centerLatLng[1]) },
     zoom: parseInt(query.zoom, 10),
   });

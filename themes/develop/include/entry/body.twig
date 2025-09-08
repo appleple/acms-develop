@@ -15,6 +15,11 @@
         </div>
       {% endif %}
 
+      <!-- 編集ボタン -->
+      <div class="acms-box-medium">
+        {{ include('/admin/entry/action.twig', { entry }) }}
+      </div>
+
       <header class="text-gray-900">
         {% set updated = date(entry.updatedAt) %}
         {% set diff = date('now').diff(updated) %}
@@ -75,13 +80,13 @@
             data-listType="ol"
             data-listClassName="list-none"
             data-itemClassName="mt-2"
-            data-linkClassName="js-scroll no-underline hover:opacity-70"
+            data-linkClassName="no-underline hover:opacity-70"
             data-anchorName="heading-$1"
             data-levelLimit="2"
             data-exceptClass="js-except"
           >
             {% if entry.body %}
-              {{ entry.body|fixBlockEditorContents|raw }}
+              {{ entry.body|raw }}
             {% endif %}
           </div>
         </div>

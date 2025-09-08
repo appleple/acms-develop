@@ -2,31 +2,18 @@
  地図
 ------------------------------ */
 [class*='column-map'],
-[class*='street-view'] {
+[class*='column-street-view'] {
   @apply rounded-md overflow-hidden mt-(--unit-margin-top) mb-(--unit-margin-bottom);
 }
 
-/* 地図 */
-[class*='column-map'] {
-  > img {
-    @apply max-w-full;
-  }
-
-  > div {
-    @apply max-w-full;
-  }
-
-  /* 地図ユニットのアイコンの調整 */
-  img {
-    @apply w-auto h-auto;
-  }
-}
-
-/* ストリートビュー */
-.column-inner-street-view {
-  @apply w-full pb-[100%];
-}
-
-[class*='column-map-auto'] .js-open-street-map {
+:where(.column-map div:has(> .js-open-street-map)),
+:where(.column-map div:has(> .js-s2d-ready)),
+:where(.column-street-view div:has(> .js-street-view)) {
   @apply max-w-full;
+}
+
+:where(.column-map .js-open-street-map),
+:where(.column-map .js-s2d-ready),
+:where(.column-street-view .js-street-view) {
+  @apply aspect-video;
 }

@@ -16,19 +16,15 @@
   }
 
   .acms-embed-link-content {
-    @apply flex flex-col max-w-none p-4 md:w-2/3;
+    @apply flex flex-col max-w-none p-[2em] md:w-2/3 bg-white;
   }
 
   .acms-embed-link-title {
-    @apply mb-1.5 mt-0 text-base leading-6 line-clamp-2;
-  }
-
-  .acms-embed-link-title {
-    @apply font-normal text-gray-700 no-underline;
+    @apply mb-[.375em] mt-0 text-base leading-6 line-clamp-2 font-normal text-gray-700 no-underline;
   }
 
   .acms-embed-link-site-name {
-    @apply -order-1 p-0 mt-0 mb-1 text-gray-700 text-sm line-clamp-1;
+    @apply -order-1 p-0 mt-0 mb-[.25em] text-gray-700 text-sm line-clamp-1;
   }
 
   .acms-embed-link-description {

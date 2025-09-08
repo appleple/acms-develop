@@ -3,5 +3,5 @@
 ------------------------------ */
 [class*='column-youtube'],
 [class*='column-video'] {
-  @apply mt-(--unit-margin-top) mb-(--unit-margin-bottom);
+  @apply max-w-full mt-(--unit-margin-top) mb-(--unit-margin-bottom);
 }

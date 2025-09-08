@@ -5,7 +5,7 @@ export const addClass = (element, className) => {
   if (element.classList) {
     element.classList.add(className);
   } else {
-    element.className += ` ${className}`; // eslint-disable-line
+    element.className += ` ${className}`;
   }
 };
 
@@ -16,11 +16,11 @@ export const removeClass = (element, className) => {
     element.className = element.className.replace(
       new RegExp(`(^|\\b)${className.split(' ').join('|')}(\\b|$)`, 'gi'),
       ' '
-    ); // eslint-disable-line
+    );
   }
 };
 
-export const getUniqId = () => (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase(); // eslint-disable-line
+export const getUniqId = () => (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
 
 export const addCSSToElement = (element, css) => {
   const id = getUniqId();
@@ -57,14 +57,13 @@ export const closest = (node, selector) =>
   (
     node.closest ||
     function (_selector) {
-      // eslint-disable-line
       do {
         // nodeとselectorがマッチしたら返す
         if ((node.matches || node.msMatchesSelector).call(node, _selector)) {
           return node;
         }
         // マッチしなかったら親要素を代入
-        node = node.parentElement || node.parentNode; // eslint-disable-line
+        node = node.parentElement || node.parentNode;
       } while (node !== null && node.nodeType === 1);
 
       return null;

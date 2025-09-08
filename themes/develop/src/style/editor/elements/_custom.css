@@ -5,7 +5,7 @@
 /* 目次
 =============================== */
 .toc .level-1 {
-  @apply pl-0 mt-3 -mb-1;
+  @apply pl-0 mt-[1.5em] -mb-[.25em];
 
   li {
     @apply pl-0;

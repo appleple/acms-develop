@@ -36,8 +36,14 @@
     "lint-staged": "^15.5.0"
   },
   "lint-staged": {
-    "themes/*@develop/**/*.{css,js,jsx,ts,tsx,html}": [
+    "themes/**develop**/**/*.{css,js,jsx,ts,tsx,twig}": [
       "npm --prefix themes/develop run format"
+    ],
+    "themes/**develop**/**/*.{js,jsx,ts,tsx,vue,svelte}": [
+      "npm --prefix themes/develop run eslint"
+    ],
+    "themes/**develop**/**/*.{css,scss,sass,less,styl,vue,svelte}": [
+      "npm --prefix themes/develop run stylelint"
     ]
   }
 }

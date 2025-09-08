@@ -1,6 +1,6 @@
 {
   "name": "develop",
-  "version": "0.0.23",
+  "version": "1.0.0",
   "description": "Webサイト制作プロジェクト",
   "type": "module",
   "main": "index.js",
@@ -9,7 +9,10 @@
     "dev": "vite",
     "build": "vite build",
     "analyze": "vite build --mode analyze",
+    "eslint": "eslint --fix './src/js/**/*.{js,jsx,ts,tsx,vue,svelte}'",
+    "stylelint": "stylelint --fix './src/style/**/*.{css,scss,sass,less,styl,vue,svelte}'",
     "format": "prettier --write '../**develop**/**/*.{js,ts,jsx,tsx,vue,css,twig}'",
+    "lint": "npm run eslint && npm run stylelint",
     "check-update": "npx -p npm-check-updates -c ncu"
   },
   "author": "com.appleple",
