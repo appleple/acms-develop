@@ -3,12 +3,24 @@
 ------------------------------ */
 /* stylelint-disable no-duplicate-selectors */
 
-
 /* リンク
 =============================== */
 :where(.prose) {
   a {
     @apply hover:no-underline;
+  }
+}
+
+/* コード
+=============================== */
+:where(.prose) {
+  code:not(pre code) {
+    @apply before:content-none after:content-none bg-gray-50 border border-gray-300 p-1 px-1.5 rounded;
+  }
+
+  pre {
+    /* 背景黒の場合にカーソルが見えなくなる問題の対策 */
+    @apply caret-[auto];
   }
 }
 
