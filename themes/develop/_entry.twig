@@ -28,6 +28,15 @@
 {% set relationalItems = entryTagRelational.items|slice(0, 2) %}
 {% set offsetRelationalItems = entryTagRelational.items|slice(2) %}
 
+{% block headJs %}
+  {% if touch('Touch_EditInplace') %}
+    {{ parent() }}
+    <script>
+      ACMS.Ready(function() { ACMS.Config.blockEditorConfig.editorProps.editorProps.attributes.class = 'prose'; });
+    </script>
+  {% endif %}
+{% endblock %}
+
 {% block main %}
   <article>
     {{ include('/include/entry/body.twig', { sns_share: true }) }}
