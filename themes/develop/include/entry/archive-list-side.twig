@@ -10,7 +10,7 @@
         <li class="py-2 border-t border-solid border-gray-200">
           <a href="{{ item.url }}" class="flex items-center gap-3 py-2 hover:opacity-70">
             <span class="flex-1 block">{{ item.date|date('Y年m月') }}</span>
-            {% if archive.amount %}
+            {% if item.amount %}
               <span class="block min-w-10 py-1 rounded-full text-xs text-center bg-slate-100">{{ item.amount }}</span>
             {% endif %}
           </a>
