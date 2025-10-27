@@ -200,6 +200,7 @@
     <span class="bg-red-100 text-red-800 text-xs font-semibold ml-2 px-2.5 py-0.5 rounded-full">必須</span>
   </label>
   <div>
+    <!-- prettier-ignore-start -->
     <textarea
       name="inquiry"
       id="inquiry"
@@ -209,9 +210,8 @@
       aria-required="true"
       aria-describedby="inquiry-v-required-message"
       aria-invalid="{{ inquiry.invalid ? 'true' : 'false' }}"
-    >
-      {{ inquiry.value }}
-    </textarea>
+    >{{ inquiry.value }}</textarea>
+    <!-- prettier-ignore-end -->
     <input type="hidden" name="field[]" value="inquiry" />
     <input type="hidden" name="inquiry:v#required" id="inquiry-v-required" />
   </div>
