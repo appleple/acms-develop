@@ -29,8 +29,8 @@
 {% set offsetRelationalItems = entryTagRelational.items|slice(2) %}
 
 {% block headJs %}
+  {{ parent() }}
   {% if touch('Touch_EditInplace') %}
-    {{ parent() }}
     <script>
       ACMS.Ready(function() { ACMS.Config.blockEditorConfig.editorProps.editorProps.attributes.class = 'prose'; });
     </script>
