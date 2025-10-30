@@ -1,10 +1,31 @@
 {% set form = module('V2_Form') %}
 
 {% if form.error %}
-  <!-- フォームID : {{ form.error.formID }} エラー項目 : {{ form.error.fields | join('|') }} -->
-  <p class="text-gray-900 mb-10">
-    入力内容をもう一度ご確認ください。
-  </p>
+  {% if touch('Touch_SessionWithContribution') %}
+    <section class="mb-10 bg-red-50 border-t-4 border-red-500 rounded-b text-red-900 py-4 px-3 sm:px-4 shadow-md">
+      <h2 class="text-lg/normal font-semibold">設定に不備があります</h2>
+      <p class="mt-4 text-base/normal">
+        テンプレートに記述しているバリデーターまたはコンバーターと、フォームIDの入力チェックまたは変換の項目が一致していない可能性があります。テンプレートとフォームIDの設定をご確認ください。
+      </p>
+      <dl class="text-base/normal mt-4">
+        <div>
+          <dt class="inline">
+            フォームID：
+          </dt>
+          <dd class="inline">{{ form.error.formID }}</dd>
+        </div>
+        <div>
+          <dt class="inline">
+            エラーが発生している項目：
+          </dt>
+          <dd class="inline">{{ form.error.fields|join(', ') }}</dd>
+        </div>
+      </dl>
+      <p class="text-sm/normal mt-4">
+        ※このエラーメッセージは投稿者以上の権限を持つユーザーのみに表示されています
+      </p>
+    </section>
+  {% endif %}
 {% endif %}
 
 {% if form.step == 'step' %}
