@@ -1,10 +1,23 @@
 {% set form = module('V2_Form') %}
 
-{% if form.error %}
-  <!-- フォームID : {{ form.error.formID }} エラー項目 : {{ form.error.fields | join('|') }} -->
-  <p class="text-gray-900 mb-10">
-    入力内容をもう一度ご確認ください。
-  </p>
+{% if form.error and touch('Touch_SessionWithContribution') %}
+  <section class="mb-10 bg-red-50 border-t-4 border-red-500 rounded-b text-red-900 py-4 px-3 sm:px-4 shadow-md">
+    <h2 class="text-base/normal font-semibold">管理者向け: バリデーションエラー通知</h2>
+    <p class="text-sm/normal font-semibold mt-3">
+      ※このメッセージは投稿者以上の権限を持つユーザーにのみ表示されています
+    </p>
+    <p class="mt-4 text-sm/normal">
+      フォームID「{{ form.error.formID }}」の項目「{{
+        form.error.fields|join(', ')
+      }}」で入力ルール違反（バリデーションエラー）が検出されました。以下を確認してください。
+    </p>
+    <ul class="list-disc list-inside mt-3 space-y-1 text-sm/normal">
+      <li>入力ミス：必須項目の未入力、形式間違い、各入力欄にエラーメッセージが出ていないかをご確認ください。</li>
+      <li>
+        設定の不一致：正しい入力をしていてもエラーが続く場合、テンプレートの入力欄とフォームID管理の「入力チェック（バリデーター）」設定が一致していない可能性があります。
+      </li>
+    </ul>
+  </section>
 {% endif %}
 
 {% if form.step == 'step' %}
