@@ -2,8 +2,6 @@
 @import './_theme.css';
 @import './editor.css';
 
-@plugin "@tailwindcss/typography";
-
 @utility container {
   max-width: 64rem;
   padding-inline: 1rem;

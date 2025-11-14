@@ -5,12 +5,10 @@
 }
 
 :root {
-  --unit-margin-top: 0;
-  --unit-margin-bottom: 1.5em;
   --unit-gap-x: 1em;
 
-  @media (width >= 520px) {
-    --unit-margin-bottom: 2em;
+  /* stylelint-disable-next-line media-query-no-invalid */
+  @media (width >= theme(breakpoint.sm)) {
     --unit-gap-x: 2em;
   }
 }
