@@ -62,6 +62,7 @@ module.exports = {
             'figure img, [role="figure"] img': {
               marginTop: '0',
               marginBottom: '0',
+              borderRadius: 'var(--radius-md)',
             },
 
             // [role="figure"] のキャプションを figcaption と同等に
@@ -129,20 +130,20 @@ module.exports = {
               paddingBottom: '.5em',
               borderWidth: '1px',
               borderStyle: 'solid',
-              borderColor: theme('colors.gray.200'),
-              borderRadius: theme('borderRadius.md'),
-              backgroundColor: `${theme('colors.indigo.50')} !important`,
+              borderColor: 'var(--color-gray-200)',
+              borderRadius: 'var(--radius-md)',
+              backgroundColor: 'var(--color-indigo-50) !important',
               lineHeight: '1.3',
               textDecoration: 'none !important',
-              fontSize: theme('fontSize.sm')[0],
-              fontWeight: theme('fontWeight.semibold'),
+              fontSize: 'var(--text-sm)',
+              fontWeight: 'var(--font-weight-semibold)',
               gap: '.375em',
-              color: `${theme('colors.gray.900')} !important`,
+              color: 'var(--color-gray-900) !important',
               transitionProperty: 'opacity',
             },
             '[data-type="linkButton"] a:hover, [data-type="fileBlock"][data-display-type="button"] a:hover': {
               opacity: '0.7',
-              color: theme('colors.gray.900'),
+              color: 'var(--color-gray-900)',
             },
             '[data-type="fileBlock"][data-display-type="button"] img': {
               width: '2rem', // w-8
@@ -178,7 +179,7 @@ module.exports = {
                 margin: '0',
                 marginTop: '.75em',
                 color: theme('colors.gray.500'),
-                fontSize: theme('fontSize.sm')[0],
+                fontSize: 'var(--text-sm)',
                 textAlign: 'center',
                 lineHeight: 'normal',
               },
@@ -194,7 +195,7 @@ module.exports = {
               },
             '.column-pdf-image': {
               maxWidth: '100%',
-              borderColor: theme('colors.gray.200'),
+              borderColor: 'var(--color-gray-200)',
               borderWidth: '1px',
               borderStyle: 'solid',
               marginBottom: '0',
@@ -215,10 +216,10 @@ module.exports = {
               color: 'inherit',
               borderWidth: '1px',
               borderStyle: 'solid',
-              borderColor: theme('colors.gray.200'),
-              borderRadius: theme('borderRadius.md'),
+              borderColor: 'var(--color-gray-200)',
+              borderRadius: 'var(--radius-md)',
               fontWeight: '400',
-              backgroundColor: theme('colors.white'),
+              backgroundColor: 'var(--color-white)',
               textDecoration: 'none',
               transitionProperty: 'opacity',
             },
@@ -255,15 +256,15 @@ module.exports = {
               flexDirection: 'column',
               maxWidth: 'none',
               padding: '2em',
-              backgroundColor: theme('colors.white'),
+              backgroundColor: 'var(--color-white)',
             },
             "[class*='column-embed'] .acms-embed-link-title": {
               marginBottom: '.375em',
               marginTop: '0',
-              fontSize: theme('fontSize.base')[0],
-              lineHeight: theme('lineHeight.6') || '1.5rem',
+              fontSize: 'var(--text-base)',
+              lineHeight: 'var(--leading-normal)',
               fontWeight: '400',
-              color: theme('colors.gray.700'),
+              color: 'var(--color-gray-700)',
               textDecoration: 'none',
             },
             "[class*='column-embed'] .acms-embed-link-site-name": {
@@ -271,15 +272,15 @@ module.exports = {
               padding: '0',
               marginTop: '0',
               marginBottom: '.25em',
-              color: theme('colors.gray.700'),
-              fontSize: theme('fontSize.sm')[0],
+              color: 'var(--color-gray-700)',
+              fontSize: 'var(--text-sm)',
             },
             "[class*='column-embed'] .acms-embed-link-description": {
               padding: '0',
               margin: '0',
-              fontSize: theme('fontSize.xs')[0],
-              color: theme('colors.gray.500'),
-              lineHeight: theme('lineHeight.relaxed'),
+              fontSize: 'var(--text-xs)',
+              color: 'var(--color-gray-500)',
+              lineHeight: 'var(--leading-relaxed)',
             },
 
             // ------------------------------
@@ -320,7 +321,7 @@ module.exports = {
             // ------------------------------
             // Map blocks
             "[class*='column-map'], [class*='column-street-view']": {
-              borderRadius: theme('borderRadius.md'),
+              borderRadius: 'var(--radius-md)',
               overflow: 'hidden',
               // Align with media rhythm (img/video/figure)
               marginTop: em(32, 16),
@@ -398,10 +399,10 @@ module.exports = {
               whiteSpace: 'nowrap',
             },
             '.acms-cell-text-bold': {
-              fontWeight: theme('fontWeight.bold'),
+              fontWeight: 'var(--font-weight-bold)',
             },
             '.acms-cell-text-normal': {
-              fontWeight: theme('fontWeight.normal'),
+              fontWeight: 'var(--font-weight-normal)',
             },
             '.acms-cell-text-top': {
               verticalAlign: 'top',
