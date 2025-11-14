@@ -13,28 +13,6 @@ module.exports = {
         DEFAULT: {
           css: {
             // ------------------------------
-            // figure 要素 上書き
-            // ------------------------------
-            'figure, [role="figure"]': {
-              marginLeft: 0,
-              marginRight: 0,
-              marginTop: em(32, 16),
-              marginBottom: em(32, 16),
-            },
-            'figure img, [role="figure"] img': {
-              marginTop: '0',
-              marginBottom: '0',
-            },
-
-            // [role="figure"] のキャプションを figcaption と同等に
-            '[role="figure"] .caption': {
-              fontSize: em(14, 16),
-              lineHeight: round(20 / 14),
-              marginTop: em(12, 14),
-              marginBottom: '0',
-            },
-
-            // ------------------------------
             // コンテンツ先頭の余白リセット／レイアウト用カスタムプロパティ
             // ------------------------------
             '*:first-child': {
@@ -56,7 +34,7 @@ module.exports = {
               '--acms-stack-spacing': 'var(--unit-gap-x)',
             },
             // ------------------------------
-            // メディア要素の基本スタイル
+            // 基本スタイル
             // ------------------------------
             'img, video': {
               maxWidth: '100%',
@@ -66,90 +44,59 @@ module.exports = {
               display: 'block',
               verticalAlign: 'middle',
             },
+            table: {
+              'text-indent': '0',
+              'border-color': 'inherit',
+              'border-collapse': 'collapse',
+            },
 
             // ------------------------------
-            // リンク
+            // figure 要素 上書き
             // ------------------------------
-            'a:hover': {
-              textDecoration: 'none',
+            'figure, [role="figure"]': {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: em(32, 16),
+              marginBottom: em(32, 16),
             },
-            // ------------------------------
-            // コード
-            // ------------------------------
-            'code:not(pre code)': {
-              backgroundColor: theme('colors.gray.50'),
-              borderColor: theme('colors.gray.200'),
-              borderWidth: '1px',
-              borderStyle: 'solid',
-              paddingTop: '0.25rem',
-              paddingBottom: '0.25rem',
-              paddingLeft: '0.375rem',
-              paddingRight: '0.375rem',
-              borderRadius: theme('borderRadius.DEFAULT'),
-            },
-            'code:not(pre code)::before': {
-              content: 'none',
-            },
-            'code:not(pre code)::after': {
-              content: 'none',
-            },
-            pre: {
-              caretColor: 'auto',
-            },
-            // ------------------------------
-            // リスト内の段落余白
-            // ------------------------------
-            'ul p, ol p': {
+            'figure img, [role="figure"] img': {
               marginTop: '0',
               marginBottom: '0',
             },
 
+            // [role="figure"] のキャプションを figcaption と同等に
+            '[role="figure"] .caption': {
+              color: 'var(--tw-prose-captions)',
+              fontSize: em(14, 16),
+              lineHeight: round(20 / 14),
+              marginTop: em(12, 14),
+              marginBottom: '0',
+            },
             // ------------------------------
-            // テーブル
+            // blockquote 上書き
             // ------------------------------
-            table: {
-              // Match Tailwind Typography defaults (base): 32px -> 2em
-              marginTop: em(32, 16),
-              marginBottom: em(32, 16),
-              borderWidth: '1px',
-              borderStyle: 'solid',
-              borderColor: theme('colors.gray.200'),
-              borderCollapse: 'separate',
-              borderSpacing: '0',
-              borderRadius: theme('borderRadius.md'),
-              fontSize: theme('fontSize.base')[0],
-              lineHeight: theme('fontSize.base')[1].lineHeight,
+            blockquote: {
+              marginInline: '0',
+              borderInlineStartStyle: 'solid',
             },
-            'table th, table td': {
-              borderBottomWidth: '1px',
-              borderLeftWidth: '1px',
-              borderStyle: 'solid',
-              borderColor: theme('colors.gray.200'),
+            // ------------------------------
+            // table 上書き
+            // ------------------------------
+            'tbody th': {
+              paddingInlineEnd: em(8, 14),
+              paddingBottom: em(8, 14),
+              paddingInlineStart: em(8, 14),
             },
-            'table th:first-child, table td:first-child': {
-              paddingInlineStart: '.5714em',
-              borderLeftWidth: '0px',
+            'tbody th:first-child': {
+              paddingInlineStart: '0',
             },
-            'table tr:last-child th, table tr:last-child td': {
-              borderBottomWidth: '0px',
+            'tbody th:last-child': {
+              paddingInlineEnd: '0',
             },
-            'table th': {
-              padding: '.5714em',
-              backgroundColor: theme('colors.gray.50'),
+            'tbody tr': {
+              borderBottomStyle: 'solid',
             },
-            'table tr:first-child th:first-child, table tr:first-child td:first-child': {
-              borderTopLeftRadius: theme('borderRadius.md'),
-            },
-            'table tr:first-child th:last-child, table tr:first-child td:last-child': {
-              borderTopRightRadius: theme('borderRadius.md'),
-            },
-            'table tr:last-child th:first-child, table tr:last-child td:first-child': {
-              borderBottomLeftRadius: theme('borderRadius.md'),
-            },
-            'table tr:last-child th:last-child, table tr:last-child td:last-child': {
-              borderBottomRightRadius: theme('borderRadius.md'),
-            },
-            'table p': {
+            'table *:last-child': {
               marginTop: '0',
               marginBottom: '0',
             },
