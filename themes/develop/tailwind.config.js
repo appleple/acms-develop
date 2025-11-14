@@ -316,16 +316,6 @@ module.exports = {
             },
 
             // ------------------------------
-            // モジュールユニット
-            // ------------------------------
-            // Module unit block margins
-            "[class*='column-module']": {
-              // Align with paragraph rhythm
-              marginTop: em(20, 16),
-              marginBottom: em(20, 16),
-            },
-
-            // ------------------------------
             // 地図／ストリートビュー
             // ------------------------------
             // Map blocks
