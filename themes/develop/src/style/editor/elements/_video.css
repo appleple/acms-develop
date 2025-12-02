@@ -1,7 +1,0 @@
-/* ------------------------------
- 動画ユニット
------------------------------- */
-[class*='column-youtube'],
-[class*='column-video'] {
-  @apply max-w-full mt-(--unit-margin-top) mb-(--unit-margin-bottom);
-}
