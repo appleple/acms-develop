@@ -4,7 +4,7 @@
     {% for entry in items %}
       <article>
         <a href="{{ entry.url }}" class="block w-full hover:opacity-70">
-          {% if entry.mainImage.path %}
+          {% if entry.mainImage and entry.mainImage.path %}
             <img
               src="{{ entry.mainImage.path|resizeImg(686, 386) }}"
               width="343"

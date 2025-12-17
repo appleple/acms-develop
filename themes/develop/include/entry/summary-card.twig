@@ -51,7 +51,7 @@
         class="col-span-12 {{ column_class|default('sm:col-span-6') }}"
       >
         <a href="{{ entry.url }}" class="block w-full text-sm hover:opacity-70">
-          {% if entry.mainImage.path %}
+          {% if entry.mainImage and entry.mainImage.path %}
             <img
               src="{{ entry.mainImage.path|resizeImg(700) }}"
               width="700"
