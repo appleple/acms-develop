@@ -37,8 +37,8 @@
               {% if entry.mainImage and entry.mainImage.path %}
                 <img
                   src="{{ entry.mainImage.path|resizeImg(192, 192) }}"
-                  width="96"
-                  height="96"
+                  width="192"
+                  height="192"
                   alt="{{ entry.mainImage.alt }}"
                   loading="lazy"
                   decoding="async"
@@ -48,8 +48,8 @@
                 <img
                   src="/images/default/noimage.gif"
                   alt=""
-                  width="96"
-                  height="96"
+                  width="640"
+                  height="480"
                   loading="lazy"
                   decoding="async"
                   class="object-cover w-full h-full"
