@@ -11,7 +11,7 @@
 {% set entryTagRelational =
   module(
     'V2_Entry_TagRelational',
-    'hoge',
+    null,
     {
       bid: null,
       cid: null,
@@ -57,14 +57,17 @@
           </p>
         </div>
 
-        {{
-          include(
-            '/include/entry/tag-relational-card.twig',
-            { items: relationalItems, moduleInfo: entryTagRelational.moduleInfo }
-          )
-        }}
+        <div>
+          {{ include('/admin/module/setting.twig', { moduleInfo: entryTagRelational.moduleInfo }) }}
 
-        {{ include('/include/entry/tag-relational-tiny.twig', { items: offsetRelationalItems }) }}
+          <div class="grid gap-y-8">
+            {{ include('/include/entry/tag-relational-card.twig', { items: relationalItems }) }}
+
+            {% if offsetRelationalItems is not empty %}
+              {{ include('/include/entry/tag-relational-tiny.twig', { items: offsetRelationalItems }) }}
+            {% endif %}
+          </div>
+        </div>
       </section>
     {% endif %}
   </article>
