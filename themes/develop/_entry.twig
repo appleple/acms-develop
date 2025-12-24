@@ -42,7 +42,7 @@
     {{ include('/include/entry/body.twig', { sns_share: true }) }}
 
     {% if entryTagRelational.items is not empty %}
-      <section class="mt-16 md:mt-20 grid gap-y-8">
+      <aside class="mt-16 md:mt-20 grid gap-y-8">
         <div>
           {{ include('/admin/module/setting.twig', { moduleInfo: tagCloud.moduleInfo }) }}
           <h2 class="text-lg font-bold">関連記事</h2>
@@ -68,7 +68,7 @@
             {% endif %}
           </div>
         </div>
-      </section>
+      </aside>
     {% endif %}
   </article>
 {% endblock %}
