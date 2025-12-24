@@ -25,10 +25,10 @@
             />
           {% endif %}
         </div>
-        <div class="flex-1 flex flex-col items-start justify-center text-sm">
-          <h3 class="text-gray-900 font-bold line-clamp-3">{{ entry.title }}</h3>
+        <div class="flex-1 flex flex-col items-start justify-center">
+          <h3 class="text-gray-900 font-bold line-clamp-3 text-sm">{{ entry.title }}</h3>
           <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1">
-            <p class="text-gray-500">
+            <p class="text-gray-500 text-sm">
               <span class="sr-only">公開日</span><time datetime="{{ entry.datetime|date('Y-m-d') }}">{{
                   entry.datetime|date('Y年m月d日')
                 }}</time>
