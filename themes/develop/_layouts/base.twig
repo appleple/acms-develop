@@ -2,24 +2,24 @@
 <html class="has-[dialog:open]:overflow-hidden" lang="ja">
   <head>
     <meta charset="UTF-8" />
-    {% block headMeta %}
+    {% block head_meta %}
       {{ include('/include/head/meta.twig') }}
     {% endblock %}
 
-    {% block headLink %}
+    {% block head_link %}
       {{ include('/include/head/link.twig') }}
     {% endblock %}
 
-    {% block headJs %}
+    {% block head_js %}
       {{ include('/include/head/js.twig') }}
     {% endblock %}
 
-    {% block headStructuredData %}
+    {% block head_structured_data %}
       {{ include('/include/structured-data/breadcrumb-list.twig') }}
     {% endblock %}
   </head>
   <body>
-    {% block bodyStart %}
+    {% block body_start %}
       {{ include('/include/body-start.twig') }}
     {% endblock %}
 
@@ -29,14 +29,14 @@
     {% endblock %}
 
     <!-- ※管理用パーツ -->
-    {% block adminPart %}
+    {% block admin_part %}
       <!-- アクションボックス -->
       @include("/admin/action.html")
       {{ include('/admin/switch-user.html') }}
     {% endblock %}
 
     <main class="container py-20">
-      {% block topicPath %}
+      {% block topic_path %}
         <!-- トピックパス -->
         {% if touch('Touch_NotTop') %}
           <div class="mb-10">
@@ -60,7 +60,7 @@
       {{ include('/include/footer.twig') }}
     {% endblock %}
 
-    {% block bodyEnd %}
+    {% block body_end %}
       {{ include('/include/body-end.twig') }}
     {% endblock %}
   </body>
