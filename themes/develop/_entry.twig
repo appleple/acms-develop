@@ -11,7 +11,7 @@
 {% set entryTagRelational =
   module(
     'V2_Entry_TagRelational',
-    'hoge',
+    null,
     {
       bid: null,
       cid: null,
@@ -42,7 +42,7 @@
     {{ include('/include/entry/body.twig', { sns_share: true }) }}
 
     {% if entryTagRelational.items is not empty %}
-      <section class="mt-16 md:mt-20 grid gap-y-8">
+      <aside class="mt-16 md:mt-20 grid gap-y-8">
         <div>
           {{ include('/admin/module/setting.twig', { moduleInfo: tagCloud.moduleInfo }) }}
           <h2 class="text-lg font-bold">関連記事</h2>
@@ -57,15 +57,18 @@
           </p>
         </div>
 
-        {{
-          include(
-            '/include/entry/tag-relational-card.twig',
-            { items: relationalItems, moduleInfo: entryTagRelational.moduleInfo }
-          )
-        }}
+        <div>
+          {{ include('/admin/module/setting.twig', { moduleInfo: entryTagRelational.moduleInfo }) }}
 
-        {{ include('/include/entry/tag-relational-tiny.twig', { items: offsetRelationalItems }) }}
-      </section>
+          <div class="grid gap-y-8">
+            {{ include('/include/entry/tag-relational-card.twig', { items: relationalItems }) }}
+
+            {% if offsetRelationalItems is not empty %}
+              {{ include('/include/entry/tag-relational-tiny.twig', { items: offsetRelationalItems }) }}
+            {% endif %}
+          </div>
+        </div>
+      </aside>
     {% endif %}
   </article>
 {% endblock %}

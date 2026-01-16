@@ -1,6 +1,6 @@
 {% extends '/_layouts/two-column.twig' %}
 
-{% block headStructuredData %}
+{% block head_structured_data %}
   {% if touch('Touch_RootBlog') and touch('Touch_Top') %}
     {{ include('/include/structured-data/web-site.twig') }}
   {% else %}
