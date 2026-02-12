@@ -4,6 +4,9 @@
   "description": "Webサイト制作プロジェクト",
   "type": "module",
   "main": "index.js",
+  "browserslist": [
+    "baseline widely available"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
@@ -22,6 +25,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
     "@zackad/prettier-plugin-twig": "^0.16.2",
+    "browserslist": "^4.28.1",
     "eslint": "^9.39.2",
     "globals": "^17.0.0",
     "prettier": "^3.7.4",
