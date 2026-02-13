@@ -28,10 +28,10 @@ module.exports = {
               marginBlockStart: '0',
             },
             '.acms-cssgrid': {
-              '--acms-gap': 'var(--unit-gap-x)',
+              '--acms-gap': '0 var(--unit-gap-x)',
             },
             '.acms-stack, .acms-vstack, .acms-hstack': {
-              '--acms-stack-spacing': 'var(--unit-gap-x)',
+              '--acms-stack-spacing': '0 var(--unit-gap-x)',
             },
             // ------------------------------
             // 基本スタイル
