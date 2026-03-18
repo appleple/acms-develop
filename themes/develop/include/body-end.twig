@@ -1,6 +1,6 @@
 {% set blogField = module('V2_Blog_Field', null, { bid: RBID }) %}
 
-{{ blogField.fields.script_body_end|raw }}
+{{ blogField.fields.script_body_end.value|raw }}
 
 <!-- iOS Chromeの対応 -->
 <script>
