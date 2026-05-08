@@ -29,10 +29,12 @@ export default defineConfig(({ command, mode }) => ({
           {
             src: 'node_modules/pdfjs-dist/legacy/build/pdf.worker.min.mjs',
             dest: 'pdfjs',
+            rename: { stripBase: true },
           },
           {
             src: 'node_modules/pdfjs-dist/cmaps',
-            dest: 'pdfjs',
+            dest: 'pdfjs/cmaps',
+            rename: { stripBase: true },
           },
         ],
       }),
@@ -52,7 +54,7 @@ export default defineConfig(({ command, mode }) => ({
   },
   build: {
     manifest: true, // dist に manifest.json を出力
-    rollupOptions: {
+    rolldownOptions: {
       input: {
         bundle: resolve(__dirname, 'src/js/main.js'),
         admin: resolve(__dirname, 'src/js/admin.js'),
