@@ -1,0 +1,18 @@
+{{ name.value }}様 よりお問い合わせがありました。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+受付日時：{{ 'now'|date('Y年n月j日 H:i:s') }}
+通番 : {{ serialNumber.value }}
+
+■お問い合わせ情報
+
+お名前 ： {{ name.value }}
+メールアドレス ： {{ email.value }}
+お問い合わせの種別： {{ description.value }}
+お問い合わせ内容：
+{{ inquiry.value }}
+{% if cue.array %}
+  このサイトを何で知りましたか？：
+  {{ cue.array|join(', ') }}
+{% endif %}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

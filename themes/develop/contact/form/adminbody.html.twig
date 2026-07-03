@@ -1,0 +1,44 @@
+{% extends '/_layouts/mail.html.twig' %}
+
+{% block body %}
+  <h1 class="center">お問い合わせがありました</h1>
+  <p>
+    {{ name.value }}様 よりお問い合わせがありました。
+  </p>
+  <hr />
+  <p>
+    受付日時：{{ 'now'|date('Y年n月j日 H:i:s') }}
+  </p>
+  <hr />
+  <h2 class="center red">お問い合わせ情報</h2>
+  <div class="no-scroll">
+    <table class="contents">
+      <tbody>
+        <tr>
+          <th>お名前</th>
+          <td>{{ name.value }}</td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td>{{ email.value }}</td>
+        </tr>
+        <tr>
+          <th>お問い合わせ種別</th>
+          <td>{{ description.value }}</td>
+        </tr>
+        <tr>
+          <th colspan="2">お問い合わせ内容</th>
+        </tr>
+        <tr>
+          <td colspan="2">{{ inquiry.value|nl2br }}</td>
+        </tr>
+        {% if cue.array %}
+          <tr>
+            <th>このサイトを何で知りましたか？</th>
+            <td>{{ cue.array|join(', ') }}</td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
