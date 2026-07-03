@@ -28,7 +28,7 @@
 {% set relationalItems = entryTagRelational.items|slice(0, 2) %}
 {% set offsetRelationalItems = entryTagRelational.items|slice(2) %}
 
-{% block headJs %}
+{% block head_js %}
   {{ parent() }}
   {% if touch('Touch_EditInplace') %}
     <script>
