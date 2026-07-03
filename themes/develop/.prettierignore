@@ -1,1 +1,2 @@
 include/calendar/year.html.twig
+**/*.txt.twig
