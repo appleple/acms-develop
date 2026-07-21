@@ -1,0 +1,15 @@
+# インストーラーのテーマ選択肢としてこの bin を宣言する（InstallThemeCollector が走査）。
+# key は install の select_theme 値（＝この bin ディレクトリ名）。
+key: develop
+label: Develop
+image: develop.png
+order: 50
+description: 自作テーマのためのフロントエンドビルド環境と最小限の基本的なテンプレートファイルを含んだテーマです。メンテナンス性とパフォーマンスを高めたい場合におすすめです。
+comparison:
+  カスタマイズ難易度: ★★★★★
+  デモデータ数: 少数
+  テンプレートの継承: ○
+  モジュールID利用: ○
+  会員機能: ×
+  コンテンツの表示切替: ×
+  レイアウト機能: ×
