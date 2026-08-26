@@ -17,7 +17,6 @@ import {
   pdfPreview,
   focusedImage,
   documentOutliner,
-  htmx,
 } from './lib/build-in'; // ToDo: いらないものはコメントアウト
 
 /**
@@ -61,7 +60,6 @@ function createBuildInJsDispatcher() {
     pdfPreview(context);
     focusedImage(context);
     documentOutliner(context);
-    htmx(context);
   };
 }
 
@@ -79,6 +77,14 @@ async function main() {
   window.dispatch = createBuildInJsDispatcher();
   if (window.ACMS === undefined) {
     window.dispatch(document);
+    // htmx (htmx_load_strategy: static) でスワップされたコンテンツに対しても組み込みJSを
+    // 再初期化する。ACMS読み込み時は window.dispatch === ACMS.Dispatch であり、コア側の
+    // afterSwap リスナー（main.php）がそちらを呼ぶため、ここでは未読込時のみ実行して二重初期化を避ける。
+    window.addEventListener('htmx:afterSwap', (event) => {
+      if (event.target instanceof HTMLElement) {
+        window.dispatch(event.target);
+      }
+    });
   }
 
   /**
