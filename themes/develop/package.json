@@ -47,7 +47,6 @@
     "dom-content-loaded": "^1.0.2",
     "flatpickr": "^4.6.13",
     "google-maps": "^4.3.3",
-    "htmx.org": "^2.0.10",
     "image-focus": "^1.2.1",
     "leaflet": "^1.9.4",
     "leaflet-gesture-handling": "^1.2.2",

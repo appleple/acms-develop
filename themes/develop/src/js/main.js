@@ -17,7 +17,6 @@ import {
   pdfPreview,
   focusedImage,
   documentOutliner,
-  htmx,
 } from './lib/build-in'; // ToDo: いらないものはコメントアウト
 
 /**
@@ -61,7 +60,6 @@ function createBuildInJsDispatcher() {
     pdfPreview(context);
     focusedImage(context);
     documentOutliner(context);
-    htmx(context);
   };
 }
 
