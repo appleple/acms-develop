@@ -36,6 +36,13 @@ export default defineConfig(({ command, mode }) => ({
             dest: 'pdfjs/cmaps',
             rename: { stripBase: true },
           },
+          {
+            // pdfjs-dist v6 以降、JPEG2000(JPX) 画像のデコードに OpenJPEG の wasm 実装が必要になった。
+            // 未配置だと "JpxError: OpenJPEG failed to initialize" で該当画像が描画されない。
+            src: 'node_modules/pdfjs-dist/wasm',
+            dest: 'pdfjs/wasm',
+            rename: { stripBase: true },
+          },
         ],
       }),
     mode === 'analyze' &&
