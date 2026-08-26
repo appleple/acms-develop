@@ -55,7 +55,7 @@
     "pdfjs-dist": "^6.2.108",
     "query-string": "^9.5.0",
     "scroll-hint": "^1.2.9",
-    "smartphoto": "^1.6.5"
+    "smartphoto": "^2.1.6"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.62.5",
