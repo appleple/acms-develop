@@ -1,10 +1,14 @@
 # npm 依存（ルート・themes/develop）と GitHub Actions を対象に更新PRを作成する。
 # patch/minor は .github/workflows/test.yml のCI通過後に
 # .github/workflows/dependabot-auto-merge.yml が自動マージする。major は人が確認してマージする。
+#
+# target-branch は develop を明示する。このリポジトリのデフォルトブランチは main（リリース用）で、
+# 指定しないと Dependabot は main に向けてPRを作ってしまう。
 version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
+    target-branch: "develop"
     schedule:
       interval: "weekly"
     groups:
@@ -17,6 +21,7 @@ updates:
 
   - package-ecosystem: "npm"
     directory: "/themes/develop"
+    target-branch: "develop"
     schedule:
       interval: "weekly"
     groups:
@@ -29,6 +34,7 @@ updates:
 
   - package-ecosystem: "github-actions"
     directory: "/"
+    target-branch: "develop"
     schedule:
       interval: "weekly"
     groups:
