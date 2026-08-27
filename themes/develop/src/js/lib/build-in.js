@@ -41,19 +41,21 @@ const linkMatchLocation = (context) => {
  * @param {Document | Element} context
  */
 const externalLinks = (context) => {
-  const selector = 'a:not([target]):not([href^="javascript"]):not([href^="tel"])';
-  const targets = context.querySelectorAll(selector);
-  const innerlinkPtn = new RegExp(`${window.location.hostname}(:\\d+)*`);
-  [].forEach.call(targets, (target) => {
-    const href = target.getAttribute('href');
-    if (innerlinkPtn.exec(href)) {
-      return;
-    }
-    if (!/^(https?)?:/.test(href)) {
-      return;
-    }
-    target.setAttribute('target', '_blank');
-    target.setAttribute('rel', 'noopener noreferrer');
+  domContentLoaded(() => {
+    const selector = 'a:not([target]):not([href^="javascript"]):not([href^="tel"])';
+    const targets = context.querySelectorAll(selector);
+    const innerlinkPtn = new RegExp(`${window.location.hostname}(:\\d+)*`);
+    [].forEach.call(targets, (target) => {
+      const href = target.getAttribute('href');
+      if (innerlinkPtn.exec(href)) {
+        return;
+      }
+      if (!/^(https?)?:/.test(href)) {
+        return;
+      }
+      target.setAttribute('target', '_blank');
+      target.setAttribute('rel', 'noopener noreferrer');
+    });
   });
 };
 
