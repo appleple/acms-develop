@@ -9,7 +9,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 export default defineConfig(({ command, mode }) => ({
   base: './',
   define: {
-    THEME_NAME: JSON.stringify(basename(__dirname)),
+    THEME_NAME: JSON.stringify(basename(import.meta.dirname)),
   },
   plugins: [
     tailwindcss(),
@@ -55,16 +55,16 @@ export default defineConfig(({ command, mode }) => ({
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src/js'),
-      './src/js/': path.resolve(__dirname, './src/js'),
+      '@': path.resolve(import.meta.dirname, './src/js'),
+      './src/js/': path.resolve(import.meta.dirname, './src/js'),
     },
   },
   build: {
     manifest: true, // dist に manifest.json を出力
     rolldownOptions: {
       input: {
-        bundle: resolve(__dirname, 'src/js/main.js'),
-        admin: resolve(__dirname, 'src/js/admin.js'),
+        bundle: resolve(import.meta.dirname, 'src/js/main.js'),
+        admin: resolve(import.meta.dirname, 'src/js/admin.js'),
       },
       output: {
         manualChunks(id) {
