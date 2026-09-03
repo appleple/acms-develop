@@ -10,12 +10,17 @@
 {% endif %}
 
 <!-- Vite -->
+{# vite() の出力は <script type="module"> なので、仕様上すでに defer 相当（HTMLのパース完了後に実行）。
+   async を付けるとその defer が打ち消され、モジュールの読み込みが終わった時点で即実行されるため、
+   <body> の生成前に main.js が走ることがある。そうなると DOM を参照する処理が対象0件で空振りする
+   （Alpine の初期化警告、externalLinks による target/rel の付与漏れ）。
+   ダウンロードは modulepreload が先行するので、async を外しても取得は遅くならない。 #}
 {% if touch('Touch_NotAdmin') %}
-  {{ vite('src/js/main.js', { scriptTagAttributes: { async: true } }) }}
+  {{ vite('src/js/main.js') }}
 {% endif %}
 
 {% if touch('Touch_Admin') %}
-  {{ vite(['src/js/main.js', 'src/js/admin.js'], { scriptTagAttributes: { async: true } }) }}
+  {{ vite(['src/js/main.js', 'src/js/admin.js']) }}
 {% endif %}
 
 <script>
