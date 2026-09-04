@@ -54,7 +54,7 @@
     "modal-video": "^2.4.8",
     "query-string": "^9.5.0",
     "scroll-hint": "^1.2.9",
-    "smartphoto": "^2.1.7"
+    "smartphoto": "^2.1.8"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.63.1",
