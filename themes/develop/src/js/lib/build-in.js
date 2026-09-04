@@ -8,7 +8,7 @@ import { linkMatch, linkMatchFull, linkMatchContain } from './buildIn/link-match
  * Validator
  * @param {Document | Element} context
  * @param {string} selector
- * @param {import("./buildIn/validator/types").ValidatorOptions} options
+ * @param {import("@ablogcms/validator/types").ValidatorOptions} options
  */
 const validator = (context, selector, options = {}) => {
   domContentLoaded(async () => {
