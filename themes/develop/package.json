@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@ablogcms/pdf": "^3.2.29",
+    "@ablogcms/validator": "^3.2.29",
     "a-dispatcher": "^1.0.1",
     "alpinejs": "^3.16.3",
     "document-outliner": "^1.1.3",
