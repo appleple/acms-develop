@@ -79,8 +79,24 @@ async function main() {
     window.dispatch(document);
     // htmx (htmx_load_strategy: static) でスワップされたコンテンツに対しても組み込みJSを
     // 再初期化する。ACMS読み込み時は window.dispatch === ACMS.Dispatch であり、コア側の
-    // afterSwap リスナー（main.php）がそちらを呼ぶため、ここでは未読込時のみ実行して二重初期化を避ける。
+    // スワップ後リスナーがそちらを呼ぶため、ここでは未読込時のみ実行して二重初期化を避ける。
+    //
+    // このテーマは htmx 2 系の CMS（Ver. 3.2）と htmx 4 系の CMS（Ver. 3.3 以降）の両方で使われる。
+    // htmx 2 の htmx:afterSwap は挿入された要素ごとに発火するが、htmx 4 ではイベント名が変わったうえ、
+    // htmx:after:swap はリクエスト元要素（DOM から外れた場合は挿入された先頭ノード。テキストノードの
+    // こともある）に 1 回だけ発火する。htmx 4 では挿入されたノード一覧を持つ htmx:after:settle を使う。
+    window.addEventListener('htmx:after:settle', (event) => {
+      (event.detail?.newContent ?? []).forEach((node) => {
+        if (node instanceof HTMLElement) {
+          window.dispatch(node);
+        }
+      });
+    });
     window.addEventListener('htmx:afterSwap', (event) => {
+      // htmx 4 で htmx-2-compat 拡張を有効にすると htmx:afterSwap も発火するため、htmx 2 のときだけ扱う
+      if (Number.parseInt(window.htmx?.version ?? '', 10) >= 4) {
+        return;
+      }
       if (event.target instanceof HTMLElement) {
         window.dispatch(event.target);
       }
