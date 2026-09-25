@@ -10,3 +10,36 @@
 @plugin "@tailwindcss/typography";
 
 @config '../../tailwind.config.js';
+
+/* ------------------------------
+  埋め込みカード（旧埋め込みユニット・埋め込みブロック共通）：md 以上で横並びにする
+  Why not tailwind.config.js の typography に書かないか: typography は @media のキーもセレクタとして
+  :where() で包み、ルールごと無効になるため（それ以外の指定は typography 側にある）
+ ------------------------------ */
+/* stylelint-disable-next-line media-query-no-invalid */
+@media (width >= theme(--breakpoint-md)) {
+  .prose :where([class*='column-embed'] .acms-embed-link, [data-type='embedBlock'] .embed-block-card) {
+    display: flex;
+  }
+
+  .prose :where([class*='column-embed'] .acms-embed-link-image-container) {
+    flex: none;
+    width: calc(100% / 3);
+  }
+
+  .prose :where([class*='column-embed'] .acms-embed-link-image-container img) {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* 埋め込みブロックは画像を包む要素が無いので、画像自身が旧ユニットの入れ物と同じ幅を持つ */
+  .prose :where([data-type='embedBlock'] .embed-block-card > img) {
+    flex: none;
+    width: calc(100% / 3);
+    object-fit: cover;
+  }
+
+  .prose :where([class*='column-embed'] .acms-embed-link-content, [data-type='embedBlock'] .embed-block-card-content) {
+    width: calc(100% / 3 * 2);
+  }
+}

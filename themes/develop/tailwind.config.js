@@ -204,13 +204,14 @@ module.exports = {
             // ------------------------------
             // 埋め込みカード
             // ------------------------------
-            "[class*='column-embed'], .embed-block": {
+            "[class*='column-embed'], [data-type='embedBlock']": {
               // Align with media/figure rhythm: 32px -> 2em
               marginTop: em(32, 16),
               marginBottom: em(32, 16),
             },
-            // 埋め込みブロックはカード全体ではなくタイトルだけが a なので、タイトルのリンク領域をカード全体へ広げる
-            "[class*='column-embed'] .acms-embed-link, .embed-block .acms-embed-link": {
+            // 埋め込みブロックは旧ユニットと並べて宣言を共有する。管理画面のカードは embed-block-card-* しか持たないため
+            // 公開側と共通のこちらのクラスで指定する。カード全体ではなくタイトルだけが a なので、リンク領域をカード全体へ広げる
+            "[class*='column-embed'] .acms-embed-link, [data-type='embedBlock'] .embed-block-card": {
               position: 'relative',
               overflow: 'hidden',
               display: 'block',
@@ -227,36 +228,15 @@ module.exports = {
             },
             // 埋め込みブロックの画像。typography のセレクタは詳細度が揃うため、md の幅指定より前に置く。
             // figure 内の画像の角丸（figure img）がカードの画像にまで当たらないよう打ち消す
-            '.embed-block .acms-embed-link > img': {
+            "[data-type='embedBlock'] .embed-block-card > img": {
               display: 'block',
               width: '100%',
               margin: '0',
               borderRadius: '0',
             },
-            [`@media (min-width: ${theme('breakpoint.md')})`]: {
-              "[class*='column-embed'] .acms-embed-link, .embed-block .acms-embed-link": {
-                display: 'flex',
-                transitionProperty: 'opacity',
-              },
-              "[class*='column-embed'] .acms-embed-link-image-container": {
-                width: '33.333333%',
-                flex: 'none',
-              },
-              "[class*='column-embed'] .acms-embed-link-image-container img": {
-                height: '100%',
-                objectFit: 'cover',
-              },
-              // 埋め込みブロックは画像を包む要素が無いので、画像自身が旧ユニットの入れ物と同じ幅を持つ
-              '.embed-block .acms-embed-link > img': {
-                width: '33.333333%',
-                flex: 'none',
-                objectFit: 'cover',
-              },
-              "[class*='column-embed'] .acms-embed-link-content, .embed-block .acms-embed-link-content": {
-                width: '66.666667%',
-              },
-            },
-            "[class*='column-embed'] .acms-embed-link:hover, .embed-block .acms-embed-link:hover": {
+            // md 以上でカードを横並びにする指定は src/style/editor.css にある。
+            // Why not ここに @media のキーで書かないか: typography は @media のキーもセレクタとして :where() で包み、ルールごと無効になるため
+            "[class*='column-embed'] .acms-embed-link:hover, [data-type='embedBlock'] .embed-block-card:hover": {
               opacity: '0.7',
             },
             "[class*='column-embed'] .acms-embed-link-image-container": {
@@ -267,27 +247,27 @@ module.exports = {
               width: '100%',
               margin: '0',
             },
-            '.embed-block .acms-embed-link-title, .embed-block .acms-embed-link-site-name': {
+            "[data-type='embedBlock'] .embed-block-card-title, [data-type='embedBlock'] .embed-block-card-provider": {
               display: 'block',
             },
-            '.embed-block a.acms-embed-link-title::before': {
+            "[data-type='embedBlock'] a.embed-block-card-title::before": {
               content: '""',
               position: 'absolute',
               inset: '0',
             },
             // 配置用の外側 div が余白を持つため、figure の余白は打ち消す
-            '.embed-block > figure': {
+            "[data-type='embedBlock'] > figure": {
               marginTop: '0',
               marginBottom: '0',
             },
-            "[class*='column-embed'] .acms-embed-link-content, .embed-block .acms-embed-link-content": {
+            "[class*='column-embed'] .acms-embed-link-content, [data-type='embedBlock'] .embed-block-card-content": {
               display: 'flex',
               flexDirection: 'column',
               maxWidth: 'none',
               padding: '2em',
               backgroundColor: 'var(--color-white)',
             },
-            "[class*='column-embed'] .acms-embed-link-title, .embed-block .acms-embed-link-title": {
+            "[class*='column-embed'] .acms-embed-link-title, [data-type='embedBlock'] .embed-block-card-title": {
               marginBottom: '.375em',
               marginTop: '0',
               fontSize: 'var(--text-base)',
@@ -296,7 +276,7 @@ module.exports = {
               color: 'var(--color-gray-700)',
               textDecoration: 'none',
             },
-            "[class*='column-embed'] .acms-embed-link-site-name, .embed-block .acms-embed-link-site-name": {
+            "[class*='column-embed'] .acms-embed-link-site-name, [data-type='embedBlock'] .embed-block-card-provider": {
               order: '-1',
               padding: '0',
               marginTop: '0',
@@ -304,13 +284,14 @@ module.exports = {
               color: 'var(--color-gray-700)',
               fontSize: 'var(--text-sm)',
             },
-            "[class*='column-embed'] .acms-embed-link-description, .embed-block .acms-embed-link-description": {
-              padding: '0',
-              margin: '0',
-              fontSize: 'var(--text-xs)',
-              color: 'var(--color-gray-500)',
-              lineHeight: 'var(--leading-relaxed)',
-            },
+            "[class*='column-embed'] .acms-embed-link-description, [data-type='embedBlock'] .embed-block-card-description":
+              {
+                padding: '0',
+                margin: '0',
+                fontSize: 'var(--text-xs)',
+                color: 'var(--color-gray-500)',
+                lineHeight: 'var(--leading-relaxed)',
+              },
 
             // ------------------------------
             // カラムレイアウト
@@ -356,6 +337,8 @@ module.exports = {
             // Why not iframe 全般に付けないか: 埋め込みブロックの iframe は外側の .embed-block が余白を持つため、二重に空いてしまう
             ":is(.column-block-editor, [data-type='group'], [data-type='column']) > :is(iframe, video, object, embed)":
               {
+                // Google マップ等の埋め込みコードは width="600" のような固定幅を持つことが多いため、本文幅いっぱいに広げる（高さは属性の値のまま）
+                width: '100%',
                 maxWidth: '100%',
                 marginTop: em(32, 16),
                 marginBottom: em(32, 16),
