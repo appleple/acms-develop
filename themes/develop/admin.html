@@ -16,7 +16,9 @@
 
 <script>
   ACMS.Ready(function() {
-    ACMS.Config.blockEditorConfig.editorProps.editorProps.attributes.class = 'prose';
+    // 公開側の本文（include/entry/body.twig）と同じクラスにする。max-w-none が無いと prose の max-width: 65ch で
+    // ブロックエディターのプレビュー（隔離 iframe）の本文幅が狭まり、公開側と見た目が変わる
+    ACMS.Config.blockEditorConfig.editorProps.editorProps.attributes.class = 'prose max-w-none';
   });
 </script>
 <!-- カスタムJSを記述 -->

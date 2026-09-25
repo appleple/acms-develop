@@ -13,8 +13,10 @@
 
 /* ------------------------------
   埋め込みカード（旧埋め込みユニット・埋め込みブロック共通）：md 以上で横並びにする
-  Why not tailwind.config.js の typography に書かないか: typography は @media のキーもセレクタとして
-  :where() で包み、ルールごと無効になるため（それ以外の指定は typography 側にある）
+  Why not tailwind.config.js の typography に書かないか: typography の css 設定はキーをすべてセレクタとして
+  :where() で包む（@media のキーも区別しない）ため、ルールごと無効なセレクタになる。typography 自体は
+  画面幅での切り替えを md:prose-lg のようなクラスのバリアントで行う設計で、設定の中にメディアクエリを持たない
+  （それ以外の指定は typography 側にある）
  ------------------------------ */
 /* stylelint-disable-next-line media-query-no-invalid */
 @media (width >= theme(--breakpoint-md)) {
@@ -42,4 +44,13 @@
   .prose :where([class*='column-embed'] .acms-embed-link-content, [data-type='embedBlock'] .embed-block-card-content) {
     width: calc(100% / 3 * 2);
   }
+}
+
+/* ------------------------------
+  ブロックエディターのプレビュー（隔離 iframe）では、HTML ブロックの中身が独自要素 acms-isolated-preview-root の直下に置かれる。
+  公開側（tailwind.config.js の HTML ブロックの指定）と同じく本文幅いっぱいに広げる（余白はプレビュー枠の中に空きができるため付けない）
+ ------------------------------ */
+:where(acms-isolated-preview-root) > :where(iframe, video, object, embed) {
+  width: 100%;
+  max-width: 100%;
 }

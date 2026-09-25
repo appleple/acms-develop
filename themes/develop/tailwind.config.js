@@ -235,7 +235,8 @@ module.exports = {
               borderRadius: '0',
             },
             // md 以上でカードを横並びにする指定は src/style/editor.css にある。
-            // Why not ここに @media のキーで書かないか: typography は @media のキーもセレクタとして :where() で包み、ルールごと無効になるため
+            // Why not ここに @media のキーで書かないか: typography はキーをすべてセレクタとして :where() で包み（@media も区別しない）、
+            // ルールごと無効になるため。typography の画面幅での切り替えは md:prose-lg のようなクラスのバリアントで行う設計になっている
             "[class*='column-embed'] .acms-embed-link:hover, [data-type='embedBlock'] .embed-block-card:hover": {
               opacity: '0.7',
             },
