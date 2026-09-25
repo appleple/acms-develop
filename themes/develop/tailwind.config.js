@@ -204,12 +204,14 @@ module.exports = {
             // ------------------------------
             // 埋め込みカード
             // ------------------------------
-            "[class*='column-embed']": {
+            "[class*='column-embed'], .embed-block": {
               // Align with media/figure rhythm: 32px -> 2em
               marginTop: em(32, 16),
               marginBottom: em(32, 16),
             },
-            "[class*='column-embed'] .acms-embed-link": {
+            // 埋め込みブロックはカード全体ではなくタイトルだけが a なので、タイトルのリンク領域をカード全体へ広げる
+            "[class*='column-embed'] .acms-embed-link, .embed-block .acms-embed-link": {
+              position: 'relative',
               overflow: 'hidden',
               display: 'block',
               padding: '0',
@@ -223,8 +225,16 @@ module.exports = {
               textDecoration: 'none',
               transitionProperty: 'opacity',
             },
+            // 埋め込みブロックの画像。typography のセレクタは詳細度が揃うため、md の幅指定より前に置く。
+            // figure 内の画像の角丸（figure img）がカードの画像にまで当たらないよう打ち消す
+            '.embed-block .acms-embed-link > img': {
+              display: 'block',
+              width: '100%',
+              margin: '0',
+              borderRadius: '0',
+            },
             [`@media (min-width: ${theme('breakpoint.md')})`]: {
-              "[class*='column-embed'] .acms-embed-link": {
+              "[class*='column-embed'] .acms-embed-link, .embed-block .acms-embed-link": {
                 display: 'flex',
                 transitionProperty: 'opacity',
               },
@@ -236,11 +246,17 @@ module.exports = {
                 height: '100%',
                 objectFit: 'cover',
               },
-              "[class*='column-embed'] .acms-embed-link-content": {
+              // 埋め込みブロックは画像を包む要素が無いので、画像自身が旧ユニットの入れ物と同じ幅を持つ
+              '.embed-block .acms-embed-link > img': {
+                width: '33.333333%',
+                flex: 'none',
+                objectFit: 'cover',
+              },
+              "[class*='column-embed'] .acms-embed-link-content, .embed-block .acms-embed-link-content": {
                 width: '66.666667%',
               },
             },
-            "[class*='column-embed'] .acms-embed-link:hover": {
+            "[class*='column-embed'] .acms-embed-link:hover, .embed-block .acms-embed-link:hover": {
               opacity: '0.7',
             },
             "[class*='column-embed'] .acms-embed-link-image-container": {
@@ -251,14 +267,27 @@ module.exports = {
               width: '100%',
               margin: '0',
             },
-            "[class*='column-embed'] .acms-embed-link-content": {
+            '.embed-block .acms-embed-link-title, .embed-block .acms-embed-link-site-name': {
+              display: 'block',
+            },
+            '.embed-block a.acms-embed-link-title::before': {
+              content: '""',
+              position: 'absolute',
+              inset: '0',
+            },
+            // 配置用の外側 div が余白を持つため、figure の余白は打ち消す
+            '.embed-block > figure': {
+              marginTop: '0',
+              marginBottom: '0',
+            },
+            "[class*='column-embed'] .acms-embed-link-content, .embed-block .acms-embed-link-content": {
               display: 'flex',
               flexDirection: 'column',
               maxWidth: 'none',
               padding: '2em',
               backgroundColor: 'var(--color-white)',
             },
-            "[class*='column-embed'] .acms-embed-link-title": {
+            "[class*='column-embed'] .acms-embed-link-title, .embed-block .acms-embed-link-title": {
               marginBottom: '.375em',
               marginTop: '0',
               fontSize: 'var(--text-base)',
@@ -267,7 +296,7 @@ module.exports = {
               color: 'var(--color-gray-700)',
               textDecoration: 'none',
             },
-            "[class*='column-embed'] .acms-embed-link-site-name": {
+            "[class*='column-embed'] .acms-embed-link-site-name, .embed-block .acms-embed-link-site-name": {
               order: '-1',
               padding: '0',
               marginTop: '0',
@@ -275,7 +304,7 @@ module.exports = {
               color: 'var(--color-gray-700)',
               fontSize: 'var(--text-sm)',
             },
-            "[class*='column-embed'] .acms-embed-link-description": {
+            "[class*='column-embed'] .acms-embed-link-description, .embed-block .acms-embed-link-description": {
               padding: '0',
               margin: '0',
               fontSize: 'var(--text-xs)',
@@ -298,6 +327,39 @@ module.exports = {
             "[data-type='columns'].layout-three-column": {
               gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
             },
+
+            // ------------------------------
+            // グループ（複数ブロックをまとめるラッパー）
+            // ------------------------------
+            // 中の最後の子の下余白を打ち消すため、グループ自身が他のブロックと同じ余白を持つ
+            "[data-type='group']": {
+              boxSizing: 'border-box',
+              marginTop: em(32, 16),
+              marginBottom: em(32, 16),
+            },
+            // 先頭・末尾の子ブロックの余白を打ち消し、グループの枠と中身が二重に空かないようにする
+            "[data-type='group'] > :first-child": {
+              marginTop: '0',
+            },
+            "[data-type='group'] > :last-child": {
+              marginBottom: '0',
+            },
+            // カラーパレットで背景色だけ付けたグループでも、文字が背景の端に貼り付かないようにする
+            "[data-type='group'][style*='background-color']": {
+              padding: em(24, 16),
+            },
+
+            // ------------------------------
+            // HTML ブロック
+            // ------------------------------
+            // ラッパーを持たず、編集者が書いた iframe 等がブロックの並びに直接置かれるため、並びの直下にあるものだけに余白を付ける。
+            // Why not iframe 全般に付けないか: 埋め込みブロックの iframe は外側の .embed-block が余白を持つため、二重に空いてしまう
+            ":is(.column-block-editor, [data-type='group'], [data-type='column']) > :is(iframe, video, object, embed)":
+              {
+                maxWidth: '100%',
+                marginTop: em(32, 16),
+                marginBottom: em(32, 16),
+              },
 
             // ------------------------------
             // 配置

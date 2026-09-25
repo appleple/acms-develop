@@ -65,6 +65,8 @@ export default defineConfig(({ command, mode }) => ({
       input: {
         bundle: resolve(import.meta.dirname, 'src/js/main.js'),
         admin: resolve(import.meta.dirname, 'src/js/admin.js'),
+        // 管理画面の editor-css から CSS 単体のエントリーとして読み込む（admin.html 参照）
+        editor: resolve(import.meta.dirname, 'src/style/editor.css'),
       },
       output: {
         manualChunks(id) {
