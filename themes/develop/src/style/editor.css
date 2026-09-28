@@ -21,7 +21,10 @@
   }
 
   .prose
-    :where([class*='column-embed'] .acms-embed-link-image-container, [data-type='embedBlock'] .embed-block-card-image) {
+    :where(
+      [class*='column-embed'] .acms-embed-link-image-container,
+      [data-type='embedBlock'] .embed-block-card-image-container
+    ) {
     flex: none;
     width: calc(100% / 3);
   }
@@ -29,7 +32,7 @@
   .prose
     :where(
       [class*='column-embed'] .acms-embed-link-image-container img,
-      [data-type='embedBlock'] .embed-block-card-image img
+      [data-type='embedBlock'] .embed-block-card-image-container img
     ) {
     height: 100%;
     object-fit: cover;
