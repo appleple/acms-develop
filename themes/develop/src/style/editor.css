@@ -20,19 +20,21 @@
     display: flex;
   }
 
-  .prose :where([class*='column-embed'] .acms-embed-link-image-container) {
+  .prose
+    :where(
+      [class*='column-embed'] .acms-embed-link-image-container,
+      [data-type='embedBlock'] .embed-block-card-image-container
+    ) {
     flex: none;
     width: calc(100% / 3);
   }
 
-  .prose :where([class*='column-embed'] .acms-embed-link-image-container img) {
+  .prose
+    :where(
+      [class*='column-embed'] .acms-embed-link-image-container img,
+      [data-type='embedBlock'] .embed-block-card-image-container img
+    ) {
     height: 100%;
-    object-fit: cover;
-  }
-
-  .prose :where([data-type='embedBlock'] .embed-block-card > img) {
-    flex: none;
-    width: calc(100% / 3);
     object-fit: cover;
   }
 

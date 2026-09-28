@@ -225,7 +225,7 @@ module.exports = {
               transitionProperty: 'opacity',
             },
             // カードの画像の角丸を打ち消す
-            "[data-type='embedBlock'] .embed-block-card > img": {
+            "[data-type='embedBlock'] .embed-block-card-image-container img": {
               display: 'block',
               width: '100%',
               margin: '0',
