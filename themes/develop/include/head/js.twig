@@ -7,6 +7,30 @@
   {% set js = module('V2_Js') %}
   <script src="{{ JS_LIB_JQUERY_DIR }}jquery-{{ JS_LIB_JQUERY_DIR_VERSION }}.min.js" charset="UTF-8"></script>
   <script src="{{ ROOT_DIR }}acms.js{{ js.arguments }}" charset="UTF-8" id="acms-js"></script>
+{% else %}
+  {# htmx でスワップされたコンテンツの組み込みJS（src/js/main.js の window.dispatch）を再初期化する。
+     acms.js を読み込む場合はコア側が行う。htmx 4 の htmx:after:swap は target がテキストノードになる
+     ことがあるため、挿入されたノード一覧を持つ htmx:after:settle を使う。htmx 2（CMS 3.2）向けに
+     afterSwap も残し、htmx 4 で htmx-2-compat 拡張が発火させる afterSwap は無視する。 #}
+  {# prettier-ignore #}
+  <script>
+    (function () {
+      function dispatch(node) {
+        if (node instanceof HTMLElement && typeof window.dispatch === 'function') {
+          window.dispatch(node);
+        }
+      }
+      window.addEventListener('htmx:after:settle', function (event) {
+        (event.detail && event.detail.newContent ? event.detail.newContent : []).forEach(dispatch);
+      });
+      window.addEventListener('htmx:afterSwap', function (event) {
+        if (window.htmx && parseInt(window.htmx.version, 10) >= 4) {
+          return;
+        }
+        dispatch(event.target);
+      });
+    })();
+  </script>
 {% endif %}
 
 <!-- Vite -->

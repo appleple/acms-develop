@@ -10,3 +10,41 @@
 @plugin "@tailwindcss/typography";
 
 @config '../../tailwind.config.js';
+
+/* ------------------------------
+  埋め込みカード（埋め込みユニット・埋め込みブロック共通）：md 以上で横並びにする
+ ------------------------------ */
+/* stylelint-disable-next-line media-query-no-invalid */
+@media (width >= theme(--breakpoint-md)) {
+  .prose :where([class*='column-embed'] .acms-embed-link, [data-type='embedBlock'] .embed-block-card) {
+    display: flex;
+  }
+
+  .prose :where([class*='column-embed'] .acms-embed-link-image-container) {
+    flex: none;
+    width: calc(100% / 3);
+  }
+
+  .prose :where([class*='column-embed'] .acms-embed-link-image-container img) {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .prose :where([data-type='embedBlock'] .embed-block-card > img) {
+    flex: none;
+    width: calc(100% / 3);
+    object-fit: cover;
+  }
+
+  .prose :where([class*='column-embed'] .acms-embed-link-content, [data-type='embedBlock'] .embed-block-card-content) {
+    width: calc(100% / 3 * 2);
+  }
+}
+
+/* ------------------------------
+  本文の埋め込みコンテンツ（ブロックエディターのプレビュー用）
+ ------------------------------ */
+:where(acms-isolated-preview-root) :where(iframe, video, object, embed) {
+  box-sizing: border-box; /* 枠線を含めて本文幅に収める */
+  max-width: 100%;
+}

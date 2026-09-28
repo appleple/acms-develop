@@ -1,4 +1,3 @@
 /**
- * スタイルの読み込み
+ * 管理画面用のJavaScript
  */
-import '../style/editor.css';

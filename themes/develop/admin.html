@@ -1,6 +1,12 @@
 @extends("/_layouts/admin.html")
 
 @section("editor-css")
+<!-- 編集画面とエディタ内要素のスタイル（ブロックエディターのプレビューにも読み込む） -->
+@vite("src/style/editor.css", {
+  "linkTagAttributes": {
+    "data-block-editor-stylesheet": true
+  }
+})
 @endsection
 
 @section("admin-js")
@@ -8,7 +14,8 @@
 
 <script>
   ACMS.Ready(function() {
-    ACMS.Config.blockEditorConfig.editorProps.editorProps.attributes.class = 'prose';
+    // 公開側の本文（include/entry/body.twig）と同じクラスにする
+    ACMS.Config.blockEditorConfig.editorProps.editorProps.attributes.class = 'prose max-w-none';
   });
 </script>
 <!-- カスタムJSを記述 -->
