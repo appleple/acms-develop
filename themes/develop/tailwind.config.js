@@ -209,8 +209,6 @@ module.exports = {
               marginTop: em(32, 16),
               marginBottom: em(32, 16),
             },
-            // 埋め込みブロックは旧ユニットと並べて宣言を共有する。管理画面のカードは embed-block-card-* しか持たないため
-            // 公開側と共通のこちらのクラスで指定する。カード全体ではなくタイトルだけが a なので、リンク領域をカード全体へ広げる
             "[class*='column-embed'] .acms-embed-link, [data-type='embedBlock'] .embed-block-card": {
               position: 'relative',
               overflow: 'hidden',
@@ -226,17 +224,14 @@ module.exports = {
               textDecoration: 'none',
               transitionProperty: 'opacity',
             },
-            // 埋め込みブロックの画像。typography のセレクタは詳細度が揃うため、md の幅指定より前に置く。
-            // figure 内の画像の角丸（figure img）がカードの画像にまで当たらないよう打ち消す
+            // カードの画像の角丸を打ち消す
             "[data-type='embedBlock'] .embed-block-card > img": {
               display: 'block',
               width: '100%',
               margin: '0',
               borderRadius: '0',
             },
-            // md 以上でカードを横並びにする指定は src/style/editor.css にある。
-            // Why not ここに @media のキーで書かないか: typography はキーをすべてセレクタとして :where() で包み（@media も区別しない）、
-            // ルールごと無効になるため。typography の画面幅での切り替えは md:prose-lg のようなクラスのバリアントで行う設計になっている
+            // md 以上でカードを横並びにする指定は src/style/editor.css にある
             "[class*='column-embed'] .acms-embed-link:hover, [data-type='embedBlock'] .embed-block-card:hover": {
               opacity: '0.7',
             },
@@ -256,10 +251,32 @@ module.exports = {
               position: 'absolute',
               inset: '0',
             },
-            // 配置用の外側 div が余白を持つため、figure の余白は打ち消す
+            // キーボード操作時のフォーカスの枠をカード全体に出す
+            "[data-type='embedBlock'] a.embed-block-card-title:focus-visible": {
+              outline: 'none',
+            },
+            "[data-type='embedBlock'] .embed-block-card:has(a.embed-block-card-title:focus-visible)": {
+              outline: 'auto 1px',
+              outlineColor: '-webkit-focus-ring-color',
+              outlineOffset: '1px',
+            },
+            // 埋め込みブロックの figure の余白を打ち消す
             "[data-type='embedBlock'] > figure": {
               marginTop: '0',
               marginBottom: '0',
+            },
+            // 中央・右揃えでは、figure（表示サイズまで広がる）より狭い埋め込み（X のウィジェット等）も同じ向きに寄せる。
+            // Why not 子要素に margin-inline: auto: Instagram 等は margin をインラインで指定しており上書きできない
+            ":where([data-type='embedBlock'][data-align='center'], [data-type='embedBlock'][data-align='right']) [data-embed-content]":
+              {
+                display: 'flex',
+                flexDirection: 'column',
+              },
+            ":where([data-type='embedBlock'][data-align='center']) [data-embed-content]": {
+              alignItems: 'center',
+            },
+            ":where([data-type='embedBlock'][data-align='right']) [data-embed-content]": {
+              alignItems: 'flex-end',
             },
             "[class*='column-embed'] .acms-embed-link-content, [data-type='embedBlock'] .embed-block-card-content": {
               display: 'flex',
@@ -311,36 +328,36 @@ module.exports = {
             },
 
             // ------------------------------
-            // グループ（複数ブロックをまとめるラッパー）
+            // グループ
             // ------------------------------
-            // 中の最後の子の下余白を打ち消すため、グループ自身が他のブロックと同じ余白を持つ
             "[data-type='group']": {
               boxSizing: 'border-box',
               marginTop: em(32, 16),
               marginBottom: em(32, 16),
             },
-            // 先頭・末尾の子ブロックの余白を打ち消し、グループの枠と中身が二重に空かないようにする
+            // 先頭・末尾の子ブロックの余白を打ち消す
             "[data-type='group'] > :first-child": {
               marginTop: '0',
             },
             "[data-type='group'] > :last-child": {
               marginBottom: '0',
             },
-            // カラーパレットで背景色だけ付けたグループでも、文字が背景の端に貼り付かないようにする
+            // カラーパレットで背景色を付けたグループの内側の余白
             "[data-type='group'][style*='background-color']": {
               padding: em(24, 16),
             },
 
             // ------------------------------
-            // HTML ブロック
+            // 本文の埋め込みコンテンツ（iframe・video・object・embed）
             // ------------------------------
-            // ラッパーを持たず、編集者が書いた iframe 等がブロックの並びに直接置かれるため、並びの直下にあるものだけに余白を付ける。
-            // Why not iframe 全般に付けないか: 埋め込みブロックの iframe は外側の .embed-block が余白を持つため、二重に空いてしまう
-            ":is(.column-block-editor, [data-type='group'], [data-type='column']) > :is(iframe, video, object, embed)":
+            // 本文より広いときは幅を縮める
+            'iframe, video, object, embed': {
+              boxSizing: 'border-box', // 枠線を含めて本文幅に収める
+              maxWidth: '100%',
+            },
+            // 前後の余白（外枠が余白を持つ埋め込みブロック・配置（align-*）の中は除く）
+            ":is(iframe, video, object, embed):not(:is([data-type='embedBlock'], [class^='align-'], [class*=' align-']) *)":
               {
-                // Google マップ等の埋め込みコードは width="600" のような固定幅を持つことが多いため、本文幅いっぱいに広げる（高さは属性の値のまま）
-                width: '100%',
-                maxWidth: '100%',
                 marginTop: em(32, 16),
                 marginBottom: em(32, 16),
               },

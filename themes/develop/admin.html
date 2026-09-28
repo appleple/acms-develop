@@ -1,9 +1,7 @@
 @extends("/_layouts/admin.html")
 
 @section("editor-css")
-<!-- 編集画面とエディタ内要素のスタイルを読み込み。
-  ブロックエディターのプレビュー（隔離 iframe）にも同じスタイルを入れるため data-block-editor-stylesheet を付ける。
-  admin.js から import すると、JS エントリーに付随する link には属性を付けられないため CSS 単体のエントリーにしている -->
+<!-- 編集画面とエディタ内要素のスタイル（ブロックエディターのプレビューにも読み込む） -->
 @vite("src/style/editor.css", {
   "linkTagAttributes": {
     "data-block-editor-stylesheet": true
@@ -16,8 +14,7 @@
 
 <script>
   ACMS.Ready(function() {
-    // 公開側の本文（include/entry/body.twig）と同じクラスにする。max-w-none が無いと prose の max-width: 65ch で
-    // ブロックエディターのプレビュー（隔離 iframe）の本文幅が狭まり、公開側と見た目が変わる
+    // 公開側の本文（include/entry/body.twig）と同じクラスにする
     ACMS.Config.blockEditorConfig.editorProps.editorProps.attributes.class = 'prose max-w-none';
   });
 </script>
