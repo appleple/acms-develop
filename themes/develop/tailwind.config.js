@@ -204,12 +204,13 @@ module.exports = {
             // ------------------------------
             // 埋め込みカード
             // ------------------------------
-            "[class*='column-embed']": {
+            "[class*='column-embed'], [data-type='embedBlock']": {
               // Align with media/figure rhythm: 32px -> 2em
               marginTop: em(32, 16),
               marginBottom: em(32, 16),
             },
-            "[class*='column-embed'] .acms-embed-link": {
+            "[class*='column-embed'] .acms-embed-link, [data-type='embedBlock'] .embed-block-card": {
+              position: 'relative',
               overflow: 'hidden',
               display: 'block',
               padding: '0',
@@ -223,24 +224,15 @@ module.exports = {
               textDecoration: 'none',
               transitionProperty: 'opacity',
             },
-            [`@media (min-width: ${theme('breakpoint.md')})`]: {
-              "[class*='column-embed'] .acms-embed-link": {
-                display: 'flex',
-                transitionProperty: 'opacity',
-              },
-              "[class*='column-embed'] .acms-embed-link-image-container": {
-                width: '33.333333%',
-                flex: 'none',
-              },
-              "[class*='column-embed'] .acms-embed-link-image-container img": {
-                height: '100%',
-                objectFit: 'cover',
-              },
-              "[class*='column-embed'] .acms-embed-link-content": {
-                width: '66.666667%',
-              },
+            // カードの画像の角丸を打ち消す
+            "[data-type='embedBlock'] .embed-block-card > img": {
+              display: 'block',
+              width: '100%',
+              margin: '0',
+              borderRadius: '0',
             },
-            "[class*='column-embed'] .acms-embed-link:hover": {
+            // md 以上でカードを横並びにする指定は src/style/editor.css にある
+            "[class*='column-embed'] .acms-embed-link:hover, [data-type='embedBlock'] .embed-block-card:hover": {
               opacity: '0.7',
             },
             "[class*='column-embed'] .acms-embed-link-image-container": {
@@ -251,14 +243,49 @@ module.exports = {
               width: '100%',
               margin: '0',
             },
-            "[class*='column-embed'] .acms-embed-link-content": {
+            "[data-type='embedBlock'] .embed-block-card-title, [data-type='embedBlock'] .embed-block-card-provider": {
+              display: 'block',
+            },
+            "[data-type='embedBlock'] a.embed-block-card-title::before": {
+              content: '""',
+              position: 'absolute',
+              inset: '0',
+            },
+            // キーボード操作時のフォーカスの枠をカード全体に出す
+            "[data-type='embedBlock'] a.embed-block-card-title:focus-visible": {
+              outline: 'none',
+            },
+            "[data-type='embedBlock'] .embed-block-card:has(a.embed-block-card-title:focus-visible)": {
+              outline: 'auto 1px',
+              outlineColor: '-webkit-focus-ring-color',
+              outlineOffset: '1px',
+            },
+            // 埋め込みブロックの figure の余白を打ち消す
+            "[data-type='embedBlock'] > figure": {
+              marginTop: '0',
+              marginBottom: '0',
+            },
+            // 中央・右揃えでは、figure（表示サイズまで広がる）より狭い埋め込み（X のウィジェット等）も同じ向きに寄せる。
+            // Why not 子要素に margin-inline: auto: Instagram 等は margin をインラインで指定しており上書きできない
+            ":where([data-type='embedBlock'][data-align='center'], [data-type='embedBlock'][data-align='right']) [data-embed-content]":
+              {
+                display: 'flex',
+                flexDirection: 'column',
+              },
+            ":where([data-type='embedBlock'][data-align='center']) [data-embed-content]": {
+              alignItems: 'center',
+            },
+            ":where([data-type='embedBlock'][data-align='right']) [data-embed-content]": {
+              alignItems: 'flex-end',
+            },
+            "[class*='column-embed'] .acms-embed-link-content, [data-type='embedBlock'] .embed-block-card-content": {
               display: 'flex',
               flexDirection: 'column',
               maxWidth: 'none',
               padding: '2em',
               backgroundColor: 'var(--color-white)',
             },
-            "[class*='column-embed'] .acms-embed-link-title": {
+            "[class*='column-embed'] .acms-embed-link-title, [data-type='embedBlock'] .embed-block-card-title": {
               marginBottom: '.375em',
               marginTop: '0',
               fontSize: 'var(--text-base)',
@@ -267,7 +294,7 @@ module.exports = {
               color: 'var(--color-gray-700)',
               textDecoration: 'none',
             },
-            "[class*='column-embed'] .acms-embed-link-site-name": {
+            "[class*='column-embed'] .acms-embed-link-site-name, [data-type='embedBlock'] .embed-block-card-provider": {
               order: '-1',
               padding: '0',
               marginTop: '0',
@@ -275,13 +302,14 @@ module.exports = {
               color: 'var(--color-gray-700)',
               fontSize: 'var(--text-sm)',
             },
-            "[class*='column-embed'] .acms-embed-link-description": {
-              padding: '0',
-              margin: '0',
-              fontSize: 'var(--text-xs)',
-              color: 'var(--color-gray-500)',
-              lineHeight: 'var(--leading-relaxed)',
-            },
+            "[class*='column-embed'] .acms-embed-link-description, [data-type='embedBlock'] .embed-block-card-description":
+              {
+                padding: '0',
+                margin: '0',
+                fontSize: 'var(--text-xs)',
+                color: 'var(--color-gray-500)',
+                lineHeight: 'var(--leading-relaxed)',
+              },
 
             // ------------------------------
             // カラムレイアウト
@@ -298,6 +326,41 @@ module.exports = {
             "[data-type='columns'].layout-three-column": {
               gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
             },
+
+            // ------------------------------
+            // グループ
+            // ------------------------------
+            "[data-type='group']": {
+              boxSizing: 'border-box',
+              marginTop: em(32, 16),
+              marginBottom: em(32, 16),
+            },
+            // 先頭・末尾の子ブロックの余白を打ち消す
+            "[data-type='group'] > :first-child": {
+              marginTop: '0',
+            },
+            "[data-type='group'] > :last-child": {
+              marginBottom: '0',
+            },
+            // カラーパレットで背景色を付けたグループの内側の余白
+            "[data-type='group'][style*='background-color']": {
+              padding: em(24, 16),
+            },
+
+            // ------------------------------
+            // 本文の埋め込みコンテンツ（iframe・video・object・embed）
+            // ------------------------------
+            // 本文より広いときは幅を縮める
+            'iframe, video, object, embed': {
+              boxSizing: 'border-box', // 枠線を含めて本文幅に収める
+              maxWidth: '100%',
+            },
+            // 前後の余白（外枠が余白を持つ埋め込みブロック・配置（align-*）の中は除く）
+            ":is(iframe, video, object, embed):not(:is([data-type='embedBlock'], [class^='align-'], [class*=' align-']) *)":
+              {
+                marginTop: em(32, 16),
+                marginBottom: em(32, 16),
+              },
 
             // ------------------------------
             // 配置
