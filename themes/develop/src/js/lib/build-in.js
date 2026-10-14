@@ -93,18 +93,17 @@ const alertUnload = (context, selector = '', force = false) => {
 
 /**
  * SmartPhoto
- * @param {Document | Element} context
+ * 要素ではなくセレクタを渡し、document への click 委譲で動かす。
+ * 後から追加された要素（htmx・Ajax で差し込んだ本文など）も反応する。
+ * @param {Document | Element} context 委譲で動くため参照しない（他の組み込み JS と引数を揃えている）
  * @param {string} selector
  * @param {object} options
  */
 const smartPhoto = (context, selector = '', options = {}) => {
   domContentLoaded(async () => {
     const querySelector = selector || 'a[data-rel^=SmartPhoto],.js-smartphoto';
-    const targets = context.querySelectorAll(querySelector);
-    if (targets.length > 0) {
-      const { default: run } = await import('./buildIn/smart-photo');
-      run(targets, options);
-    }
+    const { default: run } = await import('./buildIn/smart-photo');
+    run(querySelector, options);
   });
 };
 
