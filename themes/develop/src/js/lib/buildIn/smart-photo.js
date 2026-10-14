@@ -1,12 +1,21 @@
 import SmartPhoto from 'smartphoto';
 import 'smartphoto/css/smartphoto.min.css';
 
+// dispatch は新しく差し込んだ DOM に対しても呼ばれる。SmartPhoto は生成のたびに document への
+// click 委譲と <dialog> を作り、古いものを後始末しないため、同じセレクタでは 1 回だけ生成する。
+const initializedSelectors = new Set();
+
 /**
  * Smart photo
- * @param {NodeListOf<Element>} elements
+ * @param {string} selector
  * @param {object} options
  */
-export default (elements, options = {}) => {
+export default (selector, options = {}) => {
+  if (initializedSelectors.has(selector)) {
+    return;
+  }
+  initializedSelectors.add(selector);
+
   const defaultOptions = {
     classNames: {
       smartPhoto: 'smartphoto',
@@ -54,5 +63,5 @@ export default (elements, options = {}) => {
     lazyAttribute: 'data-src',
   };
 
-  new SmartPhoto(elements, Object.assign(defaultOptions, options));
+  new SmartPhoto(selector, Object.assign(defaultOptions, options));
 };
