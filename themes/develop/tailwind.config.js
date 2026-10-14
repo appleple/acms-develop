@@ -398,6 +398,11 @@ module.exports = {
               {
                 aspectRatio: '16 / 9',
               },
+            // typography が img に付ける余白で Leaflet のタイルがずれ、地図内に帯状の隙間が出るのを防ぐ
+            '.leaflet-container img': {
+              marginTop: '0',
+              marginBottom: '0',
+            },
 
             // ------------------------------
             // ファイル
