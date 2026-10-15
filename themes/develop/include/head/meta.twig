@@ -29,9 +29,11 @@
 {% if ogp.description %}
   <meta name="description" content="{{ ogp.description|mb_trim(350, '...')|delnl|escape }}" />
 {% endif %}
+{# keywords の meta タグは現在の主要な検索エンジンで使われていないため出力しない。出力する場合は、このコメントを外す
 {% if ogp.keywords %}
   <meta name="keywords" content="{{ ogp.keywords }}" />
 {% endif %}
+#}
 
 <meta name="twitter:title" content="{{ ogp.title }}" />
 <meta name="twitter:card" content="summary_large_image" />
