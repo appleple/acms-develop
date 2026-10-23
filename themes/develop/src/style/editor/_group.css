@@ -1,5 +1,5 @@
 /* ------------------------------
-  カラム・グループ・配置
+  カラム・グループ
  ------------------------------ */
 @layer utilities {
   /* カラム */
@@ -37,21 +37,5 @@
   /* カラーパレットで背景色を付けたグループの内側の余白 */
   .prose :where([data-type='group'][style*='background-color']):not(:where(.not-prose, .not-prose *)) {
     padding: 1.5em; /* 24px */
-  }
-
-  /* 配置 */
-  .prose :where(.align-left):not(:where(.not-prose, .not-prose *)) {
-    display: flex;
-    justify-content: flex-start;
-  }
-
-  .prose :where(.align-right):not(:where(.not-prose, .not-prose *)) {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .prose :where(.align-center):not(:where(.not-prose, .not-prose *)) {
-    display: flex;
-    justify-content: center;
   }
 }

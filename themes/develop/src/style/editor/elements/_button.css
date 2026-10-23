@@ -35,7 +35,7 @@
   }
 
   .prose :where([data-type='fileBlock'][data-display-type='button'] img):not(:where(.not-prose, .not-prose *)) {
-    width: 2rem;
+    width: 2em;
     height: auto;
     margin-top: 0;
     margin-bottom: 0;
