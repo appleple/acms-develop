@@ -1,0 +1,20 @@
+/* ------------------------------
+  ユニット配置
+ ------------------------------ */
+@layer utilities {
+  /* 配置 */
+  .prose :where(.align-left):not(:where(.not-prose, .not-prose *)) {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .prose :where(.align-right):not(:where(.not-prose, .not-prose *)) {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .prose :where(.align-center):not(:where(.not-prose, .not-prose *)) {
+    display: flex;
+    justify-content: center;
+  }
+}

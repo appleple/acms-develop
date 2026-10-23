@@ -1,0 +1,189 @@
+/* ------------------------------
+  埋め込みカード（埋め込みユニット・埋め込みブロック共通）
+ ------------------------------ */
+@layer utilities {
+  .prose :where([class*='column-embed'], [data-type='embedBlock']):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 2em; /* 32px。画像と同じ余白 */
+    margin-bottom: 2em;
+  }
+
+  .prose
+    :where([class*='column-embed'] .acms-embed-link, [data-type='embedBlock'] .embed-block-card):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    position: relative;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    font-weight: 400;
+    color: inherit;
+    text-decoration: none;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    transition-property: opacity;
+  }
+
+  /* カードの画像の角丸を打ち消す */
+  .prose :where([data-type='embedBlock'] .embed-block-card-image-container img):not(:where(.not-prose, .not-prose *)) {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .prose
+    :where([class*='column-embed'] .acms-embed-link:hover, [data-type='embedBlock'] .embed-block-card:hover):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    opacity: 0.7;
+  }
+
+  .prose :where([class*='column-embed'] .acms-embed-link-image-container):not(:where(.not-prose, .not-prose *)) {
+    margin-right: 0;
+  }
+
+  .prose :where([class*='column-embed'] .acms-embed-link-image-container img):not(:where(.not-prose, .not-prose *)) {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  .prose
+    :where([data-type='embedBlock'] .embed-block-card-title, [data-type='embedBlock'] .embed-block-card-provider):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    display: block;
+  }
+
+  .prose :where([data-type='embedBlock'] a.embed-block-card-title):not(:where(.not-prose, .not-prose *))::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+  }
+
+  /* キーボード操作時のフォーカスの枠をカード全体に出す */
+  .prose :where([data-type='embedBlock'] a.embed-block-card-title:focus-visible):not(:where(.not-prose, .not-prose *)) {
+    outline: none;
+  }
+
+  .prose
+    :where([data-type='embedBlock'] .embed-block-card:has(a.embed-block-card-title:focus-visible)):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    outline: auto 1px;
+    outline-color: -webkit-focus-ring-color;
+    outline-offset: 1px;
+  }
+
+  /* 埋め込みブロックの figure の余白を打ち消す */
+  .prose :where([data-type='embedBlock'] > figure):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  /*
+    中央・右揃えでは、figure（表示サイズまで広がる）より狭い埋め込み（X のウィジェット等）も同じ向きに寄せる。
+    Why not 子要素に margin-inline: auto: Instagram 等は margin をインラインで指定しており上書きできない
+  */
+  .prose
+    :where(
+      :where([data-type='embedBlock'][data-align='center'], [data-type='embedBlock'][data-align='right'])
+        [data-embed-content]
+    ):not(:where(.not-prose, .not-prose *)) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .prose
+    :where(:where([data-type='embedBlock'][data-align='center']) [data-embed-content]):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    align-items: center;
+  }
+
+  .prose
+    :where(:where([data-type='embedBlock'][data-align='right']) [data-embed-content]):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    align-items: flex-end;
+  }
+
+  .prose
+    :where([class*='column-embed'] .acms-embed-link-content, [data-type='embedBlock'] .embed-block-card-content):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    padding: 2em;
+    background-color: var(--color-white);
+  }
+
+  .prose
+    :where([class*='column-embed'] .acms-embed-link-title, [data-type='embedBlock'] .embed-block-card-title):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    margin-top: 0;
+    margin-bottom: 0.375em;
+    font-size: var(--text-base);
+    font-weight: 400;
+    line-height: var(--leading-normal);
+    color: var(--color-gray-700);
+    text-decoration: none;
+  }
+
+  .prose
+    :where([class*='column-embed'] .acms-embed-link-site-name, [data-type='embedBlock'] .embed-block-card-provider):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    order: -1;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0.25em;
+    font-size: var(--text-sm);
+    color: var(--color-gray-700);
+  }
+
+  .prose
+    :where(
+      [class*='column-embed'] .acms-embed-link-description,
+      [data-type='embedBlock'] .embed-block-card-description
+    ):not(:where(.not-prose, .not-prose *)) {
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-xs);
+    line-height: var(--leading-relaxed);
+    color: var(--color-gray-500);
+  }
+}
+
+/* md 以上でカードを横並びにする */
+/* stylelint-disable-next-line media-query-no-invalid */
+@media (width >= theme(--breakpoint-md)) {
+  .prose :where([class*='column-embed'] .acms-embed-link, [data-type='embedBlock'] .embed-block-card) {
+    display: flex;
+  }
+
+  .prose
+    :where(
+      [class*='column-embed'] .acms-embed-link-image-container,
+      [data-type='embedBlock'] .embed-block-card-image-container
+    ) {
+    flex: none;
+    width: calc(100% / 3);
+  }
+
+  .prose
+    :where(
+      [class*='column-embed'] .acms-embed-link-image-container img,
+      [data-type='embedBlock'] .embed-block-card-image-container img
+    ) {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .prose :where([class*='column-embed'] .acms-embed-link-content, [data-type='embedBlock'] .embed-block-card-content) {
+    width: calc(100% / 3 * 2);
+  }
+}

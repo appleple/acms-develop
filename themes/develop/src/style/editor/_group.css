@@ -1,0 +1,41 @@
+/* ------------------------------
+  カラム・グループ
+ ------------------------------ */
+@layer utilities {
+  /* カラム */
+  .prose :where([data-type='columns']):not(:where(.not-prose, .not-prose *)) {
+    box-sizing: border-box;
+    display: grid;
+    grid-auto-flow: column;
+    gap: var(--unit-gap-x);
+  }
+
+  .prose :where([data-type='columns'].layout-two-column):not(:where(.not-prose, .not-prose *)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .prose :where([data-type='columns'].layout-three-column):not(:where(.not-prose, .not-prose *)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* グループ */
+  .prose :where([data-type='group']):not(:where(.not-prose, .not-prose *)) {
+    box-sizing: border-box;
+    margin-top: 2em; /* 32px */
+    margin-bottom: 2em; /* 32px */
+  }
+
+  /* 先頭・末尾の子ブロックの余白を打ち消す */
+  .prose :where([data-type='group'] > :first-child):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 0;
+  }
+
+  .prose :where([data-type='group'] > :last-child):not(:where(.not-prose, .not-prose *)) {
+    margin-bottom: 0;
+  }
+
+  /* カラーパレットで背景色を付けたグループの内側の余白 */
+  .prose :where([data-type='group'][style*='background-color']):not(:where(.not-prose, .not-prose *)) {
+    padding: 1.5em; /* 24px */
+  }
+}
