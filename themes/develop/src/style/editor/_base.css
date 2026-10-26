@@ -1,0 +1,41 @@
+/* ------------------------------
+  エントリーの基本スタイル
+ ------------------------------ */
+/* stylelint-disable selector-class-pattern -- CMS が出力するクラス名のため */
+@layer utilities {
+  /* コンテンツ先頭の余白をリセットする */
+  .prose
+    :where(
+      :first-child,
+      :first-child.column-block-editor > :first-child,
+      :first-child.js-edit_inplace > :first-child,
+      :first-child.js-edit_inplace-hovering + .js-edit_inplace > :first-child
+    ):not(:where(.not-prose, .not-prose *)) {
+    margin-block-start: 0;
+  }
+
+  /* レイアウト用カスタムプロパティ */
+  .prose :where(.acms-cssgrid):not(:where(.not-prose, .not-prose *)) {
+    --acms-gap: 0 var(--unit-gap-x);
+  }
+
+  .prose :where(.acms-stack, .acms-vstack, .acms-hstack):not(:where(.not-prose, .not-prose *)) {
+    --acms-stack-spacing: 0 var(--unit-gap-x);
+  }
+
+  .prose :where(img, video):not(:where(.not-prose, .not-prose *)) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .prose :where(audio, canvas, embed, iframe, object, svg, video):not(:where(.not-prose, .not-prose *)) {
+    display: block;
+    vertical-align: middle;
+  }
+
+  .prose :where(table):not(:where(.not-prose, .not-prose *)) {
+    text-indent: 0;
+    border-collapse: collapse;
+    border-color: inherit;
+  }
+}

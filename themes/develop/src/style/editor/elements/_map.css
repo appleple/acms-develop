@@ -1,0 +1,35 @@
+/* ------------------------------
+  地図／ストリートビュー
+ ------------------------------ */
+@layer utilities {
+  .prose :where([class*='column-map'], [class*='column-street-view']):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 2em; /* 32px。画像と同じ余白 */
+    margin-bottom: 2em;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+  }
+
+  .prose
+    :where(
+      :where(.column-map div:has(> .js-open-street-map)),
+      :where(.column-map div:has(> .js-s2d-ready)),
+      :where(.column-street-view div:has(> .js-street-view))
+    ):not(:where(.not-prose, .not-prose *)) {
+    max-width: 100%;
+  }
+
+  .prose
+    :where(
+      :where(.column-map .js-open-street-map),
+      :where(.column-map .js-s2d-ready),
+      :where(.column-street-view .js-street-view)
+    ):not(:where(.not-prose, .not-prose *)) {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* typography が img に付ける余白で Leaflet のタイルがずれ、地図内に帯状の隙間が出るのを防ぐ */
+  .prose :where(.leaflet-container img):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

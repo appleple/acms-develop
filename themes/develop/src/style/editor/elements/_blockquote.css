@@ -1,0 +1,9 @@
+/* ------------------------------
+  引用
+ ------------------------------ */
+@layer utilities {
+  .prose :where(blockquote):not(:where(.not-prose, .not-prose *)) {
+    margin-inline: 0;
+    border-inline-start-style: solid;
+  }
+}
