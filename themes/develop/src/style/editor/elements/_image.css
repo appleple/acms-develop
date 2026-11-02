@@ -1,0 +1,23 @@
+/* ------------------------------
+  画像（figure）
+ ------------------------------ */
+@layer utilities {
+  .prose :where(figure, [role='figure']):not(:where(.not-prose, .not-prose *)) {
+    margin: 2em 0; /* 32px */
+  }
+
+  .prose :where(figure img, [role='figure'] img):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: var(--radius-md);
+  }
+
+  /* [role="figure"] のキャプションを figcaption と同等に */
+  .prose :where([role='figure'] .caption):not(:where(.not-prose, .not-prose *)) {
+    margin-top: calc(12em / 14); /* 12px */
+    margin-bottom: 0;
+    font-size: 0.875em; /* 14px */
+    line-height: calc(20 / 14); /* 20px */
+    color: var(--tw-prose-captions);
+  }
+}

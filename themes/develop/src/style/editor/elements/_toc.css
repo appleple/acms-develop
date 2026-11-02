@@ -1,0 +1,33 @@
+/* ------------------------------
+  目次（toc）
+ ------------------------------ */
+@layer utilities {
+  .prose :where(.toc .level-1):not(:where(.not-prose, .not-prose *)) {
+    padding-left: 0;
+    margin-top: 1.5em; /* 24px */
+    margin-bottom: -0.25em; /* -4px */
+  }
+
+  .prose :where(.toc .level-1 li):not(:where(.not-prose, .not-prose *)) {
+    padding-left: 0;
+  }
+
+  .prose :where(.toc .level-2):not(:where(.not-prose, .not-prose *)) {
+    padding-left: 1em;
+    margin-bottom: 0;
+  }
+
+  .prose :where(.toc .level-2 li):not(:where(.not-prose, .not-prose *)) {
+    display: flex;
+    gap: 0.5em;
+  }
+
+  .prose :where(.toc .level-2 li):not(:where(.not-prose, .not-prose *))::before {
+    display: block;
+    width: 1em;
+    content: '';
+    background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 24 24'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' d='m8.25 4.5 7.5 7.5-7.5 7.5' /></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

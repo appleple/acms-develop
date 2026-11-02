@@ -1,0 +1,86 @@
+/* ------------------------------
+  テーブル
+ ------------------------------ */
+@layer utilities {
+  .prose :where(tbody th):not(:where(.not-prose, .not-prose *)) {
+    padding-inline: calc(8em / 14); /* 8px */
+    padding-bottom: calc(8em / 14);
+  }
+
+  .prose :where(tbody th:first-child):not(:where(.not-prose, .not-prose *)) {
+    padding-inline-start: 0;
+  }
+
+  .prose :where(tbody th:last-child):not(:where(.not-prose, .not-prose *)) {
+    padding-inline-end: 0;
+  }
+
+  .prose :where(tbody tr):not(:where(.not-prose, .not-prose *)) {
+    border-bottom-style: solid;
+  }
+
+  .prose :where(table :last-child):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  /* 横スクロール用にテーブルを包むときは、余白を外側の要素に持たせる（overflow で余白の相殺が起きないため） */
+  .prose :where(div:has(> table)):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 2em; /* 32px */
+    margin-bottom: 2em;
+    overflow-x: auto;
+  }
+
+  .prose :where(div:has(> table) table):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  /* テーブルユーティリティ（acms） */
+  .prose
+    :where(
+      .acms-table-scrollable th,
+      .acms-table-scrollable td,
+      .js-table-unit-scroll-hint th,
+      .js-table-unit-scroll-hint td
+    ):not(:where(.not-prose, .not-prose *)) {
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+
+  .prose :where(.acms-cell-text-left):not(:where(.not-prose, .not-prose *)) {
+    text-align: left;
+  }
+
+  .prose :where(.acms-cell-text-center):not(:where(.not-prose, .not-prose *)) {
+    text-align: center;
+  }
+
+  .prose :where(.acms-cell-text-right):not(:where(.not-prose, .not-prose *)) {
+    text-align: right;
+  }
+
+  .prose :where(.acms-cell-text-nowrap):not(:where(.not-prose, .not-prose *)) {
+    white-space: nowrap;
+  }
+
+  .prose :where(.acms-cell-text-bold):not(:where(.not-prose, .not-prose *)) {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .prose :where(.acms-cell-text-normal):not(:where(.not-prose, .not-prose *)) {
+    font-weight: var(--font-weight-normal);
+  }
+
+  .prose :where(.acms-cell-text-top):not(:where(.not-prose, .not-prose *)) {
+    vertical-align: top;
+  }
+
+  .prose :where(.acms-cell-text-middle):not(:where(.not-prose, .not-prose *)) {
+    vertical-align: middle;
+  }
+
+  .prose :where(.acms-cell-text-bottom):not(:where(.not-prose, .not-prose *)) {
+    vertical-align: bottom;
+  }
+}

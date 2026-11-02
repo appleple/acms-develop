@@ -1,0 +1,20 @@
+/* ------------------------------
+  エントリー（.prose）のスタイル調整
+  @tailwindcss/typography の既定のスタイルを、要素・ブロックごとに上書き・追加する。
+  セレクタは typography と同じ「.prose :where(...)」の形にし、not-prose の中には効かないようにしている。
+  （typography の既定と詳細度をそろえ、ほかのユーティリティクラスより強くしないため）
+  同じ要素に複数のルールが当たる場合は後のファイルが勝つので、読み込み順を変えるときは注意する
+  （例: グループの先頭・末尾の子の余白の打ち消しは、画像・ファイル・埋め込みの余白より後に置く）
+ ------------------------------ */
+@import './_base.css';
+@import './elements/_image.css';
+@import './elements/_blockquote.css';
+@import './elements/_table.css';
+@import './elements/_button.css';
+@import './elements/_file.css';
+@import './elements/_embed.css';
+@import './_group.css';
+@import './_unit-align.css';
+@import './elements/_embedded-content.css';
+@import './elements/_map.css';
+@import './elements/_toc.css';

@@ -1,0 +1,78 @@
+/* ------------------------------
+  ファイル（アイコン表示・リンク）
+ ------------------------------ */
+/* stylelint-disable selector-class-pattern -- CMS が出力するクラス名のため */
+@layer utilities {
+  .prose :where([data-type='fileBlock']):not(:where(.not-prose, .not-prose *)) {
+    margin-top: 1.25em; /* 20px。段落と同じ余白 */
+    margin-bottom: 1.25em;
+    line-height: 0;
+    text-align: center;
+  }
+
+  .prose
+    :where(
+      [data-type='fileBlock'][data-display-type='icon'] img,
+      [class*='column-media'] .columnIcon,
+      [class*='column-file'] .columnIcon
+    ):not(:where(.not-prose, .not-prose *)) {
+    display: inline-block;
+    width: 70px;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .prose
+    :where(
+      [data-type='fileBlock'][data-display-type='icon'] .caption,
+      [class*='column-file'] .caption,
+      [class*='column-media']:has(a[href*='media-download'], a[href*='storage']) .caption
+    ):not(:where(.not-prose, .not-prose *)) {
+    margin: 0;
+    margin-top: 0.75em;
+    font-size: var(--text-sm);
+    line-height: normal;
+    color: var(--color-gray-500);
+    text-align: center;
+  }
+
+  .prose
+    :where(
+      [data-type='fileBlock'][data-display-type='icon'] a,
+      [class*='column-media'] a[href*='media-download'],
+      [class*='column-media'] a[href*='storage'],
+      [class*='column-file'] a
+    ):not(:where(.not-prose, .not-prose *)) {
+    display: inline-block;
+    text-decoration: none;
+    transition-property: opacity;
+  }
+
+  .prose
+    :where(
+      [data-type='fileBlock'][data-display-type='icon'] a:hover,
+      [class*='column-media'] a[href*='media-download']:hover,
+      [class*='column-media'] a[href*='storage']:hover,
+      [class*='column-file'] a:hover
+    ):not(:where(.not-prose, .not-prose *)) {
+    opacity: 0.7;
+  }
+
+  .prose :where(.column-pdf-image):not(:where(.not-prose, .not-prose *)) {
+    max-width: 100%;
+    margin-bottom: 0;
+    border: 1px solid var(--color-gray-200);
+  }
+
+  /* ファイル・メディア（ダウンロード）ユニットの余白 */
+  .prose
+    :where([class*='column-media']:has(a[href*='media-download'], a[href*='storage']), [class*='column-file']):not(
+      :where(.not-prose, .not-prose *)
+    ) {
+    margin-top: 1.25em; /* 20px。段落と同じ余白 */
+    margin-bottom: 1.25em;
+    line-height: 0;
+    text-align: center;
+  }
+}
