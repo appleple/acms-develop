@@ -24,9 +24,9 @@
     "@eslint/js": "^10.0.1",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "@zackad/prettier-plugin-twig": "^0.17.0",
-    "browserslist": "^4.29.4",
-    "eslint": "^10.13.0",
+    "@zackad/prettier-plugin-twig": "^0.18.0",
+    "browserslist": "^4.29.5",
+    "eslint": "^10.14.0",
     "globals": "^17.13.0",
     "prettier": "^3.9.10",
     "rollup-plugin-visualizer": "^7.1.1",
@@ -54,11 +54,11 @@
     "leaflet-gesture-handling": "^1.2.2",
     "modal-video": "^2.4.8",
     "query-string": "^9.5.1",
-    "scroll-hint": "^1.2.9",
+    "scroll-hint": "^1.2.10",
     "smartphoto": "^2.1.18"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.65.0",
+    "@rollup/rollup-linux-x64-gnu": "4.67.2",
     "@tailwindcss/oxide-linux-x64-gnu": "^4.2.4",
     "lightningcss-linux-x64-gnu": "^1.33.0"
   }
